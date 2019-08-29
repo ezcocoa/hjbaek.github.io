@@ -1,0 +1,51 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Using the Internal Storage
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: '내부 저장소 사용할 때 주의해야 할 점 '
+wordpress_id: 1695
+wordpress_url: http://ezcocoa.com/?p=1695
+date: '2012-10-11 04:59:54 +0900'
+date_gmt: '2012-10-11 04:59:54 +0900'
+categories:
+- Android
+tags:
+- setup
+- install
+- apk
+- permission
+comments: []
+---
+<p>어플리케이션 자체 업그레이드를 지원할때 주로 서버에 apk파일을 올려놓고<br />
+자체업그레이드 지원 할 경우 아래의 Flag를 <strong>MODE_PRIVATE</strong>가 아닌 <strong>MODE_WORLD_READABLE, MODE_WORLD_WRITEABLE</strong>를 넣어주어야 다운받은 apk로 접근이 가능합니다.</p>
+<h4>MODE_PRIVATE</h4>
+<p>* File creation mode: the default mode, where the created file can only be accessed by the calling application (or all applications sharing the same user ID).</p>
+<h4>MODE_WORLD_READABLE</h4>
+<p>* File creation mode: allow all other applications to have read access to the created file.</p>
+<h4>MODE_WORLD_WRITEABLE</h4>
+<p>* File creation mode: allow all other applications to have write access to the created file.<br />
+예로 MODE_PRIVATE를 이용(AQuery 24.1 beta)할 경우 아래와 같은 퍼미션 에러를 발생시킵니다.<br />
+[code]Unable to open zip: /data/data/com.ezcocoa/files/app.apk : Permission denied[/code]<br />
+사용하기 쉬운 라이브러리는 제한 된 기능을 제공하기도 합니다만 이문제는 아래와 같은 방법으로 해결할 수 있습니다.<br />
+[sourcecode language="java"]<br />
+try {<br />
+    String permission = "666";<br />
+    String command = "chmod " + permission + " " + file.getAbsolutePath();<br />
+    Runtime runtime = Runtime.getRuntime();<br />
+    runtime.exec(command);<br />
+} catch (Exception e) {<br />
+    e.printStackTrace();<br />
+}<br />
+[/sourcecode]<br />
+위 소스는 간단하게 파일 Permission xrw를 강제로 바꿔주는 명렁어입니다.</p>
+<h4>관련 참고 자료</h4>
+<p><a href="http://developer.android.com/guide/topics/data/data-storage.html#filesInternal">Using the Internal Storage</a><br />
+<a href="http://stackoverflow.com/questions/6371545/how-to-install-an-apk-stored-in-private-storage-of-android-application">stackoverflow question</a></p>

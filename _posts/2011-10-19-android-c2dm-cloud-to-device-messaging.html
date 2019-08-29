@@ -1,0 +1,94 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - C2DM (Cloud to Device Messaging)
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: C2DM (Cloud to Device Messaging) 설명과 사용 방법을 소개합니다.
+wordpress_id: 1154
+wordpress_url: http://ezcocoa.com/?p=1154
+date: '2011-10-19 08:34:04 +0900'
+date_gmt: '2011-10-19 08:34:04 +0900'
+categories:
+- Android
+tags:
+- android
+- c2dm
+- message
+- cloud
+comments: []
+---
+<p><a href="http://whitepaper82.cafe24.com/xe/?document_srl=142">원문</a><br />
+<a href="http://code.google.com/intl/ko-KR/android/c2dm/#register">google c2dm</a><br />
+<a href="http://admob.com">Android Cloud to Device Messaging (C2DM) - Tutorial</a><br />
+C2DM은 비동기적으로 클라이언트에게 메시지를 전달해주는 기능을 제공합니다.</p>
+<h4>큰 흐름도</h4>
+<p>그림 필요</p>
+<h4>필요 조건</h4>
+<p>- SDK 2.2 (froyo 이상)<br />
+- 구글 마켓<br />
+- 구글 메일 계정</p>
+<h4>특징</h4>
+<p>- C2DM은 메시지 순서를 보장하지 않음. (메시지를 전송하는 목적보다는 알림용으로 사용)<br />
+- 메시지는 최대 1024byte<br />
+- 메시지 개수 제한 없음(난 있는 걸로 봤는데 확인 필요)<br />
+- Client Application에서 브로드캐스트 인텐트를 이용하여 App을 실행시킴. (브로드 캐스트 퍼미션 필요)</p>
+<h4>서비스 이용 절차</h4>
+<p><strong><a href="http://code.google.com/intl/ko-KR/android/c2dm/signup.html">여기</a></strong>에서 신청 가능</p>
+<h4>구성과 흐름도</h4>
+<p>시나리오<br />
+1. 개발사에서 구글메일주소와 어플ID를 등록<br />
+2. App server에서 메시지를 전달하기 위해서 인증이 필요함<br />
+  A. 구글메일주소와 비번을 이용하여 토큰 값을 얻음<br />
+3. Device의 APP에서는 개발자구글계정과 어플 ID를 전송하여 고유 ID를 발급 받음<br />
+4. App server에 고유 ID를 전송하여 저장함. 이 고유 ID를 통해 메시지 전달<br />
+5. C2으 서버에 메시지 전송 : 고유 ID와 토큰 값을 이용하여 전송<br />
+구성<br />
+1. Application Server(Third-Party Application Server)<br />
+   A. 클라이언트와 통신<br />
+   B. Google Server(C2DM서버)로 토큰인증값(메시지전달용) 요청<br />
+   C. 클라이언트의 고유ID(register ID)와 토큰인증값 저장<br />
+   D. 계정별 메시지 전달 처리<br />
+   E. Google Server(C2DM서버)로 HTTP 통신<br />
+2. Google Server<br />
+   A. 서비스 등록 및 해지 관리<br />
+   B. 메시지 전달을 위한 토큰 인증 값 발급<br />
+   C. Device 등록(고유ID발급) 및 해지 관리<br />
+   D. Device에 메시지 전달<br />
+3. Device<br />
+   A. C2DM 서비스 등록/해지 요청<br />
+   B. App Server에 메시지 전달 요청<br />
+   C. C2DM 이벤트 수신 (메시지 수신 또는 등록 정보 갱신)<br />
+참고 사이트 : http://code.google.com/intl/ko-KR/android/c2dm/#register<br />
+<a href="https://github.com/notnoop/java-c2dm">java library for c2dm</a><br />
+원문 <a href="http://code.google.com/intl/ko-KR/android/c2dm/#writing_apps">링크</a></p>
+<h4>C2DM Sample Client</h4>
+<h4>메니페스트 작성하기</h4>
+<p>권한 주기<br />
+<strong>com.google.android.c2dm.permission.RECEIVE</strong> 등록과 메시지를 받을 수 있도록 퍼미션을 갖는다.<br />
+<strong>android.permission.INTERNET</strong> 3rd 파트 서버에서 등록 키를 보내기 위해 인터넷 퍼미션을 갖는다.<br />
+<strong>applicationPackage + ".permission.C2D_MESSAGE</strong> 다른 어플리케이션에서 온 메시지를 표현하기 위해.<br />
+메시지 인텐트를 받기 위해 <strong>com.google.android.c2dm.intent.RECEIVE</strong>과 <strong> com.google.android.c2dm.intent.REGISTRATION</strong>을 카테고리에 설정해준다.<br />
+안드로이드 C2DM을 사용하기 위해 <strong>android:minSdkVersion="8"</strong> 이상인지 확인해야 한다.<br />
+아니면 정확하게 동작하는것을 보장 할 수 없다.<br />
+3rd 파티 서버로부터 보내어진 key/value 쌍으로 구성된 C2D_MESSAGE를 받는다. 한가지 특별한 키는 <strong>collapes_key</strong>이다. 그 키는 off-line 디바이스가 메시지를 받을 수 있도록 한다.</p>
+<h4>C2DM을 위해 등록하기</h4>
+<p>안드로이드 어플리케이션은 메시지를 받기 전에 C2DM서버에서 등록 할 필요가 있다. 인텐트를 받기 위해 서비스를 등록할 필요가 있다.<br />
+<strong>com.google.android.c2dm.intent.REGISTER</strong>과 외 2가지 파라미터가 있다.<br />
+* <strong>sender</strong> 는 어플리케이션에 메시지를 보내기 위해 사용되는 계정의 아이디인데 일반적으로 개발자 계정 이메일 주소를 설정한다.<br />
+* <strong>app</strong>은 어플리케이션 아이디인데, 어플리케이션 정보를 추출하기 위해 등록된 서비스를 허용하는 PendingIntent를 설정한다.(??)<br />
+샘플로<br />
+[code]<br />
+Intent registrationIntent = new Intent("com.google.android.c2dm.intent.REGISTER");<br />
+registrationIntent.putExtra("app", PendingIntent.getBroadcast(this, 0, new Intent(), 0)); // boilerplate<br />
+registrationIntent.putExtra("sender", emailOfSender);<br />
+startService(registrationIntent);<br />
+[/code]<br />
+등록하기는 어플리케이션에서 등록ID를 서드파트 어플리케이션 서버에 보내기 까지 완벽한게 아니다.<br />
+그 서드파트 어플리케이션 서버는 메시지를 보내기 위해 등록 id를 사용된다. 또한 그 아이디는 트겅한 디바이스에서 도는 타겟 어플이다.</p>

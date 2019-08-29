@@ -1,0 +1,50 @@
+---
+layout: post
+status: publish
+published: true
+title: SVN - 저장소 변경하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: '저장소 위치<디렉토리 또는 IP주소> 가 변경되었을 때 이를 적용하는 방법을 설명합니다. '
+wordpress_id: 1558
+wordpress_url: http://ezcocoa.com/?p=1558
+date: '2012-07-04 07:41:13 +0900'
+date_gmt: '2012-07-04 07:41:13 +0900'
+categories:
+- Tool
+tags:
+- repo
+- svn
+- edit
+- modifiy
+- repository
+comments: []
+---
+<p>저장소 위치<디렉토리 또는 IP주소> 가 변경되었을 때 이를 적용하는 방법을 설명합니다.<br />
+Project 위치에서 아래와 같은 명령을 입력하면 현재 SVN의 상태를 확인 할 수 있습니다.<br />
+[code]<br />
+# svn info<br />
+[/code]<br />
+<strong>출력</strong><br />
+[code]<br />
+Path: .<br />
+URL: https://xxx.xxx.xx.xxx/svn/Sample<br />
+Repository Root: https://192.168.0.1/svn/Sample<br />
+Repository UUID: 0xa34x90-971f-fb44-b96c-8xd5b45ea5b0<br />
+Revision: 733<br />
+Node Kind: directory<br />
+Schedule: normal<br />
+Last Changed Author: ezcocoa<br />
+Last Changed Rev: 717<br />
+Last Changed Date: 2012-05-29 10:57:15 +0900 (화, 29  5 2012)<br />
+[/code]<br />
+위와 같이 192.168.0.1로 설정되어있던 IP주소를 192.168.0.2로 변경한다면 아래와 같이 입력하면 된다.<br />
+[code]<br />
+# svn switch --relocate http://192.168.0.2/svn/Sample http://192.168.0.2/svn/Sample<br />
+[/code]<br />
+아무 에러가 발생되지 않는다면 정확히 입력된것이다.</p>

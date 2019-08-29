@@ -1,0 +1,36 @@
+---
+layout: post
+status: publish
+published: true
+title: android - EditText focus 막기.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: EditText나 TextView 자동으로 올라오는 키보드와 포커스를 해제하는 방법을 소개합니다.
+wordpress_id: 1034
+wordpress_url: http://ezcocoa.com/?p=1034
+date: '2011-10-05 05:25:12 +0900'
+date_gmt: '2011-10-05 05:25:12 +0900'
+categories:
+- Android
+tags:
+- android
+- edittext
+- textview
+- touch
+- focus
+comments: []
+---
+<p>출처 : http://stackoverflow.com/questions/1555109/stop-edittext-from-gaining-focus-at-activity-startup<br />
+Layout에 EditText 위젯이나 TextView위젯이 있을 경우 자동적으로 focusing이 되고는 합니다.<br />
+이것을 방지하는 방법을 소개합니다.<br />
+[code]<br />
+android:focusable="true"<br />
+android:focusableInTouchMode="true"<br />
+[/code]<br />
+위 코드를 사용하여 포커스를 막을 수 있습니다. 정확히 말하자면 EditText로 가는 포커스는<br />
+가로채어 레이아웃에 포커스를 주는 방식입니다.</p>

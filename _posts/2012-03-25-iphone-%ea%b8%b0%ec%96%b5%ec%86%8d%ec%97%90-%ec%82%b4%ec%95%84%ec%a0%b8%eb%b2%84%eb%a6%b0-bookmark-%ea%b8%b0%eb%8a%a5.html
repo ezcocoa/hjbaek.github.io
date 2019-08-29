@@ -1,0 +1,46 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - 기억속에서 살아져버린 Bookmark 기능..
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: Bookmark 대용으로 사용할 수 있는 방법을 소개합니다.
+wordpress_id: 1493
+wordpress_url: http://ezcocoa.com/?p=1493
+date: '2012-03-25 04:46:11 +0900'
+date_gmt: '2012-03-25 04:46:11 +0900'
+categories:
+- iPhone
+tags: []
+comments: []
+---
+<p>요즘 안드로이드 프로젝트, 학교 및 자격증 시험 보느라 바쁘게 Objective-C (이하 X-Code toolkit) 사용을 하지 못했습니다.<br />
+Account+ Password & Manager를 사용하신 분들께는 매우 죄송합니다. (아직 버그가 존재하나 버그를 고치지 못하고 Version Upgrade를 진행 중 입니다. 기존에는 Site Account만 관리 되던 것을 지금은 Account에 관련된 모든 정보를 입력 할 수 있도록 반자동적? 사용자가 원하는 필드를 넣을 수 있고 기존에 정해진 Format (ex, 계좌 등 자동차 라이센스)으로도 등록 할 수 있습니다.<br />
+업그래이드 될려면 대략 2달정도는 더 걸릴 듯 합니다. 개발은 이미 완료단계에 있으나 테스트 및 이전 Data Structure와 현재가 매우 상이하기때문에 데이터 이전 작업이 생겨버렸네요. ㅠ.ㅠ<br />
+아 전혀 포스팅 제목과 관련되지 않은 이야기를 내놓은거 같습니다.<br />
+참으로 오랜만에 XCode(4.3.2) 사용하니 북마크 기능을 찾을 수 없었습니다. Google God에게 물어보니 그 기능에 대해서는 살아져버린거 갔더라구요. 결국에는 Bookmark기능은 아니지만 Bookmark기능과 유사하게 사용 할 수 있는 방법을 찾아냈습니다.<br />
+<strong>아래는 Bookmark 대용으로 사용할 수 있는 방법을 소개합니다.</strong><br />
+[code]<br />
+#pragma message "<# message #>"<br />
+[/code]<br />
+OR<br />
+[code]<br />
+#warning <# message #><br />
+[/code]<br />
+코드 안에 위와 같은 코드를 삽입하여 Bookmark 또는 TODO 용도로 사용이 가능합니다.<br />
+Bookmark리스트를 확인하기 위해서는 우측 상단 사용할 수 있겠습니다.<br />
+[사진 참조]<br />
+<a href="http://ezcocoa.com/wp-content/uploads/2012/03/스크린샷-2012-03-25-오후-1.39.12.png"><img src="http://ezcocoa.com/wp-content/uploads/2012/03/스크린샷-2012-03-25-오후-1.39.12-300x34.png" alt="" title="스크린샷 2012-03-25 오후 1.39.12" width="300" height="34" class="alignnone size-medium wp-image-1494" /></a><br />
+ 이 방법은 Compile 과정에서도 확인이 가능합니다.<br />
+아래와 같이 단축키를 제공합니다.<br />
+<strong>Navigate to next</strong><br />
+[code]Cmd-'[/code]<br />
+<strong>previous</strong><br />
+[code]Cmd-Shift-'[/code]<br />
+겨울이 지나고 봄이 왔나요? 날씨가 너무 좋네요.</p>

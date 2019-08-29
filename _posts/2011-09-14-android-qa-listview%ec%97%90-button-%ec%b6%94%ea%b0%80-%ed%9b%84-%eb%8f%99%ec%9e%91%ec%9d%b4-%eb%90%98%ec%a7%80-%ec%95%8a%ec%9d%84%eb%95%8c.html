@@ -1,0 +1,33 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Q/A ListView에 Button 추가 후 동작이 되지 않을때
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 985
+wordpress_url: http://ezcocoa.com/?p=985
+date: '2011-09-14 04:10:20 +0900'
+date_gmt: '2011-09-14 04:10:20 +0900'
+categories:
+- Android
+tags:
+- android
+- button
+- cell
+- focusable
+- listview
+comments: []
+---
+<p>Q: ListView 에서 Button을 추가 후 'setOnItemClickListener()' 이벤트가 동작하지 않습니다.<br />
+A: 문제의 원인은 Focus 때문에 그렇습니다. 아래와 같이 버튼 속성을 추가해주세요.<br />
+<strong>list.xml</strong><br />
+[sourcecode language="xml"]<br />
+android:focusable="false"<br />
+android:focusableInTouchMode="false" // 이건 하지 않아도 됩니다.<br />
+[/sourcecode]</p>

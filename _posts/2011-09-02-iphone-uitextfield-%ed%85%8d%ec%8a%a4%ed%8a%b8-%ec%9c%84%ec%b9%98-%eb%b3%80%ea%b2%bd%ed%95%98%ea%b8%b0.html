@@ -1,0 +1,41 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - UITextField 텍스트 위치 변경하기.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 955
+wordpress_url: http://ezcocoa.com/?p=955
+date: '2011-09-02 09:29:54 +0900'
+date_gmt: '2011-09-02 09:29:54 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- texfiled
+comments: []
+---
+<p>-- Account Plus 작업 중.....<br />
+TextField에서 수직 정렬을 하기 위해 어떠한 방법이 있을까? 하고 찾아봤습니다.<br />
+일단은 좋은 API를 이용하는 방법이겠구요. 아래와 같습니다.<br />
+[sourcecode language="ObjC"]<br />
+[textField setContentVerticalAlignment:UIControlContentVerticalAlignmentCenter];<br />
+[/sourcecode]<br />
+텍스트 Rect를 변경하는 방법이 있습니다. 아래와 같습니다.<br />
+[sourcecode language="ObjC"]<br />
+- (CGRect)textRectForBounds:(CGRect)bounds {<br />
+  return CGRectMake(bounds.origin.x + 16, bounds.origin.y + 8,<br />
+                    bounds.size.width - 40, bounds.size.height - 16);<br />
+}<br />
+- (CGRect)editingRectForBounds:(CGRect)bounds {<br />
+  return [self textRectForBounds:bounds];<br />
+}<br />
+[/sourcecode]<br />
+간단하게 왼쪽 오른쪽 가운데 정렬 이런게 아니라면 두번째 방법밖에는 없겠네요.<br />
+더 좋은 방법이 있으시다면 Reply부탁드리겠습니다.</p>

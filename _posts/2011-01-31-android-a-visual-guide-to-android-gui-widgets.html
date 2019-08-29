@@ -1,0 +1,333 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] A Visual Guide to Android GUI Widgets"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 560
+wordpress_url: http://ezcocoa.com/?p=560
+date: '2011-01-31 01:48:06 +0900'
+date_gmt: '2011-01-31 01:48:06 +0900'
+categories:
+- Android
+tags:
+- android
+- guide
+- widgets
+comments: []
+---
+<p>출처 : http://www.droiddraw.org/widgetguide.html</p>
+<h1>A Visual Guide to Android GUI Widgets</h1>
+<p>To make your life as a Java <a href="http://code.google.com/android/">Android</a> cell phone programmer/ui designer easier.<br />
+For rapid development of your user interfaces try <a href="http://www.droiddraw.org/">DroidDraw</a></p>
+<table width="600">
+<tbody>
+<tr>
+<td colspan="3" bgcolor="#aaaaaa">AnalogClock</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/analogclock.png" alt="" /></td>
+<td>
+<pre><AnalogClock
+id="@+id/clock1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+/>
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="3" bgcolor="#aaaaaa">Button</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/button.png" alt="" /></td>
+<td>
+<pre><Button id ="@+id/button1"
+ android:text="Label"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent"
+/>
+<Button id ="@+id/button2"
+ android:text="Label"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent"
+ android:typeface="serif"
+/>
+<Button id ="@+id/button3"
+ android:text="Label"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent"
+ android:textStyle="bold_italic"
+/>
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#aaaaaa">CheckBox</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/checkbox.png" alt="" /></td>
+<td><code> </code></p>
+<pre><CheckBox id="@+id/plain_cb"
+ android:text="Plain"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+/>
+<CheckBox id="@+id/serif_cb"
+ android:text="Serif"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:typeface="serif"
+/>
+<CheckBox id="@+id/bold_cb"
+ android:text="Bold"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:textStyle="bold"
+/>
+<CheckBox id ="@+id/italic_cb"
+ android:text="Italic"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:textStyle="italic"
+/>
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#aaaaaa">DatePicker</td>
+</tr>
+<tr>
+<td align="top"><img src="http://www.droiddraw.org/datepicker.png" alt="" /></td>
+<td><code> </code></p>
+<pre><DatePicker
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content" >
+...
+// Required Java init code:
+DatePicker dp =
+     (DatePicker)this.findViewById(R.id.widget27);
+// for example init to 1/27/2008, no callback
+dp.init(2008, 0, 27, Calendar.SUNDAY, null);
+...
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#aaaaaa">DigitalClock</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/digitalclock.png" alt="" /></td>
+<td><code> </code></p>
+<pre><DigitalClock id="@+id/digitalclock"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"/>
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#aaaaaa">EditText</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/edittext.png" alt="" /></td>
+<td><code> </code></p>
+<pre><EditText id ="@+id/edittext1"
+ android:text="EditText 1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+/>
+<EditText id ="@+id/button2"
+ android:text="(206)555-1212"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:typeface="serif"
+ android:phoneNumber="true"
+/>
+<EditText id ="@+id/password"
+ android:text="SuperSecret"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:textStyle="bold_italic"
+ android:password="true"
+/>
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#aaaaaa">Gallery</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/gallery.png" alt="" width="150" /></td>
+<td><code> </code></p>
+<pre><Gallery
+  id="@+id/gallery"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"/>
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#aaaaaa">ImageButton</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/imagebutton.png" alt="" /></td>
+<td><code> </code></p>
+<pre><ImageButton id="@+id/imagebutton"
+  android:src="@drawable/brush"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"/>
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#aaaaaa">ImageView</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/imageview.png" alt="" /></td>
+<td><code> </code></p>
+<pre><ImageView id="@+id/imagebutton"
+  android:src="@drawable/brush"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"/>
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#aaaaaa">ProgressBar</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/progress.png" alt="" /></td>
+<td><code> </code></p>
+<pre><ProgressBar id="@+id/progress"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"/>
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#aaaaaa">RadioButton</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/radiobutton.png" alt="" /></td>
+<td><code> </code></p>
+<pre><RadioGroup
+id="@+id/widget1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+>
+<RadioButton
+id="@+id/widget2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Plain"
+android:checked="false"
+android:layout_gravity="left"
+android:layout_weight="0"
+>
+</RadioButton>
+<RadioButton
+id="@+id/widget3"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Serif"
+android:checked="true"
+android:layout_gravity="left"
+android:layout_weight="0"
+android:typeface="serif"
+>
+</RadioButton>
+<RadioButton
+id="@+id/widget25"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Bold"
+android:checked="false"
+android:layout_weight="0"
+android:layout_gravity="left"
+android:textStyle="bold"
+>
+</RadioButton>
+<RadioButton
+id="@+id/widget24"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Bold &amp; Italic"
+android:checked="false"
+android:layout_weight="0"
+android:layout_gravity="left"
+android:textStyle="bold_italic"
+>
+</RadioButton>
+</RadioGroup>
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#aaaaaa">Spinner</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/spinner.png" alt="" /></td>
+<td><code> </code></p>
+<pre><Spinner
+ id="@+id/widget1"
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content"
+ android:drawSelectorOnTop="false"/>
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#aaaaaa">TextView</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/textview.png" alt="" /></td>
+<td><code> </code></p>
+<pre><TextView id="@+id/plain"
+ android:text="Plain"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+/>
+<TextView id="@+id/serif"
+ android:text="Serif"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:typeface="serif"
+/>
+<TextView id="@+id/bold"
+ android:text="Bold"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:textStyle="bold"
+/>
+<TextView id ="@+id/italic"
+ android:text="Italic"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:textStyle="italic"
+/>
+</pre>
+</td>
+</tr>
+<tr>
+<td colspan="2" bgcolor="#aaaaaa">TimePicker</td>
+</tr>
+<tr>
+<td valign="top"><img src="http://www.droiddraw.org/timepicker.png" alt="" /></td>
+<td><code> </code></p>
+<pre><TimePicker
+ id="@+id/widget3"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"/>
+</pre>
+</td>
+</tr>
+</tbody>
+</table>

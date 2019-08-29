@@ -1,0 +1,125 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] OTA (Over the Air) 배포 방식"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 690
+wordpress_url: http://ezcocoa.com/?p=690
+date: '2011-03-22 10:24:01 +0900'
+date_gmt: '2011-03-22 10:24:01 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- ota
+- Objective
+- air
+- over
+- the
+comments:
+- id: 8
+  author: 괴발새발
+  author_email: yunsu87@kr.net
+  author_url: ''
+  date: '2012-08-23 00:27:33 +0900'
+  date_gmt: '2012-08-23 00:27:33 +0900'
+  content: |-
+    OTA방식을 이용해서 URL을 통해하여 앱을 배포할경우
+    AdHoc방식이기 때문에 100개로 배포가 제한되는 사항이 맞나요?
+    아니면 무제한 배포까지도 OTA방식을 사용하면 가능 한다는 건가요?
+- id: 9
+  author: ezcocoa
+  author_email: mr.hjbaek@gmail.com
+  author_url: http://ezcocoa.com
+  date: '2012-08-23 00:41:49 +0900'
+  date_gmt: '2012-08-23 00:41:49 +0900'
+  content: |-
+    OTA방식은 배포방식을 말하는 것이고,
+    실제 배포는 등록 계정 마다 다르게 적용됩니다.
+    개인 개발자(99달라)기준으로는 디바이스 등록이 최대 100개까지 한정되어있으므로 그 이상 배포할 수가 없구요. 비지니스(299달라) 무한대로 배포가 가능합니다.
+    감사합니다.
+- id: 10
+  author: 괴발새발
+  author_email: yunsu87@kr.net
+  author_url: ''
+  date: '2012-08-23 02:57:00 +0900'
+  date_gmt: '2012-08-23 02:57:00 +0900'
+  content: |-
+    답변 감사합니다.
+    Enterprise program을 말씀하시는 것 같은데 이걸로 배포할시에 제약사항이 (500)개로 제한되어 있지 않나요?
+    제가 ios측에 들어가서 확인한 바로는 그렇던데 잘못알고 있는건가요?
+    답변 부탁드립니다.
+- id: 11
+  author: ezcocoa
+  author_email: mr.hjbaek@gmail.com
+  author_url: http://ezcocoa.com
+  date: '2012-08-23 03:34:26 +0900'
+  date_gmt: '2012-08-23 03:34:26 +0900'
+  content: 네. Enterprise Program맞습니다. 제가 알기로는 제약사항이 없는 걸로 알고있습니다.
+- id: 12
+  author: 괴발새발
+  author_email: yunsu87@kr.net
+  author_url: ''
+  date: '2012-08-23 04:14:30 +0900'
+  date_gmt: '2012-08-23 04:14:30 +0900'
+  content: |-
+    답변 감사합니다.
+    제가 좀더 찾아봐야 될것같네요 저는 Enterprise계정으로 등록을 하고 in-house방식으로 배포를 한다면 500개의 제약이 있는줄 알았는데 없다니 좀더 확인을 해봐야 할 것 같네요.
+    그럼 마지막으로 계정 등록후 in-house방식으로 앱스토어를 거치지 않고 url이나 다른 방식을 사용해서 일반사용자에게 앱을 배포하려고 하는데 이부분은 가능하다고소시는지요?
+- id: 13
+  author: ezcocoa
+  author_email: mr.hjbaek@gmail.com
+  author_url: http://ezcocoa.com
+  date: '2012-08-23 04:16:43 +0900'
+  date_gmt: '2012-08-23 04:16:43 +0900'
+  content: 네 말씀하신대로 앱스토어를 거치지 않고 별도의 URL을 통해 배포가 가능합니다.
+- id: 14
+  author: 괴발새발
+  author_email: yunsu87@kr.net
+  author_url: ''
+  date: '2012-08-23 05:03:20 +0900'
+  date_gmt: '2012-08-23 05:03:20 +0900'
+  content: |-
+    결론은 라이센스 위반이 문제군요!!! 슬프네요
+    답변 감사합니다. 수고하세요!!!
+- id: 15
+  author: ezcocoa
+  author_email: mr.hjbaek@gmail.com
+  author_url: http://ezcocoa.com
+  date: '2012-09-02 05:28:49 +0900'
+  date_gmt: '2012-09-02 05:28:49 +0900'
+  content: 답장이 늦었습니다. 잘 해결되었으면 좋겠네요^^ 수고하세요.
+---
+<p>iPhone Application Over the Air 배포 방식을 서술합니다.<br />
+이 방법은 다수의 사용자에게 배포 할때 자주 사용되며, <strong>서버</strong>와 <strong>ADC ID Agent</strong>가 필요합니다.<br />
+이때 Identifier는 명확해야 합니다.<br />
+배포자(Server) <----> iPad User(Client)<br />
+아래와 같이 설정은 XCode 4기반으로 서술되었습니다.<br />
+1. Ad Hoc Provisioning Profile 다운로드합니다.<br />
+2. Project 선택 -> TARGET -> Build Settings -> Code Signing 항목 중 Distribution 항목을 설치 된 Ad Hoc 프로비저닝 프로파일 선택<br />
+3. Menu Product -> Archive 선택 (Archiving이 완료되면 Organizer 창이 뜸)<br />
+4. Share.. 버튼 클릭<br />
+5. Contents = iOS App Store Package (.ipa)로 선택<br />
+    iDentity = 설치 된 Ad Hoc 프로비저닝 프로파일<br />
+6. Save for Enterprise Distribution을 선택하여 필수 항목을 적어줍니다.<br />
+    Application URL (required) : http://<br />
+<address>/app.ipa<br />
+    Title (Required) : app<br />
+7. 저장 된 .ipa 파일과 .plist파일을 서버 경로에 위치시켜 줍니다.<br />
+8. 아래의 내용을 app.html로 저장하여 서버 경로에 위치시켜 줍니다.<br />
+[sourcecode language="html"]<br />
+<a href="itms-services://?action=download-manifest&amp;url=http://<br />
+<address>/app.plist">Application 설치</a><br />
+<br />
+<a href="http://<br />
+<address>/Ad_Hoc_Distribution.mobileprovision">Provisioning Profile 설치</a><br />
+<br />
+[/sourcecode]<br />
+8. 이제 모바일 사파리를 통하여 접속하여 다운을 받을 수 있습니다.</p>

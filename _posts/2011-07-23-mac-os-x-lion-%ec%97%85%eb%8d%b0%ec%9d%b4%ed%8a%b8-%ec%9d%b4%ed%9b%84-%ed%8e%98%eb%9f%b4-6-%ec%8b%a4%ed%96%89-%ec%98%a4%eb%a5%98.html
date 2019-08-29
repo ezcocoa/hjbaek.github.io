@@ -1,0 +1,29 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Mac] OS X Lion 업데이트 이후 페럴 6 실행 오류"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 866
+wordpress_url: http://ezcocoa.com/?p=866
+date: '2011-07-23 15:40:51 +0900'
+date_gmt: '2011-07-23 15:40:51 +0900'
+categories:
+- OSX
+tags:
+- update
+- os x
+- parallels
+- lion
+comments: []
+---
+<p>터미널에서 아래의 명령어를 쳐주시면 정상 작동합니다.<br />
+[code]<br />
+for x in prl_hypervisor prl_hid_hook prl_usb_connect prl_netbridge prl_vnic; do sudo kextutil "/Library/Parallels/Parallels Service.app/Contents/Kexts/10.6/$x.kext"; done<br />
+[/code]</p>

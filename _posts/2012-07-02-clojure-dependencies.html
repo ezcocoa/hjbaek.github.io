@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure - Dependencies
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: Clojure's Dependencies
+wordpress_id: 1554
+wordpress_url: http://ezcocoa.com/?p=1554
+date: '2012-07-02 02:06:37 +0900'
+date_gmt: '2012-07-02 02:06:37 +0900'
+categories:
+- Clojure
+tags: []
+comments: []
+---
+<p><strong>Leiningen</strong>은 의존적으로 관리되는 패키지들의 집합 관리 유틸입니다. 정말 강력하죠.<br />
+지금 제가 설명드릴 내용은 Leiningen을 이용한 Clojure 프로젝트에서의 project.clj에 대한 설명입니다.<br />
+구조를 먼저 보시죠<br />
+[sourcecode language="clojure"]<br />
+(defproject my-sandbox "1.0.0-SNAPSHOT"<br />
+   :description "FIXME: write"<br />
+   :dependencies [[org.clojure/clojure "1.2.0"]<br />
+                  [org.clojure/clojure-contrib "1.2.0"]])<br />
+[/sourcecode]<br />
+dependencies부분에 보시면 아래와 같은 형식으로 구성되어있다는 것을 확인하실 수 있습니다.<br />
+[code]<br />
+GROUP / ARTIFACT-ID VERSION<br />
+[/code]<br />
+위와 같은 형식으로 lib를 추가하신 후에 아래와 같은 입력을 해줍니다.<br />
+[code]lein deps[/code]<br />
+에러 없이 잘 수행다면 프로젝트 경로의 lib폴더 안에 .jar파일이 생성된 것을 확인할 수 있습니다.<br />
+사실 저 의존적인 파일들은 <strong>~/.m2/repository</strong>폴더에 생성되면 다운로드가 완료되면 project/lib폴더에 복사됩니다.<br />
+그러니 만약 에러를 발생되었다면 확인할 수 있겟죠.</p>

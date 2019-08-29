@@ -1,0 +1,66 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] Debug"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 69
+wordpress_url: http://ezcocoa.com/?p=69
+date: '2010-10-14 00:31:20 +0900'
+date_gmt: '2010-10-14 00:31:20 +0900'
+categories:
+- JAVA
+tags: []
+comments: []
+---
+<p>1. adb 명령어<br />
+- devices</p>
+<blockquote><p>adb 서버가 인식한 디바이스를 보여줌.<br />
+-s 또는 -e옵션으로 특정한 디바이스 지정가능.</p></blockquote>
+<p>- push</p>
+<blockquote><p>push기능으로 파일을 넣었을 때 sdcard쪽으로 들어가게 된다.</p></blockquote>
+<p>- pull</p>
+<blockquote><p>pull을 하게 되면 Desktop으로 다시 가져온다.</p></blockquote>
+<p>- shell<br />
+- remount<br />
+- logcat</p>
+<blockquote><p>logcat은 logcat exploer와 동일한 효과를 가져다 준다.<br />
+# adb logcat AndroidRuntime:E &amp;<br />
+# adb logcat -b radio &amp;<br />
+# adb logcat -b events &amp;</p></blockquote>
+<p>- install</p>
+<blockquote><p># adb install -l <file_spec> 다른장치로 복사돼 넘어가는것을 방지.<br />
+# adb install -r <file_spec> 앱 재설치하나 데이터는 지우지 않음.</p></blockquote>
+<p>- uninstall</p>
+<blockquote><p># adb uninstall -k <file_spec> 데이터를 보존한채 앱 삭제.</p></blockquote>
+<p>- kill-server</p>
+<blockquote><p>주로 어플리케이션에 문제가 발생하였을 때 사용</p></blockquote>
+<blockquote><p># adb kill-server</p></blockquote>
+<p>- start-server</p>
+<blockquote><p>디버깅을 위한 서버를 구동 시킨다.<br />
+#adb start-server</p></blockquote>
+<p>출처 : http://sncap.tistory.com/231<br />
+<!--more--><br />
+전체 로그 출력<br />
+adb logcat<br />
+로그발생 시간을 포함하여 로그 출력<br />
+adb logcat -v time<br />
+우선순위에 따라 로그 필터링<br />
+명령어<br />
+ - adb logcat [ <filter-spec> ]<br />
+Filter 우선 순위<br />
+ - Verbose < Debug < Info < Warning < Error < Fatal < Silent<br />
+ - Filter는 각 우선순위의 첫 대문자로 설정한다.<br />
+ - Filter 이상의 우선순위를 갖는 로그를 출력한다.<br />
+사용 예<br />
+ - adb logcat *:I ==> Info 이상의 우선순위를 갖는 로그(Info, Warning, Error, Fatal, Silent)를 출력한다.<br />
+ - adb logcat mytag:I *:S ==> Info 중 "mytag"문자열을 갖는 로그만 출력한다. 우선순위가 높아도 다른 로그는 출력하지 않는다.<br />
+팁: 우선순위에 관계없이 특정 문자열을 포함하는 로그를 알고 싶으면?<br />
+ - adb logcat | grep mystring ==> "mystring"문자열을 갖는 로그만 출력한다.<br />
+[출처] [Android][adb][logcat] 안드로이드 adb를 이용하여 안드로이드 로그 출력|작성자 조금씩</p>

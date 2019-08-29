@@ -1,0 +1,103 @@
+---
+layout: post
+status: publish
+published: true
+title: Google Apps Script - 파일 업로드하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 'Google Forms은 파일 업로드를 지원하지 않습니다. 하지만 Google Apps Script와 HTML 웹 폼을 사용한다면,
+  Google Drive에 파일을 업로드 할 수 있습니다. '
+wordpress_id: 2690
+wordpress_url: http://ezcocoa.com/?p=2690
+date: '2016-08-10 11:42:46 +0900'
+date_gmt: '2016-08-10 11:42:46 +0900'
+categories:
+- Tool
+tags: []
+comments: []
+---
+<p>Google Forms은 파일 업로드를 지원하지 않습니다. 하지만 Google Apps Script와 HTML 웹 폼을 사용한다면, Google Drive에 파일을 업로드 할 수 있습니다.</p>
+<p>예를 들어, 선생님이 학생들에게 레포트를 받기 위해 웹 폼을 작성하고, 작성 한 폼을 공유함으로써, 학생들은 그 웹폼에 접근하여 파일을 업로드 할 수 있습니다.</p>
+<p>Google Script는 업로드하는 파일을 blob 타입으로 읽고 구글드라이브에 새로운 파일로 저장하게 됩니다. 파일이름, 확장자 컨텐츠 내용까지 다 지정할 수 있습니다.</p>
+<p>Google에서 제공되는 Google Script를 사용해보도록 하겠습니다.</p>
+<p>파일 구조는 두가지 파일로 (Code.gs, form.html)으로 구성됩니다. Code.gs - Google Apps Script입니다. 다양한 Google API를 사용할때 사용됩니다. form.html - 학생들에게 보이는 화면입니다. HTML,CSS, 그리고 JavaScript로 구성되어 있습니다.</p>
+<p>아래와 같이 작성해주세요.</p>
+<h3>Code.gs</h3>
+<pre class="javascript">/* The script is deployed as a web app and renders the form */
+function doGet(e) {
+  return HtmlService.createHtmlOutputFromFile(&#039;form.html&#039;).setSandboxMode(HtmlService.SandboxMode.NATIVE);
+  // This is important as file upload fail in IFRAME Sandbox mode.
+}
+/* This function will process the submitted form */
+function uploadFiles(form) {
+  try {
+    /* Name of the Drive folder where the files should be saved */
+    var dropbox = form.myName + " " + form.myEmail;
+    var folder, folders = DriveApp.getFoldersByName(dropbox);
+    /* Find the folder, create if the folder does not exist */
+    if (folders.hasNext()) {
+      folder = folders.next();
+    } else {
+      folder = DriveApp.createFolder(dropbox);
+    }
+    /* Get the file uploaded though the form as a blob */
+    var blob = form.myFile;
+    var file = folder.createFile(blob);
+    /* Set the file description as the name of the uploader */
+    file.setDescription("Uploaded by " + form.myName);
+    /* Return the download URL of the file once its on Google Drive */
+    return "File uploaded successfully " + file.getUrl();
+  } catch (error) {
+    /* If there&#039;s an error, show the error message */
+    return error.toString();
+  }
+}
+</pre>
+<h3>form.html</h3>
+<pre class="html"><!-- Include the Google CSS package -->
+<link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons.css">
+<!-- You can also include your own CSS styles -->
+<style>
+  form { margin: 40px auto; }
+  input { display:inline-block; margin: 20px; }
+</style>
+<script>
+  // The function will be called after the form is submitted
+  function doUploadFile() {
+    document.getElementById(&#039;uploadFile&#039;).value = "Uploading File..";
+    var f = document.getElementById(&#039;labnol&#039;);
+    google.script.run.withSuccessHandler(fileUploaded).uploadFiles(f);
+    return false;
+  }
+  // This function will be called after the Google Script has executed
+  function fileUploaded(status) {
+    document.getElementById(&#039;labnol&#039;).style.display = &#039;none&#039;;
+    document.getElementById(&#039;output&#039;).innerHTML = status;
+  }
+</script>
+<!-- This is the HTML form -->
+<form id="labnol">
+  <!-- Text input fields -->
+  <input type="text" name="myName" placeholder="Your name..">
+  <input type="email" name="myEmail" placeholder="Your email..">
+  <!-- File input filed -->
+  <input type="file" name="myFile">
+  <!-- The submit button. It calls the server side function uploadfiles() on click -->
+  <input type="submit" id="uploadFile" value="Upload File"
+         onclick="this.value=&#039;Uploading..&#039;;doUploadFile();">
+</form>
+<!-- Here the results of the form submission will be displayed -->
+<div id="output"></div>
+</pre>
+<p>위 코드를 작성후 프로젝트 명을 지정해주세요. 이전에 지정되어도 상관없습니다. 프로젝트 명을 작성할 경우 지정된 이름이 drive> 아래 놓이게 됩니다.</p>
+<p>프로젝트명은 &lsquo;report&rsquo;로 하겠습니다.</p>
+<p>프로젝트가 생성되고, 위 파일을 성공적으로 작성하였다면, &lsquo;Publish > Deploy as web app&rsquo;을 선택해주세요.</p>
+<p>Project version: new (새로 만들었다면, 기존것을 변경 할 수도 있습니다.) Execute the app as: Me (앱이 실행되기 위해 권한을 부여받기 위한 사용자가 되겠습니다. ) Who has access to the app: Anyone, even anonymous 누가 이 웹에 접속 할 수 있는지, 접근 권한을 선택 할 수 있습니다.</p>
+<p>모든 설정을 완료하고 업데이트를 누르면, 공유 URL이 생성됩니다.</p>
+<p>이상.</p>
+<p><a href="https://ctrlq.org/code/19747-google-forms-upload-files">참조</a></p>

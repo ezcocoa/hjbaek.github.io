@@ -1,0 +1,32 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - 쉽게 뷰 삭제하는 법
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2361
+wordpress_url: http://ezcocoa.com/?p=2361
+date: '2014-11-06 10:17:00 +0900'
+date_gmt: '2014-11-06 10:17:00 +0900'
+categories:
+- Android
+tags:
+- android
+- layout
+- view
+- delete
+- easy
+- remove
+comments: []
+---
+<p>화면에 나타낸 뷰를 지우고 싶을때는 아래와 같이 쉽게 지울 수 있습니다.</p>
+<pre class="java">
+((ViewManager)entry.getParent()).removeView(entry);
+</pre>
+<p>Done.</p>

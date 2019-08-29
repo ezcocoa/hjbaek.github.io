@@ -1,0 +1,31 @@
+---
+layout: post
+status: publish
+published: true
+title: Tool > 다수의 프로젝트 다수의 라이브러리에서 Proguard 적용하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1914
+wordpress_url: http://ezcocoa.com/?p=1914
+date: '2013-10-08 07:50:31 +0900'
+date_gmt: '2013-10-08 07:50:31 +0900'
+categories:
+- Tool
+tags: []
+comments: []
+---
+<p>3개의 안드로이드 프로젝트와 다수의 외부 라이브러리 상태에서 Proguard를 적용 시킬 경우 어플리케이션이 죽는 경우가 있을 수 있다.</p>
+<p>대충 문제를 살펴본 결과 외부 라이브러리를 찾지 못하여 발생하는 문제로 아래와 같이 해결 할 수 있다.</p>
+<blockquote>
+<p>-libraryjars 라이브러리 경로/파일명.jar</p>
+</blockquote>
+<p>또는&nbsp;</p>
+<blockquote>
+<p>-keep class org.** { *; }</p>
+</blockquote>
+<p>&nbsp;두가지의 방법으로 해결 할 수 있다.</p>

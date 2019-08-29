@@ -1,0 +1,63 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] Resources to URIs"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 752
+wordpress_url: http://ezcocoa.com/?p=752
+date: '2011-05-26 05:18:41 +0900'
+date_gmt: '2011-05-26 05:18:41 +0900'
+categories:
+- Android
+tags:
+- android
+- resource
+- uri
+comments:
+- id: 19
+  author: Lyme disease healing
+  author_email: constancenobles@gmail.com
+  author_url: http://www.Selfhealgo.com/
+  date: '2012-12-27 15:23:38 +0900'
+  date_gmt: '2012-12-27 15:23:38 +0900'
+  content: |
+    Many thanks for such a wonderful blog. Where else could anyone obtain that kind of info written in such a perfect
+    way? I have a presentation that i'm currently working on, and I happen to be searching for such information.Many thanks for blogging and i like your posts.
+---
+<p>이 포스트는 Media Resource를 Uri 객체로 변환하는 방법과 그 Uri을 이용하여 VideoView에 그리는 내용을 담도록 하겠습니다.<br />
+참조 자료 링크 : <a href="http://androidbook.blogspot.com/2009/08/referring-to-android-resources-using.html">http://androidbook.blogspot.com/2009/08/referring-to-android-resources-using.html</a><br />
+1. Resource to Uri<br />
+리소스 포멧은 다음과 같습니다.<br />
+[code]"android.resource://[package]/[resid]"[/code]<br />
+@package 어플리케이션 패키지 명<br />
+@resid 리소스 아이디<br />
+[sourcecode language="java"]<br />
+// example<br />
+Uri path = Uri.parse("android.resource://com.ezcocoa.sample/" + R.raw.sample);<br />
+[/sourcecode]<br />
+or<br />
+[code]""android.resource://[package]/[res type]/[res name]"[/code]<br />
+@package 어플리케이션 패키지 명<br />
+@restype 리소스 타입 (raw, string 등등 들수 있겠죠?)<br />
+@resname 확장자를 제외한 파일 이름<br />
+[sourcecode language="java"]<br />
+// example<br />
+Uri path = Uri.parse("android.resource://com.ezcocoa.sample/raw/sample");<br />
+[/sourcecode]<br />
+[sourcecode language="java"]<br />
+Intent intent = new Intent();<br />
+intent.setAction(android.content.Intent.ACTION_VIEW);<br />
+Uri path = Uri.parse("android.resource://com.ezcocoa.sample/raw/sample");<br />
+intent.setDataAndType(path, "video/*");<br />
+//  intent.setDataAndType(path, "audio/*");<br />
+startActivity(intent);<br />
+[/sourcecode]<br />
+위 소스처럼  리소스를 Uri객체로 만들어 내장 플레이어로 동작을 시켜보았지만 이상하게도 에러가 발생한다.<br />
+정확한 원인을 밝히지 못했다.</p>

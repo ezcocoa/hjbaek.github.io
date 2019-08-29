@@ -1,0 +1,27 @@
+---
+layout: post
+status: publish
+published: true
+title: Android > Android Studio 컴파일 빠르게 하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: Android Studio에서 컴파일이 느리다면?
+wordpress_id: 2495
+wordpress_url: http://ezcocoa.com/?p=2495
+date: '2015-08-10 09:48:01 +0900'
+date_gmt: '2015-08-10 09:48:01 +0900'
+categories:
+- Android
+tags: []
+comments: []
+---
+<h2>컴파일이 느리다면 <strong>gradle.properties</strong>파일에 아래의 두줄을 추가해주자.</h2>
+<pre class="xml">
+org.gradle.daemon=true
+org.gradle.parallel=true
+</pre>

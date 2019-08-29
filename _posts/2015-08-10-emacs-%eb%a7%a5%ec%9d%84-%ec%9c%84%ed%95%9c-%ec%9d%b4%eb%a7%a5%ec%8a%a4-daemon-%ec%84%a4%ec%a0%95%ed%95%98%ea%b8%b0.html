@@ -1,0 +1,66 @@
+---
+layout: post
+status: publish
+published: true
+title: Emacs > 맥을 위한 이맥스 Daemon 설정하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2492
+wordpress_url: http://ezcocoa.com/?p=2492
+date: '2015-08-10 02:46:23 +0900'
+date_gmt: '2015-08-10 02:46:23 +0900'
+categories:
+- OSX
+- Emacs
+tags:
+- emacs
+- daemon
+- 데몬
+- 이맥스
+comments: []
+---
+<p>(참조)[https://gist.github.com/ambethia/304964]</p>
+<h2>여러가지 스크립트가 포함되어 있는 이맥스를 실핼할 때 반복적인 시간이 소요 되는데 이를 해소 할 수 있는 방법을 소개합니다.</h2>
+<p><em>맥에 이맥스가 이미 설치 되어 있다는 가정하에 문서를 작성하였습니다.</em></p>
+<h3>이맥스 데몬 어플리케이션 생성하기</h3>
+<p>맥에서 'Script Editor'를 열어 아래의 내용을 입력해주세요.</p>
+<pre class="apple script">
+tell application "Terminal"
+do shell script "/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
+endtell
+</pre>
+<p>저장 할 때는 <strong>File > Export</strong>, 그리고 <strong>File Format : Application</strong>을 선택하여 <strong>Applications/</strong> 폴더에 저장해주세요.</p>
+<p>이상 이맥스 데몬 어플리케이션을 생성하였습니다.</p>
+<p>이제 맥이 실행될 때 이 앱을 실행 시켜주기 위해서 어플리케이션을 등록해 봅시다.</p>
+<ul>
+<li>System Preferences > Accounts 열기 </li>
+<li>계정 선택 후 <strong>Login Items</strong>탭 선택</li>
+<li><strong>'+'</strong>버튼을 눌러 <strong>Emacs Daemon</strong>을 선택</li>
+<li><strong>hide</strong> 체크방식에 대해서는 생각할 필요 없음. (나중에 앱 아이콘을 없앨 예정)</li>
+</ul>
+<h3>이맥스 클라이언트 어플리케이션 생성하기</h3>
+<p>다시 한번 <strong>Script Editor</strong>를 열어 아래의 내용을 넣어주세요.</p>
+<pre class="apple script">
+tell application "Terminal"
+do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c"
+endtell
+</pre>
+<p>저장 할 때는 위와 동일하게 <strong>Application</strong>타입을 선택해주시고, <strong>Emacs Client</strong> 이름으로 <strong>Applications/</strong>폴더에 저장해주세요.</p>
+<h2>새로 생성한 Emacs Client에 아이콘 적용하기</h2>
+<ul>
+<li><strong>Finder</strong>를 열어 <strong>Application Folder</strong> 선택해주세요.</li>
+<li>Emacs application선택 후 우측 버튼 > <strong>Show Package Contents</strong>를 선택해주세요.</li>
+<li>Contents/Resources 폴더 안에 <strong>Emacs.icns</strong>를 Emacs Client 폴더안에 있는 Content/resources 폴더에 넣어주세요. 그리고 기존에 있던 <strong>applet.icns</strong>를 삭제하시고 <strong>Emacs.icns</strong>파일을 <strong>applet.icns</strong>파일 이름으로 변경해주세요.</li>
+</ul>
+<h3>Emacs Client가 동작 되는 동안 Dock에서 Emacs 아이콘을 숨겨보자.</h3>
+<ul>
+<li>Application folder에 있는 Emacs Application (Emacs Client가 아님), <strong>Show Package Contents</strong>로 열어주세요.</li>
+<li>Info.plist파일을 열어 <strong>Add child</strong>를 통해 키 <strong>NSUIElement</strong>, 값 <strong>1</strong>을 설정해주세요.</li>
+</ul>
+<p>모든 설정이 완료 되었네요.</p>
+<p>그럼 즐거운 이맥스 라이프!!</p>

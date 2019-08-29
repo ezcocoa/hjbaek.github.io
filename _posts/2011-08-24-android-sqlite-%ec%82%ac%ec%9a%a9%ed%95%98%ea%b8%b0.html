@@ -1,0 +1,177 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] SQLite 사용하기."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 925
+wordpress_url: http://ezcocoa.com/?p=925
+date: '2011-08-24 17:51:44 +0900'
+date_gmt: '2011-08-24 17:51:44 +0900'
+categories:
+- Android
+tags:
+- example
+- sample
+- android
+- tutorial
+- sqlite
+- sql
+- database
+- 디비
+- 샘플
+comments: []
+---
+<p>Sqlite 사용하기에 앞서 Android에서 제공하는 몇가지 클래스를 알아보도록 하겠습니다.<br />
+1. SQLiteOpenHelper Class<br />
+- SQlite DB를 사용하기 위해서 이 클래스를 상속받아야 함.<br />
+- 주로 Database 생성, 버전 업그레이드에 사용됨.<br />
+2. SQliteDatabase Class<br />
+- 기본적인 Database 쿼리를 담당.<br />
+- 이 클래스는 두가지로 사용될 수 있다. 하나는 생성과 헬퍼 클래스로부터 인스턴스를 얻을수 잇다.<br />
+3. Cursor Class<br />
+- Database 쿼리로 부터 반환되며, Cursor를 이용하여 읽기/쓰기를 한다.<br />
+아래는 기존에 사용하였던 또는 새로 디비 파일을 만들어 사용하는 법을 설명한다.<br />
+출처 : <a href="http://www.reigndesign.com/blog/using-your-own-sqlite-database-in-android-applications/" title="Blog - Using your own SQLite database in Android application">Blog - Using your own SQLite database in Android application</a><br />
+아래 샘플은 아래와 같은 특징을 갖는다.<br />
+- 새로운 디비를 만들고자 할때.<br />
+- 기존에 존재하던 디비를 사용하고자 할때.<br />
+- 런타임 시 디비 파일을 이동하고자 할때.<br />
+1. 데이터 베이스 파일 준비하기.<br />
+- 어쨋든 아래와 같은 필수 과정이 필요하다. 아래와 같은 과정을 거치지 않는다면 당연히 에러를 발생시킨다.<br />
+아래의 과정을 거치기 전에 sqlite파일을 편집할 수 있는 툴이 필요하다. <a href="http://sourceforge.net/projects/sqlitebrowser/" title="Sqlite Database Browser by tabuleiro">Sqlite Database Browser by tabuleiro</a> 윈도우/리눅스/맥 모든 OS를 지원하는 Open source 프로젝트이다.<br />
+모든 준비가 끝났다면 아래와 같이 테이블을 만든다.<br />
+데이터 베이스 파일을 생성 후에 아래와 같이 'android_metadata' 테이블을 생성해준다.<br />
+[code]<br />
+CREATE TABLE "android_metadata" ("locale" TEXT DEFAULT 'en_US')<br />
+[/code]<br />
+그리고 'en_US'라는 텍스트를 'android_metadata'테이블에 입력해준다.<br />
+[code]<br />
+INSERT INTO "android_metadata" VALUES ('en_US')<br />
+[/code]<br />
+그리고 필수적으로 primary filed를 _id로 변경해준다.<br />
+ex) seq -> _id로 사용.<br />
+* 이미지를 참조하고 싶다면 원본 블러그를 통해 볼 수 있다.<br />
+2. 복사, 열기 그리고 접근하기.<br />
+자 이제 'assets'폴더에 디비 파일이 있다고 가정하자. 당연히 없다면 추가하거나 그냥 냅둬도 상관없다.<br />
+아래의 코드를 사용할 수 있다.<br />
+[sourcecode language="JAVA"]<br />
+public class DataBaseHelper extends SQLiteOpenHelper{<br />
+    //The Android's default system path of your application database.<br />
+    private static String DB_PATH = "/data/data/YOUR_PACKAGE/databases/";<br />
+    private static String DB_NAME = "myDBName";<br />
+    private SQLiteDatabase myDataBase;<br />
+    private final Context myContext;<br />
+    /**<br />
+     * Constructor<br />
+     * Takes and keeps a reference of the passed context in order to access to the application assets and resources.<br />
+     * @param context<br />
+     */<br />
+    public DataBaseHelper(Context context) {<br />
+    	super(context, DB_NAME, null, 1);<br />
+        this.myContext = context;<br />
+    }<br />
+  /**<br />
+     * Creates a empty database on the system and rewrites it with your own database.<br />
+     * */<br />
+    public void createDataBase() throws IOException{<br />
+    	boolean dbExist = checkDataBase();<br />
+    	if(dbExist){<br />
+    		//do nothing - database already exist<br />
+    	}else{<br />
+    		//By calling this method and empty database will be created into the default system path<br />
+               //of your application so we are gonna be able to overwrite that database with our database.<br />
+        	this.getReadableDatabase();<br />
+        	try {<br />
+    			copyDataBase();<br />
+    		} catch (IOException e) {<br />
+        		throw new Error("Error copying database");<br />
+        	}<br />
+    	}<br />
+    }<br />
+    /**<br />
+     * Check if the database already exist to avoid re-copying the file each time you open the application.<br />
+     * @return true if it exists, false if it doesn't<br />
+     */<br />
+    private boolean checkDataBase(){<br />
+    	SQLiteDatabase checkDB = null;<br />
+    	try{<br />
+    		String myPath = DB_PATH + DB_NAME;<br />
+    		checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);<br />
+    	}catch(SQLiteException e){<br />
+    		//database does't exist yet.<br />
+    	}<br />
+    	if(checkDB != null){<br />
+    		checkDB.close();<br />
+    	}<br />
+    	return checkDB != null ? true : false;<br />
+    }<br />
+    /**<br />
+     * Copies your database from your local assets-folder to the just created empty database in the<br />
+     * system folder, from where it can be accessed and handled.<br />
+     * This is done by transfering bytestream.<br />
+     * */<br />
+    private void copyDataBase() throws IOException{<br />
+    	//Open your local db as the input stream<br />
+    	InputStream myInput = myContext.getAssets().open(DB_NAME);<br />
+    	// Path to the just created empty db<br />
+    	String outFileName = DB_PATH + DB_NAME;<br />
+    	//Open the empty db as the output stream<br />
+    	OutputStream myOutput = new FileOutputStream(outFileName);<br />
+    	//transfer bytes from the inputfile to the outputfile<br />
+    	byte[] buffer = new byte[1024];<br />
+    	int length;<br />
+    	while ((length = myInput.read(buffer))>0){<br />
+    		myOutput.write(buffer, 0, length);<br />
+    	}<br />
+    	//Close the streams<br />
+    	myOutput.flush();<br />
+    	myOutput.close();<br />
+    	myInput.close();<br />
+    }<br />
+    public void openDataBase() throws SQLException{<br />
+    	//Open the database<br />
+        String myPath = DB_PATH + DB_NAME;<br />
+    	myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);<br />
+    }<br />
+    @Override<br />
+	public synchronized void close() {<br />
+    	    if(myDataBase != null)<br />
+    		    myDataBase.close();<br />
+    	    super.close();<br />
+	}<br />
+	@Override<br />
+	public void onCreate(SQLiteDatabase db) {<br />
+	}<br />
+	@Override<br />
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {<br />
+	}<br />
+        // Add your public helper methods to access and get content from the database.<br />
+       // You could return cursors by doing "return myDataBase.query(....)" so it'd be easy<br />
+       // to you to create adapters for your views.<br />
+}<br />
+[/sourcecode]<br />
+자 이제 Activity로 돌아가 DataBaseHelper 클래스의 인스턴스를 생성해준다. 그리고 createDataBase()와 openDataBase()메서드를 호출해주자. 앗 여기서 기억해야 할것은 DB_PATH string 변수의 'YOUR_PACKAGE'를 당신의 패키지로 변경해주어야 한다. (ex. com.ezcocoa.example)<br />
+[sourcecode language="JAVA"]<br />
+       ...<br />
+        DataBaseHelper myDbHelper = new DataBaseHelper();<br />
+        myDbHelper = new DataBaseHelper(this);<br />
+        try {<br />
+        	myDbHelper.createDataBase();<br />
+ 	} catch (IOException ioe) {<br />
+ 		throw new Error("Unable to create database");<br />
+ 	}<br />
+ 	try {<br />
+ 		myDbHelper.openDataBase();<br />
+ 	}catch(SQLException sqle){<br />
+ 		throw sqle;<br />
+ 	}<br />
+        ...<br />
+[/sourcecode]<br />
+이 자료는 위 블러그를 번역한것이다.</p>

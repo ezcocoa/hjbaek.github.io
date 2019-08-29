@@ -1,0 +1,33 @@
+---
+layout: post
+status: publish
+published: true
+title: Android > Remove the separator between items in the same listview
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1954
+wordpress_url: http://ezcocoa.com/?p=1954
+date: '2013-10-25 09:32:21 +0900'
+date_gmt: '2013-10-25 09:32:21 +0900'
+categories:
+- Android
+tags: []
+comments: []
+---
+<p><a href="http://stackoverflow.com/questions/1914477/how-to-remove-line-inbetween-two-listviews-in-android">Source</a></p>
+<p>To remove the separator between items in the same ListView, here is the solution: ***</p>
+<p><strong>Java Code</strong></p>
+<p>[sourcecode language="java"]<br />
+getListView().setDivider(null);<br />
+getListView().setDividerHeight(0);<br />
+[/sourcecode]</p>
+<p><strong>Or, if you want to do it in XML:</strong></p>
+<p>[sourcecode language="xml"]<br />
+android:divider="@null"<br />
+android:dividerHeight="0dp"<br />
+[/sourcecode]</p>

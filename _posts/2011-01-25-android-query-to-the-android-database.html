@@ -1,0 +1,104 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] Query to the Android Database."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 535
+wordpress_url: http://ezcocoa.com/?p=535
+date: '2011-01-25 08:56:13 +0900'
+date_gmt: '2011-01-25 08:56:13 +0900'
+categories:
+- Android
+tags:
+- android
+- sqlite
+- sql
+- database
+- query
+comments: []
+---
+<h5>
+<div>출처 : http://binsolb.tistory.com/67</div>
+<div>Cursor  android.database.sqlite.SQLiteDatabase.query(boolean distinct, String table,  String[] columns, String selection, String[] selectionArgs, String groupBy,  String having, String orderBy, String limit)</div>
+</h5>
+<div>
+<h4>public <a href="http://binsolb.tistory.com/reference/android/database/Cursor.html">Cursor</a> query (boolean distinct, <a href="http://binsolb.tistory.com/reference/java/lang/String.html">String</a> table, <a href="http://binsolb.tistory.com/reference/java/lang/String.html">String[]</a> columns, <a href="http://binsolb.tistory.com/reference/java/lang/String.html">String</a> selection, <a href="http://binsolb.tistory.com/reference/java/lang/String.html">String[]</a> selectionArgs,  <a href="http://binsolb.tistory.com/reference/java/lang/String.html">String</a> groupBy, <a href="http://binsolb.tistory.com/reference/java/lang/String.html">String</a> having, <a href="http://binsolb.tistory.com/reference/java/lang/String.html">String</a> orderBy, <a href="http://binsolb.tistory.com/reference/java/lang/String.html">String</a> limit)</h4>
+<div>Since: <a href="http://binsolb.tistory.com/guide/appendix/api-levels.html#level1">API Level 1</a></div>
+<div>
+<div>
+Query the given URL, returning a <a href="http://binsolb.tistory.com/reference/android/database/Cursor.html">Cursor</a> over the  result set.
+</div>
+<div>
+<h5>Parameters</h5>
+<table>
+<tbody>
+<tr>
+<th>distinct</th>
+<td>true if you want each row to be unique, false otherwise.<br />
+결과 셋이 유일한 값만 가져야 되는지 여부 결정하는 선택적 boolean 값</td>
+</tr>
+<tr>
+<th>table</th>
+<td>The table name to compile the query against.<br />
+질의할 테이블 이름.</td>
+</tr>
+<tr>
+<th>columns</th>
+<td>A list of which columns to return. Passing null will return all columns,  which is discouraged to prevent reading data from storage that isn't going to be  used.<br />
+결과 셋에 포함될 열들이 나열될 스트링 배열.</td>
+</tr>
+<tr>
+<th>selection</th>
+<td>A filter declaring which rows to return, formatted as an SQL WHERE clause  (excluding the WHERE itself). Passing null will return all rows for the given  table.<br />
+"WHERE" 구문이라 생각하면 될듯. 와일드 카드"?"가 포함될 수 있다.</td>
+</tr>
+<tr>
+<th>selectionArgs</th>
+<td>You may include ?s in selection, which will be replaced by the values from  selectionArgs, in order that they appear in the selection. The values will be  bound as Strings.<br />
+"WHERE" 구문에 있었던 와일드 카드 "?"를 대체할 선택 인자 문자열 배열.</td>
+</tr>
+<tr>
+<th>groupBy</th>
+<td>A filter declaring how to group rows, formatted as an SQL GROUP BY clause  (excluding the GROUP BY itself). Passing null will cause the rows to not be  grouped.<br />
+그룹바이 구문.</td>
+</tr>
+<tr>
+<th>having</th>
+<td>A filter declare which row groups to include in the cursor, if row grouping  is being used, formatted as an SQL HAVING clause (excluding the HAVING itself).  Passing null will cause all row groups to be included, and is required when row  grouping is not being used.<br />
+그룹바이 시 해빙구문</td>
+</tr>
+<tr>
+<th>orderBy</th>
+<td>How to order the rows, formatted as an SQL ORDER BY clause (excluding the  ORDER BY itself). Passing null will use the default sort order, which may be  unordered.<br />
+순서 제어.</td>
+</tr>
+<tr>
+<th>limit</th>
+<td>Limits the number of rows returned by the query, formatted as LIMIT clause.  Passing null denotes no LIMIT clause.<br />
+리턴되는 행 갯수 제한 LIMIT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<h5>* 제일 앞에 distinct 및 limit 는 선택적 옵션이고 나머지는 필수이다.</h5>
+<h5>Returns</h5>
+<ul>
+<li>A Cursor object, which is positioned before the first entry</li>
+</ul>
+</div>
+<div>
+<h5>See Also</h5>
+<ul>
+<li><a href="http://binsolb.tistory.com/reference/android/database/Cursor.html">Cursor</a></li>
+</ul>
+</div>
+</div>
+</div>

@@ -1,0 +1,1133 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Vi] Key Structure"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 401
+wordpress_url: http://ezcocoa.com/?p=401
+date: '2010-12-27 01:30:02 +0900'
+date_gmt: '2010-12-27 01:30:02 +0900'
+categories:
+- Tool
+tags:
+- key
+- structure
+- vi
+comments: []
+---
+<table border="1px" style="width: 579.0px; margin: 0.0px 33.0px 0.0px 32.0px; cellspacing="0" cellpadding="0" width="579.0">
+<tbody>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">이동명령</p>
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">글자</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">h ,j ,k ,l</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Symbol;">&larr;&darr;&uarr;&rarr;</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="5" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">문장</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">w, W, b, B</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">단어<span style="font: 12.0px Georgia;"> </span>단위로<span style="font: 12.0px Georgia;"> </span>앞<span style="font: 12.0px Georgia;">, </span>뒤로<span style="font: 12.0px Georgia;"> </span>이동<span style="font: 12.0px Georgia;"> </span>소문자는<span style="font: 12.0px Georgia;"> </span>구두점도<span style="font: 12.0px Georgia;"> </span>하나의<span style="font: 12.0px Georgia;"> </span>단어로<span style="font: 12.0px Georgia;"> </span>인식하며<span style="font: 12.0px Georgia;">, </span>대문자는<span style="font: 12.0px Georgia;"> </span>구두<span style="font: 12.0px Georgia;"> </span>점을<span style="font: 12.0px Georgia;"> </span>무시한다<span style="font: 12.0px Georgia;">.</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">e, E</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">단어의<span style="font: 12.0px Georgia;"> </span>끝</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">), (</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">다음<span style="font: 12.0px Georgia;">, </span>이전<span style="font: 12.0px Georgia;"> </span>문장의<span style="font: 12.0px Georgia;"> </span>시작</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">}, {</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">다음<span style="font: 12.0px Georgia;">, </span>이전<span style="font: 12.0px Georgia;"> </span>구의<span style="font: 12.0px Georgia;"> </span>시작</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">]], [[</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">다음<span style="font: 12.0px Georgia;">, </span>이전<span style="font: 12.0px Georgia;"> </span>절의<span style="font: 12.0px Georgia;"> </span>시작</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="9" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">행</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">0, $</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재<span style="font: 12.0px Georgia;"> </span>행의<span style="font: 12.0px Georgia;"> </span>처음<span style="font: 12.0px Georgia;">, </span>마지막<span style="font: 12.0px Georgia;"> </span>위치</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">^</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재행의<span style="font: 12.0px Georgia;"> </span>첫<span style="font: 12.0px Georgia;"> </span>문자<span style="font: 12.0px Georgia;">(</span>공백은<span style="font: 12.0px Georgia;"> </span>무시<span style="font: 12.0px Georgia;">)</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">+, -</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">다음<span style="font: 12.0px Georgia;">, </span>이전<span style="font: 12.0px Georgia;"> </span>행의<span style="font: 12.0px Georgia;"> </span>첫<span style="font: 12.0px Georgia;"> </span>문자</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">n|</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재행의<span style="font: 12.0px Georgia;"> n</span>번째<span style="font: 12.0px Georgia;"> </span>열</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">H</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">화면의<span style="font: 12.0px Georgia;"> </span>첫<span style="font: 12.0px Georgia;"> </span>행</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">M</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">화면의<span style="font: 12.0px Georgia;"> </span>중간<span style="font: 12.0px Georgia;"> </span>행</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">L</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">화면의<span style="font: 12.0px Georgia;"> </span>마지막<span style="font: 12.0px Georgia;"> </span>행</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">nH</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">화면<span style="font: 12.0px Georgia;"> </span>첫행에서<span style="font: 12.0px Georgia;"> </span>아래로<span style="font: 12.0px Georgia;"> n</span>번째<span style="font: 12.0px Georgia;"> </span>행</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">nL</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">화면<span style="font: 12.0px Georgia;"> </span>마지막<span style="font: 12.0px Georgia;"> </span>행에서<span style="font: 12.0px Georgia;"> </span>위로<span style="font: 12.0px Georgia;"> n</span>번째<span style="font: 12.0px Georgia;"> </span>행</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="6" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">화면</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">CTRL-F, CTRL-B</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">한화면<span style="font: 12.0px Georgia;"> </span>앞<span style="font: 12.0px Georgia;">, </span>뒤로</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">CTRL-D, CTRL-U</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">반화면<span style="font: 12.0px Georgia;"> </span>아래<span style="font: 12.0px Georgia;">, </span>위로</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">CTRL-E, CTRL-Y</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">화면<span style="font: 12.0px Georgia;"> </span>전체를<span style="font: 12.0px Georgia;"> </span>한행<span style="font: 12.0px Georgia;"> </span>위<span style="font: 12.0px Georgia;">, </span>아래로</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">z[RETURN]</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">깜박이가<span style="font: 12.0px Georgia;"> </span>있는<span style="font: 12.0px Georgia;"> </span>행을<span style="font: 12.0px Georgia;"> </span>화면<span style="font: 12.0px Georgia;"> </span>첫행으로</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">z.</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">깜박이가<span style="font: 12.0px Georgia;"> </span>있는<span style="font: 12.0px Georgia;"> </span>행을<span style="font: 12.0px Georgia;"> </span>가운데<span style="font: 12.0px Georgia;"> </span>행으로</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">z-</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">깜박이가<span style="font: 12.0px Georgia;"> </span>있는<span style="font: 12.0px Georgia;"> </span>행을<span style="font: 12.0px Georgia;"> </span>가운데<span style="font: 12.0px Georgia;"> </span>행으로</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="10" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">검색</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">/pattern</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">앞<span style="font: 12.0px Georgia;"> </span>방향으로<span style="font: 12.0px Georgia;"> </span>패턴을<span style="font: 12.0px Georgia;"> </span>검색</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">?pattern</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">뒷<span style="font: 12.0px Georgia;"> </span>방향으로<span style="font: 12.0px Georgia;"> </span>패턴을<span style="font: 12.0px Georgia;"> </span>검색</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">n, N</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">동일<span style="font: 12.0px Georgia;">, </span>반대<span style="font: 12.0px Georgia;"> </span>방향으로<span style="font: 12.0px Georgia;"> </span>마직막<span style="font: 12.0px Georgia;"> </span>검색을<span style="font: 12.0px Georgia;"> </span>반복</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">/, ?</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">앞<span style="font: 12.0px Georgia;">, </span>뒤로<span style="font: 12.0px Georgia;"> </span>이전<span style="font: 12.0px Georgia;"> </span>검색을<span style="font: 12.0px Georgia;"> </span>반복</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">fx</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재<span style="font: 12.0px Georgia;"> </span>행에서<span style="font: 12.0px Georgia;"> </span>글자<span style="font: 12.0px Georgia;"> x</span>를<span style="font: 12.0px Georgia;"> </span>앞방향으로<span style="font: 12.0px Georgia;"> </span>검색</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">Fx</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재<span style="font: 12.0px Georgia;"> </span>행에서<span style="font: 12.0px Georgia;"> </span>글자<span style="font: 12.0px Georgia;"> x</span>를<span style="font: 12.0px Georgia;"> </span>뒷방향으로<span style="font: 12.0px Georgia;"> </span>검색</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">tx</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재<span style="font: 12.0px Georgia;"> </span>행에서<span style="font: 12.0px Georgia;"> </span>글자<span style="font: 12.0px Georgia;"> x</span>를<span style="font: 12.0px Georgia;"> </span>앞방향으로<span style="font: 12.0px Georgia;"> </span>검색한후<span style="font: 12.0px Georgia;">, </span>글자<span style="font: 12.0px Georgia;"> x </span>전<span style="font: 12.0px Georgia;"> </span>글자로<span style="font: 12.0px Georgia;"> </span>이동</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">Tx</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재<span style="font: 12.0px Georgia;"> </span>행에서<span style="font: 12.0px Georgia;"> </span>글자<span style="font: 12.0px Georgia;"> x</span>를<span style="font: 12.0px Georgia;"> </span>뒷방향으로<span style="font: 12.0px Georgia;"> </span>검색한후<span style="font: 12.0px Georgia;">, </span>글자<span style="font: 12.0px Georgia;"> x </span>뒷<span style="font: 12.0px Georgia;"> </span>글자로<span style="font: 12.0px Georgia;"> </span>이동</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">;</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">이전<span style="font: 12.0px Georgia;"> </span>현재<span style="font: 12.0px Georgia;"> </span>행<span style="font: 12.0px Georgia;"> </span>검색을<span style="font: 12.0px Georgia;"> </span>반복</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">'</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">이전<span style="font: 12.0px Georgia;"> </span>현재<span style="font: 12.0px Georgia;"> </span>행<span style="font: 12.0px Georgia;"> </span>검색을<span style="font: 12.0px Georgia;"> </span>반대<span style="font: 12.0px Georgia;"> </span>방향으로<span style="font: 12.0px Georgia;"> </span>반복</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="5" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">행<span style="font: 12.0px Georgia;"><strong> </strong></span>번호</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">CTRL-G</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재의<span style="font: 12.0px Georgia;"> </span>행<span style="font: 12.0px Georgia;"> </span>번호를<span style="font: 12.0px Georgia;"> </span>출력</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">nG</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;">n </span>번째<span style="font: 12.0px Georgia;"> </span>행으로<span style="font: 12.0px Georgia;"> </span>이동</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">G</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">파일의<span style="font: 12.0px Georgia;"> </span>마지막<span style="font: 12.0px Georgia;"> </span>행으로<span style="font: 12.0px Georgia;"> </span>이동</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">``</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;">G </span>명령<span style="font: 12.0px Georgia;"> </span>전의<span style="font: 12.0px Georgia;"> </span>마지막<span style="font: 12.0px Georgia;"> </span>위치로<span style="font: 12.0px Georgia;"> </span>이동<span style="font: 12.0px Georgia;">(</span>두개의<span style="font: 12.0px Georgia;"> </span>작은<span style="font: 12.0px Georgia;"> </span>역<span style="font: 12.0px Georgia;"> </span>따옴표<span style="font: 12.0px Georgia;">)</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:n</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;">n </span>번째<span style="font: 12.0px Georgia;"> </span>행으로<span style="font: 12.0px Georgia;"> </span>이동</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">편집명령</p>
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">삽입</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">i, a</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">깜박이<span style="font: 12.0px Georgia;"> </span>앞<span style="font: 12.0px Georgia;">, </span>뒤에<span style="font: 12.0px Georgia;"> </span>문장<span style="font: 12.0px Georgia;"> </span>삽입</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">I, A</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">행의<span style="font: 12.0px Georgia;"> </span>시작<span style="font: 12.0px Georgia;">, </span>끝에<span style="font: 12.0px Georgia;"> </span>문장<span style="font: 12.0px Georgia;"> </span>삽입</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">o, O</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">깜빡이<span style="font: 12.0px Georgia;"> </span>아래<span style="font: 12.0px Georgia;">, </span>윗<span style="font: 12.0px Georgia;"> </span>줄에<span style="font: 12.0px Georgia;"> </span>새로운<span style="font: 12.0px Georgia;"> </span>행<span style="font: 12.0px Georgia;"> </span>편집</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">R</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">글자<span style="font: 12.0px Georgia;"> </span>덥어쓰기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="8" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">변경</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">r</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">한글자<span style="font: 12.0px Georgia;"> </span>변경</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">~</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">대<span style="font: 12.0px Georgia;"> </span>소문자<span style="font: 12.0px Georgia;"> </span>변경<span style="font: 12.0px Georgia;">(</span>다른<span style="font: 12.0px Georgia;"> </span>명령<span style="font: 12.0px Georgia;">, </span>숫자와<span style="font: 12.0px Georgia;"> </span>결합할<span style="font: 12.0px Georgia;"> </span>수<span style="font: 12.0px Georgia;"> </span>없음<span style="font: 12.0px Georgia;">)</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">cw</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">한<span style="font: 12.0px Georgia;"> </span>단어<span style="font: 12.0px Georgia;"> </span>변경</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">cw</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">한<span style="font: 12.0px Georgia;"> </span>단어<span style="font: 12.0px Georgia;"> </span>변경</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">cc</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재<span style="font: 12.0px Georgia;"> </span>행<span style="font: 12.0px Georgia;"> </span>변경</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">C</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">깜박이<span style="font: 12.0px Georgia;"> </span>위치에서<span style="font: 12.0px Georgia;"> </span>행<span style="font: 12.0px Georgia;"> </span>끝까지<span style="font: 12.0px Georgia;"> </span>변경</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">s</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">한<span style="font: 12.0px Georgia;"> </span>글자를<span style="font: 12.0px Georgia;"> </span>삭제하고<span style="font: 12.0px Georgia;"> </span>문장으로<span style="font: 12.0px Georgia;"> </span>대치</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">S</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재<span style="font: 12.0px Georgia;"> </span>행을<span style="font: 12.0px Georgia;"> </span>삭제하고<span style="font: 12.0px Georgia;"> </span>문장으로<span style="font: 12.0px Georgia;"> </span>대치</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="7" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">삭제<span style="font: 12.0px Georgia;"><strong>, </strong></span>이동</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">x</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">한글자<span style="font: 12.0px Georgia;"> </span>삭제</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">X</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">깜박이<span style="font: 12.0px Georgia;"> </span>앞의<span style="font: 12.0px Georgia;"> </span>한글자<span style="font: 12.0px Georgia;"> </span>삭제</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">dw, de</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">한<span style="font: 12.0px Georgia;"> </span>단어<span style="font: 12.0px Georgia;"> </span>삭제<span style="font: 12.0px Georgia;">(</span>단어<span style="font: 12.0px Georgia;"> </span>다음의<span style="font: 12.0px Georgia;"> </span>공백<span style="font: 12.0px Georgia;"> </span>포함<span style="font: 12.0px Georgia;">), </span>한<span style="font: 12.0px Georgia;"> </span>단어만<span style="font: 12.0px Georgia;"> </span>삭제</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">dd</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재행<span style="font: 12.0px Georgia;"> </span>삭제</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">D</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">깜박이<span style="font: 12.0px Georgia;"> </span>위치에서<span style="font: 12.0px Georgia;"> </span>행<span style="font: 12.0px Georgia;"> </span>끝까지<span style="font: 12.0px Georgia;"> </span>삭제</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">p, P</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">깜박이<span style="font: 12.0px Georgia;"> </span>아래<span style="font: 12.0px Georgia;">, </span>윗<span style="font: 12.0px Georgia;"> </span>줄에<span style="font: 12.0px Georgia;"> </span>삭제한<span style="font: 12.0px Georgia;"> </span>문장<span style="font: 12.0px Georgia;"> </span>붙이기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">"np</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">삭제<span style="font: 12.0px Georgia;"> </span>버퍼로<span style="font: 12.0px Georgia;"> </span>부터<span style="font: 12.0px Georgia;"> n </span>번째<span style="font: 12.0px Georgia;"> </span>행을<span style="font: 12.0px Georgia;"> </span>깜박이<span style="font: 12.0px Georgia;"> </span>아래줄에<span style="font: 12.0px Georgia;"> </span>붙이기<span style="font: 12.0px Georgia;">(</span>마지막<span style="font: 12.0px Georgia;"> 9</span>개의<span style="font: 12.0px Georgia;"> </span>삭제행에<span style="font: 12.0px Georgia;"> </span>대해<span style="font: 12.0px Georgia;">)</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="5" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">복사</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">yw</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">한단어<span style="font: 12.0px Georgia;"> </span>복사</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">yy</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재행<span style="font: 12.0px Georgia;"> </span>복사</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">"ayy</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재행을<span style="font: 12.0px Georgia;"> a</span>라는<span style="font: 12.0px Georgia;"> </span>버퍼에<span style="font: 12.0px Georgia;"> </span>복사</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">p, P</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">깜박이<span style="font: 12.0px Georgia;"> </span>아래<span style="font: 12.0px Georgia;">, </span>윗<span style="font: 12.0px Georgia;"> </span>줄에<span style="font: 12.0px Georgia;"> </span>복사된<span style="font: 12.0px Georgia;"> </span>문장을<span style="font: 12.0px Georgia;"> </span>붙임</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">"aP</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">버퍼<span style="font: 12.0px Georgia;"> a</span>의<span style="font: 12.0px Georgia;"> </span>문장을<span style="font: 12.0px Georgia;"> </span>깜박이<span style="font: 12.0px Georgia;"> </span>윗줄<span style="font: 12.0px Georgia;">(p, </span>아래<span style="font: 12.0px Georgia;"> </span>줄<span style="font: 12.0px Georgia;">)</span>에<span style="font: 12.0px Georgia;"> </span>붙임</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="6" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;"><strong>ex </strong></span>편집명령</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:d</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">행<span style="font: 12.0px Georgia;"> </span>삭제</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:m</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">행<span style="font: 12.0px Georgia;"> </span>이동</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:co</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">행<span style="font: 12.0px Georgia;"> </span>복사</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:.,$d</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재<span style="font: 12.0px Georgia;"> </span>행에서<span style="font: 12.0px Georgia;"> </span>파일<span style="font: 12.0px Georgia;"> </span>끝까지<span style="font: 12.0px Georgia;"> </span>삭제</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:30, 60m</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재행<span style="font: 12.0px Georgia;"> </span>다음<span style="font: 12.0px Georgia;"> </span>줄에<span style="font: 12.0px Georgia;"> 30</span>행부터<span style="font: 12.0px Georgia;"> 60</span>행까지를<span style="font: 12.0px Georgia;"> </span>이동</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">.,/pattern/co$</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재행<span style="font: 12.0px Georgia;"> </span>부터<span style="font: 12.0px Georgia;"> pattern</span>을<span style="font: 12.0px Georgia;"> </span>포함하는<span style="font: 12.0px Georgia;"> </span>항까지를<span style="font: 12.0px Georgia;"> </span>파일<span style="font: 12.0px Georgia;"> </span>끝으로<span style="font: 12.0px Georgia;"> </span>복사</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">명령행<span style="font: 12.0px Georgia;"> </span>옵션</p>
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="9" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">명령행</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">vi file</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">file<span style="font: 12.0px AppleMyungjo;">를</span> vi <span style="font: 12.0px AppleMyungjo;">편집기로</span> <span style="font: 12.0px AppleMyungjo;">호출</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">vi file1 file2</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">파일들을<span style="font: 12.0px Georgia;"> </span>연속적으로<span style="font: 12.0px Georgia;"> vi </span>편집기로<span style="font: 12.0px Georgia;"> </span>호출</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">view file</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">파일을<span style="font: 12.0px Georgia;"> </span>읽기<span style="font: 12.0px Georgia;"> </span>모드로<span style="font: 12.0px Georgia;"> vi </span>편집기로<span style="font: 12.0px Georgia;"> </span>호출</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">vi -R file</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">파일을<span style="font: 12.0px Georgia;"> </span>읽기<span style="font: 12.0px Georgia;"> </span>모드로<span style="font: 12.0px Georgia;"> vi </span>편집기로<span style="font: 12.0px Georgia;"> </span>호출</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">vi -r file</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">시스템이<span style="font: 12.0px Georgia;"> </span>크래쉬된<span style="font: 12.0px Georgia;"> </span>후<span style="font: 12.0px Georgia;">, </span>파일과<span style="font: 12.0px Georgia;"> </span>최근<span style="font: 12.0px Georgia;"> </span>편집<span style="font: 12.0px Georgia;"> </span>사항을<span style="font: 12.0px Georgia;"> </span>복구</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">vi + file</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">마지막<span style="font: 12.0px Georgia;"> </span>행으로<span style="font: 12.0px Georgia;"> </span>파일<span style="font: 12.0px Georgia;"> </span>열기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">vi +n file</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;">n </span>번째<span style="font: 12.0px Georgia;"> </span>행으로<span style="font: 12.0px Georgia;"> </span>파일<span style="font: 12.0px Georgia;"> </span>열기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">vi +/pattern file</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">pattern<span style="font: 12.0px AppleMyungjo;">으로</span> <span style="font: 12.0px AppleMyungjo;">파일</span> <span style="font: 12.0px AppleMyungjo;">열기</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">ex file</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">파일을<span style="font: 12.0px Georgia;"> ex </span>편집기로<span style="font: 12.0px Georgia;"> </span>열기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">종료명령</p>
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="18" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">종료<span style="font: 12.0px Georgia;"><strong> </strong></span>명령</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">ZZ</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">저장하고<span style="font: 12.0px Georgia;"> </span>빠저나오기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:x</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">저장하고<span style="font: 12.0px Georgia;"> </span>빠저나오기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:wq</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">저장하고<span style="font: 12.0px Georgia;"> </span>빠저나오기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:w</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">저장하기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:w!</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">저장하기<span style="font: 12.0px Georgia;">(</span>겹처쓰기<span style="font: 12.0px Georgia;"> </span>방지<span style="font: 12.0px Georgia;">)</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:30,60w newfile</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">30<span style="font: 12.0px AppleMyungjo;">번째</span> <span style="font: 12.0px AppleMyungjo;">행에서</span> 60<span style="font: 12.0px AppleMyungjo;">번째</span> <span style="font: 12.0px AppleMyungjo;">행까지를</span> newfile<span style="font: 12.0px AppleMyungjo;">로</span> <span style="font: 12.0px AppleMyungjo;">저장하기</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:30,60w >> file</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;">30</span>번째<span style="font: 12.0px Georgia;"> </span>행에서<span style="font: 12.0px Georgia;"> 60</span>번째<span style="font: 12.0px Georgia;"> </span>행까지를<span style="font: 12.0px Georgia;"> file</span>에<span style="font: 12.0px Georgia;"> </span>덧붙이기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:w %.new</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">file<span style="font: 12.0px AppleMyungjo;">이라는</span> <span style="font: 12.0px AppleMyungjo;">파일을</span> file.new<span style="font: 12.0px AppleMyungjo;">로</span> <span style="font: 12.0px AppleMyungjo;">저장하기</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:q</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">종료하기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:q!</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">종료하기<span style="font: 12.0px Georgia;">(</span>겹처쓰기<span style="font: 12.0px Georgia;"> </span>방지<span style="font: 12.0px Georgia;">)</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:Q</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;">vi</span>를<span style="font: 12.0px Georgia;"> </span>종료하고<span style="font: 12.0px Georgia;">, ex </span>호출하기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:e file2</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">vi<span style="font: 12.0px AppleMyungjo;">를</span> <span style="font: 12.0px AppleMyungjo;">종료하지</span> <span style="font: 12.0px AppleMyungjo;">않고</span> file2 <span style="font: 12.0px AppleMyungjo;">편집하기</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:n</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">다음<span style="font: 12.0px Georgia;"> </span>파일<span style="font: 12.0px Georgia;"> </span>편집하기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:e!</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재<span style="font: 12.0px Georgia;"> </span>편집하고<span style="font: 12.0px Georgia;"> </span>있는<span style="font: 12.0px Georgia;"> </span>파일<span style="font: 12.0px Georgia;">(</span>변경사항을<span style="font: 12.0px Georgia;"> </span>저장하지<span style="font: 12.0px Georgia;"> </span>않은<span style="font: 12.0px Georgia;"> </span>원본<span style="font: 12.0px Georgia;">)</span>을<span style="font: 12.0px Georgia;"> </span>다시<span style="font: 12.0px Georgia;"> </span>부르기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:e#</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">이전<span style="font: 12.0px Georgia;"> </span>파일<span style="font: 12.0px Georgia;"> </span>편집하기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:pre</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;">Unix </span>시스템에<span style="font: 12.0px Georgia;"> </span>파일보존<span style="font: 12.0px Georgia;"> </span>신청하기<span style="font: 12.0px Georgia;">. Unix </span>프롬프트에서<span style="font: 12.0px Georgia;"> vi -r file</span>을<span style="font: 12.0px Georgia;"> </span>입력하면<span style="font: 12.0px Georgia;"> </span>이전에<span style="font: 12.0px Georgia;"> </span>변경한<span style="font: 12.0px Georgia;"> </span>사항을<span style="font: 12.0px Georgia;"> </span>복구할<span style="font: 12.0px Georgia;"> </span>수<span style="font: 12.0px Georgia;"> </span>있다<span style="font: 12.0px Georgia;">.</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">#</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">이전<span style="font: 12.0px Georgia;"> </span>파일명</p>
+</td>
+</tr>
+<tr>
+<td style="width: 525.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="3" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">기타명령</p>
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px Georgia;"><strong>vi </strong><span style="font: 12.0px AppleMyungjo;">명령</span></p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">.</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">마지막<span style="font: 12.0px Georgia;"> </span>명령<span style="font: 12.0px Georgia;"> </span>반복</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">u, U</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">마지막<span style="font: 12.0px Georgia;"> </span>명령<span style="font: 12.0px Georgia;">, </span>행에대한<span style="font: 12.0px Georgia;"> </span>명령<span style="font: 12.0px Georgia;"> </span>취소</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">J</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">두<span style="font: 12.0px Georgia;"> </span>행<span style="font: 12.0px Georgia;"> </span>합치기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">CTRL-L</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">화면<span style="font: 12.0px Georgia;"> </span>다시<span style="font: 12.0px Georgia;"> </span>그리기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">CTRL-R</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="3" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;"><span style="font: 12.0px AppleMyungjo;">취소</span> <span style="font: 12.0px AppleMyungjo;">명령</span> <span style="font: 12.0px AppleMyungjo;">취소</span>(Redo)</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="7" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px Georgia;"><strong>ex </strong><span style="font: 12.0px AppleMyungjo;">명령</span></p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">vi<span style="font: 12.0px AppleMyungjo;">로</span> <span style="font: 12.0px AppleMyungjo;">부터</span> ex <span style="font: 12.0px AppleMyungjo;">호출</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:vi</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">ex<span style="font: 12.0px AppleMyungjo;">로</span> <span style="font: 12.0px AppleMyungjo;">부터</span> vi <span style="font: 12.0px AppleMyungjo;">호출</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:sh</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">쉘<span style="font: 12.0px Georgia;"> </span>호출</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">^D</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">쉘에서<span style="font: 12.0px Georgia;"> vi</span>로<span style="font: 12.0px Georgia;"> </span>돌아가기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:! command</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">Unix <span style="font: 12.0px AppleMyungjo;">명령어</span> <span style="font: 12.0px AppleMyungjo;">실행</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:r newfile</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">newfile<span style="font: 12.0px AppleMyungjo;">을</span> <span style="font: 12.0px AppleMyungjo;">현재</span> <span style="font: 12.0px AppleMyungjo;">파일로</span> <span style="font: 12.0px AppleMyungjo;">읽음</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:r! command</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;">Unix </span>명령어의<span style="font: 12.0px Georgia;"> </span>출력을<span style="font: 12.0px Georgia;"> </span>현재파일로<span style="font: 12.0px Georgia;"> </span>읽음</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="5" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">표시</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">mx</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">현재의<span style="font: 12.0px Georgia;"> </span>위치를<span style="font: 12.0px Georgia;"> x</span>로<span style="font: 12.0px Georgia;"> </span>표시<span style="font: 12.0px Georgia;">(</span>숫자는<span style="font: 12.0px Georgia;"> </span>안됨<span style="font: 12.0px Georgia;">)</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">`x</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;">x</span>로<span style="font: 12.0px Georgia;"> </span>깜박이<span style="font: 12.0px Georgia;"> </span>이동</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">``</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">이전<span style="font: 12.0px Georgia;"> </span>표시나<span style="font: 12.0px Georgia;"> </span>이동<span style="font: 12.0px Georgia;"> </span>후<span style="font: 12.0px Georgia;"> </span>문장으로<span style="font: 12.0px Georgia;"> </span>되돌아가기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">'x</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">표시<span style="font: 12.0px Georgia;"> x</span>를<span style="font: 12.0px Georgia;"> </span>포함하는<span style="font: 12.0px Georgia;"> </span>행의<span style="font: 12.0px Georgia;"> </span>선두로<span style="font: 12.0px Georgia;"> </span>이동</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">''</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">이전<span style="font: 12.0px Georgia;"> </span>표시를<span style="font: 12.0px Georgia;"> </span>포함하는<span style="font: 12.0px Georgia;"> </span>행의<span style="font: 12.0px Georgia;"> </span>선두로<span style="font: 12.0px Georgia;"> </span>이동</p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">단축</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:map x sequence</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">키<span style="font: 12.0px Georgia;"> x</span>를<span style="font: 12.0px Georgia;"> </span>편집명령어<span style="font: 12.0px Georgia;"> </span>집합으로<span style="font: 12.0px Georgia;"> </span>정의</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:unmap x</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;">x</span>에대한<span style="font: 12.0px Georgia;"> </span>정의<span style="font: 12.0px Georgia;"> </span>삭제</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:ab abbr phrase</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;">phrase</span>의<span style="font: 12.0px Georgia;"> </span>약자를<span style="font: 12.0px Georgia;"> abbr</span>로<span style="font: 12.0px Georgia;"> </span>한다<span style="font: 12.0px Georgia;">. abbr</span>이<span style="font: 12.0px Georgia;"> </span>삽입모드에서<span style="font: 12.0px Georgia;"> </span>입력되면<span style="font: 12.0px Georgia;"> </span>완전한<span style="font: 12.0px Georgia;"> </span>단어나<span style="font: 12.0px Georgia;"> </span>구로<span style="font: 12.0px Georgia;"> </span>확장된다<span style="font: 12.0px Georgia;">.</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:unab abbr</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">약어를<span style="font: 12.0px Georgia;"> </span>삭제한다<span style="font: 12.0px Georgia;">.</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 577.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="4" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">
+</td>
+</tr>
+<tr>
+<td style="width: 50.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" rowspan="7" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 21.0px; font: 12.0px AppleMyungjo;">사용자화</p>
+</td>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:set option</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">옵션을<span style="font: 12.0px Georgia;"> </span>사용</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:set option=value</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;"><span style="font: 12.0px AppleMyungjo;">옵션에</span> value<span style="font: 12.0px AppleMyungjo;">를</span> <span style="font: 12.0px AppleMyungjo;">할당</span></p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:set nooption</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">옵션<span style="font: 12.0px Georgia;"> </span>사용안함</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:set</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">사용자에의해<span style="font: 12.0px Georgia;"> </span>설정된<span style="font: 12.0px Georgia;"> </span>옵션<span style="font: 12.0px Georgia;"> </span>보이기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:set all</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">기본<span style="font: 12.0px Georgia;"> </span>옵션과<span style="font: 12.0px Georgia;"> </span>사용자가<span style="font: 12.0px Georgia;"> </span>설정한<span style="font: 12.0px Georgia;"> </span>모든<span style="font: 12.0px Georgia;"> </span>옵션의<span style="font: 12.0px Georgia;"> </span>목록<span style="font: 12.0px Georgia;"> </span>보이기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 84.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px Georgia;">:set option?</p>
+</td>
+<td style="width: 439.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="2" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">설정된<span style="font: 12.0px Georgia;"> </span>옵션값<span style="font: 12.0px Georgia;"> </span>보이기</p>
+</td>
+</tr>
+<tr>
+<td style="width: 525.0px; border: 1.0px 1.0px 1.0px 1.0px solid #808080 #808080 #808080 #808080;" colspan="3" valign="middle">
+<p style="margin: 0.0px 0.0px 0.0px 0.0px; line-height: 21.0px; font: 12.0px AppleMyungjo;">주의<span style="font: 12.0px Georgia;">:.exrc </span>파일내에서는<span style="font: 12.0px Georgia;"> ex </span>명령의<span style="font: 12.0px Georgia;"> </span>시작을<span style="font: 12.0px Georgia;"> </span>나타내는<span style="font: 12.0px Georgia;"> </span>콜론<span style="font: 12.0px Georgia;">(:)</span>을<span style="font: 12.0px Georgia;"> </span>생략해야<span style="font: 12.0px Georgia;"> </span>한다<span style="font: 12.0px Georgia;">.</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="margin: 0.0px 0.0px 12.0px 0.0px; text-align: justify; line-height: 21.0px; font: 12.0px AppleMyungjo;"><span style="font: 12.0px Georgia;">vi</span>에서<span style="font: 12.0px Georgia;"> </span>설정가능한<span style="font: 12.0px Georgia;"> </span>옵션은<span style="font: 12.0px Georgia;"> <a href="http://qaos.com/sections.php?op=viewarticle&amp;artid=109"><span style="font: 12.0px AppleMyungjo; color: #183df9;">여기</span></a></span>를<span style="font: 12.0px Georgia;"> </span>클릭하기<span style="font: 12.0px Georgia;"> </span>바랍니다<span style="font: 12.0px Georgia;">.</span></p>
+<div style="text-align: justify;">
+<span style="font-family: Georgia, gulim, tahoma, sans-serif;"><span style="line-height: normal;"> </span></span>
+</div>

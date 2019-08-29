@@ -1,0 +1,31 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] Resize UIDatePicker"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 531
+wordpress_url: http://ezcocoa.com/?p=531
+date: '2011-01-24 23:15:55 +0900'
+date_gmt: '2011-01-24 23:15:55 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- resize
+- datepicker
+- size
+comments: []
+---
+<p>출처 : http://stackoverflow.com/questions/2431391/how-to-change-the-size-of-date-picker-in-iphone-app<br />
+If you create UIPickerView in your code then you can use -initWithFrame to set its frame explicitly (see this question) - in the answer provided there stated that some "visual glitches" may appear with this approach.<br />
+As a second option you can adjust picker's frame by applying appropriate CGAffineTransform to it ( I have not tested it much but it seems to work fine):<br />
+picker.transform = CGAffineTransformMake(0.5, 0, 0, 0.5, -80, 0);<br />
+This (somewhat dummy) code scales UIPickerView to a half size and applies translation to place the picker to the left side of the screen. You can play with different transform values to get the effect you want.<br />
+Edit: The code above works for UIDatePickerView as well (sorry was not attentive to a question). But as other stated Apple had not made picker's frame (easily) customizable so it may mean that you should consider changing your design to try to use the picker in its proper size to conform to Apple's HIG.</p>

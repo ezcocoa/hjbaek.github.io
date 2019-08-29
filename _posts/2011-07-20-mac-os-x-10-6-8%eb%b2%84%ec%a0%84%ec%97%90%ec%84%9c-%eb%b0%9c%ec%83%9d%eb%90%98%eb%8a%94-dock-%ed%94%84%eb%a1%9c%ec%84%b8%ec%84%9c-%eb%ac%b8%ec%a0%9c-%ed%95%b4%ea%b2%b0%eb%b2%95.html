@@ -1,0 +1,41 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Mac] OS X 10.6.8버전에서 발생되는 Dock 프로세서 문제 해결법."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 858
+wordpress_url: http://ezcocoa.com/?p=858
+date: '2011-07-20 09:01:19 +0900'
+date_gmt: '2011-07-20 09:01:19 +0900'
+categories:
+- OSX
+tags:
+- mac
+- 10.6.8
+- dock
+- os x
+- parallels
+- processor
+- 느려지는 현상
+- 덕
+- 맥
+- 프로세서
+- 프로세스
+comments: []
+---
+<p>일단 Parallels 6 사용하고 계신다면 아마 100프로일겁니다.<br />
+증상은 백그라운드에서 Dock Processor 가 CPU를 90~ 100퍼센트 점유하므로 컴퓨터가 느려지게 되는데요,<br />
+문제의 원인는 OS X이 업데이트 되면서 Parallels 6과 호환성 맞지 않아서입니다.<br />
+이문제를 해결하기 위해서 아래와 같은 절차를 통해 해결 하실 수 있습니다.<br />
+1. Parallels 6 어플리케이션을 실행.<br />
+2. Window -> Virtual Machine List를 클릭.<br />
+3. 리스트에서 우측 클릭-> Configure -> Applications 선택.<br />
+4. Show windows application folder in Dock을 체크 해제.<br />
+위와 같이 해주시면 백그라우드 Dock Processor가 동작하지 않게 됩니다.</p>

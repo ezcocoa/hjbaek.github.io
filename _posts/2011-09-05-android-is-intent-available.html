@@ -1,0 +1,94 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Is intent available? &amp; call pdf viewer.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: http://www.curious-creature.org/2008/12/15/android-can-i-use-this-intent/
+wordpress_id: 958
+wordpress_url: http://ezcocoa.com/?p=958
+date: '2011-09-05 08:28:21 +0900'
+date_gmt: '2011-09-05 08:28:21 +0900'
+categories:
+- Android
+tags:
+- android
+- intent
+- pdf
+- available
+- viewer
+comments:
+- id: 26
+  author: hojun baek
+  author_email: mr.hjbaek@gmail.com
+  author_url: http://ezcocoa.com
+  date: '2011-09-05 08:41:00 +0900'
+  date_gmt: '2011-09-05 08:41:00 +0900'
+  content: 그나마 apwlibrary 가장 심플한 라이브러리지만... 쓰기 기능밖에 없다. ㅡ_ㅡ;
+---
+<p><strong>-인텐트를 이용하여 다른 어플리케이션을 호출하기 전 패키지 매니저를 이용하여 사용이 가능한지 체크 할 수 있다.</strong><br />
+[sourcecode language="java"]<br />
+public static final String MIME_TYPE_PDF = "application/pdf";<br />
+public static boolean isIntentAvailable(Context context, String action) {<br />
+    final PackageManager packageManager = context.getPackageManager();<br />
+    final Intent intent = new Intent(action);<br />
+    intent.setType(MIME_TYPE_PDF);<br />
+    List list =<br />
+            packageManager.queryIntentActivities(intent,<br />
+                    PackageManager.MATCH_DEFAULT_ONLY);<br />
+    return list.size() > 0;<br />
+}<br />
+[/sourcecode]<br />
+출처 : http://stackoverflow.com/questions/2784847/how-do-i-determine-if-android-can-handle-pdf<br />
+<strong>- PDF 뷰어 콜하기 위한 코드.</strong><br />
+[sourcecode language="java"]<br />
+ File file = new File("/sdcard/aaa.pdf");<br />
+ Intent intent = new Intent();<br />
+ intent.setAction(Intent.ACTION_VIEW);<br />
+ Uri uri = Uri.fromFile(file);<br />
+ intent.setDataAndType(uri, "application/pdf");<br />
+ startActivity(intent);<br />
+[/sourcecode]<br />
+출처 : http://stackoverflow.com/questions/2883355/how-to-render-pdf-in-android<br />
+[sourcecode language="java"]<br />
+public class OpenPdf extends Activity {<br />
+    @Override<br />
+    public void onCreate(Bundle savedInstanceState) {<br />
+        super.onCreate(savedInstanceState);<br />
+        setContentView(R.layout.main);<br />
+        Button button = (Button) findViewById(R.id.OpenPdfButton);<br />
+        button.setOnClickListener(new View.OnClickListener() {<br />
+            @Override<br />
+            public void onClick(View v) {<br />
+                File file = new File("/sdcard/example.pdf");<br />
+                if (file.exists()) {<br />
+                    Uri path = Uri.fromFile(file);<br />
+                    Intent intent = new Intent(Intent.ACTION_VIEW);<br />
+                    intent.setDataAndType(path, "application/pdf");<br />
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);<br />
+                    try {<br />
+                        startActivity(intent);<br />
+                    }<br />
+                    catch (ActivityNotFoundException e) {<br />
+                        Toast.makeText(OpenPdf.this,<br />
+                            "No Application Available to View PDF",<br />
+                            Toast.LENGTH_SHORT).show();<br />
+                    }<br />
+                }<br />
+            }<br />
+        });<br />
+    }<br />
+}<br />
+[/sourcecode]<br />
+- PDF Viewer (GUN License) -T-<br />
+Android PDF Viewer - <a href="http://code.google.com/p/apv/">http://code.google.com/p/apv/</a><br />
+VuDroid - <a href="http://code.google.com/p/vudroid/">http://code.google.com/p/vudroid/</a><br />
+APDFViewer - <a href="http://code.google.com/p/apdfviewer/">http://code.google.com/p/apdfviewer/</a><br />
+droidreader - <a href="http://code.google.com/p/droidreader/">http://code.google.com/p/droidreader/</a><br />
+android-pdf - <a href="http://code.google.com/p/android-pdf/">http://code.google.com/p/android-pdf/</a></p>

@@ -1,0 +1,88 @@
+---
+layout: post
+status: publish
+published: true
+title: android - device info
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1023
+wordpress_url: http://ezcocoa.com/?p=1023
+date: '2011-09-29 06:52:46 +0900'
+date_gmt: '2011-09-29 06:52:46 +0900'
+categories:
+- Android
+tags:
+- android
+- device
+- phone
+- info
+- id
+- "????"
+- Imei
+- imsi
+- number
+- serial
+- usim
+comments: []
+---
+<p>Device Info (phone number, device id) 추출 코드.<br />
+[sourcecode language="java"]<br />
+  // print device phone number.<br />
+  public void printPhoneNumber(TextView tv) {<br />
+    TelephonyManager mgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);<br />
+    tv.setText("Phone Number:"+mgr.getLine1Number());<br />
+    if (DEBUG) Log.i(TAG, "phone number:"+mgr.getLine1Number());<br />
+  }<br />
+  // print device id.<br />
+  public void printDeviceId(TextView tv) {<br />
+    TelephonyManager mgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);<br />
+    tv.setText("Device ID:"+mgr.getDeviceId());<br />
+    if (DEBUG) Log.i(TAG, "device id:"+mgr.getDeviceId());<br />
+  }<br />
+[/sourcecode]<br />
+번외.<br />
+프로젝트 진행중 유심에 대한 Access가 어디까지 지원되나 검색해보았습니다.<br />
+구글링을 해본 결과 1.5버전에서 부터 sim access api가 deprecated되었다고 하네요.<br />
+<strong>SIM 관련하여 시도하였던 분들의 코드를 다시 테스트해보았습니다.</strong><br />
+첫번째 <a href="http://groups.google.com/group/android-beginners/browse_thread/thread/aad2577912b065c4/8dc6b9eae6c78a1c?hl=en&lnk=gst&q=sim#8dc6b9eae6c78a1c">링크</a><br />
+code<br />
+[sourcecode language="java"]<br />
+    Cursor cur = getContentResolver().query(<br />
+        Uri.parse("content://sim/adn")<br />
+        ,null<br />
+        ,null<br />
+        ,null<br />
+        ,null<br />
+        );<br />
+[/sourcecode]<br />
+위 코드의 결과는 <strong>Failed to find provider info for sim</strong>sim에 대한 정보는 찾을 수 없다고 나오네요.<br />
+두번 째 <a href="http://groups.google.com/group/android-beginners/browse_thread/thread/9e24207a31da14b4/9d809e62796b29fe?hl=en&lnk=gst&q=sim#9d809e62796b29fe">Link</a><br />
+테스트 코드<br />
+[sourcecode language="java"]<br />
+                Cursor cur = getContentResolver().query(<br />
+                                Uri.parse("content://icc/adn")<br />
+                                ,null<br />
+                                ,null<br />
+                                ,null<br />
+                                ,null<br />
+                                );<br />
+[/sourcecode]<br />
+결과는 <strong> 총 컬럼의 갯수 4개 속성은 아래와 같습니다.<br />
+name<br />
+number<br />
+emails<br />
+_id<br />
+</strong><br />
+위와 같은 컬럼이 나왔으나 실제 데이터값은 나오지 않았습니다.<br />
+만약 sim 대한 정보라면 하나의 정보값을 들어있었어야겠죠.<br />
+좀 더 정보가 필요하여 Contact Provider List 찾아보았습니다.<br />
+<a href="http://www.google.com/codesearch#search/&q=package:android%20%22extends%20ContentProvider%22&type=cs&sq=">링크</a><br />
+안드로이드 레퍼런스 <a href="http://developer.android.com/reference/android/provider/package-summary.html">링크</a><br />
+<strong>안드로이드 시스템 덤프 뜨는 방법 </strong><br />
+[code]dumpsys > dumpsys.txt[/code]<br />
+덤프 파일에서 'content providers'로 검색</p>

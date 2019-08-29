@@ -1,0 +1,82 @@
+---
+layout: post
+status: publish
+published: true
+title: Installation - Gitosis
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 프로젝트 관리를 위한 Gitosis 설치 가이드
+wordpress_id: 37
+wordpress_url: http://ezcocoa.com/?p=37
+date: '2010-09-30 01:10:00 +0900'
+date_gmt: '2010-09-30 01:10:00 +0900'
+categories:
+- Repo
+- Installration
+tags:
+- git
+- gitosis
+- gitostis
+comments: []
+---
+<p>그 동안 Github 호스팅 서비스에서 저장소를 대여하여 프로젝트를 관리하고 있었습니다. 물론 한달에 7달라라는 금액을 내고 사용을 했었죠.<br />
+무료로 접근제한이 되지 않는 공간 또한 대여 받을 수 있습니다.<br />
+오랬동안 금액을 산출해보니 낮은 금액이 아니더라구요. 위험을 조금 감수해서 gitosis를 설치하여 내장으로 관리하기로 했습니다.<br />
+환경은 Parallels 위에 ubuntu를 설치하여 서버로 사용하고 그 위에 gitosis를 설치했습니다. 물론 저는 OS X를 사용해 그 위에 깔면 되지만 그렇게 하지 않은 이유는 따로 가상으로 관리하게 되면 백업효율과 이식성이 높아지기 때문입니다. 단점도 있겠지요.<br />
+현재 제 환경은<br />
+Mac OS X version 10.7.3<br />
+CPU 2.53GHZ Integer Core 2Duo<br />
+RAM 8GB<br />
+SSD를 Master로 HDD SLAVE로 사용하고 있습니다.<br />
+Parallels를 이용하여 ubuntu 를 설치하였고 램은 2GB를 사용합니다.<br />
+그럼 이제 설치를 해보겠습니다.</p>
+<h3>Git 설치하기</h3>
+<p>[code]# sudo apt-get install git-core<br />
+...<br />
+After this operation, 16.3MB of additional disk space will be used. Do you want to continue [Y/n]?<br />
+[/code]<br />
+설치를 하기 위해 추가적인 공간을 사용한다는 의미로 'Y'를 선택해줍니다.<br />
+[code]<br />
+# git --version<br />
+git version 1.6.3.3<br />
+[/code]<br />
+git툴 설치가 완료되었습니다.<br />
+python으로 구성되어 있는 gitosis를 설치하기 위해 그전에 python-setuptools를 설치하도록 하겠습니다.</p>
+<h3>python-setuptools 설치하기</h3>
+<p>[code]<br />
+# apt-get install python-setuptools<br />
+...<br />
+After this operation, 1126kB of additional disk space will be used.<br />
+Do you want to continue [Y/n]?<br />
+[/code]<br />
+설치하기 위한 공간 사용을 의미하므로 'Y'를 눌러주세요.</p>
+<h3>Gitosis 다운로드</h3>
+<p>[code]<br />
+# mkdir /home/<user>/src<br />
+# cd /home/<user>/src<br />
+[/code]<br />
+다운을 받기 위해 디텍토리를 생성하였습니다. <user>는 자신의 홈디렉토리 명을 넣으시면 됩니다.<br />
+[code]<br />
+git clone git://eagain.net/gitosis.git<br />
+Initialized empty Git repository in /root/src/gitosis/.git/<br />
+remote: Counting objects: 614, done.<br />
+remote: Compressing objects: 100% (183/183), done.<br />
+remote: Total 614 (delta 434), reused 594 (delta 422)<br />
+Receiving objects: 100% (614/614), 93.82 KiB, done.<br />
+Resolving deltas: 100% (434/434), done.<br />
+[/code]</p>
+<h3>Gitosis 설치하기</h3>
+<p>[code]<br />
+# cd gitostis<br />
+# python setup.py install<br />
+"result":http://gist.github.com/352769<br />
+[/code]<br />
+이어서 유저 등록 및 추가 저장소 생성에 대해서 작성하도록 하겠습니다.<br />
+<!--more--><br />
+<a href="http://scie.nti.st/2007/11/14/hosting-git-repositories-the-easy-and-secure-way/comments/2419#comment-2419" target="_blank">참조 1</a><br />
+<a href="http://blog.jasonmeridth.com/2010/05/22/gitosis-and-gitweb-part-1.html">참조 2</a></p>

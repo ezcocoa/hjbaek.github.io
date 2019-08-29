@@ -1,0 +1,45 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] Using clear all cookies of UIWebView?"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 714
+wordpress_url: http://ezcocoa.com/?p=714
+date: '2011-04-20 00:13:49 +0900'
+date_gmt: '2011-04-20 00:13:49 +0900'
+categories:
+- iPhone
+tags:
+- c
+- iphone
+- obj
+- delete
+- cleard
+- cookies
+comments: []
+---
+<p>UIWebView에 전 처리 작업 내역이 남아있어 이를 없애고자 할 경우 아래의 코드를 사용하시면 됩니다.<br />
+// 전체 날리기<br />
+[sourcecode language="objc"]<br />
+NSHTTPCookie *cookie;<br />
+NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];<br />
+for (cookie in [storage cookies]) {<br />
+   [storage deleteCookie:cookie];<br />
+}<br />
+[/sourcecode]<br />
+// 선택 날리기<br />
+[sourcecode language="objc"]<br />
+NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];<br />
+  NSArray* facebookCookies = [cookies cookiesForURL:[NSURL URLWithString:@"<br />
+<address>"]];<br />
+  for (NSHTTPCookie *cookie in facebookCookies) {<br />
+    [cookies deleteCookie:cookie];<br />
+  }<br />
+[/sourcecode]</p>

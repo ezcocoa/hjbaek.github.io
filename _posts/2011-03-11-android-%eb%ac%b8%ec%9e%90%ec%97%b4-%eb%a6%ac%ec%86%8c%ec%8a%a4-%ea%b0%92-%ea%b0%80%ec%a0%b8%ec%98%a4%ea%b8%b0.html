@@ -1,0 +1,52 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] 문자열 리소스 값 가져오기."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: http://android.artofcode.org/xe/?mid=lecture&page=1&document_srl=1535
+wordpress_id: 653
+wordpress_url: http://ezcocoa.com/?p=653
+date: '2011-03-11 02:22:09 +0900'
+date_gmt: '2011-03-11 02:22:09 +0900'
+categories:
+- Android
+tags:
+- android
+- identifier
+- resource
+- string
+comments:
+- id: 6
+  author: psyinv
+  author_email: rlrmadydwls@naver.com
+  author_url: http://None
+  date: '2016-10-18 10:27:15 +0900'
+  date_gmt: '2016-10-18 10:27:15 +0900'
+  content: 감사합니다! 덕분에 잘 해결 되었습니다
+- id: 7
+  author: Rooney
+  author_email: mr.hjbaek@gmail.com
+  author_url: http://ezcocoa.com
+  date: '2016-10-19 12:05:44 +0900'
+  date_gmt: '2016-10-19 12:05:44 +0900'
+  content: 도움이 되었다니 감사합니다~
+---
+<p>getString() 메서드에서 문자열 리소스 아이디를 직접 명시해도 되지만, 컴파일될 때마다 R.java의 내용은 바뀔 수 있으므로 다음과 같은 방법을 이용할 수 있다.</p>
+<pre class="java">
+String test = getResources().getString(getResources().getIdentifier("hello", "string", "kr.co.wikibook.c2dm_messenger"));
+</pre>
+<p>위의 코드의 getIdentifier() 메서드는 특정 리소스의 리소스 아이디를 가져오는 메서드이다. 그리고, 첫 번째 인자인 hello는 아래와 같은 (문자열)리소스 이름이며 두 번재 인자인 string은 리소스의 종류를 가르킨다. 마지막으로 세 번재 인자는 리소스가 속한 패키지 이름이다.</p>
+<pre class="xml">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="hello">Hello World, C2DMMessengerActivity!</string>
+<string name="app_name">C2DM Messenger</string>
+</resources>
+</pre>

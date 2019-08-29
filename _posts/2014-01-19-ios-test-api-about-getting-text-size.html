@@ -1,0 +1,37 @@
+---
+layout: post
+status: publish
+published: true
+title: iOS > Test API about getting text size.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 더욱 더 정밀해진 아이폰 API들...
+wordpress_id: 2193
+wordpress_url: http://ezcocoa.com/?p=2193
+date: '2014-01-19 06:41:25 +0900'
+date_gmt: '2014-01-19 06:41:25 +0900'
+categories:
+- iPhone
+tags:
+- sizeWithAttributes
+- sizeWithFont
+comments: []
+---
+<p>It's new API to get the size of text for iOS7.</p>
+<pre class="objc">NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14]};
+CGSize titleSize = [str sizeWithAttributes:attributes];
+NSLog(@"New API > string width->%f, height->%f",titleSize.width, titleSize.height);
+</pre>
+<p>It's deprecated API to get the size of text on iOS7.</p>
+<pre class="objc">titleSize = [str sizeWithFont:[UIFont systemFontOfSize:14]];
+NSLog(@"Old API > string width->%f, height->%f",titleSize.width, titleSize.height);
+</pre>
+<pre># New API > string width->70.322000, height->16.702000
+# Old API > string width->71.000000, height->17.000000
+</pre>
+<p>The new api is correct more then the old api. but the new api is only able to use on iOS7. if you support the under version of iOS 7. you should use the old one.</p>

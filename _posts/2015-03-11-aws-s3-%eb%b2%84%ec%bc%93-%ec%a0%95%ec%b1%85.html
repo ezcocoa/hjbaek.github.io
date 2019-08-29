@@ -1,0 +1,45 @@
+---
+layout: post
+status: publish
+published: true
+title: AWS - S3 버켓 정책
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2447
+wordpress_url: http://ezcocoa.com/?p=2447
+date: '2015-03-11 03:01:10 +0900'
+date_gmt: '2015-03-11 03:01:10 +0900'
+categories:
+- AWS
+tags:
+- aws
+- bucket
+- s3
+- policy
+comments: []
+---
+<p>아마존 S3에서 기본적으로 버켓은 Private로 생성이 된다. 대량의 파일을 업로드 하고 이를 공유할려고 한다면 일일이 권한을 바꿔주어야 한다. 매우 반복적인 작업이 되므로 아래와 같이 정책을 생성하여, 버켓에 적용하게 되면, 버켓 내부에 포함된 모든 파일을 쉽게 접근 할 수 있다.</p>
+<hr />
+<p>Example)</p>
+<pre class="json">
+{
+  "Id": "Policy125042226491",
+  "Statement": [
+    {
+      "Sid": "Stmt2123042135427",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::mybucket/*",
+      "Principal": "*"
+    }
+  ]
+}
+</pre>
+<p>위와 같은 JSON구조를 가지게 된다. 포멧을 외울 필요 없이 아마존은 <a href="http://awspolicygen.s3.amazonaws.com/policygen.html">정책 생성기 툴</a>을 지원한다.</p>

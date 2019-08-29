@@ -1,0 +1,70 @@
+---
+layout: post
+status: publish
+published: true
+title: Ubuntu - ejabberd 설치하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2401
+wordpress_url: http://ezcocoa.com/?p=2401
+date: '2015-02-10 02:29:25 +0900'
+date_gmt: '2015-02-10 02:29:25 +0900'
+categories:
+- Ubuntu
+tags:
+- setup
+- install
+- ejabberd
+comments: []
+---
+<p>ejabberd를 설치하기 위해 root 권한으로 터미널에 접속하여 아래와 같은 절차로 진행한다.</p>
+<hr />
+<p>version : &nbsp;2.1.11</p>
+<h3>Step 1 - Jabbed 설치하기</h3>
+<pre>apt-get -y install ejabberd&nbsp;</pre>
+<pre>설치 후 경로들</pre>
+<p>&nbsp; &nbsp;기본 설치 경로 :&nbsp;/etc/ejabberd/ejabberd.cfg</p>
+<p>&nbsp; &nbsp;홈 경로 :&nbsp;/var/lib/ejabberd</p>
+<p style="text-align: justify">
+  &nbsp; &nbsp;SSL 인증 경로 :&nbsp;/etc/ejabberd/ejabberd.pem</p>
+<h3>Step 2 - 관리자 유저 설정하기</h3>
+<p>비밀번호를 설정하자!</p>
+<pre>ejabberdctl register admin localhost password</pre>
+<h3>Step 3 관리자에게 권한을 부여하자.</h3>
+<p>기본적으로, eJabberd는 호스트 네임인 &lsquo;localhost&rsquo;를 사용한다. 호스트 네임을 변경할려면 config 파일에서 변경할 수 있다.&nbsp;</p>
+<p>그래서 기본적으로 &ldquo;admin@localhost&rdquo;로 지정되며, 아래와 같이 수정될 수 있다.</p>
+<pre>&nbsp;
+%% Admin user
+{cal, admin, {user, &ldquo;admin&rdquo;, &ldquo;localhost&rdquo;}}.
+%% Hostname
+{hosts, [&ldquo;localhost&rdquo;]}.</pre>
+<pre>&nbsp;</pre>
+<pre>** Ubuntu에 설치 후 접속 권한 local로 한정되어 있다. 이것을 주석 처리해주자.</pre>
+<pre>%% &nbsp;{access, local, [{allow, local}]}.</pre>
+<h3>Step 4 eJabberd 재시작하기</h3>
+<pre>service ejabberd restart</pre>
+<p>이제 지정된 IP의 포트 번호 <strong>5280</strong>을 통해 eJabbered Web Admin interface에 접속 할 수 있다.</p>
+<pre>http://198.199.90.115:5280/admin</pre>
+<p>로그인 하기 위해서는 &nbsp;user@domain (우리의 경우 &ldquo;admin@localhost&rdquo;로 접속 할 수 있다.):</p>
+<h3>Stem 5 새로운 사용자 추가하기</h3>
+<blockquote>
+<ol>
+<li>Web Admin Interface 접속</li>
+<li>Vertual Hosts > Localhost > Users 순서대로 클릭</li>
+<li>User, Password 입력&nbsp;</li>
+</ol>
+</blockquote>
+<p>물론 커맨드라인을 통해서도 입력이 가능하다.</p>
+<pre>$ ejabberdctl register test1 localhost F2imbMo45</pre>
+<pre>** Failed RPC connection to the node 문제 **</pre>
+<pre>권한 문제로 sudo를 추가하면 된다.</pre>
+<pre>$ sudo ejabberdctl register test1 localhost F2imbMo45</pre>
+<p><strong>이후 클라이언트 설치는 아래를 참조</strong></p>
+<p>참조 :&nbsp;<a href="https://www.digitalocean.com/community/tutorials/how-to-install-ejabberd-xmpp-server-on-ubuntu">https://www.digitalocean.com/community/tutorials/how-to-install-ejabberd-xmpp-server-on-ubuntu</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

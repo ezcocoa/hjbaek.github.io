@@ -1,0 +1,53 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Java] Regex (정규식)"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 739
+wordpress_url: http://ezcocoa.com/?p=739
+date: '2011-05-12 01:30:16 +0900'
+date_gmt: '2011-05-12 01:30:16 +0900'
+categories:
+- JAVA
+tags:
+- java
+- regex
+- 정규식
+comments: []
+---
+<p>사용 1)<br />
+[sourcecode language="java"]<br />
+Pattern p = Pattern.compile("패턴");<br />
+Matcher m = p.matcher("문자열");<br />
+boolean b = m.matches();<br />
+[/sourcecode]<br />
+사용 2)<br />
+[sourcecode lanugage="java"]<br />
+boolean b = Pattern.matches("패턴", "문자열 패턴");<br />
+[/sourcecode]<br />
+정규표현식 문법<br />
+^  : 문자열의 시작<br />
+$ : 문자열의 종료<br />
+.  : 임의의 한 문자를 나타냄(문자의 종류는 상관없다)<br />
+|  : or<br />
+?  : 앞 문자가 없거나 하나있음<br />
++  : 앞 문자가 하나 이상<br />
+*  : 앞 문자가 없거나 무한정 많음<br />
+[] : 문자 클래스를 지정할 때 사용. 문자의 집합이나 범위를 나타내면 두 문자 사이는 '-' 기호로 범위를 나타낸다. []내에서 ^가 선행하여 나타나면 not을 나타냄<br />
+{} : 선행문자가 나타나는 횟수 또는 범위<br />
+\w : 알파벳이나 숫자<br />
+\\ : 알파벳이나 숫자를 제외한 문자<br />
+\d : 숫자 [0-9]와 동일<br />
+\D : 숫자를 제외한 모든 문자<br />
+^[0-9]*$ : 숫자만<br />
+^[a-zA-Z]*$ : 영문자만<br />
+^[가-힣]*$ : 한글만<br />
+^[a-zA-Z0-9]*$ : 영어/숫자만<br />
+자세한 사용 예는 Page2에서 regex로 검색하십시오.</p>

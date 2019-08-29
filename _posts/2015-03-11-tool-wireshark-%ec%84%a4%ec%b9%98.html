@@ -1,0 +1,41 @@
+---
+layout: post
+status: publish
+published: true
+title: Tool - wireshark 설치
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2449
+wordpress_url: http://ezcocoa.com/?p=2449
+date: '2015-03-11 05:20:47 +0900'
+date_gmt: '2015-03-11 05:20:47 +0900'
+categories:
+- Tool
+tags:
+- ip
+- tcp
+- network
+- capture
+- socket
+- wireshark
+comments: []
+---
+<p>brew를 이용한 whireshark 설치 방법에 대해서 기술한다.</p>
+<hr />
+<p>1) 기존 wireshark 삭제하기</p>
+<pre>
+$ sudo bash -c "$(curl -sL https://raw.github.com/x0b4dc0d3/wireshark-uninstall-osx/master/uninstall.sh)"
+</pre>
+<p>2) brew를 이용하여 설치하기</p>
+<pre>
+$ brew install wireshark
+</pre>
+<p>만약 GUI버전이 필요하다면 QT와 함께 설치 해주어야 한다.</p>
+<pre>
+$ brew reinstall wireshark --with-qt
+</pre>

@@ -1,0 +1,52 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - ActionBar Title Center 정렬하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2358
+wordpress_url: http://ezcocoa.com/?p=2358
+date: '2014-10-31 03:06:19 +0900'
+date_gmt: '2014-10-31 03:06:19 +0900'
+categories:
+- Android
+tags:
+- align
+- title
+- actionbar
+- ceter
+comments: []
+---
+<p>ActionBar Title을 Center에 또는 다르게 정렬하고 싶을 때 아래와 같이 할 수 있다.</p>
+<hr />
+<p><a href="http://stackoverflow.com/questions/12387345/how-to-center-align-the-actionbar-title-in-android">ref</a></p>
+<p>ActionBar에 들어갈 레이아웃을 생성하자.</p>
+<pre class="xml">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="my Title"
+        android:textColor="#ffffff"
+        android:id="@+id/mytext"
+        android:textSize="18sp" />
+</LinearLayout>
+</pre>
+<p><strong>Activity</strong>의 <strong>onCreate</strong>부분에서 아래와 같이 넣어주자.</p>
+<pre class="java">getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+getSupportActionBar().setCustomView(R.layout.abs_layout);
+</pre>
+<p>이제 다른 타이틀 필드를 가진 <strong>ActionBar</strong>를 가졌다. 이를 사용하기 위해서 아래와 같이 입력해주자.</p>
+<pre class="java">getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.yourimage));
+</pre>

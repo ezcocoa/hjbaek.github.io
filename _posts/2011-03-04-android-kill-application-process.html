@@ -1,0 +1,73 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] Kill Application Process"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 641
+wordpress_url: http://ezcocoa.com/?p=641
+date: '2011-03-04 08:51:55 +0900'
+date_gmt: '2011-03-04 08:51:55 +0900'
+categories:
+- Android
+tags:
+- android
+- process
+- application
+- exit
+- froyo
+- kill
+- quit
+comments: []
+---
+<p>잘 정리되어있는 휴님의 자료를 참조하여 정리해본다.<br />
+출처 : <a href="http://huewu.blog.me/110089551997">http://huewu.blog.me/110089551997</a><br />
+두가지 방법이 존재 하게 되는데 첫번째로 아래와 같이 확인 할 수 있다.<br />
+첫 번째 방법<br />
+[sourcecode language="JAVA"]<br />
+System.exit();<br />
+[/sourcecode]<br />
+두번 째 방법<br />
+[sourcecode language="JAVA"]<br />
+ public void requestKillProcess(final Context context){<br />
+    	//#1. first check api level.<br />
+    	int sdkVersion = Integer.parseInt(Build.VERSION.SDK);<br />
+    	if (sdkVersion < 8){<br />
+    		//#2. if we can use restartPackage method, just use it.<br />
+    		ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);<br />
+    		am.restartPackage(getPackageName());<br />
+    	}else{<br />
+    		//#3. else, we should use killBackgroundProcesses method.<br />
+    		new Thread(new Runnable() {<br />
+    			public void run() {<br />
+    				ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);<br />
+    				String name = getApplicationInfo().processName;<br />
+    				RunningServiceInfo si;<br />
+    				//pooling the current application process importance information.<br />
+    				while(true){<br />
+    					List<RunningAppProcessInfo> list = am.getRunningAppProcesses();<br />
+    					for(RunningAppProcessInfo i : list){<br />
+    						if(i.processName.equals(name) == true){<br />
+    							//#4. kill the process,<br />
+    							//only if current application importance is less than IMPORTANCE_BACKGROUND<br />
+    							if(i.importance >= RunningAppProcessInfo.IMPORTANCE_BACKGROUND)<br />
+    								am.restartPackage(getPackageName());	//simple wrapper of killBackgrounProcess<br />
+    							else<br />
+    								Thread.yield();<br />
+    							break;<br />
+    						}<br />
+    					}<br />
+    				}<br />
+    			}<br />
+    		}, "Process Killer").start();<br />
+    	}<br />
+    }<br />
+[/sourcecode]<br />
+ 휴님이 블러그를 참조하였다.<br />
+테스트를 해보니 동작이 안된다. -_- 내가 잘못한건가?</p>

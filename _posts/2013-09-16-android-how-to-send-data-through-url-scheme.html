@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: Android > how to send data through URL Scheme.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1886
+wordpress_url: http://ezcocoa.com/?p=1886
+date: '2013-09-16 07:39:33 +0900'
+date_gmt: '2013-09-16 07:39:33 +0900'
+categories:
+- Android
+tags: []
+comments: []
+---
+<p>You can do following this.<br />
+I referred following site.<br />
+<a href="http://stackoverflow.com/questions/2430045/how-to-register-some-url-namespace-myapp-app-start-for-accessing-your-progr/2430468#2430468">link</a><br />
+To be able to start your app from link with custom scheme 'ezcocoa' in browser / mail, set intent filter as follows.<br />
+[sourcecode language="xml"]<br />
+&amp;lt;intent-filter&amp;gt;<br />
+  &amp;lt;action android:name=&amp;quot;android.intent.action.VIEW&amp;quot;/&amp;gt;<br />
+  &amp;lt;category android:name=&amp;quot;android.intent.category.DEFAULT&amp;quot;/&amp;gt;<br />
+  &amp;lt;category android:name=&amp;quot;android.intent.category.BROWSABLE&amp;quot;/&amp;gt;<br />
+  &amp;lt;data android:scheme=&amp;quot;ezcocoa&amp;quot;/&amp;gt;<br />
+&amp;lt;/intent-filter&amp;gt;<br />
+[/sourcecode]<br />
+I've tested few solution.<br />
+but it has some problem that i got some like "Not found Activity" when i register above these at Main Activity that when you create app.<br />
+So I've to make another activity class and put above filter.<br />
+You can do as I could do. <br />
+this is app what i made for test application.<br />
+<a href="https://github.com/hjbaek/URLSchema-Example/archive/master.zip">Download link</a></p>

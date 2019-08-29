@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] how to connect the android phone on ubuntu 10.4"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 500
+wordpress_url: http://ezcocoa.com/?p=500
+date: '2011-01-17 05:45:39 +0900'
+date_gmt: '2011-01-17 05:45:39 +0900'
+categories:
+- Android
+tags:
+- android
+- device
+- ubuntu
+- connect
+- 인식
+comments: []
+---
+<p>OS : Ubuntu 10.4<br />
+리눅스 기반에서 시뮬이 아닌 디바이스로 개발을 하기 위해 몇가지 절차가 존재한다.<br />
+<a href="http://developer.android.com/guide/developing/device.html" target="_blank"> Android Developer Site</a>에 정의 되어 있으며, 설정을 하기 전에 연결하게 되면 퍼미션 문제로 디바이스 인식을 못한다.<br />
+아래와 같이 간단하게 문제를 해결 할 수 있다.<br />
+<strong>sudo vi /etc/udev/rules.d/51-android.rules</strong><br />
+// 넥서스 원<br />
+<code>SUBSYSTEM=="usb", SYSFS{idVendor}=="0bb4", MODE="0666"<br />
+SUBSYSTEM=="usb", SYSFS{idVendor}=="18d1", MODE="0666"<br />
+</code><br />
+// 갤럭시 S<br />
+<code>SUBSYSTEM=="usb", SYSFS{idVendor}=="04e8", MODE="0666"<br />
+</code><br />
+sudo reload udev<br />
+안드로이드 개발자 사이트를 참조하면서 하기 바란다.</p>

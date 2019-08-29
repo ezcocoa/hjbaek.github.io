@@ -1,0 +1,35 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] ALAssetsLibrary"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 628
+wordpress_url: http://ezcocoa.com/?p=628
+date: '2011-02-25 08:42:34 +0900'
+date_gmt: '2011-02-25 08:42:34 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- library
+- data
+- obj
+- assert
+- ALAssetsLibrary
+- photo
+comments: []
+---
+<p>i think how to make from NSAsserts Obj to image file..?<br />
+..<br />
+Assuming you already have access to an array of ALAsset Obj,<br />
+you can retrieve their URL like this :<br />
+[sourcecode language="ObjC"]<br />
+NSData *assetData = [NSData dataWithContentsOfURL:someAsset.defaultRepresentation.url];<br />
+[/sourcecode]</p>

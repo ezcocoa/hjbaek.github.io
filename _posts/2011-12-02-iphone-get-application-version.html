@@ -1,0 +1,31 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - Get Application Version
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: Get application version.
+wordpress_id: 1303
+wordpress_url: http://ezcocoa.com/?p=1303
+date: '2011-12-02 07:30:21 +0900'
+date_gmt: '2011-12-02 07:30:21 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- app
+- version
+- application
+- info
+- get
+comments: []
+---
+<p>[sourcecode language="objc"]<br />
+NSString* version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];<br />
+[/sourcecode]</p>

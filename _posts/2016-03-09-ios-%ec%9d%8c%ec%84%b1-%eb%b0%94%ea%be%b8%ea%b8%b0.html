@@ -1,0 +1,131 @@
+---
+layout: post
+status: publish
+published: true
+title: iOS - 음성 바꾸기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2653
+wordpress_url: http://ezcocoa.com/?p=2653
+date: '2016-03-09 11:41:36 +0900'
+date_gmt: '2016-03-09 11:41:36 +0900'
+categories:
+- iPhone
+tags:
+- change
+- 변경
+- Swift
+- voice
+- 보이스
+- 수정
+comments: []
+---
+<p><a href="http://www.ikiapps.com/tips/2015/12/30/setting-voice-for-tts-in-ios.html">원문</a></p>
+<p><a href="http://useyourloaf.com/blog/synthesized-speech-from-text/">필독</a><br />
+... 생략</p>
+<p>iOS 기능 중 텍스트를 음성으로 내주는 기능있습니다. 정말 강력한 기능이고, 또한 남자 또는 여자 목소리 또한 선택이 가능합니다.</p>
+<p>아래에 보시면 언어에 따른 각 다른 목소리를 골라 사용할 수 있습니다.</p>
+<pre>[AVSpeechSynthesisVoice 0x17e30940] Language: ar-SA, Name: Maged, Quality: Default,
+[AVSpeechSynthesisVoice 0x17d3e150] Language: cs-CZ, Name: Zuzana, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e79700] Language: da-DK, Name: Sara, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e50c50] Language: de-DE, Name: Anna, Quality: Default,
+[AVSpeechSynthesisVoice 0x17ec30f0] Language: el-GR, Name: Melina, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e687f0] Language: en-AU, Name: Karen, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e23be0] Language: en-GB, Name: Daniel, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e6ffc0] Language: en-IE, Name: Moira, Quality: Default,
+[AVSpeechSynthesisVoice 0x17ec79b0] Language: en-US, Name: Samantha (Enhanced), Quality: Enhanced,
+[AVSpeechSynthesisVoice 0x17e795a0] Language: en-US, Name: Samantha, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e75900] Language: en-ZA, Name: Tessa, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e27ec0] Language: es-ES, Name: Monica, Quality: Default,
+[AVSpeechSynthesisVoice 0x17ec5e10] Language: es-MX, Name: Paulina, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e799c0] Language: fi-FI, Name: Satu, Quality: Default,
+[AVSpeechSynthesisVoice 0x17ec61c0] Language: fr-CA, Name: Amelie, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e75b10] Language: fr-FR, Name: Thomas, Quality: Default,
+[AVSpeechSynthesisVoice 0x17ee2460] Language: he-IL, Name: Carmit, Quality: Default,
+[AVSpeechSynthesisVoice 0x17ef5140] Language: hi-IN, Name: Lekha, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e6f840] Language: hu-HU, Name: Mariska, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e59bd0] Language: id-ID, Name: Damayanti, Quality: Default,
+[AVSpeechSynthesisVoice 0x17d2c950] Language: it-IT, Name: Alice, Quality: Default,
+[AVSpeechSynthesisVoice 0x17ebaec0] Language: ja-JP, Name: Kyoko, Quality: Default,
+[AVSpeechSynthesisVoice 0x17d42100] Language: ko-KR, Name: Yuna, Quality: Default,
+[AVSpeechSynthesisVoice 0x17ee3130] Language: nl-BE, Name: Ellen, Quality: Default,
+[AVSpeechSynthesisVoice 0x17d637d0] Language: nl-NL, Name: Xander, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e7c8b0] Language: no-NO, Name: Nora, Quality: Default,
+[AVSpeechSynthesisVoice 0x17d3e430] Language: pl-PL, Name: Zosia, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e33190] Language: pt-BR, Name: Luciana, Quality: Default,
+[AVSpeechSynthesisVoice 0x17eabf00] Language: pt-PT, Name: Joana, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e2a650] Language: ro-RO, Name: Ioana, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e232b0] Language: ru-RU, Name: Milena, Quality: Default,
+[AVSpeechSynthesisVoice 0x17ee6830] Language: sk-SK, Name: Laura, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e64a10] Language: sv-SE, Name: Alva, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e62fc0] Language: th-TH, Name: Kanya, Quality: Default,
+[AVSpeechSynthesisVoice 0x17df4080] Language: tr-TR, Name: Yelda, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e76a10] Language: zh-CN, Name: Ting-Ting (Enhanced), Quality: Enhanced,
+[AVSpeechSynthesisVoice 0x17db4850] Language: zh-CN, Name: Ting-Ting, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e2ecf0] Language: zh-HK, Name: Sin-Ji, Quality: Default,
+[AVSpeechSynthesisVoice 0x17e224c0] Language: zh-TW, Name: Mei-Jia, Quality: Default]
+</pre>
+<p>위 코드에 맞는 언어/나라</p>
+<pre>Arabic (Saudi Arabia) - ar-SA
+Chinese (China) - zh-CN
+Chinese (Hong Kong SAR China) - zh-HK
+Chinese (Taiwan) - zh-TW
+Czech (Czech Republic) - cs-CZ
+Danish (Denmark) - da-DK
+Dutch (Belgium) - nl-BE
+Dutch (Netherlands) - nl-NL
+English (Australia) - en-AU
+English (Ireland) - en-IE
+English (South Africa) - en-ZA
+English (United Kingdom) - en-GB
+English (United States) - en-US
+Finnish (Finland) - fi-FI
+French (Canada) - fr-CA
+French (France) - fr-FR
+German (Germany) - de-DE
+Greek (Greece) - el-GR
+Hindi (India) - hi-IN
+Hungarian (Hungary) - hu-HU
+Indonesian (Indonesia) - id-ID
+Italian (Italy) - it-IT
+Japanese (Japan) - ja-JP
+Korean (South Korea) - ko-KR
+Norwegian (Norway) - no-NO
+Polish (Poland) - pl-PL
+Portuguese (Brazil) - pt-BR
+Portuguese (Portugal) - pt-PT
+Romanian (Romania) - ro-RO
+Russian (Russia) - ru-RU
+Slovak (Slovakia) - sk-SK
+Spanish (Mexico) - es-MX
+Spanish (Spain) - es-ES
+Swedish (Sweden) - sv-SE
+Thai (Thailand) - th-TH
+Turkish (Turkey) - tr-TR
+</pre>
+<p>실제로 사용 하는 방법을 알아보겠습니다.</p>
+<pre class="swift">let voice = AVSpeechSynthesisVoice(identifier: AVSpeechSynthesisVoiceIdentifierAlex)
+</pre>
+<p>다른 목소리를 사용하기 위해서, 이름으로 매칭하여 사용 할 수 있습니다. [code]identifier[/code]으로는 매치가 안됩니다.</p>
+<h3>목록 불러오기</h3>
+<pre class="swift">var voiceToUse: AVSpeechSynthesisVoice?
+for voice in AVSpeechSynthesisVoice.speechVoices() {
+    if #available(iOS 9.0, *) {
+        if voice.name == "Karen" {
+        voiceToUse = voice
+        }
+    }
+}
+</pre>
+<p>텍스트를 주어 음성을 내는 방법은 아래와 같습니다.</p>
+<pre class="swift">let utterance = AVSpeechUtterance(string: "Hello from iOS.")
+utterance.voice = voiceToUse
+let synth = AVSpeechSynthesizer()
+synth.speakUtterance(utterance)
+</pre>
+<p>끝</p>

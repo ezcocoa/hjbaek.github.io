@@ -1,0 +1,60 @@
+---
+layout: post
+status: publish
+published: true
+title: SQL - trigger, update timestamp when row is updated.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2266
+wordpress_url: http://ezcocoa.com/?p=2266
+date: '2014-02-26 02:17:37 +0900'
+date_gmt: '2014-02-26 02:17:37 +0900'
+categories:
+- MySQL
+tags:
+- update
+- stamp
+- time
+- trigger
+comments: []
+---
+<p><a href="http://stackoverflow.com/questions/1035980/postgresql-update-timestamp-when-row-is-updated">Ref</a></p>
+<p>Sometime we need to update timestamp-column when row is changed. there are a lot of solution that you do. figure out about it...<br />
+Like this.<br />
+one way to just do updating sql or other way to use trigger.<br />
+I am going to tell you about trigger is good sometime is not.</p>
+<p>I got following post from stackoverflow, some people uploaded<br />
+In Mysql, do like the following thing.</p>
+<pre class="sql">
+create table ab (
+  id int,
+  changeTimestamp timestamp
+    NOT NULL
+    default CURRENT_TIMESTAMP
+    on update CURRENT_TIMESTAMP
+);
+</pre>
+<p>but In PostgreSQL is not worked. so there is other solution i got from stackoverflow. you can refer the following thing.<br />
+<strong>comment</strong><br />
+Create a function that updates the changetimestamp column of a table like so:</p>
+<pre class="sql">
+CREATE OR REPLACE FUNCTION update_changetimestamp_column()
+RETURNS TRIGGER AS $$
+BEGIN
+   NEW.changetimestamp = now();
+   RETURN NEW;
+END;
+$$ language 'plpgsql';
+</pre>
+<p>Create a trigger on the table that calls the update_changetimestamp_column() function whenever an update occurs like so:</p>
+<pre class="sql">
+CREATE TRIGGER update_ab_changetimestamp BEFORE UPDATE
+ON ab FOR EACH ROW EXECUTE PROCEDURE
+update_changetimestamp_column();
+</pre>
+<p>That's the solution i got. if you need more information, just refer the top of url. thanks for reading.</p>

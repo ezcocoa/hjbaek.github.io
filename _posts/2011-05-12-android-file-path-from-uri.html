@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] File path from uri."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 745
+wordpress_url: http://ezcocoa.com/?p=745
+date: '2011-05-12 04:39:09 +0900'
+date_gmt: '2011-05-12 04:39:09 +0900'
+categories:
+- Android
+tags:
+- android
+- file
+- path
+- uri
+comments: []
+---
+<p>[sourcecode language="java"]<br />
+public String getRealPathFromURI(Uri contentUri)<br />
+{<br />
+    // can post image<br />
+    String [] proj={MediaStore.Images.Media.DATA};<br />
+    Cursor cursor = managedQuery( contentUri,<br />
+        proj, // Which columns to return<br />
+        null, // WHERE clause; which rows to return (all rows)<br />
+        null, // WHERE clause selection arguments (none)<br />
+        null); // Order-by clause (ascending by name)<br />
+    int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);<br />
+    cursor.moveToFirst();<br />
+    return cursor.getString(column_index);<br />
+}<br />
+[/sourcecode]</p>

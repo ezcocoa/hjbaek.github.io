@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - Capture UIView to an Image
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 948
+wordpress_url: http://ezcocoa.com/?p=948
+date: '2011-08-30 02:44:46 +0900'
+date_gmt: '2011-08-30 02:44:46 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- image
+- 생성
+- capture
+- uiview
+- 객체
+- 이미지
+comments: []
+---
+<p>출처 : http://www.gosw.kr/<br />
+뷰를 이미지 객체로 생성하는 법입니다.<br />
+[sourcecode language="ObjC"]<br />
+- (void) snapUIView {<br />
+  UIGraphicsBeginImageContext(self.view.bounds.size);<br />
+  [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];<br />
+  UIImage *myImage = UIGraphicsGetImageFromCurrentImageContext();<br />
+  UIGraphicsEndImageContext();<br />
+  UIImageWriteToSavedPhotosAlbum(myImage, nil, nil, nil);<br />
+}<br />
+[/sourcecode]</p>

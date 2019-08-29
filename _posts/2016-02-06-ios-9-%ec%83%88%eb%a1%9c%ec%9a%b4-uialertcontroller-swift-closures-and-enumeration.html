@@ -1,0 +1,127 @@
+---
+layout: post
+status: publish
+published: true
+title: iOS 9 - 새로운 UIAlertController, Swift Closures and Enumeration
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2559
+wordpress_url: http://ezcocoa.com/?p=2559
+date: '2016-02-06 06:43:33 +0900'
+date_gmt: '2016-02-06 06:43:33 +0900'
+categories:
+- iPhone
+tags:
+- actionsheet
+- alert
+- Closures
+- Swift
+- UIAlertController
+comments: []
+---
+<p><a href="http://www.appcoda.com/uialertcontroller-swift-closures-enum/">원본 자료</a></p>
+<p>iOS 8 SDK가 나오면서, 그렇게 큰 관심을 두가지 변화 점에 대해서 설명하고자 한다.<br />
+이전에는 <strong>UIActionSheet</strong>와 <strong>UIAlertView</strong>가 사용되었다면, 이제는 <strong>UIAlertController</strong>라는 클래스를 대체 사용하여야 한다.</p>
+<p>iOS 8에서, 앱 내 Alert 메시지를 표현하고 싶다면, 위에서 언급한 <strong>UIAlertSheet</strong>와 <strong>UIAlertView</strong>가 아닌 <strong>UIAlertController</strong>를 사용하여야 한다. UIAlertController내 Enum값으로 두가지 스타일을 제공한다. 스타일 설정으로 우리는 <strong>UIAlertSheet</strong>와 <strong>UIAlertView</strong>를 선택 할 수 있다. 그냥 둘중에 하나만 선택하며 되는것이다. 또한 우리가 액션을 등록할 때 <strong>ex)UIAlertViewDelegate</strong>를 사용하였다면, 이제는 closures나, Objective-C에서의 블럭 코드를 사용해야 한다.</p>
+<hr />
+<p>이 소개 페이지에서는 UIAlertConroller 클래스 사용법과 alert message표현 방법과 action sheet에 대해서 설명할 것이다.</p>
+<p><img src="http://13.124.100.73/wp-content/uploads/2016/02/actionsheetNewImage-1.png" alt="NewImage" title="NewImage.png" border="0" width="399" height="228" /></p>
+<p>자 시작해보자.</p>
+<h3>새로운 Xcode 프로젝트 생성</h3>
+<p>데모하기에는 새로운 프로젝트를 생성하는 방법이 가장 좋다. 자 Single View Application 템플릿을 선택하고, UIAlertDemo라는 이름으로 프로젝트를 생성해보자.</p>
+<p>!! Swift Language 선택하는 것을 잊지 말도록!.</p>
+<p>여기서는 Xcode 6 Beta를 사용했다는 것을 염두해 두길 바란다. (번역자 데모 실행 7버전도 정상적으로 동작함)</p>
+<p>Xcode 6에서는 기본적으로 Size Classes가 활성화 된다.<br />
+!! Size Classes기능은 모든 화면을 자동으로 수용하는 기능이다.</p>
+<p>여기서는 간단하게 Size Classes 기능을 비활성화 하는 것으로 한다. <strong>Main.storyboard</strong>에 File inspector옵션에서 "Use Size Classes"기능을 체크를 해지하자. 체크를 해지하게 되면 Device Type선택 창이 보여질 것이고. 우리는 iPhone을 선택 할 것이다.</p>
+<p>화면은 아래와 같이 볼 수 있을 것이며, 간단한 버튼 컴퍼넌트를 드래그 하여 넣어주자. 제목은 간단하게 "Hello Alert"로 넣어주자.</p>
+<p><img src="http://13.124.100.73/wp-content/uploads/2016/02/actionsheetNewImage1-1.png" alt="NewImage" title="NewImage.png" border="0" width="160" height="297" /></p>
+<h3>Action 메서드 추가하기</h3>
+<p><strong>ViewController.swift</strong>에 아래와 같이 코드를 작성해주자.이는 나중에 "Hello World" 버튼을 클릭했을 때 취해지는 액션 메서드이다. 추후 스토리보드에서 버튼과 저 메서드를 따로 연결 시켜주어야 한다.</p>
+<pre class="swift">
+@IBAction func showAlert() {
+}
+</pre>
+<p>알다시피, <strong>Outlet</strong>과<strong>Action</strong>은 스토리보드에서 소스코드와 UI Object를 연결하게 해준다.</p>
+<p>Swift에서는 메서드 앞에 <strong>@IBAction</strong> 붙여주면 된다.</p>
+<p>자 그러면 이제 실제로 메서드와 UI Object를 연결해보자.</p>
+<p>Document Outline에서, <kbd>CTRL</kbd>을 누르고, View Controller에을 클릭 후 "Hello Alert"까지 드래그 해주자 그리고 "showAlert"를 선택해주자.</p>
+<p>아래의 그림과 같이 될 것이다.</p>
+<p><img src="http://13.124.100.73/wp-content/uploads/2016/02/actionsheetNewImage2-1.png" alt="NewImage" title="NewImage.png" border="0" width="264" height="156" /></p>
+<h3>실제 Alert를 표현하기 위해 UIAlertViewController를 사용하기</h3>
+<p>거의 모든 설정이 완료되었다. 이번에는 간단하게 alert message를 표현하는 가장 기본이 되는 것을 설명할 것이다. 간단하게 표현하기 위해 기초가 되는 것은 아래와 같다.</p>
+<ul>
+<li>
+<p>UIAlertController 객체 생성! (title, message, alert controller의 스타일 선택)</p>
+</li>
+<li>
+<p>UIAlertAction 생성과 위에서 생성한 alert controller에 반인딩!</p>
+</li>
+<li>
+<p>마지막으로, <strong>presentViewController</strong> 메서드를 호출함으로써 alert controller 을 보여주기!</p>
+</li>
+</ul>
+<p>우리는 swift를 사용하고, 위 룰에 충족 시킨다면 코드는 아래와 같이 나올 것이다.</p>
+<pre class="swift"> @IBAction func showAlert() {
+        let alertController = UIAlertController(title: "Hey AppCoda", message: "What do you want to do?", preferredStyle: .Alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        presentViewController(alertController, animated: true, completion: nil)
+}
+</pre>
+<p>간단하죠? alert나 action sheet를 표현하는 방법은 위와 동일합니다. 단지 스타일만 선택해주면 된다. <strong>.Alert</strong>를 선택한다면, alert message를 보여주고, .ActionSheet 스타일을 지정한다면, action sheet가 표현될것이다.</p>
+<p>기본적으로, alert controller는 아무 액션도 포함하고 있지 않다. 만약, 어떠한 액션을 추가하고 싶다면, 예로 alert의 버튼 액션이 취해졌을때 사라지게 하고 싶다면, 우리는 UIAlertAction 객체를 생성하고 <strong>addAction</strong>메서드를 활용하여, alert controller에 연결시켜주어야 한다.</p>
+<p>UIAlertAction을 생성할때 두가지 파라미터를 받는다. 제목과 핸들러이다. 핸드로는 블럭 코드로, 버튼이 눌려졌을 때 실행되는 부분이며, handler에 nil을 포함하게 되면, controller는 사라지는 기능만 가지게 될것이다. 이부분에 대해서 나중에 더 이야기 하도록 하겠다.</p>
+<p>마지막으로, <strong>presentViewController</strong>메서드를 호출함으로써 alert controller 를 표현할 것이다. 만약 앱을 실행하고, 버튼을 클릭하게 되면 아래와 같이 실행될 것이다.</p>
+<p><img src="http://13.124.100.73/wp-content/uploads/2016/02/actionsheetNewImage3-1.png" alt="NewImage" title="NewImage.png" border="0" width="299" height="280" /></p>
+<h3>Swift에서 Enumeration에 대한 설명</h3>
+<p>Swift코드 작성이 처음이라면, .Alert와 .ActionSheet이 생소할 것이다. 그 부분같은 경우 아래와 같이 full syntax로 사용할 수 있다.</p>
+<pre class="swift">
+let alertController = UIAlertController(title: "Hey AppCoda", message: "What do you want to do?", preferredStyle: UIAlertControllerStyle.Alert)
+</pre>
+<p>위 코드는 우리가 사용했던 부분과 완전히 동일한 방법이고, 사실 UIAlertControllerStyle은 아래와 같이 enumration이다.</p>
+<pre class="swift">
+enum UIAlertControllerStyle : Int {
+     case ActionSheet
+     case Alert
+}
+</pre>
+<p>swift에서 enumeration은 값들을 다 그룹화 시킬때 사용된다. AlertSheet와 Alert는 enumeration 안에 멤버 값으로 정의된다. objective C와 같지 않게 만들때 상수는 아니다. AcitonShee와 Alert는 0 그리고 1로 정의되지는 않는다. 각 각 멤버들은 enumberation에서의 full-fledged 값을 가진다.</p>
+<p>쉽게 말하면, 딱 정해진 값은 아니지만, 그 안에서는 독립된 값을 가지게 된다.</p>
+<p>UIAlertControllerStyle.Alert로 사용할 수 도 있지만 .Alert를 사용하도록 하자.</p>
+<p>당신의 짧은 코드는 당신이 더 쉽게 읽을 수 있도록 한다.</p>
+<h3>Action Handler와 Closures</h3>
+<p>UIAlertController로 돌아가보자. 우리가 이야기 아직 이야기 하지 않은 것중 하나, UIAlertAciton의 handler이다. 우리가 UIAlertAction 객체를 생성할때 우리는 handler에 블럭 코드를 작성하기 되는데, 이 블럭 코드는 사용자로부터 이벤트를 받았을 때 실행되는 코드이다.</p>
+<p>showAlert 메서드 안에 아래와 같이 코드를 작성하고 다른 액션을 취하도록 해보자.</p>
+<pre class="swift">
+let callActionHandler = { (action:UIAlertAction!) -> Void in
+            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .Alert)
+            alertMessage.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alertMessage, animated: true, completion: nil)
+        }
+        let callAction = UIAlertAction(title: "Call", style: .Default, handler: callActionHandler)
+        alertController.addAction(callAction)
+</pre>
+<p>우리는 새로운 handler를 정의하고 이를 추가하였다. 위 코드는 간단하게 alert 버튼이 눌려졌을 때 취하는 액션을 정의하고 추가만 해줬을 뿐이다. 블럭코드는 Closure로 알려져 있다.</p>
+<p>Closures는 코드 자체를 기능으로 할 수 있는 블럭을 자체적으로 포함하고 있다. 이것은 위와 같이 Objective-C에 블럭과 굉장히 흡사하다.</p>
+<p>action closure에 값 같은 것을 제공하기 위한 한가지 방법은 코드 블럭과 같은 상수 또는 변수이다.</p>
+<p>코드 블럭의 첫 번째 부분은 UIAlert Action의 handler 파라미터들과 리턴 타입를 정의하는 것이고, <strong>in</strong> 키워드는  이후로는 closure의 몸체 부분이 시작되는 부분이다.</p>
+<p><img src="http://13.124.100.73/wp-content/uploads/2016/02/actionsheetNewImage4-1.png" alt="NewImage" title="NewImage.png" border="0" width="398" height="152" /></p>
+<p>위 처럼 closure를 각 변수나 상수로 정의하는 것은 필수가 아니다. 아래와 같이 간단하게 closure을 파라미터처럼 활용 할 수도 있다. 아래와 같이 간단하게 사용 할 수 있다.</p>
+<pre class="swift">
+let callAction = UIAlertAction(title: "Call", style: .Default, handler: {
+            action in
+                let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .Alert)
+                alertMessage.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                self.presentViewController(alertMessage, animated: true, completion: nil)
+                }
+        )
+alertController.addAction(callAction)
+</pre>
+<h3>결론</h3>
+<p>UIAlertController는 clsures의 사용 (또는 Objective-C의 블럭)을 포용하고 있으며, 이로써 우리는 UIAlertController을 잘 활용 할 수 있을 것이라고 예상한다.</p>

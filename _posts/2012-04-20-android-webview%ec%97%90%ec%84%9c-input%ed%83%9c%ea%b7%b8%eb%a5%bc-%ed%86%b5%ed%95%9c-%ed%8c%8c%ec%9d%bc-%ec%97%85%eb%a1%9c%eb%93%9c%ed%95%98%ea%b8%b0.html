@@ -1,0 +1,68 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - WebView에서 input태그를 통한 파일 업로드하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: WebView, Html Input태그를 이용한 파일 업로드하기
+wordpress_id: 1515
+wordpress_url: http://ezcocoa.com/?p=1515
+date: '2012-04-20 02:32:48 +0900'
+date_gmt: '2012-04-20 02:32:48 +0900'
+categories:
+- Android
+tags:
+- android
+- file
+- upload
+- input
+- tag
+- webview
+comments: []
+---
+<p>아 정말 벚꽃이 활짝 피었습니다. 현재 프리랜서로 활동에 학교 다니기가 쉽지가 않군요.<br />
+물론 취미생활 또한 활동적으로 하지 못하고 있습니다.<br />
+잡담은 이제 그만하고 주제에 맞게 작성하도록 하겠습니다.<br />
+기본 WebView을 사용했을 때 input tag를 이용한 파일업로드 (html input 버튼을 눌렀을 때) 아무런 반응도 일어나지 않습니다.<br />
+이유인 즉 안드로이드는 html에 대한 이벤트를 catch해주어야만 합니다.<br />
+아래는 WebView 인스턴스를 위한 ChromClient를 상속하여 재구현해주는 부분입니다.</p>
+<h3>ChromClient의 openFileChooser 재구현하기</h3>
+<p>[sourcecode language="java"]<br />
+final class ChromeClient extends WebChromeClient {<br />
+		public void openFileChooser(ValueCallback<Uri> uploadFile, String acceptType) {<br />
+			openFileChooser(uploadFile);<br />
+		}<br />
+		public void openFileChooser(ValueCallback<Uri> uploadMsg) {<br />
+			_uploadMessage = uploadMsg;<br />
+			Intent i = new Intent(Intent.ACTION_GET_CONTENT);<br />
+			i.addCategory(Intent.CATEGORY_OPENABLE);<br />
+			i.setType("*/*");<br />
+			startActivityForResult(Intent.createChooser(i,"File Chooser"), FILECHOOSER_RESULTCODE);<br />
+		}<br />
+}<br />
+[/sourcecode]<br />
+위 내용은 보시다시피 업로드 할 메시지를 보낼 객체 포인트를 글로벌로 가집니다. 타입 또한 정의해주고 있습니다.<br />
+* 주의사항 openFileChooser는 SDK자체에서 구현되어 있으며, hidden처리되어 있는 항복입니다. 지시자 @Override를 넣었을 경우 eclipse는 에러를 발생하니 주의하시기 바랍니다.<br />
+다음은 선택 된 데이터를 담는 부분을 정의해야합니다.</p>
+<h3>선택 된 파일에 대한 테이터 받기</h3>
+<p>[sourcecode language="java"]<br />
+	@Override<br />
+	protected void onActivityResult(int requestCode, int resultCode,<br />
+			Intent intent) {<br />
+		if(requestCode == FILECHOOSER_RESULTCODE) {<br />
+			if (null == _uploadMessage) return;<br />
+			Uri result = intent == null || resultCode != RESULT_OK ? null : intent.getData();<br />
+			_uploadMessage.onReceiveValue(result);<br />
+			_uploadMessage = null;<br />
+		}<br />
+	}<br />
+[/sourcecode]<br />
+이것으로 포스팅을 마칩니다.<br />
+<a href="http://www.cs.tut.fi/~jkorpela/forms/file.html">File input (or &ldquo;upload&rdquo;) in HTML forms</a><br />
+배가 고프네요. 현 프로젝트에서 11:30분이면 밥으로 먹으로 간답니다. 오늘은 무엇을 먹을지... 뿌잉뿌잉~</p>

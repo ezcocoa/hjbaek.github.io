@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: Emacs - Run Daemon on OS X
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2275
+wordpress_url: http://ezcocoa.com/?p=2275
+date: '2014-04-13 03:34:59 +0900'
+date_gmt: '2014-04-13 03:34:59 +0900'
+categories:
+- Diary
+tags: []
+comments: []
+---
+<pre class="applescript">
+tell application "Terminal"
+    try
+        -- we look for <= 2 because Emacs --daemon seems to always have an entry in visibile-frame-list even if there isn&#039;t
+        set frameVisible to do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -e &#039;(<= 2 (length (visible-frame-list)))&#039;"
+        if frameVisible is not "t" then
+            -- there is a not a visible frame, launch one
+            do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c -n"
+        end if
+    on error
+        -- daemon is not running, start the daemon and open a frame
+        do shell script "/Applications/Emacs.app/Contents/MacOS/Emacs --daemon"
+        do shell script "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c -n"
+    end try
+end tell
+-- bring the visible frame to the front
+tell application "Emacs" to activate
+</pre>

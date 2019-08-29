@@ -1,0 +1,63 @@
+---
+layout: post
+status: publish
+published: true
+title: "[VI] Tutoria"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 53
+wordpress_url: http://ezcocoa.com/?p=53
+date: '2010-10-06 02:10:11 +0900'
+date_gmt: '2010-10-06 02:10:11 +0900'
+categories:
+- Tool
+tags: []
+comments: []
+---
+<p>Configure<br />
+path</p>
+<blockquote><p>~/.vim/<br />
+~/.vim/plugin/<br />
+~/.vim/doc/</p></blockquote>
+<p>vi Key<br />
+찾아가기 - ctrl + "]"<br />
+홈으로 되돌아가기 - ' "(홈따옴표 2번)'<br />
+되돌아가기 - ctrl + "t"<br />
+function<br />
+:ts <function-name> : 같은 이름의 function-name이 여러개 일때.<br />
+:ta &nbsp;<function-name> :function 위치로 점프.<br />
+<strong>ctags</strong><br />
+- 현재 위치한 디렉토리에서 모든 파일에 대한 tags 파일 생성하기.</p>
+<blockquote><p>tags -R</p></blockquote>
+<p>현재 위치에서 부터 최하위 까지의 tags 파일 생성하기.<br />
+# cd /usr/local/bin<br />
+# vi dirtags</p>
+<blockquote><p><em>#!/bin/sh</em><br />
+<em>cd $1</em><br />
+<em>ctags *</em></p></blockquote>
+<p># vi stags</p>
+<blockquote><p><em>#!/bin/sh</em><br />
+<em>find * -type d -exec dirtags {} \;</em></p></blockquote>
+<p># vi ttags</p>
+<blockquote><p><em>#!/bin/sh</em><br />
+<em>stags</em><br />
+<em>ctags --file-scope=no -R</em></p></blockquote>
+<p># chmod +x *tags*<br />
+<strong>TagList</strong><br />
+출처 : http://blog.naver.com/monovision?Redirect=Log&amp;logNo=140065006594<br />
+<strong>cscope</strong><br />
+<strong><span style="font-weight: normal;">출처 :http://blog.naver.com/blackbloody?Redirect=Log&amp;logNo=150049061752</span></strong><br />
+<strong><span style="font-weight: normal;"><br />
+</span></strong></p>
+<blockquote><p><em>#!/bin/sh</em><br />
+<em>rm -rf cscope.files cscope.files</em><br />
+<em>find . \( -name '*.c' -o -name '*.cpp' -o -name '*.cc' -o -name '*.h' -o -name '*.s' -o -name '*.S' \) -print > cscope.files </em><br />
+<em>cscope -i cscope.files</em></p>
+<div><strong><br />
+</strong></div>
+</blockquote>

@@ -1,0 +1,131 @@
+---
+layout: post
+status: publish
+published: true
+title: Mac - Using GitLab
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1170
+wordpress_url: http://ezcocoa.com/?p=1170
+date: '2011-10-21 04:50:06 +0900'
+date_gmt: '2011-10-21 04:50:06 +0900'
+categories:
+- Repo
+- OSX
+tags:
+- git
+- gitlab
+comments: []
+---
+<p><a href="http://lambert.tistory.com/497">원문</a></p>
+<h4>Using gitLab</h4>
+<p>Mac에 GitLab를 설치하기 위해서는 몇 가지 전제 조건이 필요한데, 본인은 한 가지 조건을 더 부가했다. 뭐 거창한 것은 아니고, 실제 서버(하드웨어)에 설치하는 것이 아닌 개인용 맥북프로에 설치하는 것이어서 git이라는 운영용 계정을 따로 만들지 않고 개인 계정을 그대로 활용했다. 이 점에 주의하면, 호스팅용 세팅도 별반 다르지 않다. 또한 Mac이 아니라면 GitLab의 설치 문서만으로도 간단히 설치가 된다(Gitosis는 조금 신경을 써야 겠지만...).</p>
+<h4>참고</h4>
+<p>* GitLab을 설치하지 않고 단순히 Mac에 gitosis를 설치하여 Git 서버를 관리하는 목적이라면 다음 두 포스트 만으로도 충분할 것이다.<br />
+- <a href="http://lukhnos.org/blog/en/archives/162">Installing gitosis on Mac OS X </a><br />
+- <a href="http://scie.nti.st/2007/11/14/hosting-git-repositories-the-easy-and-secure-way">Hosting Git repositories, The Easy (and Secure) Way</a></p>
+<h4>필수 조건</h4>
+<li><a href="http://www.ruby-lang.org/en/downloads/">Ruby 1.9.2-p290</a>와 <a href="http://rubyonrails.org/download">Ruby on Rails 3.1</a></li>
+<li>sqlite(Mac에는 /usr/bin/sqlite3에 설치 되어 있을 것이다.)</li>
+<li>git</li>
+<li>giosis</li>
+<li>GitLab</li>
+<h4>Ruby 1.9.2-p290 설치하기</h4>
+<p>[code]$ brew install ruby[/code]<br />
+* <a href="http://mxcl.github.com/homebrew/">brew</a>가 설치되어 있지 않을 경우 설치를 해주자. (<a href="https://github.com/mxcl/homebrew/wiki/installation">open source</a>)<br />
+[code]/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"[/code]<br />
+버전을 확인 후 다음으로 진행한다. 만약 이전 버전이 나온다면 이전버전에 대한 처리를 해주자.</p>
+<h4>Ruby on Rails 3.1 설치하기</h4>
+<p>[code]sudo gem update rails[/code]</p>
+<h4>git 설치되었나 확인하기</h4>
+<p>아마 설치되어있을 것이다.</p>
+<h4>gitosis 설치하기<br />
+<h4>
+ git이 설치되어 있으므로 다음과 같이 저장소를 복사한다. (설치한 소스는 모두 홈 디렉토리를 이용했다.)<br />
+[code]<br />
+git clone git://eagain.net/gitosis.git<br />
+cd gitosis<br />
+sudo python setup.py install<br />
+[/code]<br />
+gitosis를 설치하면 아래와 같은 메시지를 확인 할 수 있다.<br />
+[code]<br />
+.....<br />
+Finished processing dependencies for gitosis==0.2<br />
+[/code]</p>
+<h4>SSH를 이용하기 위한 공개 키 생성하기</h4>
+<p>만약 기존에 GitHub를 사용하고 있다면 기존 키를 사용해도 무방하다.<br />
+SSH 키 생성과 관련하여 자세한 내용은 <a href="http://help.github.com/mac-set-up-git/">링크를</a> 참고하라.<br />
+(키 생성위치 예: /Users/<user>/.ssh)<br />
+[code]// 현재 홈 디렉토리 이므로(/Users/<user>) 없다면 디렉토리를 생성해주자.<br />
+cd .ssh[/code]<br />
+//  그리고, 메일주소를 추가하여 공개 키 생성<br />
+ssh-keygen -t rsa -C "<user>@gmail.com"<br />
+공개 키까지 생성하였으면 gitosis를 위해 다음 두 가지 추가 작업을 해야 하는데, 한 가지 주의할 점이 있다. 위에서 미리 언급했듯이 서버 관리를 위해 git이라는 계정을 따로 만들지 않고 사용자 계정을 그대로 사용한다고 했으니 다음 볼드 글자(사용자 계정) 부분만 신경쓰면 된다.<br />
+// 현재 위치: /Users/<user>/.ssh<br />
+sudo -H -u <strong>ezcocoa</strong> gitosis-init < ./id_rsa.pub<br />
+생성시 아래와 같은 메세지를 확인 할 수 있다.<br />
+[code]<br />
+Initialized empty Git repository in /Users/hojunbaek/repositories/gitosis-admin.git/<br />
+Reinitialized existing Git repository in /Users/hojunbaek/repositories/gitosis-admin.git/<br />
+[/code]<br />
+[code]// 마지막으로...<br />
+chmod 755 ~/repositories/gitosis-admin.git/hooks/post-update[/code]</p>
+<h4>GitLab 설치하기</h4>
+<p>GitLab의 <a href="https://github.com/gitlabhq/gitlabhq">설치 문서</a>를 그대로 따라하기만 하면된다.<br />
+[code]// 현재 홈 디렉토리이다.<br />
+git clone git://github.com/gitlabhq/gitlabhq.git<br />
+cd gitlabhq/[/code]<br />
+[code]// 다음 라이브러리들 부터 설치한다.<br />
+sudo easy_install pygments[/code]<br />
+[code]// 위 라이브러리 설치가 끝난 후...<br />
+sudo gem install bundler[/code]<br />
+[code]// 다시... 약간 시간이 걸린다.<br />
+bundle[/code]<br />
+[code]// 위 작업까지 이상이 없다면...<br />
+RAILS_ENV=production rake db:setup[/code]<br />
+[code]// 마지막으로... 다음과 같은 기본정보로 관리자 계정이 생성된다.<br />
+// ID: admin@local.host<br />
+// PW: 5iveL!fe<br />
+RAILS_ENV=production rake db:seed_fu[/code]<br />
+자 이제 서버를 실행시킬 차례인데, 위에서 미리 언급했듯이 git 계정을 사용하지 않고 사용자 계정(예: <user>)을 사용할 것이므로... GitLab의 gitosis.yml의 설정을 변경해야 한다.<br />
+[code]// 바로 전 작업했던 위치가, /User/<user>/gitlabhq 이였으므로...<br />
+cd config<br />
+vi gitosis.yml<br />
+[/code]<br />
+파일 내용은 다음과 같을 것이다.<br />
+[code]admin_uri: git@localhost:gitosis-admin.git<br />
+base_path: /home/git/repositories/<br />
+host: localhost<br />
+git_user: git [/code]<br />
+다음과 같이 수정한다.<br />
+[code]admin_uri: <user>@localhost:gitosis-admin.git<br />
+base_path: /Users/<user>/repositories/<br />
+host: localhost<br />
+git_user: <user><br />
+ 다 수정하였으면 다음과 같이 서버를 실행해 보자.<br />
+[code]<br />
+// 당연히 실행 위치는 gitlabhq 이다.<br />
+cd ..[/code]<br />
+[code]// 서버 실행<br />
+rails s -e production[/code]<br />
+서버가 실행된 후, http://localhost:3000/ 주소로 브라우저에서 접속하면 로그인 화면이 뜰 것이다. 위에서 미리 생성된 관리자 계정으로 접속 된다면<br />
+기본 설치는 끝났다.<br />
+* bundle 입력 중 아래와 같은 문제가 발생할 수 있다.<br />
+[code] `bin_path': can't find executable rake for rake-0.8.7 (Gem::Exception)<br />
+[/code]<br />
+이 문제는 1.9.2문제로 아래와 같이 해결할 수 있다.<br />
+[code]sudo ln -s /usr/local/bin/ruby /opt/local/bin/ruby[/code]<br />
+버전 확인<br />
+[code]ruby -v<br />
+gem list -d<br />
+rake --version<br />
+[/code]<br />
+다시 설치.<br />
+[code]<br />
+gem install rake<br />
+[/code]</p>

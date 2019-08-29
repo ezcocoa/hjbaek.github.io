@@ -1,0 +1,56 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - Customizing UISerchBar
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1385
+wordpress_url: http://ezcocoa.com/?p=1385
+date: '2012-01-22 06:38:20 +0900'
+date_gmt: '2012-01-22 06:38:20 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- custom
+- searchbar
+comments: []
+---
+<p>출처 : http://lambert.tistory.com/545<br />
+[sourcecode language="objc"]<br />
+- (void)viewDidLoad<br />
+{<br />
+    [super viewDidLoad];<br />
+    UISearchBar *customSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];<br />
+    [customSearchBar setPlaceholder:@"종목명 검색"];<br />
+    // 서치바의 기본 백그라운드 레이어 제거.<br />
+    if ([[[customSearchBar subviews] objectAtIndex:0] isKindOfClass:[UIImageView class]])<br />
+    {<br />
+        [[[customSearchBar subviews] objectAtIndex:0] removeFromSuperview];<br />
+    }<br />
+    // 검색 아이콘 제거. 이미 백그라운 레이어를 제거했기 때문에 objectAtIndex = 0.<br />
+    UITextField *textField;<br />
+    if ([[[customSearchBar subviews] objectAtIndex:0] isKindOfClass:[UITextField class]])<br />
+    {<br />
+        textField = [[customSearchBar subviews] objectAtIndex:0];<br />
+    }<br />
+    textField.leftView = nil;<br />
+    // 텍스트필드의 프레임 변경.<br />
+    UIImage *searchBarImage = [[UIImage imageNamed:@"inputbox.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(6, 7, 6, 7)];<br />
+    [textField setBackground:searchBarImage];<br />
+    // 텍스트필드의 폰트와 사이즈 변경.<br />
+    [textField setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:15]];<br />
+    // 서치바에 백그라운드 추가.<br />
+    [customSearchBar setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"inputbox_bg.png"]]];<br />
+    [[customSearchBar layer] setOpaque:NO];<br />
+    [self.view addSubview:customSearchBar];<br />
+    [customSearchBar release];<br />
+}<br />
+[/sourcecode]<br />
+<a href="http://iphonedevelopertips.com/user-interface/ios-5-uiimage-and-resizableimagewithcapinsets.html">참고 문서</a></p>

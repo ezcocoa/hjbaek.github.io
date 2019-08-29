@@ -1,0 +1,61 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] Gestures Example."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 880
+wordpress_url: http://ezcocoa.com/?p=880
+date: '2011-07-29 02:19:03 +0900'
+date_gmt: '2011-07-29 02:19:03 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- 아이폰
+- event
+- gesture
+- 이벤트
+- 제스쳐
+comments:
+- id: 24
+  author: iPhone &#8211; Gesture recognizer and button actions
+  author_email: ''
+  author_url: http://ezcocoa.com/?p=1193
+  date: '2011-10-30 04:17:25 +0900'
+  date_gmt: '2011-10-30 04:17:25 +0900'
+  content: "[...] Gesture 사용하기 Gesture는 특정한 행동을 등록하여 그 행동에 맞는 액션을 취하기 위해 사용됩니다. [...]"
+---
+<p>사용자로 부터 쉽게 받을수 있는 이벤트 중 하나 입니다.<br />
+아래의 클래스들은 UIGestureRecognizer를 상속하고 있습니다.<br />
+[code]<br />
+- UITapGestureRecognizer<br />
+- UISwipeGestureRecognizer<br />
+- UILongPressGestureRecognizer<br />
+- UIPanGestureRecognizer<br />
+- UIRotationGestureRecognizer<br />
+- UIPinchGestureRecognizer[/code]<br />
+아래와 같이 샘플을 만들수 있습니다.<br />
+[sourcecode language="ObjC"]<br />
+UIGestureRecognizer *recognizer;<br />
+// taps<br />
+recognizer = [[ UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];<br />
+tapGR = (UITapGestureRecognizer *)recognizer;<br />
+tapGR.numberOfTapsRequired = 3;<br />
+tapGR.numberOfTouchesRequired = 1;<br />
+[self.view addGestureRecognizer:tapGR];<br />
+[recognizer release];<br />
+[/sourcecode]<br />
+아래와 같이 콜백메서드(델리게이트)를 정의해줍니다.<br />
+[sourcecode language="ObjC"]<br />
+-(void) handleTap:(UITapGestureRecognizer *)recognizer  {<br />
+	NSLog(@"3 taps");<br />
+}<br />
+[/sourcecode]<br />
+- 끝 - </p>

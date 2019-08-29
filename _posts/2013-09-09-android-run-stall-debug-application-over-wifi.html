@@ -1,0 +1,71 @@
+---
+layout: post
+status: publish
+published: true
+title: Android > ADB 사용을 극대화 하자.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1880
+wordpress_url: http://ezcocoa.com/?p=1880
+date: '2013-09-09 10:17:40 +0900'
+date_gmt: '2013-09-09 10:17:40 +0900'
+categories:
+- Android
+tags:
+- debug
+- run
+- over
+- stall
+- wifi
+comments: []
+---
+<p>본인은 맥북 에어 2013년 산을 사용하고 있다.</p>
+<p>문제는 여러 대의 디바이스를 사용하다보면 USB 포트가 부족하여, 선을 뽑았다 꼈다 반복하는 문제가 발생 할 때가 있습니다.</p>
+<p>참 불편하죠. 전 이문제를 Android Devleopment Tools를 이용하여 어느정도 문제를 해결하여 사용하고 있습니다.</p>
+<p>아래의 내용은 내용은 툴에 대한 설명과 사용방법에 대해서 써보았습니다.</p>
+<hr />
+<h1>Run / stall / debug application over Wifi.</h1>
+<p><a href="http://forum.xda-developers.com/showpost.php?p=7594419&amp;postcount=9">reference link</a></p>
+<p><strong>네트워크 아이피 확인하기</strong></p>
+<ul>
+<li>네트워크 환경설정에서 확인하기</li>
+<li>Android Console에서 확인하기  [code] netcfg [/code]</li>
+</ul>
+<p><strong>WiFi를 통해 접속하기 위한 port설정</strong></p>
+<p>[code] setprop service.adb.tcp.port 5555 stop adbd &amp;amp;&amp;amp; start adbd [/code]</p>
+<p>[code]adb tcpip 5555<br />
+adb connect 10.0.0.2:5555[/code]</p>
+<p><strong>PC에서 android console로 접속</strong></p>
+<p>[code] adb connect x.x.x.x [/code]</p>
+<p><strong>시스템 로그 확인하기</strong></p>
+<p>[code] adb -s x.x.x.x:5555 logcat [/code]</p>
+<p><strong>로그 필터링</strong></p>
+<p>[code] adb -s x.x.x.x:5555 logcat |grep -vE &amp;quot;/dalvik&amp;quot; [/code]</p>
+<p><strong>커널 로그</strong></p>
+<p>[code] adb -s x.x.x.x:5555 shell [/code]</p>
+<p><strong>Android console에서 로그 보기</strong></p>
+<p>[code] su cat /proc/kmsg |grep -vE &amp;quot;cpu|CPU|bq27541|temp=&amp;quot; [/code]</p>
+<p><strong>리붓 후에 오래된 커널 로그 가져오기</strong></p>
+<p>[code] su cat /proc/last_kmsg &amp;gt; /sdcard/last_kmsg.txt [/code]</p>
+<p><strong>오래된 커널 로그 파일 필터링 하기</strong></p>
+<p>[code] cat last_kmsg.txt |grep -vE &amp;quot;cpu_down|stop_machine_cpu_stop|cpu_up|shutdown|CPU|temperature|capacity|bq27541_get_psp|mtp_open|adb_release|mtp_release|adb_open|&#095;bind&#095;config|temp=|rt5640|sensor|cpuidle|sdhci|mmcblk|tegra_uart|nvavp|pn544|tegra-i2c&amp;quot; &amp;gt;last_kmsg_clean.txt [/code]</p>
+<p>** Android에서 스크립트 파일 만들기**</p>
+<p>[code] su mount -o remount,rw -t yaffs2 /dev/block/mtdblock4 /system echo &amp;quot;su -c 'setprop service.adb.tcp.port 5555 &amp;amp;&amp;amp; stop adbd &amp;amp;&amp;amp; start adbd'&amp;quot; &amp;gt; /system/bin/adbt chmod 755 /system/bin/adbt mount -o ro,remount -t yaffs2 /dev/block/mtdblock4 /system sync [/code]</p>
+<h1>Android console에서 앱 실행시키기</h1>
+<p><strong>On android console</strong><br />
+[code]<br />
+am start -n com.package.name/com.package.name.ActivityName<br />
+[/code]</p>
+<p><strong>On PC</strong><br />
+[code]<br />
+adb shell am start -n com.package.name/com.package.name.ActivityName<br />
+[/code]</p>
+<p><strong>인텐트 필터적용하기</strong><br />
+[code]<br />
+am start -a com.example.ACTION_NAME -n com.package.name/com.package.name.ActivityName<br />
+[/code]</p>

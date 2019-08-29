@@ -1,0 +1,51 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Gallery Fling
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: |-
+  Gallery Fling 입니다.
+  겔러리 기본 특성상 자동으로 스크롤되는 것을 한장씩 넘기기 위해 오버라이딩하여 처리하였습니다.
+wordpress_id: 1267
+wordpress_url: http://ezcocoa.com/?p=1267
+date: '2011-11-24 09:05:59 +0900'
+date_gmt: '2011-11-24 09:05:59 +0900'
+categories:
+- Android
+tags:
+- android
+- gallery
+- fling
+comments: []
+---
+<p>[sourcecode language="java"]<br />
+public class GalleryFling extends Gallery{<br />
+ public GalleryFling(Context context) {<br />
+  super(context);<br />
+  // TODO Auto-generated constructor stub<br />
+ }<br />
+ public GalleryFling(Context context, AttributeSet attrs) {<br />
+  super(context, attrs);<br />
+  // TODO Auto-generated constructor stub<br />
+ }<br />
+ @Override<br />
+ public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {<br />
+  int keyCode;<br />
+  if(e2.getX() > e1.getX()){<br />
+   keyCode = KeyEvent.KEYCODE_DPAD_LEFT;<br />
+  }<br />
+  else{<br />
+   keyCode = KeyEvent.KEYCODE_DPAD_RIGHT;<br />
+  }<br />
+  onKeyDown(keyCode, null);<br />
+  return true;<br />
+ }<br />
+}<br />
+[/sourcecode]</p>

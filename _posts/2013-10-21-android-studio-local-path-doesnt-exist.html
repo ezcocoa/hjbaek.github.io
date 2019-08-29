@@ -1,0 +1,41 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Android Stuido local path doesn&#039;t exist
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: It's the way to solve "local path doesn't exist" when you compile your project
+  on the android studio.
+wordpress_id: 1941
+wordpress_url: http://ezcocoa.com/?p=1941
+date: '2013-10-21 01:48:56 +0900'
+date_gmt: '2013-10-21 01:48:56 +0900'
+categories:
+- Android
+tags:
+- android
+- path
+- studio
+- local
+comments: []
+---
+<h3>First solution.</h3>
+<ol>
+<li>Close IDE</li>
+<li>Remove .idea folder and all.iml files in your project.</li>
+<li>Restart the IDE and re-import your project.</li>
+</ol>
+<h3>Second solution.</h3>
+<ol>
+<li>Open your module.iml file in your project.</li>
+<li>fixed the following this.</li>
+</ol>
+<pre class="xml">
+<option name="APK_PATH" value="/build/apk/appname-debug-unaligned.apk" />
+</pre>

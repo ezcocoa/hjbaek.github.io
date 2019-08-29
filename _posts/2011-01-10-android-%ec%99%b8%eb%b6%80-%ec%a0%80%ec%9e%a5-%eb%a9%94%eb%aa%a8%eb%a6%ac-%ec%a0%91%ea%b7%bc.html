@@ -1,0 +1,33 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] 외부 저장 메모리 접근"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 456
+wordpress_url: http://ezcocoa.com/?p=456
+date: '2011-01-10 02:21:57 +0900'
+date_gmt: '2011-01-10 02:21:57 +0900'
+categories:
+- Android
+tags:
+- android
+- external
+- storage
+comments: []
+---
+<p><code>String sdpath = Environment.getExternalStorageDirectory().getAbsolutePath();<br />
+File file = new File(sdpath + "/Filename.txt");<br />
+</code><br />
+<strong>[권한]</strong><br />
+<code><uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission><br />
+</code><br />
+<strong>[갤럭시s 기분]</strong><br />
+내장메모리는 /sdcard/<br />
+외장메모리는 /sdcard/sd/</p>

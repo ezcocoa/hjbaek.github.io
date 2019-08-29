@@ -1,0 +1,48 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] NSZombie을 활용한 메모리 문제 해결"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 617
+wordpress_url: http://ezcocoa.com/?p=617
+date: '2011-02-20 07:42:55 +0900'
+date_gmt: '2011-02-20 07:42:55 +0900'
+categories:
+- iPhone
+tags:
+- c
+- iphone
+- object
+- memory
+- problem
+- NSZombie
+comments: []
+---
+<p><strong>// in XCode 3</strong><br />
+1. click project_name to Excutables.<br />
+2. click arguments tab.<br />
+3. add name and value at environment variable.<br />
+- name is [ NSZombieEnabled ]<br />
+- value is [ YES ]<br />
+you will show log at console when bulid and go.<br />
+<strong>// in XCode 4</strong><br />
+1. Select Product from the menu bar above.<br />
+2. Select Edit Scheme menu.<br />
+3. when select debug mode, you will show 'Environment Variables' section.<br />
+4. add NSZombieEnabled YES in the "Environment Variables" section.<br />
+Check it Code.<br />
+[sourcecode language="ObjC"]<br />
+	if(<br />
+		getenv("NSZombieEnabled") || getenv("NSAutoreleaseFreedObjectCheckEnabled")<br />
+	) {<br />
+		NSLog(@"NSZombieEnabled/NSAutoreleaseFreedObjectCheckEnabled enabled!");<br />
+	}<br />
+[/sourcecode]<br />
+참고자료 : <a href="http://www.cocoadev.com/index.pl?NSZombieEnabled">http://www.cocoadev.com/index.pl?NSZombieEnabled</a></p>

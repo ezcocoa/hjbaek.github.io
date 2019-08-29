@@ -1,0 +1,58 @@
+---
+layout: post
+status: publish
+published: true
+title: Gralde - Unit test
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2711
+wordpress_url: http://ezcocoa.com/?p=2711
+date: '2016-11-05 12:21:29 +0900'
+date_gmt: '2016-11-05 12:21:29 +0900'
+categories:
+- Tool
+tags:
+- android
+- 안드로이드
+- test
+- ddt
+- dtt
+- unit4
+- 테스트
+comments: []
+---
+<h2>Buil test configuration</h2>
+<p>app > build.gradle 환경 파일을 아래와 같이 수정한다.<br />
+instrumentTest.setRoot('tests')라는 거.</p>
+<pre>
+android {
+...
+  sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs', 'src/main/libs']
+            jni.srcDirs = []
+        }
+        instrumentTest.setRoot('tests')
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+...
+}
+</pre>
+<p>##Unit test example file</p>
+<pre class="java">
+public class ExampleUnitTest {
+...
+    @Test
+    public void addTest() throws Exception {
+        assertEquals(4, 2 + 2);
+    }
+...
+}
+</pre>
+<p>이상.</p>

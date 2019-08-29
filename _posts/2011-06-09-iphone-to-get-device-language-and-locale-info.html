@@ -1,0 +1,41 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] To get device language and locale info"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 760
+wordpress_url: http://ezcocoa.com/?p=760
+date: '2011-06-09 04:57:06 +0900'
+date_gmt: '2011-06-09 04:57:06 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- device
+- "??"
+- info
+- language
+- locale
+- 나라
+- 언어
+- 지역
+comments: []
+---
+<p><strong>to locale info</strong><br />
+[sourcecode language="ObjC"]<br />
+NSLocale *locale =[NSLocale currentLocale];<br />
+NSString *countryCode = [locale objectForKey:NSLocaleCountryCode];<br />
+[/sourcecode]<br />
+<strong>to langauge info</strong><br />
+[sourcecode language="ObjC"]<br />
+NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];<br />
+NSArray *languages = [defaults objectForKey:@"AppleLanguages"];<br />
+NSString *currentLanguage = [languages objectAtIndex:0];<br />
+[/sourcecode]</p>

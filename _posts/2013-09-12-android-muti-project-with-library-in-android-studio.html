@@ -1,0 +1,66 @@
+---
+layout: post
+status: publish
+published: true
+title: Android > Muti Project with library in Android Studio
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1882
+wordpress_url: http://ezcocoa.com/?p=1882
+date: '2013-09-12 14:51:52 +0900'
+date_gmt: '2013-09-12 14:51:52 +0900'
+categories:
+- Android
+tags: []
+comments: []
+---
+<p>Configure<br />
+Version : Android Studio 0.2.8<br />
+Situation : 2 More Projects and 2 More Librarys (Jar file and Java lib Project)</p>
+<p>Problem : Eclipse에서 gradle 파일을 생성 후 Android Studio 에서 Import. (정상 과정) 하지만 컴파일 시 <strong>java.lang.NoClassDefFoundError</strong> 에러 발생.</p>
+<p>Why the problem happened?<br />
+문제는 Java SDK 기본으로 1.7 Version이 선택됨. (1.6 Version으로 변환 후 정상 작동)</p>
+<p><a href="http://stackoverflow.com/questions/17751462/importing-external-jar-file-in-android-studio-noclassdeffounderror">Ref</a></p>
+<p>How to change JDK Version to 1.6?</p>
+<blockquote><p>/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home</p></blockquote>
+<p><a href="http://stackoverflow.com/questions/5271697/mac-os-x-java-update-where-is-my-jdk">ref</a></p>
+<p><a href="http://stackoverflow.com/questions/16581752/android-studio-change-android-sdk-path">SDK 재설정</a></p>
+<p>주의사항</p>
+<p>가끔 씩 SDK <strong>Android 4.2.2 Platform' is invalid. android studio</strong> 에러가 발생한다 이 에러가 발생하면 프로젝트를 아래와 같이 재구성해야 한다.</p>
+<p>Try this:</p>
+<blockquote><p>Close IDE<br />
+Remove .idea folder and all .iml files in the project.<br />
+Restart the IDE and re-import the project.
+</p></blockquote>
+<p>Original post: https://code.google.com/p/android/issues/detail?id=59018</p>
+<p><strong>Next Problem</strong><br />
+프로젝트 안에 so 파일 즉 NDK를 사용하였는데 옴기고 난 후 문제가 발생하였다.</p>
+<blockquote><p>Couldn't load lib-file: findLibrary returned null</p></blockquote>
+<p><a href="http://stackoverflow.com/questions/16952388/android-studio-zbar/16993006#16993006">ref</a></p>
+<p>I'm not particularly familiar with IntelliJ or Gradle but I have figured it out. I used ZBarAndroidSDK-0.2.<br />
+Copy the contents of the ZBar SDK libs/ folder into your project's libs/ folder.<br />
+Modify your build.gradle (see below) to make sure the jar and native libs are included in your APK.<br />
+To make IntelliJ aware of ZBar, add zbar.jar in your project structure. To do this, go to File > Project Structure > Libraries > + Sign > Java and find zbar.jar with the file picker. Add it to your project.<br />
+Add the following to your build.gradle (making sure to keep whatever other dependencies you've got):</p>
+<blockquote><p>dependencies {<br />
+    compile files('libs/android-support-v4.jar')<br />
+    compile files('libs/zbar.jar')<br />
+}<br />
+task copyNativeLibs(type: Copy) {<br />
+    from(new File('libs')) { include '**' }<br />
+    into new File(buildDir, 'native-libs')<br />
+}<br />
+tasks.withType(Compile) { compileTask -> compileTask.dependsOn copyNativeLibs }
+</p></blockquote>
+<p>clean.dependsOn 'cleanCopyNativeLibs'</p>
+<p>tasks.withType(com.android.build.gradle.tasks.PackageApplication) { pkgTask -><br />
+    pkgTask.jniDir new File(buildDir, 'native-libs')<br />
+}<br />
+My build.gradle is based on this gist: https://gist.github.com/khernyo/4226923.</p>
+<p>그리고 마지막으로<br />
+<a href="http://javarevisited.blogspot.kr/2011/06/noclassdeffounderror-exception-in.html">3 ways to resolve NoClassDefFoundError in Java</a></p>

@@ -1,0 +1,46 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] 통화 단위 변경하기"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 663
+wordpress_url: http://ezcocoa.com/?p=663
+date: '2011-03-17 05:40:04 +0900'
+date_gmt: '2011-03-17 05:40:04 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- 아이폰
+- currency
+- won
+- 단위
+- 통화
+comments: []
+---
+<p>[sourcecode language="Objc"]<br />
+enum {	// number format styles<br />
+	kCFNumberFormatterNoStyle = 0,<br />
+	kCFNumberFormatterDecimalStyle = 1,<br />
+	kCFNumberFormatterCurrencyStyle = 2,<br />
+	kCFNumberFormatterPercentStyle = 3,<br />
+	kCFNumberFormatterScientificStyle = 4,<br />
+	kCFNumberFormatterSpellOutStyle = 5<br />
+};<br />
+typedef CFIndex CFNumberFormatterStyle;<br />
+- (NSString *)replaceCurrency:(int)price {<br />
+    NSLocale* locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ko_KR"];<br />
+    NSDecimalNumber *someAmount = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%d",price]];<br />
+    NSNumberFormatter *currencyFormatter = [[NSNumberFormatter alloc] init];<br />
+    [currencyFormatter setNumberStyle:kCFNumberFormatterDecimalStyle];<br />
+    [currencyFormatter setLocale:locale];<br />
+	return [currencyFormatter stringFromNumber:someAmount];<br />
+}<br />
+[/sourcecode]</p>

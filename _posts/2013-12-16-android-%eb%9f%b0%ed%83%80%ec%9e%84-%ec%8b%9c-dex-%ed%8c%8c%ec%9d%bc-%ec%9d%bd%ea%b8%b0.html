@@ -1,0 +1,42 @@
+---
+layout: post
+status: publish
+published: true
+title: Android > 런타임 시 dex 파일 읽기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 런타임 시 Dex 파일 읽어드리기
+wordpress_id: 2151
+wordpress_url: http://ezcocoa.com/?p=2151
+date: '2013-12-16 06:48:04 +0900'
+date_gmt: '2013-12-16 06:48:04 +0900'
+categories:
+- Android
+tags:
+- android
+- file
+- class
+- dex
+- load
+- read
+- runtime
+comments: []
+---
+<p><a href="http://aroundck.tistory.com/2299">원문</a></p>
+<p><strong>Dalvik VM 런타임 시 다른 dex 파일을 로딩하기</strong></p>
+<ol>
+<li>
+<p>64,000개 이상의 메서드를 포함한 앱의 경우 빌드에 문제가 발생할 수 있다. 이 경우 여러 개의 dex 파일로 나누어서 dex 를 동적으로 로딩해야 한다.</p>
+</li>
+<li>
+<p>런타임 중 동적으로 기능이 확장되는 프레임워크 형태의 앱은 커스텀 클래스 로딩 기능을 활용할 수 있다.</p>
+</li>
+</ol>
+<pre class="java">
+DexClassLoader dcl = new DexClassLoader(path, null, getClassLoader()); Class c = null; try{ c = dcl.loadClass(fullClassName); SomethingInterface lib = (SomethingInterface)c.newInstance(); lib.doSomething(); } catch( Exception e ){ }
+</pre>

@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - ARC(Automatic Record Counting) 적용 및 해지
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: ARC ! 일부 소스에만 적용시키기.
+wordpress_id: 1183
+wordpress_url: http://ezcocoa.com/?p=1183
+date: '2011-10-27 08:18:46 +0900'
+date_gmt: '2011-10-27 08:18:46 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- apply
+- arc
+- automatic
+- cancel
+- counting
+- record
+comments: []
+---
+<p>이번에 새로 나온 ARC 기능 활성화에 대해 일부분 소스코드에 비활성화 모드를 적용 시킬 수 있습니다.<br />
+문제는 이렇습니다.<br />
+기존 소스(ARC가 적용되어 있지 않은 소스 = release 메서드가 추가되어있는 소스)를 release를 제거 해줘야 하는데<br />
+이는 너무 많은 시간을 낭비하게 되죠.<br />
+ 실제 컴파일 단에서 release가 추가되는 거기때문에 때문에 보장만 한다면 작업할 필요가 없는 부분입니다.<br />
+이 문제를 해결 하기 위해서는<br />
+Project Info > Targets > Build Phases > Compiler sources 부분에서 Compiler Flags 단에 아래와 같은<br />
+Flag를 적용시켜주면 됩니다.<br />
+[code]-fno-objc-arc[/code]<br />
+이상입니다.</p>

@@ -1,0 +1,32 @@
+---
+layout: post
+status: publish
+published: true
+title: iOS/OSX - validate phone number
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2268
+wordpress_url: http://ezcocoa.com/?p=2268
+date: '2014-03-04 05:47:05 +0900'
+date_gmt: '2014-03-04 05:47:05 +0900'
+categories:
+- iPhone
+- OSX
+tags:
+- ios
+- osx
+comments: []
+---
+<p>I need to check whether i can use the phone number or not in iOS/OSX.<br />
+This is what i found solution at the stack over flow.</p>
+<pre class="objc">
+NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+BOOL phoneValidates = [phoneTest evaluateWithObject:phoneNumber];
+NSString *phoneRegex = @"^((\\+)|(00))[0-9]{6,14}$";
+</pre>
+<p>thanks.</p>

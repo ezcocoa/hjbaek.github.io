@@ -1,0 +1,43 @@
+---
+layout: post
+status: publish
+published: true
+title: Animation Queue for iPhone &amp; +Animations
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 555
+wordpress_url: http://ezcocoa.com/?p=555
+date: '2011-01-31 00:57:30 +0900'
+date_gmt: '2011-01-31 00:57:30 +0900'
+categories:
+- Diary
+tags:
+- animation
+- iphone
+- diary
+- queue
+comments: []
+---
+<p>2011년 1월 31일 1월의 마지막 날<br />
+아이폰 디지털 액자 프로젝트에 들어가기 앞서 Animation Queue에 대해서 좀 더 알아보기로 했다.<br />
+샘플 소스로 2010년 8월 7일 Avi Itskovich의 의해 만들어진 샘플 코드이다.<br />
+<!--more-->음.. 자세한 날짜는 기억나지 않지만 WWDC에서 발표하길 좀더 편하게 애니메이션을 동작시키기 위해<br />
+Block코딩기법을 사용한다. 이것은 원래 C에서부터 존재하였던 기법으로 코드를 단순화 시켜준다. 나도 사용해보았지만 정말 마음에 드는 기법이다.<br />
+문법이 생소하여 처음에는 헷갈릴 수도 있으나 보다 보면 이것도 매력이 있다.<br />
+QueueObject는 Queue에 담을 수 있는 Obj으로 SelectorQueueObject와 BlockQueueObject가 상속하고 있다.<br />
+SelectorQueueObject는 &nbsp;QueueObject 자체가 명시적으로 다음 수행할 것을 가지고 있는 반면<br />
+BlockQueueObject는 애니메이션에 대한 정보값만 가지고 있다.<br />
+대세는 Block 코딩이므로 대세를 따르도록 하겠다.<br />
+근데 생각해보면 결국 Key Frame 과 머가 다를까?<br />
+// 네비게이션 컨트롤러를 이용한 푸쉬 에니메이션 변경하기<br />
+[sourcecode language="ObjC"]<br />
+[UIView beginAnimations:@"animation" context:nil];<br />
+[self.navigationController pushViewController: yourviewcontroller animated:NO];<br />
+[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO];<br />
+[UIView commitAnimations];<br />
+[/sourcecode]</p>

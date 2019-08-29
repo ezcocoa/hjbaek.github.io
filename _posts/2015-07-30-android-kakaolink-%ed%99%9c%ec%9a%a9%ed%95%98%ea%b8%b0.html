@@ -1,0 +1,93 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Kakaolink 활용하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: kakaolink를 활용한 데이터 전송 예제
+wordpress_id: 2479
+wordpress_url: http://ezcocoa.com/?p=2479
+date: '2015-07-30 09:08:44 +0900'
+date_gmt: '2015-07-30 09:08:44 +0900'
+categories:
+- Android
+tags:
+- android
+- link
+- share
+- sdk
+- kakao
+- sns
+- 카카오링크
+comments: []
+---
+<h2>kakaolink를 활용하여 특정 문자열 서드파트 어플리케이션에 전달하고자 한다.</h2>
+<p>상황 예)<br />
+전송자 : 카톡을 활용하여 친구에게 메시지를 보낸다. "사전에서 'apple'이라는 걸 검색해봐~"<br />
+수신자 : 카톡에서 받은 메시지와 함께 사전 검색 버튼이 생성된다. 버튼을 누르게 되면 사전앱이 실행되고 자동으로 검색되게 된다.</p>
+<p><a href="http://13.124.100.73/wp-content/uploads/2015/07/kakalink-1.png"><img src="http://13.124.100.73/wp-content/uploads/2015/07/kakalink-1.png" alt="kakalink" width="449" height="253" class="aligncenter size-full wp-image-2481" /></a></p>
+<p>위와 같은 상황에서 kakaolink를 적극적으로 활용할 수 있다.</p>
+<ul>
+<li>
+<p>어플리케이션 호출 및 문자열 데이터를 받기 위한 권한 부여</p>
+<p><strong>strings.xml 파일</strong></p>
+</li>
+</ul>
+<pre class="xml">
+    // key 선언
+    <string name="kakao_app_key">000000000000000000</string>
+    <string name="kakao_scheme">kakao000000000000000000</string>
+    <string name="kakaolink_host">kakaolink</string>
+</pre>
+<p><strong>AndroidManifest.xml</strong></p>
+<pre class="xml">
+         <activity
+            android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/kakao_scheme" android:host="@string/kakaolink_host" />
+                <data android:scheme="kakao000000000000000000" />
+            </intent-filter>
+        </activity>
+</pre>
+<ul>
+<li>Share Mehtod 작성</li>
+</ul>
+<pre class="java">
+        try {
+            final KakaoLink kakaoLink = KakaoLink.getKakaoLink(a);
+            final KakaoTalkLinkMessageBuilder kakaoTalkLinkMessageBuilder = kakaoLink.createKakaoTalkLinkMessageBuilder();
+            AppActionInfo aai = new AppActionInfo(AppActionInfo.ACTION_INFO_OS.ANDROID, AppActionBuilder.DEVICE_TYPE.PHONE, "params=test", "referrer=kakaotalklink");
+            AppActionBuilder aab = new AppActionBuilder().addActionInfo(aai);
+            kakaoTalkLinkMessageBuilder.addAppButton("Open the app", aab.build());
+            final String linkContents = kakaoTalkLinkMessageBuilder.build();
+            kakaoLink.sendMessage(linkContents, a);
+        } catch (KakaoParameterException e) {
+            e.printStackTrace();
+        }
+</pre>
+<ul>
+<li>문자열 데이터를 받는 Activity</li>
+</ul>
+<pre class="java">
+         Uri uri = getIntent().getData();
+         if (uri != null){
+              String param = uri.getQueryParameter("params");
+              // do something
+         }
+</pre>
+<p><a href="https://developers.kakao.com/docs/android-reference/overview-summary.html">Android Kakaolink Ref</a><br />
+<a href="https://developers.kakao.com/docs/android#카카오링크-톡링크버튼">Android kakaolink guide</a></p>

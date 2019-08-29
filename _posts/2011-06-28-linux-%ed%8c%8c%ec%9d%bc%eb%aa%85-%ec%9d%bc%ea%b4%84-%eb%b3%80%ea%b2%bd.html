@@ -1,0 +1,45 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Linux] 파일명 일괄 변경"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 813
+wordpress_url: http://ezcocoa.com/?p=813
+date: '2011-06-28 06:57:58 +0900'
+date_gmt: '2011-06-28 06:57:58 +0900'
+categories:
+- Linux
+tags:
+- linux
+- file
+- change
+- edit
+- modify
+- name
+- once
+- 변경
+- 일괄
+- 파일명
+comments: []
+---
+<p>아래의 스크립트는 파일리스트를 가져와 파일명 끝자리에 '_ipad' 문자열을 추가하는 스크립트입니다.<br />
+하나씩 고치기가 귀찮아 만들어 봤습니다.<br />
+도움되시길~<br />
+[code]<br />
+#!/bin/sh<br />
+for line in $(ls -a | grep ".png")<br />
+do<br />
+ first=`echo $line | awk -F. '{print $1}'`<br />
+ if [ $first ]<br />
+ then<br />
+  mv $line $first"_ipad.png"<br />
+ fi<br />
+done<br />
+[/code]</p>

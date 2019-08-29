@@ -1,0 +1,50 @@
+---
+layout: post
+status: publish
+published: true
+title: iOS - Change navigation color on iOS
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2280
+wordpress_url: http://ezcocoa.com/?p=2280
+date: '2014-04-22 06:48:34 +0900'
+date_gmt: '2014-04-22 06:48:34 +0900'
+categories:
+- Network
+tags:
+- toolbar
+- Color
+- change
+- navi
+- set
+comments: []
+---
+<p>We have two solution we can solve like this.</p>
+<ol>
+<li>First solution.
+<ol>
+<li>Set the <strong>UIViewControllerBasedStatusBarAppearance</strong> to <strong>YES</strong> in the .plist file.</li>
+<li>In the <strong>viewDidLoad</strong> do a <strong>[self setNeedsStatusBarAppearanceUpdate];</strong></li>
+<li>Add the following method:</li>
+</ol>
+</li>
+</ol>
+<pre class="objc">
+  -(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+  }
+  </pre>
+<ol>
+<li>Second solution.
+<ol>
+<li>Set the <strong>UIViewControllerBasedStatusBarAppearance</strong> to <strong>NO</strong> in the .plist file.</li>
+<li>Put the <strong>[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];</strong></li>
+</ol>
+</li>
+</ol>
+<p>That's it.</p>

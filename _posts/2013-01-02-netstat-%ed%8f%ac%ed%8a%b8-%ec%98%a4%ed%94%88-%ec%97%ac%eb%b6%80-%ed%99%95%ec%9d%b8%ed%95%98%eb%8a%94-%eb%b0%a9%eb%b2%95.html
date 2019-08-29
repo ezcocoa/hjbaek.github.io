@@ -1,0 +1,92 @@
+---
+layout: post
+status: publish
+published: true
+title: netstat - 포트 오픈 여부 확인하는 방법
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1758
+wordpress_url: http://ezcocoa.com/?p=1758
+date: '2013-01-02 15:59:32 +0900'
+date_gmt: '2013-01-02 15:59:32 +0900'
+categories:
+- Tool
+tags:
+- check
+- open
+- network
+- confirm
+- port
+comments: []
+---
+<h1>netstat ?</h1>
+<p>usage</p>
+<pre><code>netstat [-Aan] [-f address_family] [core unix netinet addr]
+[-D]
+[-cCgimnrsPv] [-f address_family] [-p proto] [core unix netinet addr]
+[-n] [-I interface] [interval] [core unix netinet addr]
+</code></pre>
+<p># netstat</p>
+<table>
+<thead>
+<tr>
+<th>Proto</th>
+<th>Local Address</th>
+<th>Foreign Address</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TCP</td>
+<td>acy7807:1023</td>
+<td>211.233.45.89:80</td>
+<td>ESTABLISHED</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Proto : 현재 사용한 프로토콜</p>
+</li>
+<li>
+<p>Local Address : 현재 열려 있는 사용자 컴퓨터의 IP/호스트 네임과 사용중인 포트</p>
+</li>
+<li>
+<p>Foreign Address : 현재 사용자의 컴퓨터에 접속되어 있는 IP/호스트 네임과 사용중인 포트 - State : 연결 상태를 나타내는 것</p>
+</li>
+<li>
+<p>ESTABLISHED : 현재 연결되어 있다는 뜻</p>
+</li>
+<li>
+<p>LISTENING : 연결을 위하여 접속을 기다리는 상태</p>
+</li>
+<li>
+<p>TIME_WAIT : 이미 해당 사이트와 연결이 종료되었거나 다음 연결을 위해 기다리는 상<br />
+태</p>
+</li>
+<li>SYN_SENT : 접속하기 위해 패킷을 보냈다는 뜻</li>
+</ul>
+<p>Option</p>
+<ul>
+<li>
+<p>netstat -na (열려 있는 모든 포트)</p>
+</li>
+<li>
+<p>netstat -na | grep LISTEN (LISTEN 되는 모든 포트)</p>
+</li>
+<li>
+<p>netstat -na | grep ESTABLISHED | wc -l (모든 서비스 동시 접속자 수)</p>
+</li>
+<li>
+<p>netstat -na | grep *.80 | grep ESTABLISHED | wc -l (웹 동시 접속자 수)</p>
+</li>
+<li>
+<p>netstat -na | grep .1521 | grep ESTABLISHED | wc -l (DB 동시 접속자 수)</p>
+</li>
+</ul>

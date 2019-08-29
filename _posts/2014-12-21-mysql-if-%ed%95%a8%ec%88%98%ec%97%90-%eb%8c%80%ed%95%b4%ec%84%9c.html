@@ -1,0 +1,37 @@
+---
+layout: post
+status: publish
+published: true
+title: MySQL - IF 함수에 대해서
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2388
+wordpress_url: http://ezcocoa.com/?p=2388
+date: '2014-12-21 08:28:25 +0900'
+date_gmt: '2014-12-21 08:28:25 +0900'
+categories:
+- MySQL
+tags:
+- mysql
+- if
+comments: []
+---
+<p><strong>MySQL IF 함수</strong>에 대해서 알아보도록 하겠습니다. 어떠한 조건에 일치하면 어떠한 값을 반환하고 아니면 또 다른 값을 반환할 수 있는 조건 함수입니다.</p>
+<hr />
+<p>MySQL 함수를 소개하자면, MySQL <strong>IF</strong> 함수는 조건문으로 어떠한 값을 컨트롤 할 수 있는 유일한 함수 중 하나이다.<strong>IF</strong>함수는 때로는 <strong>IF ELSE</strong> 또는 <strong>IF THEN ELSE</strong> 함수가 따라다닌다.</p>
+<p>IF 함수의 문법은 아래와 같다.</p>
+<pre>
+IF(expr,if_true_expr,if_false_expr)
+</pre>
+<p>만약 <strong>expr</strong>이 NULL이 아니고, <strong>expr*이 0이 아니면, **expr(표현)</strong>이 <strong>TRUE</strong>로 된다.그렇게 되면 <strong>if_true_expr</strong>이 실행되고 그렇지 안다면 <strong>if_false_expr</strong>이 실행된다. <strong>IF</strong>함수는 숫자 타입이나 문자열 타입으로 반환된다.</p>
+<p>예로 아래와 같이 사용할 수 있다.</p>
+<pre class="sql">
+SELECT IF(1 = 2,'true','false'); -- false
+SELECT IF(1 = 1,' true','false'); -- true
+</pre>
+<p><a href="http://www.mysqltutorial.org/mysql-if-function.aspx">ref</a></p>

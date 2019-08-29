@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: Tool - wget 그리고 curl을 이용한 연속적인 파일 다운로드
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: linux에서 기본적으로 제공되는 wget 또는 curl을 이용한 연속적인 파일을 다운로드하는 방법에 대해서 이야기합니다.
+wordpress_id: 1523
+wordpress_url: http://ezcocoa.com/?p=1523
+date: '2012-04-25 00:37:57 +0900'
+date_gmt: '2012-04-25 00:37:57 +0900'
+categories:
+- Tool
+tags:
+- image
+- download
+- curl
+- repeat
+- wget
+comments: []
+---
+<p>안녕하세요. 벌써 2012년 4월 25일입니다.<br />
+먼 시간이 이렇게 빨리 가는지 프로그래머란 직업은 항상 두려움이란 존재와 함께 가는것만 저만 그런걸까요?<br />
+잠시만 쉬어도 뒤쳐져 버리는 전 이런점이 좋아서 프로그래머란 직업을 택했습니다. 하지만 가끔은 무섭기도 하구요, 즐겁기도 합니다.<br />
+항상 최선을 다하며 살아가는 ezcocoa 포스팅을 시작합니다.</p>
+<h3>wget을 이용한 방법</h3>
+<p>[code]<br />
+wget dl.dropbox.com/u/11372945/hair/hair{1..2}.png<br />
+[/code]</p>
+<h3>curl을 이용한 방법</h3>
+<p>[code]<br />
+curl --fail -O "http://dl.dropbox.com/u/11372945/hair/hair[1-21].png"<br />
+[/code]<br />
+<strong>you can enjoy with me.</strong></p>

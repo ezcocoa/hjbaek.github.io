@@ -1,0 +1,42 @@
+---
+layout: post
+status: publish
+published: true
+title: "[JAVA] 문자열 찾기"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 651
+wordpress_url: http://ezcocoa.com/?p=651
+date: '2011-03-11 02:18:33 +0900'
+date_gmt: '2011-03-11 02:18:33 +0900'
+categories:
+- JAVA
+tags:
+- java
+- match
+- regex
+comments: []
+---
+<p>[sourcecode language="JAVA"]<br />
+import java.io.*;<br />
+import java.util.regex.*;<br />
+class Foo {<br />
+  public static void main(String[] args) {<br />
+    String s = "google";<br />
+    try {<br />
+      if (s.matches(".*og.*"))<br />
+        System.out.format("매치되었습니다.%n");<br />
+      else<br />
+        System.out.format("그런 문자열이 없습니다.%n");<br />
+    } catch (PatternSyntaxException e) { // 정규식에 에러가 있다면<br />
+        System.err.println(e);<br />
+        System.exit(1);<br />
+    }<br />
+  }<br />
+}<br />
+[/sourcecode]</p>

@@ -1,0 +1,44 @@
+---
+layout: post
+status: publish
+published: true
+title: android - view animation
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 안드로이드 애니메이션 샘플
+wordpress_id: 1030
+wordpress_url: http://ezcocoa.com/?p=1030
+date: '2011-10-04 01:10:11 +0900'
+date_gmt: '2011-10-04 01:10:11 +0900'
+categories:
+- Android
+tags:
+- animation
+- android
+- hide
+- basic
+comments: []
+---
+<p>뷰 그룹, 레이아웃 또는 뷰 애니메이션을 사용할 예정이라면 XML 또는 자바 코드에서 Animation Set을 정의해야 한다.<br />
+전과 차이는 (이는 AnimationController를 말하는 거임) AnimationController가 없다는 것이다.<br />
+애니메이션을 순서대로 보기 위해서는 명시적으로 뷰 위에서 돌리거나 시작해야 한다.<br />
+ViewGroup 레이아웃 애니메이션과 같이 자동적으로 제동하지 않는다.<br />
+아래는 기본 Hide애니메이션을 반환하는 메서드이다.<br />
+[sourcecode language="java"]<br />
+public static Animation runFadeOutAnimationOn(Activity ctx, View target) {<br />
+  Animation animation = AnimationUtils.loadAnimation(ctx,<br />
+                                                     android.R.anim.fade_out);<br />
+  target.startAnimation(animation);<br />
+  return animation;<br />
+}<br />
+[/sourcecode]<br />
+1. 이 메서드는 View와 Activity/Context를 애니메이션을 그리기 위해 필요하여 파라미터로 받는다. 메서드를 호출하게 되면 주어진 뷰에서 동작하게 된다.<br />
+2. 불리기 이전에 그 애니메이션은 xml(android.R.anim.fade_out)으로 부터 불리어진다.<br />
+3. 그 뷰는 startAnimation(...)메서드를 이용하여 애니메이션이 동작하게 된다.<br />
+당신은 아마도 약간의 이벤트를 중도에 받게 되며, 그리고 나면 그 응당을 받아 애니메이션을 작동시킨다.<br />
+출처 ; http://developerlife.com/tutorials/?p=343</p>

@@ -1,0 +1,41 @@
+---
+layout: post
+status: publish
+published: true
+title: "[C] how to check or change negative and positive value."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 193
+wordpress_url: http://ezcocoa.com/?p=193
+date: '2010-11-19 01:35:29 +0900'
+date_gmt: '2010-11-19 01:35:29 +0900'
+categories:
+- iPhone
+tags:
+- c
+- neegative
+- positive
+comments: []
+---
+<p>답은 간단하다.<br />
+0을 기준으로 그보다 높으면 양수 낮으면 음수로 판단하면된다.<br />
+아래와 같이 볼 수 있다.<br />
+<code>if (timeInterval < 0 ) {<br />
+// this is positive value.<br />
+} else {<br />
+// this is negative value.<br />
+}<br />
+</code><br />
+ABS함수를 통해 음수와 양수로 변환 할 수 있다.<br />
+아래와 같이 볼 수 있다.<br />
+<code><br />
+int ToPositive(int value)<br />
+   Return Abs(value)<br />
+int ToNegative(int value)<br />
+   Return Abs(value) * -1<br />
+</code></p>

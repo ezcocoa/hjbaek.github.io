@@ -1,0 +1,51 @@
+---
+layout: post
+status: publish
+published: true
+title: OSX > Convert Markdown format to docx
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 마크다운(Markdown)에서 Doc문서로 변환하는 방법을 소개한다.
+wordpress_id: 2182
+wordpress_url: http://ezcocoa.com/?p=2182
+date: '2014-01-07 04:59:29 +0900'
+date_gmt: '2014-01-07 04:59:29 +0900'
+categories:
+- OSX
+tags:
+- document
+- doc
+- Automator
+- ms
+- word
+- 마크다운
+- 문서
+comments: []
+---
+<p>프로젝트에서 히스토리 관리를 마이크로 소프트 워드로 하게 되었다. 문제는 마이크로 소프트웨어 워드가 설치가 안되 있으며, 또한 Mac을 사용한다는데에서 문제가 발생하였다.</p>
+<p>물론 설치는 가능하다. 하지만 사용빈도도 적고 무겁기도 하고 내 하드용량은 제한적이기 때문에 설치를 하지 않았다.</p>
+<p>이런 저런 문제들로 나는 아래와 같은 방법으로 해결하였다.</p>
+<hr />
+<p>마크다운에서 docx파일로...</p>
+<p>(MultiMarkdown)[http://fletcherpenney.net/multimarkdown/]에서 mmd를 설치해주고 간단하게 아래와 같은 명령어로 처리하자.</p>
+<p><strong>Shell Script</strong></p>
+<pre>for f in "$@"
+do
+    cat "$f" | /usr/local/bin/mmd | textutil -stdin -convert docx -format html -output "$f.docx"
+done
+</pre>
+<p>맥의 장점을 살려 오토메이터를 이용하여 간편하게 사용하자.</p>
+<ol>
+<li>오토메이터 실행</li>
+<li>새로운 서비스 생성</li>
+<li>셋팅 화면에서 상단에 "Service receives selected"항목을 "files or folders" 그리고 "in any application."으로 선택</li>
+<li>우측 workflow에서 "Run Shell Script"을 선택</li>
+<li>"Pass input" 항목에서 "as arguments."로 선택</li>
+<li>위의 스크립트를 스크립트 입력창에 입력</li>
+</ol>
+<p>이상 오토메이터 등록 방법이였다.</p>

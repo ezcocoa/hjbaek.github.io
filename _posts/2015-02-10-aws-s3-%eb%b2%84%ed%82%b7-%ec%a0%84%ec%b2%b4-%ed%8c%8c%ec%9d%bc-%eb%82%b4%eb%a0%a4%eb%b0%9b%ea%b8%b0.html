@@ -1,0 +1,43 @@
+---
+layout: post
+status: publish
+published: true
+title: AWS - S3 버킷 전체 파일 내려받기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2412
+wordpress_url: http://ezcocoa.com/?p=2412
+date: '2015-02-10 05:36:35 +0900'
+date_gmt: '2015-02-10 05:36:35 +0900'
+categories:
+- AWS
+tags:
+- image
+- file
+- download
+- aws
+- bucket
+- cli
+- s3
+comments: []
+---
+<p>AWS CLI 문서 :&nbsp;http://docs.aws.amazon.com/cli/latest/index.html</p>
+<p>Command Line Tool을 이용하여 쉽게 파일들을 내려 받을 수 있다. 또한 버킷에서 또 다른 버킷으로 쉽게 파일을 동기화 시킬 수 있으며, Local에서 S3 버킷 또한 가능하다.</p>
+<p>&nbsp;</p>
+<p>1. Command Line Tool 설치하기</p>
+<p>$ sudo easy_install awscli</p>
+<p>또는</p>
+<p>$ sudo pip install awscli</p>
+<p>참조 :&nbsp;http://docs.aws.amazon.com/cli/latest/userguide/installing.html#install-with-pip</p>
+<p>&nbsp;</p>
+<p>2. Bucket 전체 파일 내려받기</p>
+<p>$ aws s3 sync s3://mybucket .</p>
+<p>&nbsp;</p>
+<p>참조 :&nbsp;http://docs.aws.amazon.com/cli/latest/reference/s3/sync.html</p>
+<p>&nbsp;</p>
+<p><a style="margin: 0px;padding: 0px;border: 0px;font-size: 15px;cursor: pointer;color: #0c65a5;text-decoration: none;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;line-height: 19.5px" href="http://docs.aws.amazon.com/cli/latest/reference/s3/sync.html">http://docs.aws.amazon.com/cli/latest/reference/s3/sync.html</a></p>

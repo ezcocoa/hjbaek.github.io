@@ -1,0 +1,52 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] AdMob 배너 하단에 넣기."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 815
+wordpress_url: http://ezcocoa.com/?p=815
+date: '2011-07-04 05:39:13 +0900'
+date_gmt: '2011-07-04 05:39:13 +0900'
+categories:
+- Android
+tags:
+- android
+- 안드로이드
+- ad
+- banner
+- insert
+- mob
+- put
+- 광고
+- 넣기
+- 달기
+- 배너
+- 에드몹
+- 하단
+comments: []
+---
+<p>AdMob뿐만 아니라 여러 디바이스를 지원하도록 뷰 설계가 가능합니다.<br />
+Ex) 디바이스에 따라 변화될수 있는 View 하단에 광고 배너를 넣어보도록 하겠습니다.<br />
+일단 고정 된 뷰는 xml에서 미리 선언해주는게 포인트입니다.<br />
+- 레이아웃은 RelativeLayout 사용<br />
+- 사이즈가 고정 된 뷰(Admob) 선언<br />
+- ContentView 생성<br />
+코드로 보도록 하겠습니다.<br />
+[sourcecode language="xml"]<br />
+<RelativeLayout<br />
+    width:fill_parent<br />
+    height:fill_parent><br />
+    <AdView<br />
+        alignParentBottom="true"/><br />
+    <View<br />
+        layout_above="@+id/adView/><br />
+</RelativeLayout><br />
+[/sourcecode]<br />
+위와 같은 구조를 이용할 수 있습니다.</p>

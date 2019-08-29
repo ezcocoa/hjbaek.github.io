@@ -1,0 +1,34 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] 자동 잠금 막기"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 789
+wordpress_url: http://ezcocoa.com/?p=789
+date: '2011-06-25 12:39:43 +0900'
+date_gmt: '2011-06-25 12:39:43 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- 아이폰
+- auto
+- lock
+- 자동
+- 잠금
+comments: []
+---
+<p>예로 설명하자면,<br />
+아이폰 잠금 설정이 On으로 되어있을 경우 잠금 설정 시간이 지난 후에는 자동으로 락 상태가 되어버립니다.<br />
+서드 파트 앱쪽에서 이 것을 컨트롤 하기 위해 아래와 같은 코드를 사용할 수 있습니다.<br />
+[sourcecode language="ObjC"]<br />
+UIApplication *application = [UIApplication sharedApplication];<br />
+application.idleTimerDisabled = YES;<br />
+[/sourcecode]</p>

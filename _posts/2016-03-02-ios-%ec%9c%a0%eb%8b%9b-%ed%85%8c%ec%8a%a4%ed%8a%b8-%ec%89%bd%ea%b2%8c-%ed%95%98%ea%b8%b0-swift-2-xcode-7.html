@@ -1,0 +1,35 @@
+---
+layout: post
+status: publish
+published: true
+title: iOS - 유닛 테스트 쉽게 하기! (Swift 2 + XCode 7)
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2566
+wordpress_url: http://ezcocoa.com/?p=2566
+date: '2016-03-02 05:15:08 +0900'
+date_gmt: '2016-03-02 05:15:08 +0900'
+categories:
+- iPhone
+tags:
+- test
+- unit
+comments: []
+---
+<p><a href="https://www.natashatherobot.com/swift-2-xcode-7-unit-testing-access/">원문</a></p>
+<p>유닛 테스트를 하기 위해 아래의 항목을 확인해주어야 한다.</p>
+<h2>1. 내부 클래스 만들기</h2>
+<p>만약 새롭게 내부 클래스를 만들었다면, 클래스나 메서드를 찾지 못한다면, 아래와 같이 Public 처리를 해주어야 한다.</p>
+<p><img src="http://13.124.100.73/wp-content/uploads/2016/03/actionsheetNewImage-1.png" alt="NewImage" title="NewImage.png" border="0" width="510" height="188" /></p>
+<h2>2. Import with @testable</h2>
+<p>테스트 타겟에서, 아래와 같이 @testable keyword를 사용하여, 모듈을 import해줘야한다.</p>
+<p><img src="http://13.124.100.73/wp-content/uploads/2016/03/actionsheetNewImage1-1.png" alt="NewImage" title="NewImage.png" border="0" width="512" height="281" /></p>
+<h2>3. Test하기</h2>
+<p>모든게 완료되었다. 외부 클래스나 메서드도 쉽게 테스트 할 수 있다.</p>
+<p><img src="http://13.124.100.73/wp-content/uploads/2016/03/actionsheetNewImage2-1.png" alt="NewImage" title="NewImage.png" border="0" width="512" height="273" /></p>
+<p>끝.</p>

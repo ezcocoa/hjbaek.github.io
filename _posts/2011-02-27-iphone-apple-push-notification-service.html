@@ -1,0 +1,85 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] Apple Push Notification Service"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 630
+wordpress_url: http://ezcocoa.com/?p=630
+date: '2011-02-27 08:53:22 +0900'
+date_gmt: '2011-02-27 08:53:22 +0900'
+categories:
+- iPhone
+tags:
+- service
+- apns
+- apple
+- notification
+- push
+comments: []
+---
+<p>이 과정은 Development Test 버전입니다.<br />
+- 배포 버전도 이와 동일하다 보시면 됩니다.<br />
+PHP Version - <a href="http://blog.boxedice.com/2009/07/10/how-to-build-an-apple-push-notification-provider-server-tutorial/">http://blog.boxedice.com/2009/07/10/how-to-build-an-apple-push-notification-provider-server-tutorial/</a><br />
+Mac Version -  <a href=" http://mobiforge.com/developing/story/programming-apple-push-notification-services">http://mobiforge.com/developing/story/programming-apple-push-notification-services</a><br />
+Python Version - <a href="http://code.google.com/p/apns-python-wrapper/">http://code.google.com/p/apns-python-wrapper/</a><br />
+User Blog<br />
+- <a href="http://mskyt.tistory.com/42#recentTrackback">http://mskyt.tistory.com/42#recentTrackback</a><br />
+- <a href="http://www.macoscoders.com/2009/05/17/iphone-apple-push-notification-service-apns/comment-page-1/">http://www.macoscoders.com/2009/05/17/iphone-apple-push-notification-service-apns/comment-page-1/</a><br />
+------------------------- 여기까지가 제공 자료들이다. 아래의 내용은 본좌가 테스트 해보고 작성 한 것이다.<br />
+키 체인 어플에서 ADP Services의 인증서와 개인키 인증서를 cert.p12, key.p12파일로 저장한다.<br />
+인증서를 우리가 사용할 써드 파티 서버에 업로드해서 APN서버와 통신하게 해 줘야 ㅎ되는데, 통신에 앞서서<br />
+다음 인증서를 애플과 통신할 수 있는 포멧으로 변환 해줘야 한다.<br />
+PEM format(privacy Enhanced Mail Sercurity Certificate)이라는 형태로 전환해 줘야 하며 이 작업은 터미널에서 진행한다.<br />
+> openssl pkcs12 -clcerts -nokeys -out cert.pem -in cert.p12<br />
+> openssl pkcs12 -nocerts -out key.pem -in key.p12<br />
+다음 과정을 거치면 PEM 형식의 인증서와, 개인키가 발급된다.<br />
+써드파트 서버에서 푸쉬를 보낼 때 푸쉬 인증서를 개인키와 비교해서 올바른 사용자인지 구분하는 과정을 거쳐줘야 되는데,<br />
+매번 개인키를 통해서 인증하는 과정이 번거롭기 때문에, 인증서와 개인키를 합치는 과정을 진행 해야 한다.<br />
+> openssl rsa -in key.pem -out key.unencrypted.pem<br />
+> cat cert.pem key.unencrypted.pem > ck.pem<br />
+다음 과정을 통해 APN서버와 통신 할 수 있는 Ck.pem 인증서가 생성된다.<br />
+다음 파일을 써드파티로 이요할 웹서버에 업로드 하고 읽기권한을 주면 되겠다.<br />
+APN서버로 푸쉬 메시지 요청은 SSL통해서 이뤄집니다.<br />
+(OS X에서 구축할 수 잇는 웹서버 MAMP는 SSL을 지원하지 않으며, XAMPP를 이용하여야 한다.)<br />
+출처 : 2. support 유저 블러그<br />
+// ----------------------------<br />
+import socket, ssl, json, struct<br />
+# device token returned when the iPhone application<br />
+# registers to receive alerts<br />
+deviceToken = 'XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX XXXXXXXX'<br />
+thePayLoad = {<br />
+     'aps': {<br />
+          'alert':'Oh no! Server\'s Down!',<br />
+          'badge':42,<br />
+          },<br />
+     'test_data': { 'foo': 'bar' },<br />
+     }<br />
+# Certificate issued by apple and converted to .pem format with openSSL<br />
+theCertfile = 'cert.pem'<br />
+# 개발용 PNS 서버 (애플 제공)<br />
+theHost = ( 'gateway.sandbox.push.apple.com', 2195 )<br />
+data = json.dumps( thePayLoad )<br />
+# Clear out spaces in the device token and convert to hex<br />
+byteToken = deviceToken.replace(' ','').decode('hex')<br />
+theFormat = '!BH32sH%ds' % len(data)<br />
+theNotification = struct.pack( theFormat, 0, 32, byteToken, len(data), data )<br />
+# Create our connection using the certfile saved locally<br />
+ssl_sock = ssl.wrap_socket( socket.socket( socket.AF_INET, socket.SOCK_STREAM ), certfile = theCertfile )<br />
+ssl_sock.connect( theHost )<br />
+# Write out our data<br />
+ssl_sock.write( theNotification )<br />
+# Close the connection -- apple would prefer that we keep<br />
+# a connection open and push data as needed.<br />
+ssl_sock.close()<br />
+// ----------------------------<br />
+[ register 실패 해결책 ]<br />
+1.<br />
+error name :<br />
+해결책 : 프로파일을 확인 할 것.</p>

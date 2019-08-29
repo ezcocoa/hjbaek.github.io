@@ -1,0 +1,35 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - Redirecting NSLog to a log file
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1437
+wordpress_url: http://ezcocoa.com/?p=1437
+date: '2012-02-13 01:38:57 +0900'
+date_gmt: '2012-02-13 01:38:57 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- file
+- log
+- write
+comments: []
+---
+<p>refer to this <a href="http://objcolumnist.com/2009/12/19/redirecting-nslog-to-a-log-file/">article</a><br />
+[sourcecode language="objc"]<br />
+- (void)redirectNSLogToDocumentFolder{<br />
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);<br />
+  NSString *documentsDirectory = [paths objectAtIndex:0];<br />
+  NSString *fileName =[NSString stringWithFormat:@"%@.log",[NSDate date]];<br />
+  NSString *logFilePath = [documentsDirectory stringByAppendingPathComponent:fileName];<br />
+  freopen([logFilePath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);<br />
+}<br />
+[/sourcecode]</p>

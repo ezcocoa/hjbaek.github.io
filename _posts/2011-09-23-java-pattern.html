@@ -1,0 +1,28 @@
+---
+layout: post
+status: publish
+published: true
+title: Java - pattern
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1013
+wordpress_url: http://ezcocoa.com/?p=1013
+date: '2011-09-23 08:11:19 +0900'
+date_gmt: '2011-09-23 08:11:19 +0900'
+categories:
+- JAVA
+tags: []
+comments: []
+---
+<p>[sourcecode language="java"]<br />
+		Pattern p = Pattern.compile("^[0-9a_zA-Z]{1,3}$");<br />
+		Matcher m = p.matcher("Z0");<br />
+		boolean b = m.matches();<br />
+		if (b) System.out.println("ok");<br />
+		else System.out.println("oh no!!");<br />
+[/sourcecode]</p>

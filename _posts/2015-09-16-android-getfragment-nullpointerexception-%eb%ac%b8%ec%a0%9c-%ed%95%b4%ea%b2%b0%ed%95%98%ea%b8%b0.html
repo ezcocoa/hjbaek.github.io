@@ -1,0 +1,50 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - getFragment NullPointerException 문제 해결하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2520
+wordpress_url: http://ezcocoa.com/?p=2520
+date: '2015-09-16 09:54:59 +0900'
+date_gmt: '2015-09-16 09:54:59 +0900'
+categories:
+- Android
+tags:
+- android
+- NullPointerException
+- ViewPager
+- childfragment
+- issue
+comments: []
+---
+<p><a href="https://github.com/neokree/MaterialNavigationDrawer">MaterialNavigationDrawer</a>와 ViewPager (v4 22.2.0)를 사용 할때 (즉 다중 Fragment를 사용했을 때) getFragment 시 NullPointException 문제가 발생합니다.</p>
+<p>정확한 이유는 아직 찾지 못했으나, <a href="http://stackoverflow.com/questions/18642890/fragmentstatepageradapter-with-childfragmentmanager-fragmentmanagerimpl-getfra">stackoverflow</a>에서 동일한 문제를 겪고 있는 분들이 있더라고요. 일단 증상부터 해결책을 살펴보도록 하겠습니다.</p>
+<p>일단 에러 코드는 아래와 같습니다.</p>
+<pre class="java">
+java.lang.NullPointerException
+at android.support.v4.app.FragmentManagerImpl.getFragment(FragmentManager.java:569)
+at android.support.v4.app.FragmentStatePagerAdapter.restoreState(FragmentStatePagerAdapter.java:211)
+at android.support.v4.view.ViewPager.onRestoreInstanceState(ViewPager.java:1281)
+at android.view.View.dispatchRestoreInstanceState(View.java:12043)
+at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:2688)
+at android.view.ViewGroup.dispatchRestoreInstanceState(ViewGroup.java:2694)
+...
+</pre>
+<p>일단 문제의 원인은 childFragment 이슈 때문에 발생하는데, 아래의 방법은 그렇게 확실하지 않은 방법이라고 하네요. 원인은 states 복구 쪽에서 일어나는 거 같습니다.</p>
+<p>그래서 아래의 해결책은 상태값을 저장하지 못하게 되는데요, 이부분을 사용하지 않을거라면 아래의 방법으로 해결하여도 무방할거 같습니다.</p>
+<p>아래의 부분을 FragmentStatePagerAdapter 상속한 클래스에 넣어주시면 됩니다.<br />
+아래의 코드는 상태 복구부분에서 아무것도 안하는 것을 확인 할 수 있습니다.</p>
+<pre class="java">
+    @Override
+public void restoreState(Parcelable arg0, ClassLoader arg1) {
+    //do nothing here! no call to super.restoreState(arg0, arg1);
+}
+</pre>
+<p>끄읕.</p>

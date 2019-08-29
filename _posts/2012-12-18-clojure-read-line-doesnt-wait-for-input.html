@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure - (read-line) doesn&#039;t wait for input
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1748
+wordpress_url: http://ezcocoa.com/?p=1748
+date: '2012-12-18 18:46:15 +0900'
+date_gmt: '2012-12-18 18:46:15 +0900'
+categories:
+- Clojure
+tags:
+- Clojure
+- info
+- input
+- read-line
+- scanner
+- system
+comments: []
+---
+<p><strong>"lein run"</strong>을 이용하여 <strong>(read-line)</strong> 함수를 사용하는 중에 문제가 발생하였다.</p>
+<p>(read-line) 함수는  (. (new java.util.Scanner (. System in)) nextLine)]와 동일하다.</p>
+<p>문제의 원인은 leiningen은 새로운 프로세스를 생성하여 사용하므로 사용자 콘솔에 접근을 할 수 없다는 문제이다.</p>
+<p>ref : http://stackoverflow.com/questions/7707558/clojure-read-line-doesnt-wait-for-input</p>
+<h2>Try "lein trampoline run". See</h2>
+<pre><code> Q: I don't have access to stdin inside my project.
+ A: There's a problem in the library that
+Leiningen uses to spawn new processes that blocks access to console input.
+This means that functions like read-line will not work as expected in most contexts,
+though the repl task necessarily includes a workaround.
+You can also use the trampoline task to launch
+your project's JVM after Leiningen's has exited rather than launching it as a subprocess.
+</code></pre>

@@ -1,0 +1,49 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] NSURL Api example"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 882
+wordpress_url: http://ezcocoa.com/?p=882
+date: '2011-07-29 06:28:18 +0900'
+date_gmt: '2011-07-29 06:28:18 +0900'
+categories:
+- iPhone
+tags:
+- example
+- iphone
+- api
+- nsurl
+comments: []
+---
+<p>
+[sourcecode language="ObjC"][/sourcecode]<br />
+NSString *strUrl = @"http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSRecursiveLock_Class/Reference/Reference.html";<br />
+NSURL *url = [NSURL URLWithString:strUrl];<br />
+NSLog(@"absoluteString->%@",[url absoluteURL]);<br />
+NSLog(@"absoluteURL->%@",[url absoluteURL]);<br />
+NSLog(@"baseURL->%@",[url baseURL]);<br />
+NSLog(@"fragment->%@",[url fragment]);<br />
+NSLog(@"host->%@",[url host]);<br />
+NSLog(@"lastPathComponent->%@",[url lastPathComponent]);<br />
+NSLog(@"parameterString->%@",[url parameterString]);<br />
+NSLog(@"password->%@",[url password]);<br />
+NSLog(@"path->%@",[url path]);<br />
+NSLog(@"pathComponents->%@",[url pathComponents]);<br />
+NSLog(@"pathExtension->%@",[url pathExtension]);<br />
+NSLog(@"port->%@",[url port]);<br />
+NSLog(@"query->%@",[url query]);<br />
+NSLog(@"relativePath->%@",[url relativePath]);<br />
+NSLog(@"relativeString->%@",[url relativeString]);<br />
+NSLog(@"resourceSpecifier->%@",[url resourceSpecifier]);<br />
+NSLog(@"scheme->%@",[url scheme]);<br />
+NSLog(@"standardizedURL->%@",[url standardizedURL]);<br />
+NSLog(@"user->%@",[url user]);<br />
+[sourcecode][/sourcecode]</p>

@@ -1,0 +1,69 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] NSDate Tutorial"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 237
+wordpress_url: http://ezcocoa.com/?p=237
+date: '2010-11-25 08:28:25 +0900'
+date_gmt: '2010-11-25 08:28:25 +0900'
+categories:
+- iPhone
+tags:
+- NSCalendar
+- NSDate
+- NSDateComponents
+- NSDateFormatter
+comments: []
+---
+<p>출처 : <a title="[http://b4you.net/blog/231]로 이동합니다." href="http://b4you.net/blog/231" target="_blank">http://b4you.net/blog/231</a><br />
+1. NSDate to unix timestamp<br />
+예 : 현재의 시간을 unix timestamp로 변환하기.<br />
+<code>int timestamp = [[NSDate date] timeIntervalSince1970];<br />
+</code><br />
+2. unix timestamp to NSDate<br />
+예 : 2009-06-26 10:51:39의 unix timestamp를 NSDate로 변환하기.<br />
+<code>NSDate *date = [NSDate dateWithTimeIntervalSince1970:1245981099];<br />
+</code><br />
+3. NSDate to date component<br />
+예: 2009-06-26 10:51:39의 unix timestamp로 NSDate객체 생성한 뒤 해당 객체를 년/월/일 시/분/초 로 분할하여 표시하기.<br />
+<code>NSDate *date;<br />
+NSDateComponents *com;<br />
+date = [NSDate dateWithTimeIntervalSince1970:1245980099];<br />
+com = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:date];<br />
+</code><br />
+4. date component to NSDate<br />
+예: 2009-06-26 10:51:39 시간을 가리키는 NSDate객체 생성하기<br />
+<code>NSDate *date;<br />
+NSDateComponents *com;<br />
+NSDateFormatter *formatter;<br />
+com = [[NSDateComponents alloc] init];<br />
+[com setYear:2009];<br />
+[com setMonth:6];<br />
+[com setDay:26];<br />
+[com setHour:10];<br />
+[com setMinute:51];<br />
+[com setSecond:39];<br />
+date = [[NSCalendar currentCalendar] dateFromComponents:com];<br />
+formatter = [[NSDateFormatter alloc] init];<br />
+[formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];<br />
+NSLog(@"%@", [formatter stringFromDate:date]);<br />
+[formatter release];<br />
+[com release];<br />
+</code><br />
+5. D-Day 구하기.<br />
+예 : 현재의 날짜와 등록된 날짜간의 D-Day를 구한다.<br />
+<code>NSDateComponents *dcom = [[NSCalendar currentCalendar]components: NSDayCalendarUnit<br />
+fromDate:date<br />
+  toDate:d_day<br />
+  options:0];<br />
+NSLog(@"day=%d",   [dcom day]);<br />
+</code><br />
+Formatter : <a href="http://unicode.org/reports/tr35/tr35-6.html#Date_Format_Patterns">http://unicode.org/reports/tr35/tr35-6.html#Date_Format_Patterns</a></p>

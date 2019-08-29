@@ -1,0 +1,70 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - 지역화 문자열 뽑아내기 &amp; 지역화 하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: '다국어를 지원하는 아이폰에서 어떻게 해야되는지 또 다국어에 관한 툴을 소개합니다.
+
+'
+wordpress_id: 800
+wordpress_url: http://ezcocoa.com/?p=800
+date: '2011-06-27 02:45:33 +0900'
+date_gmt: '2011-06-27 02:45:33 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- 아이폰
+- string
+- language
+- locale
+- 지역
+- localizable
+- localize
+- 다국어
+- 문자열
+- 지역화
+comments: []
+---
+<p>OS X은 맥 개발 시(.m)에서 지역화된 문자열을 뽑아 낼 수 있도록<br />
+하나의 명령을 지원합니다.<br />
+<strong>1. 코드에서 지역화 추출하기</strong><br />
+[code]<br />
+# genstrings -o example.lproj *.m<br />
+[/code]<br />
+위와 같이 Console 창에서 입력하게 되면 아래와 같이 Localizable.strings파일을 리턴하게 됩니다.<br />
+[code]<br />
+"Example" = "예제";<br />
+[/code]<br />
+Key-Value방식으로 작성되며, UTF-16인크도이 방식으로 지원되도록 되어있습니다.<br />
+<strong>2. Xib 파일에서 문자열 추출하기</strong><br />
+각 언어별 디렉토리를 만듭니다. 한글과 영어라면 ko.lproj와 en.lproj를 만들고 각각의 디렉토리에 xib파일을 복사합니다.<br />
+만약 파일이 ExampleController.xib라고 가정하였을 때 아래와 같이 입력 하실 수 있습니다.<br />
+[code]<br />
+# ibtool --generate-stringsfile ExampleController.strings ExampleController.xib<br />
+[/code]<br />
+여러개의 파일 일 경우 쉽게 번역하도록 스크립트를 제공합니다.<br />
+[code]<br />
+#!/bin/bash<br />
+FILES="*.xib"<br />
+for f in *.xib<br />
+do<br />
+    echo "Processing $f file..."<br />
+    ibtool --generate-stringsfile ${f%.*}.strings $f<br />
+done<br />
+[/code]<br />
+<strong>3. 지역화 하기</strong><br />
+InfoPlist.strings 파일 생성합니다.<br />
+아래의 속성들은 각 속성에 맞는 로컬라이징을 수행합니다.<br />
+[code]<br />
+"CFBundleDevelopmentRegion" = "Korean"; // 네이티브 컴포넌트 지역화<br />
+"CFBundleDisplayName" = "예제"; // 어플리케이션 이름 지역화<br />
+.... 등등<br />
+[/code]</p>

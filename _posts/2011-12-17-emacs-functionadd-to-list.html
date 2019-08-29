@@ -1,0 +1,61 @@
+---
+layout: post
+status: publish
+published: true
+title: Emacs - Function:add-to-list
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: add-to-list 설명과 샘플
+wordpress_id: 1329
+wordpress_url: http://ezcocoa.com/?p=1329
+date: '2011-12-17 14:28:22 +0900'
+date_gmt: '2011-12-17 14:28:22 +0900'
+categories:
+- Emacs
+tags:
+- emacs
+- add-to-list
+comments:
+- id: 29
+  author: hojun baek
+  author_email: mr.hjbaek@gmail.com
+  author_url: http://ezcocoa.com
+  date: '2011-12-17 14:33:19 +0900'
+  date_gmt: '2011-12-17 14:33:19 +0900'
+  content: '궁금) 세번 째 예제에서 (add-to-list ''foo ''b)라고 하고 foo 변경 되었다. 라고 원문에서 나와있는데 도대체
+    무엇이 변경되었다는 것일까요? '
+---
+<p>Symbol element & optional append compare-fn<br />
+add-to-list는 리스트 항목에 새로운 항목을 추가 할때 사용합니다.<br />
+만약 리스트 항목의 맴버가 아니라면 그 리스트 항목 맨 앞에 값을 추가합니다.<br />
+그리고 업데이트 후 리스트 값을 반환하며, 그게 아니라면 기존 리스트 값만 반환합니다.<br />
+add-to-list 부르기 전에 심볼의 값은 리스트가 되는 것이 낫습니다. ??<br />
+add-to-list는 리스트에 존재하는 맴버변수를 대비하여 비교 연산을 하기 위해 compare-fn을 사용합니다.<br />
+만약 compare-fn이 nil이면 equal 함수를 사용합니다.<br />
+일반적으로 element가 추가되었다면, 기존 심볼 앞에 추가가 됩니다. 하지만 추가적인 argument로 nil을 추가하게 되면 맨 뒤에 붙게 됩니다.<br />
+그 argument 심볼은 절대적이지 않습니다;<br />
+add-to-list는 set 과 비슷하고, setq와 비슷하지 않은<br />
+정식 함수입니다.<br />
+그 argument 는 당신이 원하는대로 사용할 수 있습니다.<br />
+아래는 add-to-list를 사용하기 위한 몇가지 시나리오입니다.<br />
+[code]<br />
+(setq foo '(a b))<br />
+-> (a b)<br />
+(add-to-list 'foo 'c) ;; c 가 추가되었습니다.<br />
+-> (c a b)<br />
+(add-to-list 'foo 'c) ;; 아무 변화 없습니다.<br />
+-> (c a b)<br />
+(add-to-list 'foo 'b) ;; foo 심볼이 변경 되었습니다.<br />
+-> (c a b)<br />
+[/code]<br />
+add-to-list를 동등한 표현으로 아래와 같이 할 수 있습니다.<br />
+[code]<br />
+(or (member value var)<br />
+    (setq var (cons value var)))<br />
+[/code]<br />
+<a href="http://www.gnu.org/software/emacs/elisp/html_node/List-Variables.html">원문</a></p>

@@ -1,0 +1,60 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Rotate View Hierarchy 90 degrees
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: '뷰 또는 레이아웃을 회전 시키기 위해 괜찮은 방법이 있어 포스팅합니다.
+
+'
+wordpress_id: 1149
+wordpress_url: http://ezcocoa.com/?p=1149
+date: '2011-10-18 09:34:27 +0900'
+date_gmt: '2011-10-18 09:34:27 +0900'
+categories:
+- Android
+tags:
+- animation
+- android
+- rotate
+- anim
+- camera
+- surfaceholder
+comments: []
+---
+<p><a href="http://stackoverflow.com/questions/3444764/rotate-view-hierarchy-90-degrees">rotate-view-hierarchy-90-degrees</a><br />
+뷰 또는 레이아웃을 회전 시키기 위해 괜찮은 방법이 있어 포스팅합니다.<br />
+애니메이션 리소스 만들기.<br />
+프로세스에 대해 아직 미숙하시다고 느끼시면 <a href="http://developer.android.com/guide/topics/resources/animation-resource.html">여기!</a><br />
+<strong>/res/anim/rotation.xml</strong><br />
+[sourcecode language="xml"]<br />
+<?xml version="1.0" encoding="utf-8"?><br />
+<rotate<br />
+ xmlns:android="http://schemas.android.com/apk/res/android"<br />
+    android:fromDegrees="0"<br />
+    android:toDegrees="-90"<br />
+    android:pivotX="50%"<br />
+    android:pivotY="50%"<br />
+    android:duration="0" android:fillAfter="true"><br />
+</rotate><br />
+[/sourcecode]<br />
+리소스 적용시키기.<br />
+[sourcecode language="java"]<br />
+  @Override<br />
+  public void onCreate(Bundle savedInstanceState) {<br />
+  super.onCreate(savedInstanceState);<br />
+     setContentView(R.layout.mai);<br />
+     Animation rotateAnim = AnimationUtils.loadAnimation(this, R.anim.rotation);<br />
+     LayoutAnimationController animController = new LayoutAnimationController(rotateAnim, 0);<br />
+     FrameLayout layout = (FrameLayout)findViewById(R.id.MyScreen_ContentLayout);<br />
+     layout.setLayoutAnimation(animController);<br />
+ }<br />
+[/sourcecode]<br />
+원 출처는 카메라 SurfaceHolder 회전에 대한 문제 해결 방안으로<br />
+원하는 Layout에 FrameLayout을 생성하고 그 아래에 SurfaceHolder를 위치 시켜 속일 수 있다고 하네요. </p>

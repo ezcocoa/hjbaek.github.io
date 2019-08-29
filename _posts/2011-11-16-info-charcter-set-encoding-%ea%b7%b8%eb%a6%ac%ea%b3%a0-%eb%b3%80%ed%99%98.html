@@ -1,0 +1,54 @@
+---
+layout: post
+status: publish
+published: true
+title: Info - Charcter Set, Encoding 그리고 변환
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: '케릭터셋과 인코딩에 대해서 간단설명과 헥사에서 스트링으로 스트링에서 헥사로 변환하는 메서드를 정의합니다.
+
+'
+wordpress_id: 1247
+wordpress_url: http://ezcocoa.com/?p=1247
+date: '2011-11-16 00:33:03 +0900'
+date_gmt: '2011-11-16 00:33:03 +0900'
+categories:
+- iPhone
+- JAVA
+- Android
+tags: []
+comments: []
+---
+<p><a href="http://techbug.tistory.com/154">원문</a></p>
+<h4>문자셋 (charset, Character Set)</h4>
+<p>하나의 언어권에서 사용하는 언어를 표현하기 위한 모든 문자(활자)의 모임을 문자셋(charater set)이라고 한다.<br />
+다시 말하면 우리가 얘기하는 언어를 책으로 출판할 때 필요한 문자(활자)를 모두 모은 것이라고 생각하면 된다. 추가적으로 부호와 공백 등과 같은 특수 문자도 문자셋에 포함된다.<br />
+영어의 경우 알파벳 대소문자와 특수 문자 등으로 간단하게 문자셋을 구성할 수 있지만 한글의 경우 출판에서 가,나,다 등으로 출판함으로 훨씬 다양한 문자셋을 가지고, 또한 한자를 병행해서 사용함으로 문자셋의 범위는 더욱 넓어진다.<br />
+추상적인 글자 셋은 여러 개의 인코딩을 가질 수 있다. MIME 문자셋은 IANA에서 정의하며 인터넷 및 XML 파일에서 사용한다.</p>
+<h4>인코딩 (encoding)</h4>
+<p>인코딩은 문자셋을 컴퓨터가 이해할 수 있는 바이트와 매핑하는 규칙이다.<br />
+예를 들면 ASCII Code에서 A,B,C 등은 문자셋이고 A는 코드 65, B는 코드 66 등 바이트 순서와 매핑한 것이 인코딩이다. 따라서 문자셋을 어떻게 매핑하느냐에 따라 하나의 문자셋이 다양한 인코딩을 가질 수 있다.<br />
+<a href="http://www.utf8-chartable.de/">유니코드 표</a><br />
+<a href="http://ko.wikipedia.org/wiki/%EC%9C%A0%EB%8B%88%EC%BD%94%EB%93%9C_D000~DFFF">위키 유니코드 표</a></p>
+<h4>헥사에서 스트링으로.. 스트링에서 헥사로 변환하기 </h4>
+<p><strong>Objective-C</strong><br />
+[sourcecode language="ObjC"]<br />
+// Objective-C equivalents would be<br />
+utf8 = [s UTF8String];<br />
+[NSString initWithUTF8String:decodedHexString];<br />
+// To make an NSString with the hexadecimal representation of a character string:<br />
+NSMutableString hex = [NSMutableString string];<br />
+while ( *utf8 ) [hex appendFormat:@"%02X" , *utf8++ &amp; 0x00FF];<br />
+// You will have to make your own decodeHex function. Just pull two characters out of the string and, if they are valid, add a byte to the result.<br />
+[/sourcecode]<br />
+<strong>java</strong><br />
+[sourcecode language="java"]<br />
+utf8 = s.getBytes(ENCODING_UTF8);<br />
+new String(decodedHexString, ENCODING_UTF8);<br />
+[/sourcecode]<br />
+<a href="http://stackoverflow.com/questions/3056757/how-to-convert-an-nsstring-to-hex-values">원문</a></p>

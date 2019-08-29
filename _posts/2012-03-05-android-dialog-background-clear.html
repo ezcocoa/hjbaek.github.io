@@ -1,0 +1,33 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - dialog background clear
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1450
+wordpress_url: http://ezcocoa.com/?p=1450
+date: '2012-03-05 08:22:09 +0900'
+date_gmt: '2012-03-05 08:22:09 +0900'
+categories:
+- Android
+tags: []
+comments: []
+---
+<p>before call setContext() method, you've to insert following code.<br />
+in java file.<br />
+[sourcecode language="JAVA"]<br />
+WindowManager.LayoutParams lpWindow = new WindowManager.LayoutParams();<br />
+		lpWindow.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;<br />
+		lpWindow.dimAmount = 0.0f;<br />
+		getWindow().setAttributes(lpWindow);<br />
+[/sourcecode]<br />
+in manifest file.<br />
+[sourcecode language="xml"]<br />
+<activity android:name="com.ezcocoa.TestActivity" android:theme="@android:style/Theme.Translucent" /><br />
+[/sourcecode]</p>

@@ -1,0 +1,49 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Diary] Project 디픽!"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 585
+wordpress_url: http://ezcocoa.com/?p=585
+date: '2011-02-09 04:09:50 +0900'
+date_gmt: '2011-02-09 04:09:50 +0900'
+categories:
+- Diary
+tags:
+- project
+- diary
+- dpic
+- rule
+comments: []
+---
+<div id="_mcePaste">사진 뷰에 대한 규칙</div>
+<div id="_mcePaste">1. 기본적으로 설정된 시간(MAX Time)에 대해서만 애니메이션이 작동되어야 한다.</div>
+<div>- 각 객체마다 타이머가 존재하여야 하며 또한 Flag값을 가지고 있어야 한다.)</div>
+<div>- 이 타이머는 애니메이션 작동에 대한 타이머가 아니며 이는 Flag값을 변경하는데 사용된다.</div>
+<div id="_mcePaste">2. 다음 사진이 존재 하지 않는 다면 애니메이션이 되어지면 안된다. (예외: MAX Time 시간이 되었을 때는 애니작동)</div>
+<div id="_mcePaste">3. 생각해보건데 타이머는 2~3개 정도를 보유하여야 한다.</div>
+<div><!--more-->프레임에 대한 규칙</div>
+<div>1. 패턴을 가지고 있다. 패턴 종류는 아래와 같다.</div>
+<div>- 1개 프레임</div>
+<div>- 2개 프레임</div>
+<div>- 3개 프레임</div>
+<div>- 4개 프레임</div>
+<div>- &nbsp;9개 프레임</div>
+<div>- &nbsp;24개 프레임</div>
+<div>2. 관리자는 프레임 갯수를 알아야 하며, 각각 대표 이미지를 뽑아야 한다.</div>
+<div>RanFrame -> Noti -> 대표이미지에게, 그리고 나머지들에게는 CGRectZero를...</div>
+<div>Notification Infomation</div>
+<div>- Tag</div>
+<div>- CGRect</div>
+<div>3. 각각의 대표 이미지들은 현재 위치에서 제일 가까운 곳으로 이동하여 확대되어야 한다.</div>
+<div>4. 고려해야 할 점에 대해서 생각해보자.</div>
+<div>- 일단은 <strong>현재 사진의 갯수</strong>를 알아야 한다..</div>
+<div>- 사진의 갯수는 <strong>프레임을 제안</strong>해야 한다.</div>
+<div>- &nbsp;프레임안에 들어갈 <strong>사진의 치수를 측정</strong>해야 한다.</div>

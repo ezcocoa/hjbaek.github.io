@@ -1,0 +1,43 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - ListView에 Header/Footer를 추가하면?
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2300
+wordpress_url: http://ezcocoa.com/?p=2300
+date: '2014-07-24 01:38:14 +0900'
+date_gmt: '2014-07-24 01:38:14 +0900'
+categories:
+- Android
+tags:
+- table
+- android
+- list
+- listview
+- footer
+- header
+comments: []
+---
+<ul>
+<li>거지 같은 내 인생.. 잠시 한탄해본다. (사실은 전혀 그렇지 않다. 잠시 짜증이 났을 뿐. 누구나 가끔씩 지르고 싶을때가 있는 것처럼...)</li>
+</ul>
+<hr />
+<p><a href="http://stackoverflow.com/questions/4027997/is-there-a-good-reason-for-a-listview-header-taking-up-a-position">원문</a></p>
+<p><strong>질문</strong> 왜 ListView에 <strong>Header View</strong>을 추가하면 인덱스가 0이 아니라 1이 될까?</p>
+<p>이유는 <code>onItemClick</code>에서는 Header와 Footer를 아이템으로 보기 때문이다. (어댑터가 아닌 이유에...)</p>
+<p>그렇다면 어떻게 이 문제를 해결 할 수 있을까? 간단하게 아래와 같이 해결할 수 있다. </p>
+<pre class="java">
+adapter.getItem(position);
+</pre>
+<p>위와 같이 사용하였다면 아래와 같이 사용해주자.</p>
+<pre class="java">
+listView.getItemAtPosition(position);
+</pre>
+<p>끝.</p>

@@ -1,0 +1,36 @@
+---
+layout: post
+status: publish
+published: true
+title: Command > 프로세스 백그라운드 또는 포그라운드로 전환하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1847
+wordpress_url: http://ezcocoa.com/?p=1847
+date: '2013-08-25 15:05:53 +0900'
+date_gmt: '2013-08-25 15:05:53 +0900'
+categories:
+- Tool
+tags: []
+comments: []
+---
+<p>ref<strong>:&nbsp;<a href="http://superuser.com/questions/262942/whats-different-between-ctrlz-and-ctrlc-in-unix-command-line">http://superuser.com/questions/262942/whats-different-between-ctrlz-and-ctrlc-in-unix-command-line</a></strong></p>
+<p><strong>Control + Z</strong> 는 SIGSTOP 시그널을 보냄으로 프로세스를 백그라운드로 보낼 때 사용되며, 이는 프로그램으로 부터 중지되지 않습니다. (잠시 중지)</p>
+<p><strong>Control + C</strong> 는 프로그램으로부터 중지 명령을 받아 죽게 됩니다. (즉 더 이상 동작하지 않음) 전에 존재했던 것들은 깔끔하게 정리하고 죽거나 또는 종료되지 않습니다.</p>
+<p>SIGSTOP 시그널을 보내면 아래와 같이 출력 문구를 볼수 있습니다.</p>
+<p>[1]+ Stopped &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;yes</p>
+<p>다시 포그라운드로 돌리고 싶다면</p>
+<p>fg</p>
+<p>그리고 백그라운드로 돌리고 싶다면</p>
+<p>bg</p>
+<p>선택적으로 프로세스 죽이기</p>
+<p>kill %1</p>
+<p>프로세스 넘버 보기</p>
+<p>jobs</p>
+<p>&nbsp;</p>
+<p>:/ 쓰다보니 졸려서 짧게 기록하였습니다.</p>

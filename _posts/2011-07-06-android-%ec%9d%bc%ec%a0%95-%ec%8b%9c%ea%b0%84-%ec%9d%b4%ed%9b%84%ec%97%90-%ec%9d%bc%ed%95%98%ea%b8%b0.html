@@ -1,0 +1,56 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] 일정 시간 이후에 일하기"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 829
+wordpress_url: http://ezcocoa.com/?p=829
+date: '2011-07-06 23:18:11 +0900'
+date_gmt: '2011-07-06 23:18:11 +0900'
+categories:
+- Android
+tags:
+- android
+- 시간
+- handler
+- selector
+- task
+- timer
+- 일정
+comments: []
+---
+<p>일정 시간 이후에 어떤 일을 수행 할 수 있는 방법을 제시합니다.<br />
+아래와 같이 두가지 방법을 이용할 수 있습니다.<br />
+- 타이머 이용<br />
+- 핸들러 이용<br />
+<strong>타이머를 이용한 방법</strong><br />
+[sourcecode language="java"]<br />
+private void startTimer() {<br />
+	Timer timer = new Timer();<br />
+	timer.schedule(new TimerTask() {<br />
+		@Override<br />
+		public void run() {<br />
+		    ;<br />
+		}<br />
+	}, 2000);<br />
+}<br />
+[/sourcecode]<br />
+<strong>핸들러를 이용한 방법</strong><br />
+[sourcecode language="java"]<br />
+private void startHandler() {<br />
+	Handler startHandler = new Handler();<br />
+	startHandler.postDelayed(new Runnable() {<br />
+		public void run() {<br />
+			;<br />
+		}<br />
+	}, 2000);<br />
+}<br />
+[/sourcecode]<br />
+Write from my iPhone</p>

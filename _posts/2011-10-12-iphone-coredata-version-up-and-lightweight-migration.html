@@ -1,0 +1,81 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - CoreData Version UP and LightWeight Migration
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 코어 데이터 버전 업그레이드 (가볍게 데이터 이주시키기)
+wordpress_id: 1112
+wordpress_url: http://ezcocoa.com/?p=1112
+date: '2011-10-12 07:40:09 +0900'
+date_gmt: '2011-10-12 07:40:09 +0900'
+categories:
+- iPhone
+tags:
+- core
+- iphone
+- data
+- lightweight
+- migration
+comments: []
+---
+<p>출처 : http://taehoonkoo.tistory.com/172<br />
+Core Data는 Modeling Version UP을 했을 경우 자동으로 Data Migration을 해줍니다.<br />
+WWDC 2010에서는 아래와 같이 설명하였습니다.</p>
+<li>기존에 오래된 모델은 보관해라.</li>
+<ol>이유인 즉 이전 데이터를 읽어들이기 위해서 입니다.</ol>
+<li>Store에 대한 옵션 설정을 해라.</li>
+<ol>자동으로 업데이트 되기 위해 의해 수정되어야 합니다.</ol>
+<p>사용법 ></p>
+<li>버전 추가</li>
+<li>Attribute 변경</li>
+<li>소스 변경</li>
+<li>현 모델 버전 변경</li>
+<li>옵션 추가</li>
+<h4>버전 추가하기</h4>
+<p><a href="http://13.124.100.73/wp-content/uploads/2011/10/screenshot1-1.png"><img src="http://13.124.100.73/wp-content/uploads/2011/10/screenshot1-1-300x258.png" alt="" title="screenshot1" width="300" height="258" class="alignleft size-medium wp-image-1114" /></a><br />
+프로젝트 파일 리스트에서 .xcdatamodel을 선택 후 상단 메뉴 바 > Editor > Add Model Version.. 을 눌러줍니다.<br />
+새로 모델 버전을 작성할 수 있는 필드가 나오면 이름을 설정해 주시면<br />
+기존 .xcdatamodel에서 .xcdatamodeld으로 변경되면서 서브 리스트 파일로 나뉘게 됩니다.<br />
+아래와 같은 화면을 프로젝트 화면 좌측에서 보실 수 있습니다.<br />
+<a href="http://13.124.100.73/wp-content/uploads/2011/10/screenshot2-1.png"><img src="http://13.124.100.73/wp-content/uploads/2011/10/screenshot2-1.png" alt="" title="screenshot2" width="253" height="58" class="alignleft size-full wp-image-1116" /></a></p>
+<h4>Attribute 변경하기</h4>
+<p>기존 Attribute 이름을 새로운 이름으로 변경 할 경우 아래와 같은 절차를 거치게 됩니다.<br />
+만약 Attribute를 변경하지 않고 새롭게 추가한다면 아래와 같은 절차를 거칠 필요가 없습니다.<br />
+<strong>여기서 주의할 점은 위에서 언급했듯이 기존에 Model에서는 변경해서는 안됩니다.</strong><br />
+<a href="http://13.124.100.73/wp-content/uploads/2011/10/screenshot3-1.png"><img src="http://13.124.100.73/wp-content/uploads/2011/10/screenshot3-1-199x300.png" alt="" title="screenshot3" width="199" height="300" class="alignleft size-medium wp-image-1115" /></a><br />
+Attribute를 변경한다고 가정하고 진행을 해보겠습니다.<br />
+기존 attribute는 account이고 새롭게 정의할 attribute는 userid가 되겠습니다.</p>
+<h4>소스 변경하기</h4>
+<p>위 섹션에서 Attribute를 변경하였다면 역시 Class 멤버 변수도 변경을 해주어야 합니다.<br />
+위에서 기존 account를 userid로 변경하였습니다.<br />
+이 작업은 XCode 내 Refactoring 기능을 이용하면 간단하게 변경이 가능합니다.<br />
+Refactoring (해당 변수위에 커서를 두고 Edit > Refactor > Rename)<br />
+<strong>단, NSSortDescriptor나 NSPredicate에서 문자열로 사용한 경우에는 수동으로 찾아서 변경해주어야합니다.</strong></p>
+<h4>모델 버전 변경하기</h4>
+<p>프로젝트에서 오른쪽 .xcdatamodelid에 커서를 두고 오른쪽 File Inspector에서<br />
+아래와 같이 모델 버전을 변경할 수 있습니다.<br />
+<a href="http://13.124.100.73/wp-content/uploads/2011/10/screenshot4-1.png"><img src="http://13.124.100.73/wp-content/uploads/2011/10/screenshot4-1.png" alt="" title="screenshot4" width="263" height="49" class="alignleft size-full wp-image-1117" /></a></p>
+<h4>옵션 설정하기</h4>
+<p>기본적으로는 Migration기능이 비활성화되어 있으며,<br />
+lightweight migration기능을 활성화 하기 위해서는 아래와 같이 옵션을 설정해주어야 합니다.<br />
+- Option<br />
+NSInferMappingModelAutomaticallyOption<br />
+NSMigratePersistentStoresAutomaticallyOption<br />
+[code]<br />
+	NSError *error;<br />
+  _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];<br />
+	// Allow inferred migration from the original version of the application.<br />
+	NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:<br />
+                           [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,<br />
+                           [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];<br />
+	if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:options error:&amp;error]) {<br />
+    // Handle the error.<br />
+  }<br />
+[/code]</p>

@@ -1,0 +1,41 @@
+---
+layout: post
+status: publish
+published: true
+title: emacs - building emacs 24.x
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1407
+wordpress_url: http://ezcocoa.com/?p=1407
+date: '2012-02-02 06:55:53 +0900'
+date_gmt: '2012-02-02 06:55:53 +0900'
+categories:
+- Emacs
+tags:
+- full screen
+comments: []
+---
+<p>environment is MAC OS X version 10.7.2.<br />
+you can use as following step.<br />
+[code]<br />
+$ git clone git://git.savannah.gnu.org/emacs.git<br />
+$ wget http://cloud.github.com/downloads/typester/emacs/feature-fullscreen.patch<br />
+$ cd emacs<br />
+$ patch -p1 -i ../feature-fullscreen.patch<br />
+$ sh autogen.sh<br />
+$ ./configure --with-ns<br />
+$ make &amp;&amp; make install<br />
+$ mv nextstep/Emacs.app /Applications/<br />
+[/code]<br />
+To toggle full-screen mode iside emacs:<br />
+M-x ns-toggle-fullscreen<br />
+you can check about version 24.x from following site.<br />
+<a href="http://www.masteringemacs.org/articles/2011/12/06/what-is-new-in-emacs-24-part-1/">http://www.masteringemacs.org/articles/2011/12/06/what-is-new-in-emacs-24-part-1/</a><br />
+other link<br />
+<a href="http://ethanschoonover.com/solarized">solarized theme</a><br />
+<a href="http://www.sanityinc.com/full-screen-support-for-cocoa-emacs-on-osx">full-screen description</a></p>

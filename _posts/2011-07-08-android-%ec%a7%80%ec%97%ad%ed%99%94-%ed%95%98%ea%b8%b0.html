@@ -1,0 +1,56 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] 지역화 하기"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 833
+wordpress_url: http://ezcocoa.com/?p=833
+date: '2011-07-08 04:46:01 +0900'
+date_gmt: '2011-07-08 04:46:01 +0900'
+categories:
+- Android
+tags:
+- android
+- 안드로이드
+- locale
+- 지역화
+- dynamic
+- lanugage
+- 동적
+comments: []
+---
+<p><strong>1. 지역화 하기</strong><br />
+Android 지역화하기 위한 기본적인 디렉토리 경로는 아래와 같다.<br />
+[code]</p>
+<project>/res/values<br />
+[/code]<br />
+위와 같은 디렉토리안에 <strong>strings.xml</strong>파일이 위치하게 되고<br />
+지역화를 하기 위해 values디렉토리 뒤에 예로 -en, -ko와 같이 붙여 지역화 폴더를 생성할 수 있다.<br />
+<strong>Example</strong><br />
+[code]</p>
+<project>/res/values-en/strings.xml</p>
+<project>/res/values-ko/strings.xml<br />
+[/code]<br />
+<strong>2. 동적으로 변하는 문자열 지역화 하기</strong><br />
+예로 설명하겠다.<br />
+나는 cocoa를 좋아합니다. 라는 한국말과<br />
+i like cocoa. 라는 영어는 문법이 틀린다.<br />
+이 구조를 적용하기 위해 아래와 같이 사용이 가능하다.<br />
+<strong>strings.xml</strong><br />
+[sourcecode language="xml"]<br />
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"><br />
+<string name="ilike">"i like<xliff:g id="NAME">%s</xliff:g>"</string><br />
+</resource><br />
+[/sourcecode]<br />
+<strong>java</strong><br />
+[sourcecode language="java"]<br />
+getString(R.string.ilike, "cocoa");<br />
+[/sourcecode]<br />
+위와 같이 사용하면 된다.</p>

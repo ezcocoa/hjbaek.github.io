@@ -1,0 +1,33 @@
+---
+layout: post
+status: publish
+published: true
+title: OS X - 간단한 명령어로 폰트를 초기화 하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2302
+wordpress_url: http://ezcocoa.com/?p=2302
+date: '2014-07-27 08:04:38 +0900'
+date_gmt: '2014-07-27 08:04:38 +0900'
+categories:
+- OSX
+tags:
+- font
+comments: []
+---
+<p>맥에 너무 많은 폰트를 설치하게 되면 성능 저하 및 여러 가지 문제가 발생할 수 있다.<br />
+그리고 또한 일일이 관리하기 힘들어 가끔은 어떤 폰트를 설치 했는지 모를 때다. 이 문제를 해결하기 위해 간단한 명령어로 처리할 수 있다.</p>
+<p>터미널에서 아래의 명령어를 입력해주자.</p>
+<pre>
+fontrestore default
+</pre>
+<p>명령어 수행 후 아래와 같은 폰트들이 생성된다.<br />
+* /System/Library/Fonts (Removed)<br />
+* /Library/Fonts (Removed)<br />
+* ~/Library/Fonts (Removed)</p>
+<p><a href="http://macnews.tistory.com/2418">Ref</a></p>

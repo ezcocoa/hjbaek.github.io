@@ -1,0 +1,36 @@
+---
+layout: post
+status: publish
+published: true
+title: "[MySQL] how to get table information"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 277
+wordpress_url: http://ezcocoa.com/?p=277
+date: '2010-11-30 22:17:41 +0900'
+date_gmt: '2010-11-30 22:17:41 +0900'
+categories:
+- Database
+tags:
+- mysql
+- database
+- db
+- query
+comments: []
+---
+<p>1. Table 목록 가져오기<br />
+SELECT table_name, table_rows, avg_row_length, table_collation<br />
+  FROM information_schema.`TABLES` T<br />
+where table_schema = '테이블명';<br />
+2. Table 정보 가져오기<br />
+SELECT column_name, column_default, is_nullable, data_type, character_maximum_length,<br />
+      numeric_precision, numeric_scale, collation_name<br />
+ FROM information_schema.`COLUMNS` C<br />
+where table_schema = '스키마명'<br />
+  and table_name = '테이블명'<br />
+order by ordinal_position;</p>

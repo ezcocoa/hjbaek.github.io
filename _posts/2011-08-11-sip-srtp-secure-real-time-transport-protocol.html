@@ -1,0 +1,37 @@
+---
+layout: post
+status: publish
+published: true
+title: "[SIP] SRTP (Secure Real-time Transport Protocol)"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 901
+wordpress_url: http://ezcocoa.com/?p=901
+date: '2011-08-11 01:46:04 +0900'
+date_gmt: '2011-08-11 01:46:04 +0900'
+categories:
+- SIP
+tags: []
+comments: []
+---
+<p>출처 : http://whitelka.blog.me/60119534928<br />
+SRTP(Secure Real-time Transport Protocol)<br />
+SRTP는 RTP의 보안 모드라고 할 수 있다. 실시간으로 전송되는 멀티미디어 데이터를 암호화하여 송,수신하는 프로토콜을 의미한다.<br />
+실시간 데이터를 암호화 또는 복호화 하기 위해 SRTP에서는 기본적으로 AES알고리즘을 사용한다.<br />
+헤더는 다음과 같이 구성되어 있다.<br />
+V : 버전<br />
+P : 패딩<br />
+X : Extension<br />
+CC : CSRC Count<br />
+M : Marker<br />
+PT : 페이로드 형식 (타입)<br />
+Payload 항목까지는 RTP와 동일하며, SRTP MKI, Authentication Tag 항목이 추가되었다.<br />
+이 때 Payload는 물론 암호화 되어 있어서, Payload 길이의 계산 방식은 RTP 패킷과 다르다. Payload 고정 사이즈와 블럭 알고리즘 크기의 최소 공배수가 Payload 길이가 된다.<br />
+MKI : SDP에 설정된 마스터 키가 다수일 경우 사용되는 마스터 인덱스로 옵션 항목이다. SDP의 a 필드에 이 항목 유무가 명시된다. 있을 경우 1:MKI 길이, 없을 경우 필드에 내용이 없다.<br />
+Authentication Tag : SRTP 패킷을 인증하는 헤더. ( 무결성 ) 역시 SDP 의 a 필드에 표시된다. 인증 알고리즘이 없거나, 있어도 세션 파라미터에 UNAUTHENTICATED_SRTP 태그가 존재하는 경우에는 Authensication tag가 없다.<br />
+Authentication Tag는 SRTP의 무결성을 보장하기 위해서 사용되며, SRTP의 헤더부터 암호화된 페이로드까지의 무결성을 체크하게 된다. 이 때는 인증키 및 인증 알고리즘(해시알고리즘)이 사용된다.</p>

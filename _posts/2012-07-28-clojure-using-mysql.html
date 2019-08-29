@@ -1,0 +1,56 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure - Using mysql
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1595
+wordpress_url: http://ezcocoa.com/?p=1595
+date: '2012-07-28 10:17:45 +0900'
+date_gmt: '2012-07-28 10:17:45 +0900'
+categories:
+- Clojure
+tags:
+- mysql
+- Clojure
+- connection
+- jdbc
+comments: []
+---
+<p>clojure + mysql 사용하기편입니다.</p>
+<h4>1. 의존성 라이브러리 다운받기 </h4>
+<p>project.clj 파일 소스안에 jdbc 라이브러리 관련하여 추가해주세요.<br />
+[sourcecode language="clojure"]<br />
+(defproject clojql "1.0.0-SNAPSHOT"<br />
+  :description "FIXME: write description"<br />
+  :dependencies [[org.clojure/clojure "1.2.1"]<br />
+                 [org.clojure/clojure-contrib "1.2.0"]   ;; for clojure.contrib.sql<br />
+                 [org.clojure/java.jdbc "0.0.6"]         ;; jdbc<br />
+                 [mysql/mysql-connector-java "5.1.6"]])  ;; mysql driver<br />
+[/sourcecode]</p>
+<h4>2. 의존성 라이브러리 다운받기</h4>
+<p>아래의 명령을 통해 의존성 라이브러를 다운받습니다.<br />
+[code]<br />
+# lein deps<br />
+[/code]</p>
+<h4>3. 커넥션을 위한 디비 설정 하기</h4>
+<p>[code]<br />
+user =>  (use 'clojure.contrib.sql)<br />
+nil<br />
+user=> (def db {:classname "com.mysql.jdbc.Driver"<br />
+                :subprotocol "mysql"<br />
+                :subname "//localhost:3306/test"<br />
+                :user "root"})<br />
+[/code]</p>
+<h4>실제 커넥션 맺기</h4>
+<p>[code]<br />
+user=> (with-connection db (with-query-results rs ["select * from mytable"] (count rs)))<br />
+[/code]<br />
+저는 테이블 정보가 없기때문에 카운터가 0으로 출력되는 것을 확인 할 수 있습니다.<br />
+<strong>Result : 0</strong></p>

@@ -1,0 +1,31 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure > class-path 출력하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1855
+wordpress_url: http://ezcocoa.com/?p=1855
+date: '2013-09-02 03:00:46 +0900'
+date_gmt: '2013-09-02 03:00:46 +0900'
+categories:
+- Clojure
+tags: []
+comments: []
+---
+<p>출처 : http://pupeno.com/2008/11/26/printing-the-class-path-in-clojure/</p>
+<pre class="clojure">
+(doseq [url (seq (.getURLs (java.lang.ClassLoader/getSystemClassLoader)))]
+  (println (.getFile url)))
+[/sourcecode]
+[sourcecode language="clojure"]
+(use 'clojure.pprint)
+(import 'java.lang.Thread)
+(-> (Thread/currentThread) (.getContextClassLoader) (.getURLs) (seq) (pprint))
+</pre>

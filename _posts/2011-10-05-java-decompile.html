@@ -1,0 +1,74 @@
+---
+layout: post
+status: publish
+published: true
+title: java - decompile
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 자바, XML  바이너리를 디컴파일하는 방법을 소개합니다.
+wordpress_id: 1037
+wordpress_url: http://ezcocoa.com/?p=1037
+date: '2011-10-05 06:40:00 +0900'
+date_gmt: '2011-10-05 06:40:00 +0900'
+categories:
+- JAVA
+tags:
+- compile
+- java
+- 자바
+- 컴파일
+- decompile
+- 디컴파일
+comments: []
+---
+<p>자바 디컴파일일 하는 방법을 소개하도록 하겠습니다.<br />
+디컴파일을 위해 3가지 Tool 이 필요합니다.<br />
+1. <a href="http://code.google.com/p/android4me/downloads/detail?name=AXMLPrinter2.jar&can=2&q=">AJXMLPrinter2</a> (Prints XML document from binary XML file - with correct namespace handing & attribute formatting)<br />
+ 위 라이브러리는 바이너리로 된 XML 파일을 사람이 인식할 수 있는 파일로 출력해줍니다.<br />
+ 사용법<br />
+ [code]java -jar AXMLPrinter2.jar file.xml > output[/code]<br />
+2. <a href="http://www.illegalaccess.org/undx.html">Undx</a><br />
+ 위 라이브러리는 .dex 파일을 jar로 변환해주는 역할을 합니다.<br />
+ 사용법<br />
+[code]$ java -DASDKLoc={Location of dexdump} -jar undx.jar -f {apkname.apk}[/code]<br />
+3. <a href="http://http://www.varaneckas.com/jad">JAD</a> (Java Decompiler)<br />
+ 위 라이브러리는 class파일을 java파일로 변환해주는 역할을 합니다.<br />
+  사용법<br />
+[code]jad -sjava java *[/code]<br />
+! decompile 해봅시다.<br />
+ex) Android로 예로 들자면 안드로이드는 빌드 후 .apk를 생성하게 됩니다.<br />
+사실 .apk파일이나 .jar나 보시면 다 압축(파일의 모음)파일입니다.<br />
+압축을 풀고 계층 구조를 보면 아래와 같습니다.<br />
+.<br />
+|____AndroidManifest.xml<br />
+|____Animation.apk<br />
+|____classes.dex<br />
+|____META-INF<br />
+| |____CERT.RSA<br />
+| |____CERT.SF<br />
+| |____MANIFEST.MF<br />
+|____res<br />
+| |____anim<br />
+| | |____in_from_right.xml<br />
+| |____drawable-hdpi<br />
+| | |____icon.png<br />
+| |____drawable-ldpi<br />
+| | |____icon.png<br />
+| |____drawable-mdpi<br />
+| | |____icon.png<br />
+| |____layout<br />
+| | |____first_view.xml<br />
+| | |____main.xml<br />
+| | |____second_view.xml<br />
+|____resources.arsc<br />
+위 파일들에서 필요한 파일은 classes.dex 파일과 Androidmanifest.xml파일입니다.<br />
+classes.dex파일은 파일명 그대로 class파일 모음입니다.<br />
+.dex파일은 undx 라이브러리를 이용하여 푸시면 되고<br />
+Androidmanifest.xml 바이너리 파일은 AXMLPrinter2 라이브러리를 이용하시면 됩니다.<br />
+좀 더 자세한 내용을 남기고 싶었으나 시간 관계로 이만 쓰도록 하겠습니다.<br />
+막히는 부분이나 좀더 자세한 설명을 원하시는 경우 글 남겨주세요.</p>

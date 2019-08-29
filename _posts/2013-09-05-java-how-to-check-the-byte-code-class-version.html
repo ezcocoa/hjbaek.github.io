@@ -1,0 +1,41 @@
+---
+layout: post
+status: publish
+published: true
+title: JAVA > How to check the byte code class version.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1866
+wordpress_url: http://ezcocoa.com/?p=1866
+date: '2013-09-05 03:58:51 +0900'
+date_gmt: '2013-09-05 03:58:51 +0900'
+categories:
+- JAVA
+tags:
+- JDK
+comments: []
+---
+<p><a href="http://stackoverflow.com/questions/3313532/what-version-of-javac-built-my-jar">ref</a></p>
+<p>On Linux, Mac OS X or Windows with Cygwin installed, the file(1) command knows the class version. Extract a class from a jar and use file to identify it:</p>
+<p>리눅스나 맥에서는 간단하게 아래와 입력하시면 됩니다. Window의 경우 Cygwin이라는 툴이 별도로 필요하며 사용방법은 아래와 같습니다.</p>
+<blockquote><p>$ jar xf log4j-1.2.15.jar<br />
+$ file ./org/apache/log4j/Appender.class<br />
+./org/apache/log4j/Appender.class: compiled Java class data, version 45.3<br />
+A different class version, for example:</p></blockquote>
+<blockquote><p>$ file ~/bin/classes/P.class<br />
+/home/dave/bin/classes/P.class: compiled Java class data, version 50.0</p></blockquote>
+<p>The class version major number corresponds to the following Java JDK versions:</p>
+<p>클래스 버전에서 나온 수치는 아래와 같이 매칭됩니다.</p>
+<ul>
+<li>46 = Java 1.2</li>
+<li>47 = Java 1.3</li>
+<li>48 = Java 1.4</li>
+<li>49 = Java 5</li>
+<li>50 = Java 6</li>
+<li>51 = Java 7</li>
+</ul>

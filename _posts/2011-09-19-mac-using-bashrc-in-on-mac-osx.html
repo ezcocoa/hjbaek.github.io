@@ -1,0 +1,55 @@
+---
+layout: post
+status: publish
+published: true
+title: Mac - Using .bashrc in on Mac OSX
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 987
+wordpress_url: http://ezcocoa.com/?p=987
+date: '2011-09-19 02:46:35 +0900'
+date_gmt: '2011-09-19 02:46:35 +0900'
+categories:
+- OSX
+tags:
+- shell
+- mac
+- os
+- bash
+- bashrc
+- profile
+comments: []
+---
+<p>리눅스, 유닉스 그리고 Mac OS X에서<br />
+당신의 홈 디렉토리에 존재하는 또는 만들어 .bash_profile과 .bashrc를 사용한다면?<br />
+사실 두개의 파일은 다르게 동작된다.<br />
+무엇을 다를까?<br />
+<a href="http://linux.die.net/man/1/bash">bash man page</a>에 의하면...<br />
+.bash_profile은 login shell에 의해 동작되고, .bashrc 는 상호작용하는 non-login shell에 의해 작동된다.<br />
+<strong>그렇다면 login shell과 non-login shell은 무엇일까?</strong><br />
+콘솔을 통해 로그인 했을 때, 각각 머신위에서 있긴 한데,<br />
+ssh를 통한 원격이라면 초기 comment 프롬프트 전에! 당신의 쉘 설정에 따라 .bash_profile이 실행된다.<br />
+하지만, 만약 당신이 머신 위에 이미 로그인 상태고 그게 Gnome이나 KDE이내에 새로운 터미널이라면(xterm) .bashrc가 실행된다 (초기 comment 프로프트 전에).<br />
+또한 당신이 터미널에서 /bin/bash 타이핑하여 새롭게 시작하였을 때 .bashrc는 작동하게 된다.<br />
+<strong>두개 파일은 뭐가 다를까?</strong><br />
+.bash_profile에 위치하고, 당신의 컴퓨터 머신이 로그인되었을때 약간의 정보(평균 속도, 메모리 사용량, 현재 유저, 등등)를 보여주기 원한다고 가정했을 때.<br />
+만약 당신이 .bashrc에 놓는다면, 당신은 매번 새로운 터미널이 열릴때마다 보게 된다.<br />
+<strong>Mac OS X - 예외</strong><br />
+문제인 즉<br />
+맥 OS X 시스템에서는 리눅스와 다르게 .bashrc 파일을 읽어드리지 않는다.<br />
+하지만 emacs는 .bashrc를 읽어 드리게 되는데 이때 동일한 환경을 주기위해서는<br />
+동일한 환경파일을 읽어드리도록 해야한다면?<br />
+.bashrc를 읽어드리지 못하는 대신 .bash_profile을 읽어드리게 되는데 이때 여기서<br />
+.bashrc를 읽어드리도록 아래와 같이 수정하여 문제를 해결했다.<br />
+[code]<br />
+if [ -f ~/.bashrc ];<br />
+then<br />
+   source ~/.bashrc<br />
+fi<br />
+[/code]<br />
+자료:<a href="http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html">http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html</a></p>

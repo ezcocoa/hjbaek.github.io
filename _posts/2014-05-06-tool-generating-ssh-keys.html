@@ -1,0 +1,56 @@
+---
+layout: post
+status: publish
+published: true
+title: Tool - Generating SSH Keys
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2283
+wordpress_url: http://ezcocoa.com/?p=2283
+date: '2014-05-06 14:38:18 +0900'
+date_gmt: '2014-05-06 14:38:18 +0900'
+categories:
+- Tool
+tags:
+- ssh
+- synology
+comments: []
+---
+<p>It's from <a href="https://help.github.com/articles/generating-ssh-keys">help.github.com</a>.</p>
+<h3>Step 1: Check for SSH keys</h3>
+<pre>
+$ cd ~/.ssh
+$ ls -al
+#Lists the files in your .ssh directory
+</pre>
+<p>Check the directory listing to see if you have files named wither <strong>id_rsa.pub</strong> or <strong>id_dsa.pub</strong>. If you don't have either of those files go to <strong>step 2.</strong> Otherwise. you can skip to step 3.</p>
+<h3>Step 2: generate a new SSH Key</h3>
+<p>To generate a new SSH key, copy and paste the text below, making sure to substitute in your email.<br />
+The default settings are preferred, so when you're asked to "enter a file in which to save the key, "" just press enter to continue.</p>
+<pre>
+$ ssh-keygen -t rsa -C "your_email@example.com"
+# Creates a new ssh key, using the provided email as a label
+Generating public/private rya key pair.
+Enter file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+</pre>
+<p>Next, you'll be asked to enter a passphrase.</p>
+<pre>
+Enter passphrase (empty for no passphrase): [Type a passphrase]
+Enter same passphrase again: [Type passphrase again]
+</pre>
+<p>Which should give you something like this:</p>
+<pre>
+Your identification has been saved in /Users/you/.ssh/id_rsa.
+Your public key has been saved in /Users/you/.ssh/id_rsa.pub.
+The key fingerprint is :
+01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
+</pre>
+<p>Then add your new key to the ssh-agent:</p>
+<pre>
+$ ssh-add ~/.ssh/id_rsa
+</pre>

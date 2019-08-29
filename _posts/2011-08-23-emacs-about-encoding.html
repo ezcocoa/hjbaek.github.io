@@ -1,0 +1,58 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Emacs] About Encoding"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 915
+wordpress_url: http://ezcocoa.com/?p=915
+date: '2011-08-23 05:20:30 +0900'
+date_gmt: '2011-08-23 05:20:30 +0900'
+categories:
+- Emacs
+tags:
+- encode
+- emacs
+- decode
+- 디코드
+- 디코딩
+- 이막스
+- 인코드
+- 인코딩
+comments: []
+---
+<p>1. Encoding 자동 판별 모듈 - Unicad<br />
+Unicad는 Universal Characterset AutoDetector의 약자입니다.<br />
+Mozila Universal Charset Detector를 Emacs 모듈로 포팅한 것이라고 하네요.<br />
+ 이 모듈은 Google Code에서 호스팅 되고 있고, EmacsWiki에 별도로 설명하는 페이지를 가지고 있습니다.<br />
+[code]<br />
+Project Link: <a href="http://code.google.com/p/unicad/">http://code.google.com/p/unicad/</a><br />
+EmacsWiki Link: <a href="http://www.emacswiki.org/cgi-bin/emacs/Unicad">http://www.emacswiki.org/cgi-bin/emacs/Unicad</a><br />
+잘 정리되어 있는 링크 : <a href="http://blog.kaisyu.com/2011/01/emacs-encoding-unicad.html">http://blog.kaisyu.com/2011/01/emacs-encoding-unicad.html</a><br />
+[/code]<br />
+2. Emacs File/Character Encoding/Decoding FAQ를 정리해 보았습니다.<br />
+출처 : <a href="http://xahlee.org/emacs/emacs_encoding_decoding_faq.html">http://xahlee.org/emacs/emacs_encoding_decoding_faq.html</a><br />
+이번 장은 Emacs에서 파일과 Char인코딩/디코딩에 대해서 이야기 나눠보겠습니다.<br />
+만약 인코딩과 디코딩에 대해서 좀 더 알고 싶다면 <a href="http://xahlee.org/emacs/unicode_basics.html">UNICODE Basics: What's Character Encoding, UTF-8, and All That?</a><br />
+<strong>Q:버퍼에서, 인코딩 시스템이 그파일을 어떻게 디코드하였는지 알 수 있나요?</strong><br />
+A:'buffer-file-coding-system' 변수를 확인하기 위해서,<br />
+[M-x describe-variable] 입력 후에 변수 명 'buffer-file-coding-system'을 입력합니다.<br />
+<strong>Q:Open/Save 된 파일이 현재 어떻게 코딩 시스템을 사용하는지 알 수 있을가요?</strong><br />
+A:[M-x describe-coding-system]<br />
+<strong>Q:버퍼 인코딩 시스템을 어떻게 설정할 수 있나요?</strong><br />
+A:'set-buffer-file-coding-system'을 부른 후에 원하는 인코딩 타입을 입력해주면 됩니다.<br />
+<strong>Q:Opening/Saving 할때 영구적으로 인코딩 방법을 어떻게 선택하나요?</strong><br />
+A:Options>Mule(Multilingual Environment)>Set Language Environment를 선택합니다.<br />
+원하는 환경을 바꾸고 Options>Save Opstion을 눌러 환경을 저장합니다.<br />
+<strong>Q:Emacs는 어떠한 인코딩 방식을 지원하나요?</strong><br />
+A:'list-coding-systems' 를 호출하게 되면 리스트를 보여줍니다.<br />
+<strong>Q:물리적으로 인코딩 방식을 설정 할 수 있나요?</strong><br />
+A:첫 라인에 [-*- coding: utf-8 -*-]파일을 넣어줍니다. 자세한건 원 글을 읽어보세요.<br />
+<strong>Q:어디서 emacs 유니코드에 대해서 좀더 읽어볼수 잇나요?</strong><br />
+A:본 사이트 참조.</p>

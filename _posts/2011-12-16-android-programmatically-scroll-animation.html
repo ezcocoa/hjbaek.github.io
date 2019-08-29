@@ -1,0 +1,60 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Programmatically Scroll Animation.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1323
+wordpress_url: http://ezcocoa.com/?p=1323
+date: '2011-12-16 06:05:13 +0900'
+date_gmt: '2011-12-16 06:05:13 +0900'
+categories:
+- Android
+tags:
+- animation
+- passive
+- scrol
+- scroll
+comments: []
+---
+<p>i tried with setSelection(int p, boolean ani), but it's not working.<br />
+so i found two possible solution on google.<br />
+i refer a url:<a href="http://groups.google.com/group/android-developers/browse_thread/thread/9140fd6af3061cdf/7f89e53ae53e455b?lnk=gst&amp;q=setselection#7f89e53ae53e455b">http://groups.google.com/group/android-developers/browse_thread/thread/9140fd6af3061cdf/7f89e53ae53e455b?lnk=gst&amp;q=setselection#7f89e53ae53e455b</a><br />
+i didn't a above solution.<br />
+i had been used a below solution.<br />
+[sourcecode language="java"]<br />
+//scroll forward or backward<br />
+private void scroll(int type){<br />
+    View selectedV = mG.getSelectedView();<br />
+    int idx = mG.indexOfChild(selectedV);<br />
+    switch(type){<br />
+        case FORWARD:<br />
+    default:<br />
+        if(idx<mG.getChildCount()-1)<br />
+            idx++;<br />
+        break;<br />
+    case BACKWARD:<br />
+        if(idx>0)<br />
+            idx--;<br />
+        break;<br />
+    }<br />
+    //now scrolled view's child idx in gallery is gotten<br />
+    View nextView = mG.getChildAt(idx);<br />
+    //(x,y) in scrolled view is gotten<br />
+    int x = nextView.getLeft()+nextView.getWidth()/2;<br />
+    int y = nextView.getTop()+nextView.getHeight()/2;<br />
+    String out = String.format("x=%d, y=%d", x, y);<br />
+    Log.i(TAG+".scroll", out);<br />
+    //Kurru's simulating clicking view<br />
+    MotionEvent event = MotionEvent.obtain(100, 100, MotionEvent.ACTION_DOWN, x, y, 0);<br />
+    mG.onDown(event);<br />
+    boolean res = mG.onSingleTapUp(null);<br />
+    Log.i(TAG+".scroll", "onSingleTapUp return =" + res);<br />
+}<br />
+[/sourcecode]</p>

@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] UIColor Tutorial"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 240
+wordpress_url: http://ezcocoa.com/?p=240
+date: '2010-11-25 15:19:56 +0900'
+date_gmt: '2010-11-25 15:19:56 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- Hex
+- UIColor
+comments:
+- id: 2
+  author: cat
+  author_email: cat@gmail.com
+  author_url: ''
+  date: '2012-08-01 06:46:28 +0900'
+  date_gmt: '2012-08-01 06:46:28 +0900'
+  content: nice......it really helped me
+---
+<p>+ (UIColor *)colorWithHex:(NSString *)hexString Alpha:(CGFloat)alpha{<br />
+NSUInteger colorRGB[3];<br />
+for(NSInteger i=0; i<3; i++) {<br />
+[[NSScanner scannerWithString:[hexString substringWithRange:NSMakeRange(i * 2, 2)]] scanHexInt:colorRGB + i];<br />
+}<br />
+return [UIColor colorWithRed:(CGFloat)(colorRGB[0]/255.0f) green:(CGFloat)(colorRGB[1]/255.0f) blue:(CGFloat)(colorRGB[2]/255.0f) alpha:alpha];<br />
+}<br />
+self.window.backgroundColor = [UIColor colorWithHex:@"ff2356" Alpha:1.0];</p>

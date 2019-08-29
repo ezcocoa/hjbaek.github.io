@@ -1,0 +1,35 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - 버튼 가로 사이즈에 같게 세로 사이즈 설정하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2353
+wordpress_url: http://ezcocoa.com/?p=2353
+date: '2014-10-31 02:31:27 +0900'
+date_gmt: '2014-10-31 02:31:27 +0900'
+categories:
+- Android
+tags:
+- display
+- button
+- size
+- height
+- width
+comments: []
+---
+<p>막상 설정하고 보니 그렇게 아름답지 않을 수 있다는 생각이 든다. 해상도가 큰 화면에서 (타블렛) 버튼의 크기가 가로가 기준이 되다보니 세로도 같은 사이즈로 늘어나면 예상한건데 반화면 이상을 스크롤 해야 될 것이다.</p>
+<p>아... 그래서 생각이 된것인데 이럴 경우 버튼 3개 3/3 으로 표시되도록 하는 것도 나쁘지 않을 거 같다는 생각이 든다.</p>
+<p>여기 2가지 방법이 있다.</p>
+<p>첫 번째 방법은 해당 버튼의 가로 사이즈를 가져와 그대로 설정하는 부분이고.</p>
+<pre class="java">Button yourBtn = (Button) findViewById.(R.id.yourBtn);
+int btnSize=yourBtn.getLayoutParams().width;
+yourBtn.setLayoutParams(new LayoutParams(btnSize, btnSize));
+</pre>
+<p>만약 화면 해상도에 따라 수치를 적용한다면, 화면 사이즈를 가져와 나누어 사용하는 방법이 있겠다.</p>

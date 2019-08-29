@@ -1,0 +1,48 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Eclipse] setting (quick bookmarks, change tap size)"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 830
+wordpress_url: http://ezcocoa.com/?p=830
+date: '2011-07-07 09:50:16 +0900'
+date_gmt: '2011-07-07 09:50:16 +0900'
+categories:
+- Eclipse
+tags:
+- eclipse
+- plugin
+- bookmark
+- tap
+- tapsize
+- 북마크
+- 이클립스
+comments: []
+---
+<p><strong>1. bookmarks </strong><br />
+eclipse는 bookmarks를 지원합니다만 단축키를 이용한 quick bookmark는 지원하지 않습니다.<br />
+아래는 quick bookmark를 사용할 수 있도록 지원하는 플러그인 설명과 설치법입니다.<br />
+출처 : http://domui.org/wiki/bin/view/Documentation/EclipsePlugin<br />
+<strong>Installation</strong><br />
+-In the menu, select Help > Install New Software<br />
+-In the "Work With" field enter the following URL: http://www.domui.org/eclipse-updates/<br />
+-Press the "Add" button, add a name for the thing (DomUI), then press OK and wait for the URL to load<br />
+-Select the things you want to add. The DomUI plugin or the Editor Tools (See below)<br />
+-Accept licences and other questions and restart Eclipse.<br />
+<strong>About bookmarks plugin</strong><br />
+The "default" bookmark methods of Eclipse ask for a name and this is often not very useful. The code here adds bookmarks a la "Borland" and bookmarks a la "JCreator". The code has the following options which can all be bound/rebound with the keys dialog under the "Edit" category:<br />
+-Add a numbered bookmark at the cursor: Alt+[digit]. This creates a quick bookmark with the specified number using a "single" keypress. Only one bookmark of the given number can be present in the workspace. Setting the same number bookmark again will clear the earlier instance.<br />
+-Goto a numbered bookmark: Alt+Shift+[digit]. Moves to the bookmark as it was set using Alt+[digit].<br />
+-Toggle Bookmark: Ctrl+B. This drops an unnamed bookmark at the current location. Pressing Ctrl+B again releases the bookmark at that location again. This is often used with "Goto next bookmark" and "Goto previous bookmark".<br />
+-Goto next bookmark in file: Ctrl+N. This locates the next bookmark in the current file and moves there.<br />
+-Goto previous bookmark in file: Ctrl+P. This locates the previous bookmark in the current file and moves there.warning: the Ctrl+P binding is a suggestion only; since Ctrl+P is currently assigned you must add your own key binding using Window -> Preferences -> General -> Keys.<br />
+<strong>2. change tap size</strong><br />
+Prefs -> Java -> Code Style -> Formatter and edit the profile.<br />
+<center><a href="http://13.124.100.73/wp-content/uploads/2011/07/screenshot_tapsize-1.jpg"><img src="http://13.124.100.73/wp-content/uploads/2011/07/screenshot_tapsize-1-300x257.jpg" alt="" title="screenshot_tapsize" width="300" height="257" class="alignnone size-medium wp-image-890" /></a></center></p>

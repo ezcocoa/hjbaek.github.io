@@ -1,0 +1,59 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Apache Ant를 이용한 자동처리기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: Ant를 이용하면 쉽게 배포 파일을 생성할 수 있습니다.
+wordpress_id: 1574
+wordpress_url: http://ezcocoa.com/?p=1574
+date: '2012-07-14 15:13:55 +0900'
+date_gmt: '2012-07-14 15:13:55 +0900'
+categories:
+- Android
+tags:
+- apache
+- android
+- build
+- auto
+- Ant
+- automate
+comments: []
+---
+<p>Android SDK를 설치하시면 tools에 기본적Ant가 설치됩니다.<br />
+Ant를 이용하면 쉽게 배포 파일을 생성할 수 있습니다.<br />
+만약 이클립스로 프로젝트를 생성했다면 아래와 같은 명령어를 통해 <strong>build.xml, default.properties, local.properties</strong>가 생성됩니다.<br />
+[code]<br />
+android update project --path .<br />
+[/code]</p>
+<h3>배포 설치 파일 생성하기</h3>
+<p>[code]<br />
+ant release<br />
+[/code]</p>
+<h3>Debug용 설치 파일 생성하기</h3>
+<p>[code]<br />
+ant debug install<br />
+[/code]</p>
+<h3>서명 과정 자동화하기</h3>
+<p>서명하기 위해서는 생성 된 프로젝트에 ant.properties를 아래와 같이 입력해주시면 됩니다.<br />
+[code]<br />
+key.store=path/to/my.keystore<br />
+key.alias=mykeystore<br />
+[/code]<br />
+기본적으로 위 두가지만 입력 한다면 ant 빌드 사이에 패스워드를 물어봅니다.<br />
+빌드 사이에 물어보는 것을 원치 않으면 아래의 속성을 추가해주시면 됩니다.<br />
+[code]<br />
+key.store.password=password<br />
+key.alias.password=password<br />
+[/code]<br />
+<a href="http://www.androidengineer.com/2010/06/using-ant-to-automate-building-android.html">Using Ant to Automate Building Android Applications</a><br />
+<a href="http://developer.android.com/tools/projects/projects-cmdline.html">Creating an Android Project</a><br />
+<a href="http://developer.android.com/tools/sdk/tools-notes.html">SDK Tools Revision History</a><br />
+<a href="http://developer.android.com/tools/help/android.html">android 사용법</a><br />
+<a href="http://developer.android.com/tools/building/building-cmdline.html#AntReference">Ant Command Reference</a></p>

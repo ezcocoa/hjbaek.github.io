@@ -1,0 +1,44 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] Alaways turn on WakeLock"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 538
+wordpress_url: http://ezcocoa.com/?p=538
+date: '2011-01-27 00:39:47 +0900'
+date_gmt: '2011-01-27 00:39:47 +0900'
+categories:
+- Android
+tags: []
+comments: []
+---
+<p>link : <a href="http://2-up.tistory.com/713">http://2-up.tistory.com/713</a><br />
+[sourcecode language="objc"]<br />
+private static PowerManager pm = null;<br />
+private static PowerManager.WakeLock wl = null;<br />
+public static void getSystemPowermanager(){<br />
+    pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);<br />
+}<br />
+public static void getSystemWakelock(){<br />
+    if( pm != null )<br />
+    wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "SECUEYE");<br />
+}<br />
+public static void aquire(){<br />
+    if( wl != null )<br />
+        wl.acquire();<br />
+}<br />
+public static void releaseWakelock(){<br />
+    if( wl != null )<br />
+    {<br />
+        wl.release();<br />
+        wl = null;<br />
+    }<br />
+}<br />
+[/sourcecode]</p>

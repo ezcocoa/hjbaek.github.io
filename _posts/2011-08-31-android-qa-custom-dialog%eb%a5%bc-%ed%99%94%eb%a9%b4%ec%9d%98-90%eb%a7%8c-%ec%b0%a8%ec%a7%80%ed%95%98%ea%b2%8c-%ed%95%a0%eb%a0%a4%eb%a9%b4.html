@@ -1,0 +1,64 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Q/A Custom Dialog를 화면의 90%만 차지하게 할려면?
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 950
+wordpress_url: http://ezcocoa.com/?p=950
+date: '2011-08-31 02:04:03 +0900'
+date_gmt: '2011-08-31 02:04:03 +0900'
+categories:
+- Android
+tags:
+- custom
+- size
+- screen
+- '90'
+- dialog
+- fill
+- windowmanager
+comments:
+- id: 25
+  author: 냐므
+  author_email: fra3il@gmail.com
+  author_url: ''
+  date: '2011-08-31 05:02:07 +0900'
+  date_gmt: '2011-08-31 05:02:07 +0900'
+  content: 추천하지 않는 이유가 뭔가요?!
+---
+<p>1. Custom View xml파일에서 <strong>android:minWidth와 android:minHeight</strong>를 사용하는 방법입니다.<br />
+사이즈를 강제함으로써 원하는 크기로 볼수 있는 방법이지만 단점은 모든 디바이스에 적용시킬 수 없다는 단점이 있습니다.<br />
+[sourcecode language="xml"]<br />
+<LinearLayout<br />
+  xmlns:android="http://schemas.android.com/apk/res/android"<br />
+  android:layout_width="fill_parent"<br />
+  android:layout_height="fill_parent"<br />
+  android:minWidth="300dp"<br />
+  android:minHeight="400dp"><br />
+  <ImageView<br />
+   android:layout_width="fill_parent"<br />
+   android:layout_height="fill_parent"<br />
+   android:background="@drawable/icon"/><br />
+</LinearLayout><br />
+[/sourcecode]<br />
+2. Xml Layout을 정의하고 동적으로 하기 위해 네이티브 코드상에서 <strong>WindowManager</strong>를 사용하는 방법입니다.<br />
+디바이스에 따라 사이즈 크기를 대처할 수 있어 좋다고 생각되나~ 그리 추천들을 안하시는거 같습니다.<br />
+[sourcecode language="java"]<br />
+    AlertDialog.Builder adb = new AlertDialog.Builder(this);<br />
+    Dialog d = adb.setView(new View(this)).create();<br />
+    // (That new View is just there to have something inside the dialog that can grow big enough to cover the whole screen.)<br />
+    WindowManager.LayoutParams lp = new WindowManager.LayoutParams();<br />
+    lp.copyFrom(d.getWindow().getAttributes());<br />
+    lp.width = WindowManager.LayoutParams.FILL_PARENT;<br />
+    lp.height = WindowManager.LayoutParams.FILL_PARENT;<br />
+    d.show();<br />
+    d.getWindow().setAttributes(lp);<br />
+[/sourcecode]<br />
+자료는 StackOver Flow를 참조하였습니다.</p>

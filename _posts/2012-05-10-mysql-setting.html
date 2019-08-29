@@ -1,0 +1,50 @@
+---
+layout: post
+status: publish
+published: true
+title: MySQL - Setting
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1540
+wordpress_url: http://ezcocoa.com/?p=1540
+date: '2012-05-10 09:41:33 +0900'
+date_gmt: '2012-05-10 09:41:33 +0900'
+categories:
+- MySQL
+tags: []
+comments: []
+---
+<p>php locate : /private/etc/php.ini<br />
+my.cnf : /etc/my.cnf<br />
+mysql socket : /tmp/mysql.sock<br />
+<a href="http://www.digimantra.com/technology/mysql/mysql-sock-path-mac-os-x/">helper link</a><br />
+<a href="http://dev.mysql.com/doc/refman/5.0/en/problems-with-mysql-sock.html">mysql helper link</a><br />
+mac lion webserver :<br />
+<a href="http://steveno.wordpress.com/2009/03/26/uninstall-mysql-on-mac-os-x/">uninstall mysql on mac</a><br />
+[code]<br />
+This was a life saver!<br />
+sudo rm /usr/local/mysql<br />
+sudo rm -rf /usr/local/mysql*<br />
+sudo rm -rf /Library/StartupItems/MySQLCOM<br />
+sudo rm -rf /Library/PreferencePanes/My*<br />
+edit /etc/hostconfig and remove the line MYSQLCOM=-YES-<br />
+sudo rm -rf /Library/Receipts/mysql*<br />
+sudo rm -rf /Library/Receipts/MySQL*<br />
+sudo rm -rf /var/db/receipts/com.mysql.*<br />
+[/code]<br />
+setting root password<br />
+[code]<br />
+#mysql -uroot -p<br />
+mysql> use mysql<br />
+Database changed<br />
+mysql>update user set password=password('new_password') where user='root';<br />
+Query OK, 2 rows affected (0.00 sec)<br />
+Rows matched: 2  Changed: 2  Warnings: 0<br />
+mysql>flush privileges;<br />
+Query OK, 0 rows affected (0.00 sec)<br />
+[/code]</p>

@@ -1,0 +1,65 @@
+---
+layout: post
+status: publish
+published: true
+title: Project - clojureWiki
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 995
+wordpress_url: http://ezcocoa.com/?p=995
+date: '2011-09-21 01:35:00 +0900'
+date_gmt: '2011-09-21 01:35:00 +0900'
+categories:
+- Project
+tags: []
+comments: []
+---
+<p><strong>1. 다짐하다!</strong><br />
+리슾-코리아에서 clojure를 이용한 wiki를 개설을 진행중인가 봅니다.<br />
+어떻게 도움이 되고 싶어서 일단 자료를 모아볼려고 합니다.<br />
+jkk 님이 배포하신 클로저로 작성되어진 구글 앱 엔진 기반의 위크 샘플이 있다고 메일링을 받았습니다. 라이센스를 확인해 보니 EPL(Eclipse Public License) = CPL(Common Public License)이더라구요.<br />
+<a href="https://github.com/jkk/clj-wiki">링크</a><br />
+jkk님이 링크로 걸어둔 <a href="https://github.com/christianberg/compojureongae">github</a>입니다.<br />
+알아본 바에 의하면 작성자 명시와 동일한 라이센스를 부착하면 자유롭게 배포가 가능한걸로 알고 있습니다.<br />
+<strong>2. Compojure on GAE </strong><br />
+일단 GAE(Google App Engin)을 이용한다면 당연히 GAE가 무엇인지 알아야 합니다.<br />
+저는 GAE에 대한 소식만 들었지 실제 이것이 무엇인지를 알지를 못했습니다.<br />
+<a href="http://www.ibm.com/developerworks/kr/library/j-gaej1/">이곳</a>에 자세하게 나와있더라구요. 물론 가장 좋은 정보는 google에 있습니다.<br />
+정보를 보던중 모르는 것들이 나오네요. 나열해 보겠습니다.<br />
+- <a href="http://labs.google.com/papers/bigtable.html">BigTable</a><br />
+Bigtable : 구조화된 데이터에 대한 분산 스토리지 시스템<br />
+이것이 무엇이냐?<br />
+Bigtable은 구조화된 데이터 관리를 위한 분산 스토리지 시스템이라고 합니다.<br />
+아주 방대한 사이즈로 설계되었다고 하네요. 상품 서버로 데이터의 양은 페타바이트라고 합니다.(1PB = 1024TB)<br />
+Bigtable의 구글 스토리지 데이터 안에는 많은 프로젝트가 있습니다. 그 중 웹 인덱싱을 포함한 구글 어스, 구글 자원이 있습니다. 그 어플리케이션들은 Bigtable에 매우 다른 요구들을 한다고 하는데요,<br />
+데이터 크기 측면에서와 지연 요구 사항??<br />
+구글 상품들 모두를 위한 여러가지 요구사항에도 불구하고, bigtable은 성공적인 융통성을 제공하고 고성능 솔루션 제공합니다. 이 페이지는 bigtable에서 제공하는 간단한 데이터 모델을 설명합니다.<br />
+이것은 고객들에게 데이터 레이아웃과 형식을 다이나믹하게 컨트롤할 수 잇는 것과 Bigtable의 설계 및 구현을 설명합니다.<br />
+매우 딱딱하네요. 영어실력이 형편없음을 한번 더 느낍니다.<br />
+DB를 많이 다루지 않아 아직도 모르는게 많네요. 네이버에서 찾아보니 아래와 같이 설명해주시는 분이 계시는군요.<br />
+<a href="http://froom.tistory.com/315">링크</a><br />
+- JDO (interface)<br />
+ Java Data Object - RDBMS에 데이터 저장을 위해 사용되는 표준 인터페이스<br />
+- JPA (interface) - DBMS에서 사용 가능한 표준 인터페인스<br />
+ Java Persistence API<br />
+저는 일단 개발환경을 셋팅하고 샘플을 돌려보겠습니다. 사실 emacs를 이용하여 개발하고 싶었으나 무엇을 먼저 해야할지 깜깜하더라구요. 그래서 이클립스를 이용하여 가이드에 맞춰 진행해 보겠습니다.<br />
+<a href="http://code.google.com/eclipse/docs/download.html">이클립스 플러그인 설치 링크</a><br />
+App Engin for Java로 프로젝트를 생성하였을 시 생성되는 Jar파일에 대해서<br />
+- datanucleus-*.jar: 표준 JDO 또는 하위 레벨 BigTable API를 사용하여 App Engine for Java 데이터 저장소 액세스<br />
+- appengine-api-sdk.1.2.0.jar: App Engine for Java Security 등의 비표준 App Engine for Java 애플리케이션 서비스 사용<br />
+- geronimo-*.jar: JTA(Java Transaction Management API), JPA 등의 표준 Java API 사용<br />
+- jdo2-api-2.3-SNAPSHOT.jar: JDO API 사용<br />
+GWT 아티팩트<br />
+- src/gaej/example: SimpleGWTApp.gwt.xml: GWT 모듈 디스크립터<br />
+- src/gaej.example.server: GreetingServiceImpl.java: 인사 서비스의 구현<br />
+- src/gaej.example.client: GreetingService.java: 인사 서비스를 위한 동기 API<br />
+- src/gaej.example.client: GreetingServiceAsync.java: 인사 서비스를 위한 비동기 API<br />
+- src/gaej.example.client: SimpleGWTApp.java: 시작 GUI를 빌드하는 기본 진입점<br />
+- war/WEB-INF: web.xml: GreetingServiceImpl을 구성하는 전개 디스크립터<br />
+- war: SimpleGWTApp.html: GWT GUI를 표시하는 HTML 페이지<br />
+- war: SimpleGWTApp.css: GWT GUI의 스타일시트</p>

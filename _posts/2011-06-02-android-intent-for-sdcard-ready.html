@@ -1,0 +1,43 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] intent for sdcard ready"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 757
+wordpress_url: http://ezcocoa.com/?p=757
+date: '2011-06-02 06:49:03 +0900'
+date_gmt: '2011-06-02 06:49:03 +0900'
+categories:
+- Android
+tags:
+- intent
+- filter
+- sdcard
+comments: []
+---
+<p>출처 : http://stackoverflow.com/questions/3417161/android-intent-for-sdcard-ready<br />
+I have an application that uses a file on the SD card, the application runs when the phone boots, and it has become apparent that the file cannot be accessed when the program is first run as it starts working before SD card is avaliable.<br />
+Is there an broadcast receiver I can use to tell when the SD card is ready?<br />
+Update<br />
+Just to summarise the answer to register the intent do:<br />
+[sourcecode language="java"]<br />
+IntentFilter filter = new IntentFilter (Intent.ACTION_MEDIA_MOUNTED);<br />
+filter.addDataScheme("file");<br />
+registerReceiver(this.mSDInfoReceiver, new IntentFilter(filter));<br />
+[/sourcecode]<br />
+and create a broadcast receiver to react to it:<br />
+[sourcecode language="java"]<br />
+private BroadcastReceiver mSDInfoReceiver = new BroadcastReceiver(){<br />
+    @Override<br />
+    public void onReceive(Context arg0, Intent intent) {<br />
+    // Code to react to SD mounted goes here<br />
+    }<br />
+ };<br />
+[/sourcecode]</p>

@@ -1,0 +1,36 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] Custom Button"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 450
+wordpress_url: http://ezcocoa.com/?p=450
+date: '2011-01-07 01:43:03 +0900'
+date_gmt: '2011-01-07 01:43:03 +0900'
+categories:
+- Android
+tags:
+- android
+- button
+- custom
+comments: []
+---
+<p><strong>특정 버튼 안에 이미지 넣기 </strong><br />
+<code>Button button = new Button(mContext);<br />
+button.setText("Close");<br />
+Drawable close = Drawable.createFromPath("/data/icon/image.png");<br />
+close.setBounds(0, 0, close.getIntrinsicWidth(), close.getIntrinsicHeight());<br />
+button.setCompoundDrawables(close, null, null, null);<br />
+</code><br />
+<strong>custom button</strong><br />
+<code>imageButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.icon_chkon));<br />
+</code><br />
+<strong>button toggle image</strong><br />
+<a href="http://developer.android.com/reference/android/widget/ImageButton.html" target="_blank">http://developer.android.com/reference/android/widget/ImageButton.html</a></p>

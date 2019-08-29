@@ -1,0 +1,38 @@
+---
+layout: post
+status: publish
+published: true
+title: Android > 키보드 관련 처리
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: Landscape 시 키보드가 화면 전체를 차지하는 문제 해결 방법..
+wordpress_id: 2130
+wordpress_url: http://ezcocoa.com/?p=2130
+date: '2013-11-26 09:37:54 +0900'
+date_gmt: '2013-11-26 09:37:54 +0900'
+categories:
+- Android
+tags: []
+comments: []
+---
+<p>키보드 관련 처리입니다.</p>
+<hr />
+<p>작은 화면을 가지고 있는 폰 일때 그리고 Landscape 모드일 때 소프트키보드가 활성화 될 경우 전체 화면에 표시되는 경우가 많습니다.</p>
+<p>이를 방지 하기 위해 아래와 같은 <strong>flagNoExtractUi</strong>를 포함시켜 전체화면으로 가는 것을 방지할 수 있습니다.</p>
+<pre class="xml">
+<EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:imeOptions="flagNoExtractUi"/>
+</pre>
+<p>EditText가 포함된 Activity가 시작될 때 소프트키보드가 활성화 될 경우 아래의 플래그<strong>(stateAlwaysHidden)</strong>를 이용하여 방지할 수있습니다.</p>
+<pre class="xml">
+<EditText android:layout_height="wrap_content" android:layout_width="match_parent" android:windowSoftInputMode="stateAlwaysHidden"/>
+</pre>
+<p>하드코딩으로도 가능합니다.</p>
+<pre class="java">
+getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+</pre>
+<p>이상입니다.</p>

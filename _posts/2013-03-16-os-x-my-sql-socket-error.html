@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: OS X - My SQL Socket Error.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1778
+wordpress_url: http://ezcocoa.com/?p=1778
+date: '2013-03-16 01:01:59 +0900'
+date_gmt: '2013-03-16 01:01:59 +0900'
+categories:
+- MySQL
+tags:
+- error
+- mysql
+- socket
+comments: []
+---
+<p>I was getting some error while execute mysql.</p>
+<p>It's just socket error.</p>
+<p>If you have /tmp/mysql.sock but no /var/mysql/mysql.sock then...</p>
+<pre><code># cd /var
+# mkdir mysql
+# cd mysql
+# ln -s /tmp/mysql.sock mysql.sock
+</code></pre>
+<p>If you have /var/mysql/mysql.sock but no /tmp/mysql.sock then</p>
+<pre><code># cd /tmp
+# ln -s /var/mysql/mysql.sock mysql.sock
+</code></pre>
+<p>You will need permissions to create the directory and link, so just prefix the commands above with sudo if necessary.</p>
+<p>you got this site :<br />
+http://stackoverflow.com/questions/4219970/warning-mysql-connect-2002-no-such-file-or-directory-trying-to-connect-vi</p>

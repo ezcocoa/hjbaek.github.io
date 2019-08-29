@@ -1,0 +1,94 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] Animation"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 512
+wordpress_url: http://ezcocoa.com/?p=512
+date: '2011-01-20 02:43:54 +0900'
+date_gmt: '2011-01-20 02:43:54 +0900'
+categories:
+- Android
+tags:
+- animation
+- android
+- frame
+- rotate
+comments:
+- id: 3
+  author: freelance alliance
+  author_email: MankoViscardi14@gmail.com
+  author_url: http://www.sister.lt/portfolio/web/
+  date: '2011-09-26 16:20:33 +0900'
+  date_gmt: '2011-09-26 16:20:33 +0900'
+  content: Pretty component of content. I just stumbled upon your website and in accession
+    capital to say that I acquire in fact enjoyed account your weblog posts. Any way
+    I will be subscribing for your augment and even I fulfillment you get admission
+    to persistently quickly.
+- id: 408
+  author: tinyurl.com
+  author_email: clayton_flanders@gmail.com
+  author_url: http://tinyurl.com/yywbsctw
+  date: '2019-04-12 16:23:30 +0900'
+  date_gmt: '2019-04-12 07:23:30 +0900'
+  content: "It's amazing to go to see this web site and reading \r\nthe views of all
+    colleagues regarding this post, while \r\nI am also zealous of getting knowledge."
+- id: 413
+  author: minecraft
+  author_email: chunshakespeare@gmail.com
+  author_url: http://tinyurl.com/y44xy65t
+  date: '2019-04-14 11:20:31 +0900'
+  date_gmt: '2019-04-14 02:20:31 +0900'
+  content: "you're actually a good webmaster. The website loading pace is \r\namazing.
+    It sort of feels that you're doing \r\nany unique trick. Moreover, The contents
+    are masterpiece.\r\nyou've done a great task in this topic!"
+- id: 417
+  author: minecraft
+  author_email: marcelo.rettig@gmail.com
+  author_url: http://t.co/Pdx179lenE
+  date: '2019-04-15 16:29:35 +0900'
+  date_gmt: '2019-04-15 07:29:35 +0900'
+  content: "I'm really loving the theme/design of your weblog. Do you ever run into
+    any internet browser compatibility problems?\r\nA number of my blog visitors have
+    complained about my website not operating correctly \r\nin Explorer but looks
+    great in Firefox. Do you have any solutions to help fix this issue?"
+- id: 506
+  author: how to get help in windows 10
+  author_email: felipeengle@gmail.com
+  author_url: http://t.co/ud9y8ENV7C
+  date: '2019-05-20 18:30:49 +0900'
+  date_gmt: '2019-05-20 09:30:49 +0900'
+  content: Post writing is also a excitement, if you be acquainted with then you can
+    write otherwise it is complex to write.
+- id: 511
+  author: gamefly free trial
+  author_email: angiegerste@gmail.com
+  author_url: http://t.co/gmkUCncEqh
+  date: '2019-05-22 06:17:20 +0900'
+  date_gmt: '2019-05-21 21:17:20 +0900'
+  content: "Wow, this article is nice, my sister is analyzing such things,\r\nthus
+    I am going to inform her."
+---
+<p>Frame Animation 과 Rotate Animation에 대해서<br />
+<strong>Rotate Animation</strong> <code>RotateAnimation anim = new RotateAnimation(0f, 350f, 15f, 15f);<br />
+anim.setInterpolator(new LinearInterpolator());<br />
+anim.setRepeatCount(Animation.INFINITE);<br />
+anim.setDuration(700);<br />
+ImageView img = (ImageView)findViewById(R.id.timerIv);<br />
+img.startAnimation(anim);<br />
+// stop animation<br />
+img.setAnimation(null);</code> <strong>Frame Animation</strong> `// Load the ImageView that will host the animation and<br />
+// set its background to our AnimationDrawable XML resource.<br />
+ImageView img = (ImageView)findViewById(R.id.timerIv);<br />
+AnimationDrawable frameAnimation = (AnimationDrawable)img.getBackground();<br />
+frameAnimation.start();</p>
+<p>// stop animation<br />
+frameAnimation.stop();<br />
+`</p>

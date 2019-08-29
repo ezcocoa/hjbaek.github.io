@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: Android -  Android Studio에서 JNI 사용하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2307
+wordpress_url: http://ezcocoa.com/?p=2307
+date: '2014-08-08 17:06:11 +0900'
+date_gmt: '2014-08-08 17:06:11 +0900'
+categories:
+- Android
+tags:
+- jni
+- usage
+- use
+- studio
+- anroid
+comments: []
+---
+<p>JNI를 사용하기 위해 <a href="https://gist.github.com/khernyo/4226923">https://gist.github.com/khernyo/4226923</a> 위에 거론된 방법을 사용하였지만<br />
+Gradle plugin 0.4.0+부터 동작이 정상적으로 되지 않아 구글링 하여 아래와 같은 방법을 찾아 냈다.</p>
+<p><a href="https://groups.google.com/forum/#!msg/adt-dev/nQobKd2Gl_8/Z5yWAvCh4h4J">링크</a></p>
+<p>예로</p>
+<pre>
+proejct
+|--libs
+     |--armeabi/xxx.so
+     |--xxx.jar
+</pre>
+<p>와 같은 구조로 되어있다면 아래와 같은 방법으로 처리할 수 있다.<br />
+일단 so파일은 lib 폴더에 위치해야 한다. 아래와 같은 구조로 생성 후 zip파일을 압축한다.</p>
+<pre>lib/armeabi/xxx.so</pre>
+<p>다음에 zip확장자를 jar파일로 변경하여 컴파일 하고 끝!</p>

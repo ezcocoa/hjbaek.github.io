@@ -1,0 +1,36 @@
+---
+layout: post
+status: publish
+published: true
+title: algorism - palindrome?
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2892
+wordpress_url: http://ezcocoa.com/?p=2892
+date: '2019-05-02 00:33:46 +0900'
+date_gmt: '2019-05-01 15:33:46 +0900'
+categories:
+- Algorism
+tags: []
+comments: []
+---
+<p>palindrome 알고리즘 문제이다.<br />
+일렬의 숫자를 뒤집어도 같은 수가 나오는지 판단<br />
+예) o: 121 > 121, 12344321 > 12344321<br />
+   x: 1231 > 1321</p>
+<p>[clojure]<br />
+(defn reverse-num [nn]<br />
+  (loop [n nn<br />
+         result 0]<br />
+    (if (not= n 0)<br />
+      (recur (int (/ n 10)) (+ (* result 10) (mod n 10)))<br />
+      result)))</p>
+<p>(defn is-palindrome [n]<br />
+  (= (- n (reverse-num n)) 0))</p>
+<p>(is-palindrome 12344321)</p>
+<p>[/clojure]</p>

@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: Android > Could not fetch model of type &#039;IdeaProject&#039; using Gradle
+  installation
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1810
+wordpress_url: http://ezcocoa.com/?p=1810
+date: '2013-06-30 04:47:34 +0900'
+date_gmt: '2013-06-30 04:47:34 +0900'
+categories:
+- Android
+tags:
+- tool
+- android
+- studio
+- gradle
+- IdeaProject
+comments: []
+---
+<p>I've moved to use between Eclipse to Android Studio.<br />
+It has still some bugs since beta version.<br />
+but It's pretty good.<br />
+Anyway I've got some bug that "could not fetch model of type 'IdeaProject' using Gradle Installation.<br />
+I bring a solution to StackoverFlow that link is followings.<br />
+// http://stackoverflow.com/questions/16609666/could-not-fetch-model-of-type-ideaproject-using-gradle-installation<br />
+<strong>you've to delete default files.<br />
+[code]<br />
+~/.android<br />
+~/.gradle<br />
+[/code] <br />
+Above folder that when you use <strong>Android Sutido</strong> first time. it can be made automatically.<br />
+after delete these files, you can see that it works well.</p>

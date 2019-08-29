@@ -1,0 +1,70 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Git] Ignoring files"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 658
+wordpress_url: http://ezcocoa.com/?p=658
+date: '2011-03-11 04:46:49 +0900'
+date_gmt: '2011-03-11 04:46:49 +0900'
+categories:
+- Repo
+tags:
+- git
+- repo
+- ignore
+comments: []
+---
+<p>// 각 폴더에 해당하는 무시파일<br />
+[sourcecode language="TEXT"]<br />
+.DS_Store<br />
+build<br />
+*.pbxuser<br />
+*.mode2v3<br />
+*.mode1v3<br />
+*.perspective<br />
+*.perspectivev3<br />
+[/sourcecode]<br />
+<strong>Global .gitignore</strong><br />
+git config --global core.excludesfile ~/.gitignore_global<br />
+[sourcecode language="TEXT"]<br />
+# Compiled source #<br />
+###################<br />
+*.com<br />
+*.class<br />
+*.dll<br />
+*.exe<br />
+*.o<br />
+*.so<br />
+*.a<br />
+*.dat<br />
+*.dep<br />
+*.hmap<br />
+# Packages #<br />
+############<br />
+# it's better to unpack these files and commit the raw source<br />
+# git has its own built in compression methods<br />
+*.7z<br />
+*.dmg<br />
+*.gz<br />
+*.iso<br />
+*.jar<br />
+*.rar<br />
+*.tar<br />
+*.zip<br />
+# Logs and databases #<br />
+######################<br />
+*.log<br />
+# OS generated files #<br />
+######################<br />
+.DS_Store?<br />
+ehthumbs.db<br />
+Icon?<br />
+[/sourcecode]</p>

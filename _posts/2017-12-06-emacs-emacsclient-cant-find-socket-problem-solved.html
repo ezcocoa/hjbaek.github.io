@@ -1,0 +1,38 @@
+---
+layout: post
+status: publish
+published: true
+title: Emacs - emacsclient can&#039;t find socket problem.... solved
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2775
+wordpress_url: http://ezcocoa.com/?p=2775
+date: '2017-12-06 00:41:30 +0900'
+date_gmt: '2017-12-06 00:41:30 +0900'
+categories:
+- Emacs
+tags:
+- socket
+- ect
+- emacsclient
+comments: []
+---
+<p>when you see this on Mac? just follow me~</p>
+<pre>
+emacsclient: can&#039;t find socket; have you started the server?
+To start the server in Emacs, type "M-x server-start".
+emacsclient: No socket or alternate editor.  Please use:
+    --socket-name
+    --server-file      (or environment variable EMACS_SERVER_FILE)
+    --alternate-editor (or environment variable ALTERNATE_EDITOR)
+</pre>
+<p>i solved like this.</p>
+<pre>
+ln -s /Applications/Emacs.app/Contents/MacOS/bin/emacsclient ect
+</pre>
+<p>기본 emacsclient가 바라보는 소켓이 틀린가?</p>

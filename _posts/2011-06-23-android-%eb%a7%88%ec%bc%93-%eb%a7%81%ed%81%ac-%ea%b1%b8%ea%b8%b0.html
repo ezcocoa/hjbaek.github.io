@@ -1,0 +1,66 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] 마켓 링크 걸기"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 785
+wordpress_url: http://ezcocoa.com/?p=785
+date: '2011-06-23 02:46:29 +0900'
+date_gmt: '2011-06-23 02:46:29 +0900'
+categories:
+- Android
+tags:
+- android
+- 안드로이드
+- link
+- market
+- 링크
+- 마켓
+comments:
+- id: 22
+  author: "&hearts;Hara&hearts;"
+  author_email: hara0819@gmail.com
+  author_url: http://안녕
+  date: '2016-10-16 12:19:58 +0900'
+  date_gmt: '2016-10-16 12:19:58 +0900'
+  content: 포ㅓㅓㅑ
+- id: 23
+  author: Rooney
+  author_email: mr.hjbaek@gmail.com
+  author_url: http://ezcocoa.com
+  date: '2017-11-28 07:31:13 +0900'
+  date_gmt: '2017-11-28 07:31:13 +0900'
+  content: 퐈야~
+---
+<p>링크를 걸기 위해 두가지 파라미터가 필요합니다.</p>
+<ul>
+<li>패키지 </li>
+<li>검색어 해당 패키지명을 가진 어플 페이지로 이동합니다. </li>
+</ul>
+<pre>
+market://details?id=packageName
+</pre>
+<p>해당패키지명 또는 해당 검색명으로 마켓에서 검색을 한다.</p>
+<pre>
+market://search?q=packageName market://search?q=searchName
+</pre>
+<p><strong>1&#46; HTML a링크 이용하기.</strong></p>
+<p>첫 번째 방법.</p>
+<pre class="html">
+<a href="market://details?id=packageName"></a>
+</pre>
+<p>두 번째 방법.</p>
+<pre class="html">
+<a href="http://market.android.com/details?id=packageName"></a>
+</pre>
+<p><strong>2. Intent를 이용하여 마켓으로 이동하기.</strong></p>
+<pre class="java">
+Intent marketLaunch = new Intent(Intent.ACTION_VIEW); marketLaunch.setData(Uri.parse("market://search?q=네이트온")); startActivity(marketLaunch);
+</pre>

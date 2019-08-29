@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: Emacs - slime + swank UTF8 미지원으로 인한 문제
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1741
+wordpress_url: http://ezcocoa.com/?p=1741
+date: '2012-12-17 23:46:52 +0900'
+date_gmt: '2012-12-17 23:46:52 +0900'
+categories:
+- iPhone
+tags:
+- emacs
+- swank
+- slime
+- unicode
+comments: []
+---
+<p>ref : http://stackoverflow.com/questions/3101279/how-do-i-use-unicode-utf-8-characters-in-clojure-regular-expressions<br />
+일반적으로 English Character가 아닌 것은 emacs + slime + swank에서 작동을 하지 않습니다.<br />
+이는 UTF-8이 아닌 다른 것을 지원하므로 아래와 같은 2가지 방법으로 해결할 수 있습니다.<br />
+<strong>Question:<br />
+How do I set emacs/slime/swank to use UTF-8 when talking with Clojure, or use UTF-8 at the command-line REPL?</strong><br />
+<strong>A more interactive way:</strong><br />
+[code]<br />
+1. M-x customize-group<br />
+2. "slime-lisp"<br />
+3. Find the option for slime coding system, and select utf-8-unix. Save this so Emacs picks it up in your next session.<br />
+[/code]<br />
+<strong>Or place this in your .emacs:</strong><br />
+[code] (custom-set-variables '(slime-net-coding-system (quote utf-8-unix)))<br />
+[/code]</p>

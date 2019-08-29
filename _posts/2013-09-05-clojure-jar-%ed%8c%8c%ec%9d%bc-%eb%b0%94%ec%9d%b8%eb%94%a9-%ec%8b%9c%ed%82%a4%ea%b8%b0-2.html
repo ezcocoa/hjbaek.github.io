@@ -1,0 +1,35 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure > JAR 파일 바인딩 시키기 2.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1868
+wordpress_url: http://ezcocoa.com/?p=1868
+date: '2013-09-05 16:37:46 +0900'
+date_gmt: '2013-09-05 16:37:46 +0900'
+categories:
+- Clojure
+tags:
+- jar
+comments: []
+---
+<p>http://ezcocoa.com/?p=1859</p>
+<p>이전에 소개했던 방법은 사실 다른 문제로 이어진다.</p>
+<p>문제는 :resource-paths 속성을 이용하여 처리를 하였지만 실제 excitable 파일을 만들때 leiningen 이 :resource-paths로 설정 된 jar를 포함시키지 않는 다는 것이다.</p>
+<p>혼자서 몇 시간 동안 끙끙 대다가 구글 클로져 그룹에 글을 남김으로써 문제를 해결 할 수 있었다.</p>
+<p><a href="https://groups.google.com/forum/#!topic/clojure/PLIN-N66RX0">link</a></p>
+<p>방법은 간단하다.</p>
+<p>Maven으로 Local Repository를 만들어 처리할 수 있었다.</p>
+<blockquote><p>1. Add simmetrics to your local maven repo;<br />
+$ mvn install:install-file -Dfile=simmetrics_jar_v1_6_2_d07_02_07.jar -DgroupId=simmetrics -DartifactId=simmetrics -Dversion=1.6.2 -Dpackaging=jar -DgeneratePom=true<br />
+2. Refer to it in :dependencies of your project.clj file;<br />
+[simmetrics/simmetrics "1.6.2"]<br />
+3. Done :)<br />
+lein uberjar</p></blockquote>

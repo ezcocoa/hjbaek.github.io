@@ -1,0 +1,30 @@
+---
+layout: post
+status: publish
+published: true
+title: Android > 프로가드 사용 시 발생하는 문제 (can&#039;t find dynamically referenced class)
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1978
+wordpress_url: http://ezcocoa.com/?p=1978
+date: '2013-11-22 08:55:29 +0900'
+date_gmt: '2013-11-22 08:55:29 +0900'
+categories:
+- Android
+tags: []
+comments: []
+---
+<p><a href="http://docs.huihoo.com/proguard/manual/troubleshooting.html">Proguard Manual Troubleshooting</a></p>
+<p>이 문제는 프로가드가 동적으로 사용하는 jar파일에 대한 문제이다.</p>
+<p>이 문제를 해결하기 위해 <strong>프로가드 설정 파일(proguard-android.txt)</strong>에 아래와 같이 옵션으로 해결 할 수있다.</p>
+<blockquote>
+<p>-libraryjars</p>
+<p>-dontwarn</p>
+</blockquote>
+<p>위에 대한 옵션은 따로 설명하도록 하겠다.</p>
+<p>시간이 없어서 슈웅~</p>

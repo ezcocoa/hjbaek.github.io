@@ -1,0 +1,185 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Robolectric를 활용한 Unit Testing
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: Robolectirc 설정 방법과 테스트 방법에 대해서...
+wordpress_id: 2497
+wordpress_url: http://ezcocoa.com/?p=2497
+date: '2015-08-12 06:08:55 +0900'
+date_gmt: '2015-08-12 06:08:55 +0900'
+categories:
+- Android
+tags:
+- android
+- unit
+- robolectric
+- testing
+comments: []
+---
+<p><a href="https://github.com/codepath/android_guides/wiki/Robolectric-Installation-for-Unit-Testing">원문</a></p>
+<h2>Robolectirc 설정</h2>
+<p><strong>Robolectric</strong>은 <strong>JUnit 4</strong>(단말기 필요)는 JVM환경에서 안드로이드 어플리케이션을 테스트 할 수 있는 프레임웍이다. 좀 더 많은 정보는 <a href="https://github.com/codepath/android_guides/wiki/Android-Unit-and-Integration-testing#robolectric">여기</a>에서 얻을 수 있다.</p>
+<h1>테스트 환경</h1>
+<ul>
+<li>Android Studio 1.3.1 (1.2.1.1++)</li>
+<li>Android Gradle Plugin 1.3.0 (1.2.3+)</li>
+<li>Gradle 2.3.0 (2.2.1+)</li>
+</ul>
+<p>Note. Robolectirc은 Android Studio 1.1에서 구동 될 수 있으나, <a href="https://github.com/robolectric/robolectric-gradle-plugin/">Robolectric Gradle Plugin</a>과 별도의 설정이 필요하다.</p>
+<p>또한 Android Studio 1.1에서의 unit testing은 <a href="http://tools.android.com/tech-docs/unit-testing-support">여기</a>에서 확인 할 수 있다.</p>
+<h1>App build.gradle</h1>
+<p>첫번째, <strong>app</strong> 폴더 안에 build.gradle안에 아래의 내용을 추가해야 한다. 현재 최종 버전은 <strong>3&#46;0</strong>.</p>
+<pre class="gradle">dependencies {
+    ...
+    testCompile &#039;org.robolectric:robolectric:3.0&#039;
+  }
+</pre>
+<h1>Android Studio 설정</h1>
+<p>다은 스탭으로.. Unit Testing을 하기 위해 몇가지 설정 할게 필요한데, 첫 번째로 왼쪽 사이드 메뉴에 있는 <strong>Build Variants</strong>눌러 준다. Test Artifact를 <strong>Unit Tests</strong>로 선택해준다.</p>
+<p>각 타입 별 테스트를 위해, Android Studio는 아래와 같이 경로들을 사용한다. * Unit Tests => src/test/java * Android Instrumentation Tests => src/androidTest/java</p>
+<p>기본으로 되어있는 Test는 Android Instrumentation Tests로 Unit Tests경로로 바꿔 준다. 가장 쉬운 방법으로 rename 이름 변경 기능을 사용하자.</p>
+<p>Note. 맥을 사용한다면, 경로 이슈가 있는데 아래와 같이 변경해주면 문제를 해결 할 수 있다.</p>
+<p>Go to <strong>Run</strong> -> <strong>Edit Configurations</strong> -> <strong>Default</strong> -> <strong>Junit</strong>으로 이동하면 working directory를 [code]$MODULE_DIR$[/code]로 변경해준다.</p>
+<p>좀 더 많은 자료는 <a href="http://robolectric.org/getting-started/">여기</a>에서 확인 할 수 있다.</p>
+<p>모든 설정이 완료 되었다.</p>
+<h1>Robolectric test 코드 작성</h1>
+<ul>
+<li>Project Name : RSample</li>
+<li>MyApplication</li>
+</ul>
+<pre class="java">public class MyApplication extends Application {
+    public LoginHandler getLoginHandler() {
+        return new LoginHandler();
+    }
+}
+</pre>
+<ul>
+<li>LoginHandler</li>
+</ul>
+<pre class="java">public class LoginHandler {
+    public void login(String id, String pwd) {
+    }
+}
+</pre>
+<ul>
+<li>MainActivityTest</li>
+</ul>
+<pre class="java">import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.robolectric.Robolectric;
+import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.annotation.Config;
+import static java.lang.System.out;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.robolectric.shadows.ShadowLog.stream;
+@RunWith(RobolectricGradleTestRunner.class)
+@Config(constants = BuildConfig.class, sdk = 21)
+public class MainActivityTest {
+    MainActivity activity;
+    private LoginHandler loginHandler;
+    private MyApplication mockedApplication;
+    @Before
+    public void setup() throws Exception {
+        stream = out;
+        activity = Robolectric.setupActivity(MainActivity.class);
+        activity = Mockito.spy(activity);
+        mockedApplication = mock(MyApplication.class);
+        loginHandler = mock(LoginHandler.class);
+        when(mockedApplication.getLoginHandler()).thenReturn(loginHandler);
+        doReturn(mockedApplication).when(activity).getApplication();
+    }
+    @Test
+    public void validateTextViewContent() throws Exception {
+        TextView tvHelloWorld = (TextView) activity.findViewById(R.id.a_main_titleTv);
+        assertThat(tvHelloWorld.getText().toString(), is("Hello world!"));
+    }
+    @Test
+    public void login() throws Exception {
+        Button loginBtn = (Button) activity.findViewById(R.id.a_main_loginBtn);
+        loginBtn.performClick();
+    }
+}
+</pre>
+<ul>
+<li>MainActivity</li>
+</ul>
+<pre class="java">public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        final EditText idEt = (EditText) findViewById(R.id.a_main_idEt);
+        final EditText pwdEt = (EditText) findViewById(R.id.a_main_pwdEt);
+        Button loginBtn = (Button) findViewById(R.id.a_main_loginBtn);
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String id = idEt.getText().toString();
+                String pwd = pwdEt.getText().toString();
+                login(id, pwd);
+            }
+        });
+    }
+    private void login(String id, String pwd) {
+        getLoginHander().login(id, pwd);
+    }
+    private LoginHandler getLoginHander() {
+        MyApplication app = (MyApplication) getApplication();
+        return app.getLoginHandler();
+    }
+}
+</pre>
+<ul>
+<li>activity_main.xml</li>
+</ul>
+<pre class="xml"><LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+              android:orientation="vertical"
+              tools:context=".MainActivity">
+    <EditText
+        android:id="@+id/a_main_idEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your id"/>
+    <EditText
+        android:id="@+id/a_main_pwdEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:password="true"
+        android:hint="Your pwd"/>
+    <TextView
+        android:id="@+id/a_main_titleTv"
+        android:text="@string/hello_world"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/a_main_loginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"/>
+</LinearLayout>
+</pre>
+<p>이제 Run MainActivityTest(Shift + F10)를 통해 테스트가 가능하다.</p>
+<p>끝.</p>
+<p><a href="https://www.bignerdranch.com/blog/triumph-android-studio-1-2-sneaks-in-full-testing-support/">참조1</a><br />
+<a href="http://tvpot.daum.net/mypot/View.do?ownerid=w5d7CzrF6z50&amp;clipid=48711211">참조2</a></p>

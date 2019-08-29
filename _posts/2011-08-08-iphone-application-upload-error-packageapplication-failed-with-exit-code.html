@@ -1,0 +1,31 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] Application Upload Error : PackageApplication failed with exit code"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 895
+wordpress_url: http://ezcocoa.com/?p=895
+date: '2011-08-08 15:52:22 +0900'
+date_gmt: '2011-08-08 15:52:22 +0900'
+categories:
+- iPhone
+tags:
+- error
+- iphone
+- application
+- ail
+- packageApplicationf
+- upload
+comments: []
+---
+<p>4.1 업데이트 이후 Application Upload 시 <strong>'PackageApplication failed with exit code'</strong>오류가 발생되었다면, 클래스 파일이 중첩되지 않았나 의심을 해보셔야합니다.<br />
+저같은 경우 작업 도중 SecurityViewController파일명이 Security?ViewController으로,<br />
+파일 내용에서는 Security_ViewController로 변경되어 긴 오류창과 함께 업로드가 중지되었습니다.<br />
+오류 로그를 복사하여 살펴보시면 <strong>Codesign check fails</strong>을 확인할 수 있습니다.</p>

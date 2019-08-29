@@ -1,0 +1,56 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure - ~ (unqoute)에 대해서
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: |-
+  ~ unqoute라고 읽는다.
+  심볼을 평가할때 사용한다.
+wordpress_id: 2460
+wordpress_url: http://ezcocoa.com/?p=2460
+date: '2015-05-31 06:45:47 +0900'
+date_gmt: '2015-05-31 06:45:47 +0900'
+categories:
+- Clojure
+tags:
+- Clojure
+- eval
+- execute
+- unqoute
+- 평가
+comments: []
+---
+<p>~ unqoute 매크로. <code>~</code> 는 unqoute 라고 읽는다. unqoute를 이해하기 위해서는 <code>&#96;</code> (syntax quote)에 대해서 알아야한다. 그럼 일단 syntax sqoute에 대해서 알아보자. 영어에서 syntax는 문법, 구문론 등으로 해석되며, qoute는 <code>`</code>으로 "인용하다." 또는 "전달하다."로 해석된다.</p>
+<p>그럼 Clojure에서는 어떻게 사용될까?</p>
+<p>클로저에서 메서드에 syntax qoute를 사용했을 때 말 그대로 메서드 자체(구문론 자체를)를 그대로 전달하라는 의미를 갖는다. 아래와 같다.</p>
+<p><code><br />
+user> &#96;(+ 1 1) (clojure.core/+ 1 1)<br />
+</code></p>
+<p>위와 같이 심볼 자체로 출력된다. unqoute는 이때 사용된다. 심볼을 평가하고 싶을때 아래와 같이 사용된다.</p>
+<p><code><br />
+user>&#96;~(+ 1 1) 2<br />
+</code></p>
+<p>심볼을 평가하고 싶을때 unqoute를 사용하면 된다.</p>
+<p>위와 같이만 예로 들 경우 어디에서 사용해야 하는지 감이 제대로 잡히지 않는다. 좀 더 깊히 들어가보자.</p>
+<p><code><br />
+user> (def three-and-four (list 3 4))</p>
+<h1>\'user/three-and-four</h1>
+<p>user> &#96;(1 three-and-four)<br />
+</code></p>
+<p>어떤 값이 나올까? 예상하는 바와 같이 아래와 같이 출력된다. <code>\'user/three-and-four</code></p>
+<p>평가되지 않았다. 위 unqoute때문에 평가되지 않았다. 이때 1은 data이므로 평가하지 않아야하고 three-and-four만 평가를 하고 싶을때 아래와 같이 사용할 수 있다.<br />
+<code><br />
+user>&#96;(1 ~three-and-four)<br />
+</code></p>
+<p>어떻게 될까? (1 (2 3))<br />
+</br><br />
+위와 같이 평가되어 위와 같이 출력된다.<br />
+</br><br />
+다음장에서 <code>~@</code> unquote splicing macro를 사용하여 다른값을 유추해보자.</p>

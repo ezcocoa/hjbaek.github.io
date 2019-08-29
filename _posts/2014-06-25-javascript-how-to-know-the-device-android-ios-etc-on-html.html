@@ -1,0 +1,52 @@
+---
+layout: post
+status: publish
+published: true
+title: Javascript - how to know the device (android, iOS, etc) on html
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2293
+wordpress_url: http://ezcocoa.com/?p=2293
+date: '2014-06-25 01:30:16 +0900'
+date_gmt: '2014-06-25 01:30:16 +0900'
+categories:
+- HTML
+- JavaScript
+tags: []
+comments: []
+---
+<h3>i got some article by stack overflow.</h3>
+<h3>you can you use the following thing.</h3>
+<pre class="javascript">var isMobile = {
+    Android: function() {
+        return /Android/i.test(navigator.userAgent);
+    },
+    BlackBerry: function() {
+        return /BlackBerry/i.test(navigator.userAgent);
+    },
+    iOS: function() {
+        return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    },
+    Windows: function() {
+        return /IEMobile/i.test(navigator.userAgent);
+    },
+    any: function() {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+    }
+};
+</pre>
+<h3>how to use this?</h3>
+<p>just call the function.</p>
+<pre class="javascript">// if you want to check it&#039;s android or not just do it.
+if (isMobile.Android()) {
+    // Android
+} else {
+    // something else
+}
+</pre>
+<p>thank you for reading.</p>

@@ -1,0 +1,67 @@
+---
+layout: post
+status: publish
+published: true
+title: Lisp - Installation
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1543
+wordpress_url: http://ezcocoa.com/?p=1543
+date: '2012-06-03 12:20:44 +0900'
+date_gmt: '2012-06-03 12:20:44 +0900'
+categories:
+- Lisp
+tags:
+- emacs
+- clisp
+- isntallation
+- sbcl
+comments: []
+---
+<p>정말 오랜만입니다.<br />
+먹고살기 위해 한창 아이폰, 안드로이드 개발만 하다가 다시 Lisp에 접할려고 하니 설치법 부터가 생각이 나질 않는군요.<br />
+이전 포스터를 뒤져봐도 엉터리로 작성되어있고 혈압 수치가 보통수준을 넘어선거 같습니다.<br />
+이로써 정말 깔끔하게 작성해야겠다는 생각이 번쩍 드는군요.<br />
+어떤 이유에서인지는 찾아보지 않았으나 <strong>Mac Port로 sbcl설치 시 문제가 발생</strong>하는거 같습니다.<br />
+처음부터 다시 배운다는 마음으로 포스팅을 남겨봅니다.</p>
+<h3>Downloading SBCL</h3>
+<p><a href="http://www.sbcl.org/platform-table.html">Link</a><br />
+설치용 바이너리를 받습니다. Mac OS X유저이기 때문에 x86용 1.0.55버전을 받았습니다.<br />
+다운로드 받은 경로로 이동하여 아래와 같이 입력합니다.<br />
+[code]# sh install.sh[/code]<br />
+설치가 완료 된 후에는 .emacs 파일 <환경 설정 파일>에 아래와 같이 추가해줍니다.<br />
+[code]<br />
+;; == Slime Setting ==<br />
+(add-to-list 'load-path "~/.emacs.d/slime")<br />
+(add-to-list 'load-path "~/.emacs.d/slime/contrib")<br />
+;; (add-to-list 'load-path "~/.emacs.d/elpa/slime-repl-20100404/")<br />
+;; (add-to-list 'load-path "~/.emacs.d/elpa/slime-20100404/")<br />
+(setq slime-backend "~/.emacs.d/slime/swank-loader.lisp")<br />
+(load "slime-autoloads")<br />
+(require 'slime)<br />
+(require 'slime-autoloads)<br />
+(eval-after-load "slime"<br />
+'(progn<br />
+(slime-setup '(slime-repl))<br />
+(custom-set-variables<br />
+'(inhibit-splash-screen t)<br />
+'(slime-complete-symbol*-fancy t)<br />
+'(slime-complete-symbol-function 'slime-fuzzy-complete-symbol)<br />
+'(slime-net-coding-system 'utf-8-unix)<br />
+'(slime-startup-animation nil)<br />
+'(slime-lisp-implementations '((sbcl ("/usr/local/bin/sbcl")))))))<br />
+;; == End slime setting ==<br />
+[/code]<br />
+위와 같이 추가해준 후에 사실상 Slime을 먼저 설치해주어야합니다.</p>
+<h3>Downloading SLIME</h3>
+<p>[code]<br />
+# cvs -d :pserver:anonymous:anonymous@common-lisp.net:/project/slime/cvsroot co slime<br />
+[/code]<br />
+SLIME을 다운로드 받은 후에 따로 설치하지 않아도 됩니다. 다운로드 파일을 알맞은 경로에 넣어주십시오. 저같은 경우 .emacs.d/ 디렉토리에 넣어 사용중입니다.<br />
+위와 같이 모든걸 완료하였다면 emacs config를 재로드하거나 재시작해주신 후 meta+x slime 을 입력하시면 CLisp모드로 전환이 됩니다.<br />
+이상입니다.</p>

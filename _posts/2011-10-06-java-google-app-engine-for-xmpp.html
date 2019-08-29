@@ -1,0 +1,104 @@
+---
+layout: post
+status: publish
+published: true
+title: java - google app engine for xmpp
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 구글 앱 엔진이 제공하는 XMPP 사용 예제와 사용 방법을 소개합니다.
+wordpress_id: 1059
+wordpress_url: http://ezcocoa.com/?p=1059
+date: '2011-10-06 09:34:06 +0900'
+date_gmt: '2011-10-06 09:34:06 +0900'
+categories:
+- Web
+- JAVA
+tags:
+- java
+- app
+- google
+- engine
+- gae
+- xmpp
+comments: []
+---
+<p>출처 : http://blog.softwaregeeks.org/archives/530 위 글이 원본이며, 본인 보기 좋게 바꾸었습니다. :)</p>
+<h4><a href="http://xmpp.org/">XMPP</a></h4>
+<h4>(eXtensible Messaging and Presence Protocol) 사용 사례 - Google Talk - Facebook XMPP 참고 자료</h4>
+<div style="width:425px" id="__ss_1365558">
+  <strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/metajack/the-real-time-web-with-xmpp" title="The Real Time Web with XMPP" target="_blank">The Real Time Web with XMPP</a></strong> <iframe src="http://www.slideshare.net/slideshow/embed_code/1365558" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+<div style="padding:5px 0 12px">
+    View more <a href="http://www.slideshare.net/" target="_blank">presentations</a> from <a href="http://www.slideshare.net/metajack" target="_blank">Jack Moffitt</a>
+  </div>
+</div>
+<h4>* XMPP 샘플</h4>
+<table>
+<tr>
+<td>
+      <strong>inbound service</strong>
+    </td>
+<td>
+      <strong>address</strong>
+    </td>
+</tr>
+<tr>
+<td>
+      xmpp_message
+    </td>
+<td>
+      /_ah/xmpp/message/chat/
+    </td>
+</tr>
+<tr>
+<td>
+      xmpp_presence
+    </td>
+<td>
+      /_ah/xmpp/presence/available/ /_ah/xmpp/presence/unavailable/ /_ah/xmpp/presence/probe/
+    </td>
+</tr>
+<tr>
+<td>
+      xmpp_subscribe
+    </td>
+<td>
+      /_ah/xmpp/subscription/subscribe/ /_ah/xmpp/subscription/subscribed/ /_ah/xmpp/subscription/unsubscribe/ /_ah/xmpp/subscription/unsubscribed/
+    </td>
+</tr>
+</table>
+<p>위 테이블은 /war/WEB-INF/web.xml에 들어갈 매핑 URL로 매핑이 되었을 때 해당 서블릿으로 요청을 하게 됩니다.</p>
+<h4>사용자 등록, 삭제 처리 /war/WEB-INF/web.xml 파일에 서블릿 추가.</h4>
+<pre>
+<servlet>
+ <servlet-name>SubscriptionServlet</servlet-name>
+ <servlet-class>com.ezcocoa.xmpp.SubscriptionServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+ <servlet-name>SubscriptionServlet</servlet-name>
+ <url-pattern>/\_ah/xmpp/subscription/subscribe/</url-pattern>
+</servlet-mapping>
+</pre>
+<p>SubscriptionServlet.java</p>
+<pre>
+@SuppressWarnings("serial")
+public class SubscriptionServlet extends HttpServlet {
+ XMPPService xmppService = XMPPServiceFactory.getXMPPService();
+ public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+  doPost(request,response);
+ }
+ public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+  Subscription subscription = xmppService.parseSubscription(request);
+  String from = subscription.getFromJid().getId();
+  String to = subscription.getToJid().getId();
+  System.out.println("From : " + from);
+  System.out.println("To : " + to);
+ }
+}
+</pre>
+<p>구글앱엔진에서 XMPP를 쉽게 처리 하기 위해 XMPPService라는 인터페이스를 제공하며, XMPPServiceFactory를 사용하여 실제 객체를 얻어 사용합니다. 이렇게 해서 하나의 서블릿이 완성되었고, 테스트를 하기 위해 자체 웹서버를 동작시켜 생성된 URL로 접속하시면 테스트가 가능합니다.</p>
+<pre>http://localhost:8888/\_ah/admin/xmpp</pre>

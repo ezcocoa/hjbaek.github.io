@@ -1,0 +1,44 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Clojure] introduction을 이용한 실무 유틸."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 731
+wordpress_url: http://ezcocoa.com/?p=731
+date: '2011-05-10 03:56:47 +0900'
+date_gmt: '2011-05-10 03:56:47 +0900'
+categories:
+- Clojure
+tags:
+- Clojure
+- defn
+- dosync
+- if
+- introducion
+- let
+comments: []
+---
+<p>[sourcecode langugae="clojure"]<br />
+(defn hello<br />
+  "Writes hello message to *out*. Calls you by username.<br />
+Knows if you have been here before."<br />
+  [username]<br />
+  (dosync<br />
+   (let [past-visitor (@visitors username)]<br />
+     (if past-visitor<br />
+       (str "Welcome back, " username)<br />
+       (do<br />
+	 (alter visitors conj username)<br />
+	 (str "Hello, " username))))))<br />
+[/sourcecode]<br />
+Programming Clojure 저자 스튜어트 할로웨이라는 분이 지으신 책이다.<br />
+위 코드를 어디에 이용할 수 있을 지 생각해 봤다.<br />
+- 다른 사용자들과 싶게 공유할 수 있는 단어장? (중복 체크하고 쿼리를 날리는 구조에 사용할 수 있겠다.)<br />
+- 채팅프로그램에서도 사용할 수 있겠죠? (위 코드를 재사용하면 hello와 welcome으로 분기할수 있음).</p>

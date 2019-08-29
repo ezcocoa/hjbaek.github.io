@@ -1,0 +1,52 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure - ` syntax quote에 대해서
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: "<code>`</code>syntax quote에 대해서 알아보자. syntax quote는 심볼, 리스트를 평가하지 않기 위해
+  사용된다.\n"
+wordpress_id: 2466
+wordpress_url: http://ezcocoa.com/?p=2466
+date: '2015-05-31 07:56:18 +0900'
+date_gmt: '2015-05-31 07:56:18 +0900'
+categories:
+- Clojure
+tags:
+- Clojure
+- quote
+- simbol
+- syntax-quote
+comments: []
+---
+<p><code>&#96;</code>syntax quote에 대해서 알아보자.</p>
+<p><code>&#96;</code>와 연관있는 <code>~</code> unquote, 그리고 <code>~@</code>unquote splicing이 있다.</p>
+<p>위 두가지는 syntax quote를 이용하였을 때 그 반대의 영향을 주기 위해서 사용된다.</p>
+<p>심볼을 심볼 그 자체로 활용하기 위해 사용된다. <code>'</code>quote와 비슷하면서도 다르다. sytax quote 설명은 다른 장에서 알아보자.</p>
+<p><code><br />
+user> (def five 5)<br />
+user/five<br />
+user>&#96;five<br />
+user/five</p>
+<p></code></p>
+<p>p>한가지 기억하자. Clojure에서 모든 것들이 데이터이다. 위와 같이 quote를 사용하였을 때 평가되지 않고 심볼 자체 또는 리스트 자체로 출력이 되는 것을 볼수 있다.</p></p>
+<p>그럼 왜 quote가 필요할까? 한가지 더 실험을 해보자. </p>
+<p><code>(1 2 3)<br />
+Unhandled java.lang.ClassCastException<br />
+   java.lang.Long cannot be cast to clojure.lang.IFn<br />
+</code><br />
+<code>&#96;</code> 위와 같이 에러가 발생된다. 이유는 현재 1이라는 심볼이 정의 되어 있지 않기 때문에 발생된다. <code>(, )</code>에 둘러 쌓여있을 때 첫번 째 argument는 심볼로 인식된다.</p>
+<p>다시 quote를 활용해보자.</p>
+<p><code><br />
+user>&#96;(1 2 3)<br />
+(1 2 3)<br />
+</code></p>
+<p>에러 없이 정상으로 작동된다.</p>
+<p>다음 장에서 <code>&#96;</code>syntax-quote와 <code>'</code>의 차이점에 대해서 알아보자.</p>
+<p><a href="https://yobriefca.se/blog/2014/05/19/the-weird-and-wonderful-characters-of-clojure/">reference</a></p>

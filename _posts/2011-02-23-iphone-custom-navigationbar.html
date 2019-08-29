@@ -1,0 +1,44 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] Custom NavigationBar"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 622
+wordpress_url: http://ezcocoa.com/?p=622
+date: '2011-02-23 05:28:21 +0900'
+date_gmt: '2011-02-23 05:28:21 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- custom
+- bar
+- navigation
+comments: []
+---
+<p>UINavigationBar+Additions 클래스를 정의한다. 이는 UINavigationBar을 재정의 하여 뿌려준다.<br />
+[sourcecode language="Objc"]<br />
+@implementation UINavigationBar (CustomImage)<br />
+- (void)drawRect:(CGRect)rect {<br />
+  UIImage *image = [UIImage imageNamed: @"custom_nav_bar.png"];<br />
+  [image drawInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];<br />
+}<br />
+@end<br />
+[/sourcecode]<br />
+[sourcecode language="objc"]<br />
+- (void)drawRect:(CGRect)rect {<br />
+    UIColor *color = [UIColor redColor];<br />
+    CGContextRef context = UIGraphicsGetCurrentContext();<br />
+    CGContextSetFillColor(context, CGColorGetComponents( [color CGColor]));<br />
+    CGContextFillRect(context, rect);<br />
+    // 버튼을 위해 tintColor 설정.<br />
+    self.tintColor = color;<br />
+}<br />
+[/sourcecode]</p>

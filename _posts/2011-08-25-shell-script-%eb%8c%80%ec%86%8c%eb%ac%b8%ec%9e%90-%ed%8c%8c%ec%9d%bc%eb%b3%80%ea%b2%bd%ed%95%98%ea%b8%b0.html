@@ -1,0 +1,32 @@
+---
+layout: post
+status: publish
+published: true
+title: shell script - 대소문자 파일변경하기.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 929
+wordpress_url: http://ezcocoa.com/?p=929
+date: '2011-08-25 02:10:10 +0900'
+date_gmt: '2011-08-25 02:10:10 +0900'
+categories:
+- Linux
+tags:
+- shell
+- transfer
+- script
+- change file
+- 파일변경
+comments: []
+---
+<p>대문자로 된 파일명을 소문자로 변경하는 스크립트이다.<br />
+당연히 반대로도 가능하다.<br />
+[code]<br />
+#!/bin/sh#<br />
+for i in `find /Users/hojunbaek/Documents/workspace/HealthTutorialVideo/res/drawable-hdpi -name \*`; do mv $i `echo $i|tr '[A-Z]' '[a-z]' `; done<br />
+[/code]</p>

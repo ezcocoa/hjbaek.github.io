@@ -1,0 +1,66 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] 멀티태스킹 제한 및 주의 사항"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 705
+wordpress_url: http://ezcocoa.com/?p=705
+date: '2011-04-11 10:27:02 +0900'
+date_gmt: '2011-04-11 10:27:02 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- application
+- background
+- mulite
+- tasking
+- 멀티태스킹
+- 백그라운드
+- 주의사항
+- 태스킹
+comments: []
+---
+<p>iOS4 이후 멀티태스킹을 기본적으로 멀티태스킹이 지원됩니다.<br />
+지원되는 멀티태스킹을 Disabled시키기 위해 아래와 같은 작업을 해주시면 됩니다.<br />
+어플 info.plist 속성 중 UIApplicationExitsOnSuspend를 추가 후 On 시켜주시면 됩니다.<br />
+추가 시 아래와 같이 추가되는 것을 확인 하실 수 있습니다.<br />
+[sourcecode language="xml"]<br />
+Application does not run in background<br />
+[/sourcecode]<br />
+출처 : http://cafe.naver.com/mcbugi.cafe  by 와이씨(yc21c)<br />
+1.Do not make any OpenGL ES calls from your code<br />
+OpenGL ES 호출하지 말것<br />
+2.Cancel any network-related services before being suspended.<br />
+응용프로그램이 백그라운드로 갈때 네트웍관련 서비스 모두 닫으란 소리<br />
+3.Save your application state before moving to the background.<br />
+백그라운드로 이동하기 전에 응용 프로그램 상태를 저장합니다.<br />
+4.Release any unneeded memory when moving to the background.<br />
+백그라운드로 이동할때 불필요한 메모리 해제시켜라<br />
+5.Avoid using shared system resources.<br />
+시스템리소스 공유를 하지말아라.<br />
+6. Avoid updating your windows and views.<br />
+프로그램의 윈도우나/뷰개체들을 업데이트 하지말아라.<br />
+7. Remove sensitive information from views before moving to the background<br />
+백그라운드로 이동하기전에 민감한정보등은 뷰에서 제거해라.<br />
+8. Do minimal work while running in the background<br />
+백그라운드에서 실행되고 있을땐 최소의 작업만을 해라.<br />
+(포어그라운드 프로그램보다 자원이 덜 할당된다고..너무 많은 시간 백그라운드에서 실행하면 OS가 프로그램을 재시작 해버리거나 죽여버린다고 합니다. 그 기준은 아직 모르겠음.)<br />
+3번 부연 설멸 :<br />
+During low-memory conditions, background applications are purged from memory to free up space<br />
+Suspended applications are purged first and no notice is given to the application before it is purged.<br />
+As a result, before moving to the background, an application should always save enough state information to reconstitute itself later if necessary.<br />
+Restoring your application to its previous state also provides consistency for the user, who will see a snapshot of your application&rsquo;s main window briefly when it is relaunched.<br />
+로우메모리 컨디션이 되면 백그라운드 어플들 메모리 공간을 지우게 되니. 백그라운드로 갈때 항상 복원가능한 어플정보를 저장해둬라. 일시중지된 어플들이 먼저 제거된다. 제거될때 아무예고도 없이 제거된다 .<br />
+따라서 백그라운드로 이동되기 전에 어플은 항상 나중에 다시 구성되기 위한 정보를 저장해둬라.<br />
+정리하자면 백그라운드 에서 예고없이 지워지기 싫으면 백그라운드에서 메모리 많이 쓸 생각말고 웬만한 메모리 다 해제시키고 어플 상태정보 잘 저장해둬라. 화면에 출력되는 API 는 쓸 생각하지말고. --<br />
+백그라운드에서 오디오 플레이는 가능<br />
+백그라운드에서 위치정보서비스 가능<br />
+배터리로우 이벤트라던지 타임체인지라던지 시스템이벤트를 받아올수있음.</p>

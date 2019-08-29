@@ -1,0 +1,34 @@
+---
+layout: post
+status: publish
+published: true
+title: 안드로이드 - ActionBar 화살표 바꾸기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2313
+wordpress_url: http://ezcocoa.com/?p=2313
+date: '2014-08-21 13:39:32 +0900'
+date_gmt: '2014-08-21 13:39:32 +0900'
+categories:
+- Android
+tags:
+- image
+- Color
+- actionbar
+- arrow
+comments: []
+---
+<p>아래의 해당 이미지를 변경하는 방법을 서술합니다.</p>
+<hr />
+<p><img style="margin-left:auto;margin-right:auto" src="http://13.124.100.73/wp-content/uploads/2014/08/wordpress-for-android-version-2-3-action-bar-on-nexus-7-1.jpg" alt="Wordpress for android version 2 3 action bar on nexus 7" title="wordpress-for-android-version-2-3-action-bar-on-nexus-7.jpg" border="0" width="173" height="95" /></p>
+<pre class="xml">
+<style name="Theme.MyFancyTheme" parent="android:Theme.Holo">
+    <item name="android:homeAsUpIndicator">@drawable/my_fancy_up_indicator</item>
+</style>
+</pre>
+<p><a href="http://stackoverflow.com/questions/9252354/how-to-customize-the-back-button-on-actionbar">ref</a></p>

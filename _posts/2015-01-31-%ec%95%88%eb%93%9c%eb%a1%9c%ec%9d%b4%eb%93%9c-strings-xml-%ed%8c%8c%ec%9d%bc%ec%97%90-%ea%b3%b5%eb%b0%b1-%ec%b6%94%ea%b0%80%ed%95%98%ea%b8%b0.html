@@ -1,0 +1,28 @@
+---
+layout: post
+status: publish
+published: true
+title: 안드로이드 > strings.xml 파일에 공백 추가하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2398
+wordpress_url: http://ezcocoa.com/?p=2398
+date: '2015-01-31 06:03:23 +0900'
+date_gmt: '2015-01-31 06:03:23 +0900'
+categories:
+- Android
+tags:
+- space
+- string
+- 공백
+- 추가
+comments: []
+---
+<p>strings.xml 파일을 이용하여 문자열을 선언하다 보면 가끔 첫 문자의 시작이나 끝 문자에 ' &nbsp;'공백이 추가가 필요할 때가 있다. 하지만 위와 같이 ' ' 공백을 추가하게 되면 컴파일러가 이를 제거 해버린다.</p>
+<p>위와 같은 문제를 해결하기 위해 유니코드를 활용하면 문제를 해결할 수 있다.<br />&lsquo; &nbsp;' > &nbsp;을 이용하여 처리 할 수 있다.</p>
+<p>&nbsp;참조 자료 : &nbsp;<a href="http://stackoverflow.com/questions/10862975/how-to-put-space-character-into-a-string-name-in-xml">http://stackoverflow.com/questions/10862975/how-to-put-space-character-into-a-string-name-in-xml</a></p>

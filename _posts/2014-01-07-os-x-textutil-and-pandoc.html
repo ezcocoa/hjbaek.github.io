@@ -1,0 +1,34 @@
+---
+layout: post
+status: publish
+published: true
+title: OS X > textutil and pandoc
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: Command Line 툴로 문서 작업 변환 툴이다.
+wordpress_id: 2185
+wordpress_url: http://ezcocoa.com/?p=2185
+date: '2014-01-07 05:04:56 +0900'
+date_gmt: '2014-01-07 05:04:56 +0900'
+categories:
+- OSX
+tags:
+- html
+- doc
+- convert
+- etc
+- markdown
+comments: []
+---
+<p>여러가지 포멧을 다른 포멧으로 변환하기 위한 강력한 툴이다.</p>
+<p>(Stackoverflow)[http://stackoverflow.com/questions/1043768/quickly-convert-rtf-doc-files-to-markdown-syntax-with-php]</p>
+<p>위와 같은 사용할 수 있다. 구글을 통해 많은 자료들을 구할 수 있으니 검색 해보자.</p>
+<hr />
+<p><strong>ex)</strong></p>
+<pre>textutil -convert html file.doc -stdout | pandoc -f html -t markdown -o file.md
+</pre>

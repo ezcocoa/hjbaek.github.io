@@ -1,0 +1,28 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhon] XCode에서 Malloc 정보 보기."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 897
+wordpress_url: http://ezcocoa.com/?p=897
+date: '2011-08-10 00:48:05 +0900'
+date_gmt: '2011-08-10 00:48:05 +0900'
+categories:
+- iPhone
+tags:
+- xcode
+- gdb
+- malloc
+comments: []
+---
+<p>디버깅 시 GDB를 이용하여 생성된 객체에 대한 정보를 볼 수있습니다.<br />
+1. Edit Scheme<br />
+2. environment에서 MallocStackLoggingNoCompact = YES, NSZombieEnabled = YES 추가.<br />
+참조 자료 : <a href="http://www.friday.com/bbum/2010/01/10/using-malloc-to-debug-memory-misuse-in-cocoa/">http://www.friday.com/bbum/2010/01/10/using-malloc-to-debug-memory-misuse-in-cocoa/</a> and <a href="http://stackoverflow.com/questions/2910861/strange-gdb-error-unable-to-trace/2911197#2911197">http://stackoverflow.com/questions/2910861/strange-gdb-error-unable-to-trace/2911197#2911197</a></p>

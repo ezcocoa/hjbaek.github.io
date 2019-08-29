@@ -1,0 +1,36 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] 해상도 (px, dip)"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 507
+wordpress_url: http://ezcocoa.com/?p=507
+date: '2011-01-19 04:07:48 +0900'
+date_gmt: '2011-01-19 04:07:48 +0900'
+categories:
+- Android
+tags:
+- android
+- resolution
+- dip
+- px
+comments: []
+---
+<p>안드로이드는 sp와 dip(화면 표시 단위)을 권장하고 있습니다.<br />
+이에 대해서 포스팅하여 글을 적어 봅니다.<br />
+프로젝트 생성 시 폴더로 LDPI(저해상도), MDPI(중해상도), HDPI(고해상도)로 생성이 됩니다.<br />
+Density(밀도)값은 LDPI->120, MDPI->160, HDPI->240으로 각각 인치당 필셀수를 의미합니다.<br />
+참조 링크 : <a href="http://developer.android.com/guide/practices/screens_support.html" target="_blank">http://developer.android.com/guide/practices/screens_support.html</a><br />
+LDPI는 120/240 = 1/2,<br />
+MDPI는 160/240 = 2/3로 길이당 픽셀수가 감소한다.<br />
+레이아웃용 xml 파일에 기술되어야 할 dip값은 다음과 같이 계산 할 수 있다.<br />
+<strong>dip = px * (160/density)</strong><br />
+Density값은 HDPI, MDPI, LDPI의 값이다.<br />
+결국 MDPI일때 dip값과 px값은 동일하다.</p>

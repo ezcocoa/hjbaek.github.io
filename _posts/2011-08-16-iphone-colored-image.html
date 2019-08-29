@@ -1,0 +1,53 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] Colored Image."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 906
+wordpress_url: http://ezcocoa.com/?p=906
+date: '2011-08-16 02:28:57 +0900'
+date_gmt: '2011-08-16 02:28:57 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- image
+- Color
+- change
+comments: []
+---
+<p>카테고리를 이용한 이미지 색상 변경 코드입니다.<br />
+[sourcecode language="ObjC"]<br />
++ (UIImage *)imageNamed:(NSString *)name withColor:(UIColor *)color {<br />
+	UIImage *img = [UIImage imageNamed:name];<br />
+	// begin a new image context, to draw our colored image onto<br />
+	UIGraphicsBeginImageContext(img.size);<br />
+	// get a reference to that context we created<br />
+	CGContextRef context = UIGraphicsGetCurrentContext();<br />
+	// set the fill color<br />
+	[color setFill];<br />
+	// translate/flip the graphics context (for transforming from CG* coords to UI* coords<br />
+	CGContextTranslateCTM(context, 0, img.size.height);<br />
+	CGContextScaleCTM(context, 1.0, -1.0);<br />
+	// set the blend mode to color burn, and the original image<br />
+	CGContextSetBlendMode(context, kCGBlendModeColorBurn);<br />
+	CGRect rect = CGRectMake(0, 0, img.size.width, img.size.height);<br />
+	CGContextDrawImage(context, rect, img.CGImage);<br />
+	// set a mask that matches the shape of the image, then draw (color burn) a colored rectangle<br />
+	CGContextClipToMask(context, rect, img.CGImage);<br />
+	CGContextAddRect(context, rect);<br />
+	CGContextDrawPath(context, kCGPathFill);<br />
+	// generate a new UIImage from the graphics context we drew onto<br />
+	UIImage *coloredImg = UIGraphicsGetImageFromCurrentImageContext();<br />
+	UIGraphicsEndImageContext();<br />
+	//return the color-burned image<br />
+	return coloredImg;<br />
+}<br />
+[/sourcecode]</p>

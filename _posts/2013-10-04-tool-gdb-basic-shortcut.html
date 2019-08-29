@@ -1,0 +1,47 @@
+---
+layout: post
+status: publish
+published: true
+title: Tool > GDB Basic (Shortcut)
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1912
+wordpress_url: http://ezcocoa.com/?p=1912
+date: '2013-10-04 05:28:48 +0900'
+date_gmt: '2013-10-04 05:28:48 +0900'
+categories:
+- Tool
+tags:
+- gdb
+comments: []
+---
+<p><a href="http://www.gnu.org/software/gdb/documentation/">GDB Documentation - The GNU Operation System</a></p>
+<p style="font-size: 16px"><span style="text-decoration: underline">Starting GDB for basic user.</span></p>
+<p>You've to compile the file with -g flag for GDB.</p>
+<blockquote>
+<p>ex) gcc -g -o test test.c</p>
+</blockquote>
+<p>You can see 'test' file that you compile it from test.c.</p>
+<p style="font-size: 16px"><span style="text-decoration: underline">GDB Commands&nbsp;</span></p>
+<p><strong>run ( r )</strong> GDB Mode 에서 프로그램을 동작시킨다.</p>
+<p><strong>break ( b )</strong> 브레이크 포인터를 생성한다.&nbsp;</p>
+<blockquote>
+<p>ex 1) break 2 // 2번째 라인에 브레이크를 건다.</p>
+<p>ex 2) break hello // hello 함수에 브레이크를 건다.</p>
+<p>ex 3) break 0x000xx // 주소에 브레이크를 건다.</p>
+</blockquote>
+<p><strong>delete ( d )</strong> 브레이크 포인트를 제거한다.</p>
+<p><strong>info break ( i b )</strong> 현재 설정되어 있는 브레이크를 보여준다.)</p>
+<p><strong>step ( s )</strong> 현재 라인을 수행한다. 만일 함수 호출이 있다면 해당 함수로 포인터를 넘긴다.</p>
+<p><strong>next &nbsp;( n )</strong>&nbsp;step과 비슷하다. 하지만 현재 라인이 함수 호출을 하고 있다면 이 명령어는 함수를 수행하고 다음 라인에서 멈추게 된다.</p>
+<p><strong>finish ( f )</strong>&nbsp;next 커맨드를 계속 유지 시켜 포인터를 함수의 끝까지 보낸다.</p>
+<p><strong>continue ( c )</strong>&nbsp;브레이크 포인터를 만날때 까지나 프로그램의 스톱이 될때 까지 프로그램을 수행 한다. </p>
+<p><strong>where &nbsp;( w )</strong> 함수 호출 스택에 따른 현재 위치를 보여준다.&nbsp;<strong>print ( p )</strong> 변수값을 출력한다.</p>
+<p><strong>display ( d )</strong> 매 스탭마다 변수에 설정된 값을 출력한다.&nbsp;</p>
+<p><strong>list ( l )</strong> 소스 코드를 출력한다.&nbsp;</p>
+<p><strong>quit ( q )</strong> GDB를 종료시킨다.</p>

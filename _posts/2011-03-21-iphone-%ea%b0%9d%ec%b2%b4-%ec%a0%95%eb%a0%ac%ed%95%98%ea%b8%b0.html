@@ -1,0 +1,33 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] 객체 정렬하기"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 671
+wordpress_url: http://ezcocoa.com/?p=671
+date: '2011-03-21 05:50:35 +0900'
+date_gmt: '2011-03-21 05:50:35 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- list
+- sort
+- 정렬
+comments: []
+---
+<p>- 객체 정렬하기<br />
+[sourcecode language="ObjC"]<br />
+	NSSortDescriptor *category1Descriptor = [[NSSortDescriptor alloc] initWithKey:@"category1" ascending:YES];<br />
+	NSSortDescriptor *category2Descriptor = [[NSSortDescriptor alloc] initWithKey:@"category2" ascending:YES];<br />
+	[_productList sortUsingDescriptors:[NSArray arrayWithObjects:category1Descriptor, category2Descriptor, nil]];<br />
+	[category1Descriptor release];<br />
+	[category2Descriptor release];<br />
+[/sourcecode]</p>

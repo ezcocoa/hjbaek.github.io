@@ -1,0 +1,49 @@
+---
+layout: post
+status: publish
+published: true
+title: "[SVN] SVN Server &amp; Repository 생성하기"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 669
+wordpress_url: http://ezcocoa.com/?p=669
+date: '2011-03-21 05:45:43 +0900'
+date_gmt: '2011-03-21 05:45:43 +0900'
+categories:
+- Repo
+tags:
+- repo
+- svn
+- create
+- server
+- subversion
+- 생성
+comments: []
+---
+<p>OS : OS X 10.6.6<br />
+1. 저장소 만들기 (파일 DB)<br />
+[code]# svnadmin create -fs-type fsfs sample<br />
+[/code]<br />
+2. 다른 유저들을 위한 권한 설정<br />
+[code]# chmod -R g+w sample<br />
+[/code]<br />
+3. 유저 등록하기<br />
+conf 이하폴더에서 수정하세요.<br />
+[code][users]<br />
+test = test<br />
+[/code]<br />
+4. 서버 가동하기<br />
+[code]#svnserv -d -r <svn root directory>[/code]<br />
+5. ssh를 이용한 접근 (암호화하기 위해)<br />
+[code]#svn+ssh://userid@xxx.xxx.xxx.xxx/<svn root>/<repository><br />
+[/code]<br />
+[code]pyrasis 의 설명에 따르면<br />
+'주의할 점은 IP주소나 도메인 뒤에 저장소의 절대 경로를 적어주어야 합니다. svnserve를 띄워서 /home/svn/과 같이 지정해 주지 않았기 때문에 각 저장소의 절대경로인 /home/svn/sample로 합니다.<br />
+SSH2 데몬으로 svnserve을 터널링 하여 작동시킵니다. 이렇게 되면 svn+ssh:// 프로토콜을 사용하게 되며 사용자 인증은 시스템 계정으로 인증을 합니다. 구동시키는 방법은 따로 있지 않으며 SSH데몬만 떠 있으면 됩니다.'<br />
+라고 한다. 아마 svnserv 와는 별개로 치는가보다...<br />
+[/code]</p>

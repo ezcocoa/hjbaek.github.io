@@ -1,0 +1,44 @@
+---
+layout: post
+status: publish
+published: true
+title: "[PHP] redirection page"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 725
+wordpress_url: http://ezcocoa.com/?p=725
+date: '2011-05-08 23:56:00 +0900'
+date_gmt: '2011-05-08 23:56:00 +0900'
+categories:
+- PHP
+tags:
+- move
+- php
+- redirection
+- 리다이렉션
+comments: []
+---
+<p>1. using meta tag<br />
+[sourcecode langauge="PHP"]<br />
+<? echo "<meta http-equiv='refresh' content='0; url=http://address'>";<br />
+?><br />
+[/sourcecode]<br />
+2. using javascript langauge.<br />
+[sourcecode langauge="PHP"]<br />
+<?<br />
+echo "<script> document.location.href='address'; </script>";<br />
+?><br />
+// or<br />
+<?<br />
+echo "<script> window.location.replace('address'); </script>";<br />
+?><br />
+[/sourcecode]<br />
+3. using header<br />
+[sourcecode langauge="php"]<br />
+<?  header("Location: address");  ?><br />
+[/sourcecode]</p>

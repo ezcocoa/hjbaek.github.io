@@ -1,0 +1,52 @@
+---
+layout: post
+status: publish
+published: true
+title: Java > ClassNotFoundException VS NoClassDefFoundError 뭐가 다를까?
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1982
+wordpress_url: http://ezcocoa.com/?p=1982
+date: '2013-11-25 03:29:17 +0900'
+date_gmt: '2013-11-25 03:29:17 +0900'
+categories:
+- JAVA
+tags: []
+comments: []
+---
+<p><strong>ClassNotFoundException</strong> 같은 경우는 class 로더가 필요한 class를 class path에서 찾지 못할 때 발생한다.</p>
+<p>일반적으로 class path에 클래스를 추가할 경우 따로 채크를 해주어야 한다.</p>
+<p><strong>NoClassDefFoundError</strong> 같은 경우는 디버거 또는 이유를 찾기에는 좀더 복잡하다. 그리고 이 에러는 컴파일러로부터 class 런타임 시에 class file을 찾지 못했을 때 발생된다.</p>
+<p>아래와 같이 확인 할 수 있다.</p>
+<p><strong>Test1.java</strong><br />
+[sourcecode language="java"]<br />
+public class Test1 {<br />
+}<br />
+[/sourcecode]</p>
+<p><strong>Test.java</strong><br />
+[sourcecode language="java"]<br />
+public class Test {<br />
+   public static void main(String[] args) {<br />
+        Test1 = new Test1();<br />
+    }<br />
+}<br />
+[/sourcecode]</p>
+<p>컴파일 후에 Test1.class파일을 지우고 Test파일을 실행 해보자.</p>
+<p>Exception in thread "main" java.lang.NoClassDefFoundError: Test<br />
+        at Test1.main(Test1.java:5)<br />
+Caused by: java.lang.ClassNotFoundException: Test<br />
+        at java.net.URLClassLoader$1.run(Unknown Source)<br />
+        at java.net.URLClassLoader$1.run(Unknown Source)<br />
+        at java.security.AccessController.doPrivileged(Native Method)<br />
+        at java.net.URLClassLoader.findClass(Unknown Source)<br />
+        at java.lang.ClassLoader.loadClass(Unknown Source)<br />
+        at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)<br />
+        at java.lang.ClassLoader.loadClass(Unknown Source)<br />
+        ... 1 more</p>
+<p>위와 같은 에러를 확인 할 수 있다.</p>
+<p><a href="http://www.javaroots.com/2013/02/classnotfoundexception-vs.html">reference</a></p>

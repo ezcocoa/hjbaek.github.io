@@ -1,0 +1,73 @@
+---
+layout: post
+status: publish
+published: true
+title: Android > 언제 발생 할 지 모르는 오류를 대처하기 위해 파일로 로그를 남기자
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: |-
+  상품을 안정화 시키기 위해 여러 가지 방법 중 하나인 로그를 파일로 작성하여, 그 파일을 분석/활용하여 상품 생산성을 높여보자.
+  이는 실 상품에 적용하기에는 어느 정도 제한이 있고 베타 버전에 적용하도록 한다.
+wordpress_id: 1964
+wordpress_url: http://ezcocoa.com/?p=1964
+date: '2013-11-11 02:30:59 +0900'
+date_gmt: '2013-11-11 02:30:59 +0900'
+categories:
+- Android
+tags:
+- java
+- file
+- log
+comments: []
+---
+<p>상품을 안정화 시키기 위해 여러 가지 방법 중 하나인 로그를 파일로 작성하여, 그 파일을 분석/활용하여 상품 생산성을 높여보자.</p>
+<p>이는 실 상품에 적용하기에는 어느 정도 제한이 있고 베타 버전에 적용하도록 한다.</p>
+<hr />
+<p><a href="http://stackoverflow.com/questions/1756296/android-writing-logs-to-text-file">참조</a></p>
+<h2>1. 아래 코드는 단순하게 아무 옵션 없이 파일로 작성하고 있다.</h2>
+<pre class="java">
+public void appendLog(String text) { File logFile = new File("sdcard/log.file"); if (!logFile.exists()) { try { logFile.createNewFile(); } catch (IOException e) { // TODO Auto-generated catch block e.printStackTrace(); } } try { //BufferedWriter for performance, true to set append to file flag BufferedWriter buf = new BufferedWriter(new FileWriter(logFile, true)); buf.append(text); buf.newLine(); buf.close(); } catch (IOException e) { // TODO Auto-generated catch block e.printStackTrace(); } }
+</pre>
+<h2>2. microlog4android 라이브러리를 이용해보자.</h2>
+<p>사용하기 쉽고 다양한 옵션을 제공한다.</p>
+<p><a href="http://code.google.com/p/microlog4android/">다운로드 및 설명</a></p>
+<ol>
+<li>메인 액티비티에 아래와 같이 선언해주자. </li>
+</ol>
+<pre class="java">
+private static final Logger logger = LoggerFactory.getLogger();
+</pre>
+<ol>
+<li>onCreate() 메서드에 아래와 같이 코드를 넣어주자. 이는 환경 설정을 읽어드린다.</li>
+</ol>
+<pre class="java">
+PropertyConfigurator.getConfigurator(this).configure();
+</pre>
+<ol>
+<li>
+<dl>
+<dt>/assets 폴더에 <strong>microlog.properties</strong>라는 이름으로 파일을 작성하자. 이 파일은 옵션을 작성하기 위한 파일이다. 그리고 아래와 같이 입력해주자.</dt>
+<dd>microlog.level=DEBUG</dd>
+<dd>microlog.appender=LogCatAppender;FileAppender</dd>
+<dd>microlog.formatter=PatternFormatter</dd>
+<dd>microlog.formatter.PatternFormatter.pattern=%c [%P] %m %T</dd>
+</dl>
+</li>
+<li>
+<p>실제 로그를 입력하는 방법은 아래와 같다.</p>
+</li>
+</ol>
+<pre class="java">
+logger.debug("M4A");
+</pre>
+<ol>
+<li>퍼미션을 잊지 말자. 이는 파일을 작성하기 위해 권한을 얻는다.</li>
+</ol>
+<pre class="xml">
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+</pre>

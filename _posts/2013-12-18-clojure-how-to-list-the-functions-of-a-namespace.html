@@ -1,0 +1,48 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure > How to list the functions of a namespace.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 네임스페이스에 정의 된 메서드 표시하기
+wordpress_id: 2167
+wordpress_url: http://ezcocoa.com/?p=2167
+date: '2013-12-18 09:16:12 +0900'
+date_gmt: '2013-12-18 09:16:12 +0900'
+categories:
+- Clojure
+tags:
+- Clojure
+- list
+- class
+- define
+- fn
+- function
+- namespace
+comments: []
+---
+<p><a href="http://stackoverflow.com/questions/2747294/how-to-list-the-functions-of-a-namespace">ref</a></p>
+<pre class="clojure">
+(keys (ns-publics &#039;foo))
+</pre>
+<p>to list Vars exported by the namespace foo; e.g. for clojure.contrib.monads this returns</p>
+<pre class="clojure">
+(defmonad censor m-when-not m+write+m maybe-m maybe-t ...)
+</pre>
+<p>(the ... stands for quite a lot more).</p>
+<p>More generally, there's a bunch of functions whose names start in ns- which list Vars by namespace, with certain additional criteria attached:</p>
+<p>ns-map -- the most general function of all, returns a map keyed by symbols (non-namespace-qualified symbols actually), where the value corresponding to each symbol is the Var or class that symbol resolves to in the given namespace.</p>
+<p>ns-interns -- like ns-map, but includes only the Vars interned in the given namespace (as opposed to Vars from other namespaces which are accessible from the given namespace due to a use or refer call or the implicit referral of Vars from clojure.core.</p>
+<p>ns-publics -- like ns-interns, but includes only the non-private Vars.</p>
+<p>ns-imports -- like ns-map, but includes only the entries whose values correspond to Java classes.</p>
+<p>There's also ns-aliases which lists symbols which can be used as shorthand aliases when referring to Vars from other namespaces; e.g. if you call (require '[clojure.contrib.math :as math]), ns-aliases will include an entry with the key of math (the symbol), whose value will be the actual namespace clojure.contrib.math. These mapping are not included in the map returned by ns-map.</p>
+<p>or you can use as the following.</p>
+<pre class="clojure">
+(dir clojure.string)
+</pre>

@@ -1,0 +1,43 @@
+---
+layout: post
+status: publish
+published: true
+title: OS X > 자바 버전 변경하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1958
+wordpress_url: http://ezcocoa.com/?p=1958
+date: '2013-11-04 04:19:44 +0900'
+date_gmt: '2013-11-04 04:19:44 +0900'
+categories:
+- OSX
+tags:
+- java
+- version
+- change
+- 자바
+- 버전
+comments: []
+---
+<p>아 짜잉나짜잉나짜잉나~~ 환경이 바뀌었어~ 나도 모르는 사이에</p>
+<hr />
+<p>Android를 개발할 때는 기본적으로 자바 SDK 1.6을 사용하였지만 Google Appengine을 사용할때는 또 1.7버전이 필요했다.</p>
+<p>이것저것 너무 귀찮은 작업의 연속이다. 머 어쩔 수 있나.</p>
+<p>바꿔야지</p>
+<p>일단 나의 환경은</p>
+<p>OS X Mavericks 이다.</p>
+<p>일단 자신의 컴퓨터에 어떠한 버전이 설치되어있는지 확인을 해야한다.</p>
+<pre><code># java -version
+</code></pre>
+<p>만약 버전이 낮다면 원하는 버전을 다운받고 나같은 경우는 1.7이 필요하다.</p>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Download Link for the Java 7 JDK</a></p>
+<p>아래는 OS 자체 업데이트 시 설치되는 Java의 경로이다. 기존의 심볼릭 링크를 이용하여 버전을 바뀌는 걸 아래의 해당 경로에서 확인할 수 있다. <br />
+   # cd /System/Library/Frameworks/JavaVM.framework/Versions/</p>
+<p>기존 링크를 백업해두고 아니면 아예 변경해도 무방하다.</p>
+<p># ln -s /Library/Java/JavaVirtualMachines/jdk1.7.0_xx.jdk/Contents/ CurrentJDK</p>
+<p>이상.</p>

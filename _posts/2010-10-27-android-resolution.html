@@ -1,0 +1,133 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] resolution"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 106
+wordpress_url: http://ezcocoa.com/?p=106
+date: '2010-10-27 03:36:41 +0900'
+date_gmt: '2010-10-27 03:36:41 +0900'
+categories:
+- Android
+tags:
+- android
+- resolution
+- device
+- display
+comments: []
+---
+<p>안드로이드는 다양한 화면 크기를 가지고 있는 스마트폰을 제공하고 있습니다. 그래서 안드로이드 UI에 대해서 간단히 정리를 해 봅니다. 안드로이드폰을 회전 하였을 경우의 처리는 다음 기회에 올리 겠습니다.<br />
+Android UI<br />
+ 용어 정의<br />
+density<br />
+밀도 (density)<br />
+물리적인 길이 안에 포함된 픽셀(px)의 수<br />
+dpi : density per inch<br />
+QVGA : 120 dpi, HTC Tatii<br />
+HVGA : 160 dpi, 안드로원, HTC G1<br />
+WVGA : 240 dpi, 넥서스원, 갤럭시A, 갤럭시S, 베가, 시리우스, 이자르<br />
+FWVGA : 240 dpi, 모토로이, 드로이드<br />
+Google Android에서의 dpi<br />
+ldpi : Low density, 120 dpi<br />
+mdpi : Midium density, 160 dpi<br />
+hdpi : High density, 240 dpi (이미지 작성시 기준)<br />
+dip<br />
+Density-independent pixel<br />
+160 pixels을 기본 밀도(160 dip)로 하여 작성된 밀도에 독립적인 가상의 단위<br />
+pixels = dips * (density / 160)<br />
+dips = pixels * 160 / density<br />
+density로는 Android의 dpi를 사용할 것<br />
+Resolution<br />
+해상도, 화면의 전체 픽셀 수<br />
+예) 240 * 320<br />
+ 화면 크기<br />
+Screen Size 구하기<br />
+DisplayMetrics displayMetrics = new DisplayMetrics();<br />
+getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);<br />
+int pxWidth  = displayMetrics.widthPixels;<br />
+int pxHeight = displayMetrics.heightPixels;<br />
+//--- displayMetrics.density : density / 160, 0.75 (ldpi), 1.0 (mdpi), 1.5 (hdpi)<br />
+int dipWidth  = displayMetrics.widthPixels  / displayMetrics.density;<br />
+int dipHeight = displayMetrics.heightPixels / displayMetrics.density;<br />
+Activity에서 화면 크기 구하는 방법<br />
+    	StringBuffer buf = null;<br />
+    	WindowManager wm = null;<br />
+    	Display display = null;<br />
+    	DisplayMetrics metrics = null;<br />
+    	wm = getWindowManager();<br />
+    	display = wm.getDefaultDisplay();<br />
+    	metrics = new DisplayMetrics();<br />
+    	display.getMetrics(metrics);<br />
+    	buf = new StringBuffer();<br />
+    	buf.append("Window display id: " + display.getDisplayId() + "\n");<br />
+    	buf.append("Window orientation: " + display.getOrientation() + "\n");<br />
+    	buf.append("Window width: " + display.getWidth() + "\n");<br />
+    	buf.append("Window height: " + display.getHeight() + "\n");<br />
+    	buf.append("Window pixel format: " + display.getPixelFormat() + "\n");<br />
+    	buf.append("Window refresh rate: " + display.getRefreshRate() + "\n");<br />
+    	buf.append("Window width pixels: " + metrics.widthPixels + "\n");<br />
+    	buf.append("Window height pixels: " + metrics.heightPixels + "\n");<br />
+    	testMsg.setText(buf.toString());<br />
+갤럭시S의 화면 크기<br />
+세로 화면 크기<br />
+Window display id: 0<br />
+Window orientation: 0<br />
+Window width: 320<br />
+Window height: 533<br />
+Window pixel format: 5<br />
+Window refresh rate: 68.0<br />
+Window width pixels: 320<br />
+Window height pixels: 533<br />
+가로 화면 크기<br />
+Window display id: 0<br />
+Window orientation: 1<br />
+Window width: 533<br />
+Window height: 320<br />
+Window pixel format: 5<br />
+Window refresh rate: 68.0<br />
+Window width pixels: 533<br />
+Window height pixels: 320<br />
+ Resource<br />
+/res/layout/<br />
+layout-small, layout-large<br />
+/res/drawable/<br />
+drawable-ldpi, drawable-mdpi, drawable-hdpi, drawable-nodpi<br />
+Dimensions<br />
+/res/values/dimensions.xml<br />
+<resources><br />
+    <dimen name="size">10dip</dimen><br />
+</resources><br />
+int size = getResources().getDimensionPixelSize(R.dimen.length);<br />
+ 화면 회전<br />
+회전 상태 확인<br />
+Android 2.1<br />
+WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);<br />
+Display display = wm.getDefaultDisplay();<br />
+//--- orientation : 0. 세로, 1. 가로<br />
+int orientation = display.getOrientation();<br />
+Android 2.2<br />
+WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);<br />
+Display display = wm.getDefaultDisplay();<br />
+//--- Surface.ROTATION_0   : 세로<br />
+//--- Surface.ROTATION_90  : 가로<br />
+//--- Surface.ROTATION_180 : 세로<br />
+//--- Surface.ROTATION_270 : 가로<br />
+int rotation = display.getRotation();<br />
+화면 회전 금지<br />
+AndroidManifest.xml에서 모든 Activity에 다음을 추가 한다.<br />
+android:screenOrientation="portrait"       //--- 세로 고정<br />
+android:screenOrientation="landscape"      //--- 가로 고정<br />
+참고 문헌<br />
+안드로이드 UI 디자인 패턴, 2010.5.19 by Google<br />
+Icon Design Guidelines, Android 2.0<br />
+Supporting Multiple Screens, 2010.5<br />
+*** 참고 문헌 ***<br />
+오픈소스 비즈니스 컨설팅 - Android<br />
+오픈소스 비즈니스 컨설팅 - Android SDK</p>

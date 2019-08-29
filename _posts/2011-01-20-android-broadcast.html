@@ -1,0 +1,44 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] BroadCast"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 515
+wordpress_url: http://ezcocoa.com/?p=515
+date: '2011-01-20 09:26:35 +0900'
+date_gmt: '2011-01-20 09:26:35 +0900'
+categories:
+- Android
+tags:
+- android
+- broadcast
+comments: []
+---
+<p>프로세스 간 통신하기<br />
+<strong>브로드캐스팅</strong><br />
+<code>// 전송할 액션 설정<br />
+public static final String ACTION = "com.ezcocoa.action.ACTION"<br />
+// 전송할 인텐트 정의.<br />
+Intent intent = new Intent(ACTION);<br />
+intent.putExtra(key, value);<br />
+sendBroadcast(intent);<br />
+</code><br />
+<strong>브로드캐스트 리시버</strong><br />
+<code>//생성하기<br />
+BroadcastReceiver mReceiver = new BroadcastReceiver() {<br />
+@Override<br />
+public void onReceive(Context context, Intent intent) {<br />
+}<br />
+};<br />
+</code><br />
+<code>//등록하기<br />
+IntentFilter filter = new IntentFilter(Config.QR_ACTION);<br />
+registerReceiver(mReceiver, filter);<br />
+</code></p>

@@ -1,0 +1,56 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Cocoa] Quantity used CPU"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 781
+wordpress_url: http://ezcocoa.com/?p=781
+date: '2011-06-23 01:03:16 +0900'
+date_gmt: '2011-06-23 01:03:16 +0900'
+categories:
+- iPhone
+tags:
+- cocoa
+- cpu
+- mach
+- quanity
+- used
+comments: []
+---
+<p>출처 : http://d.hatena.ne.jp/harukasan/20080825<br />
+[sourcecode language="c"]<br />
+#include <mach/mach_host.h><br />
+#include <mach/processor_info.h><br />
+#include <stdio.h><br />
+int main() {<br />
+    mach_port_t host_port;<br />
+    host_cpu_load_info_data_t prev_cpu_load, cpu_load;<br />
+    mach_msg_type_number_t count = HOST_CPU_LOAD_INFO_COUNT;<br />
+    natural_t user, system, idle;<br />
+    double usage;<br />
+    host_port = mach_host_self();<br />
+    host_statistics(host_port, HOST_CPU_LOAD_INFO, (host_info_t)&amp;prev_cpu_load, &amp;count);<br />
+    while (1) {<br />
+              // Cocoa의경우 NSThread를 사용하는 것이 좋습니다.<br />
+		sleep(1);<br />
+		// CPU 시간취득<br />
+		host_statistics(host_port, HOST_CPU_LOAD_INFO, (host_info_t)&amp;cpu_load, &amp;count);<br />
+		// 백분율계산<br />
+		user = cpu_load.cpu_ticks[CPU_STATE_USER] - prev_cpu_load.cpu_ticks[CPU_STATE_USER];<br />
+		system = cpu_load.cpu_ticks[CPU_STATE_SYSTEM] - prev_cpu_load.cpu_ticks[CPU_STATE_SYSTEM];<br />
+		idle = cpu_load.cpu_ticks[CPU_STATE_IDLE] - prev_cpu_load.cpu_ticks[CPU_STATE_IDLE];<br />
+		usage = (double)(user + system) / (system + user + idle) * 100.0;<br />
+		printf("%f \n", usage);<br />
+		// 업데이트<br />
+		prev_cpu_load = cpu_load;<br />
+	}<br />
+	return 0;<br />
+}<br />
+[/sourcecode]</p>

@@ -1,0 +1,26 @@
+---
+layout: post
+status: publish
+published: true
+title: OS X - How to find downloaded file list?
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1762
+wordpress_url: http://ezcocoa.com/?p=1762
+date: '2013-01-22 00:15:15 +0900'
+date_gmt: '2013-01-22 00:15:15 +0900'
+categories:
+- OSX
+tags:
+- mac
+- file
+- list
+- download
+comments: []
+---
+<pre style="margin: 0px 0px 1em; padding: 1em 2em; font-family: consolas, monaco, 'courier new', courier, monospace; font-size: 13px; background-color: #e7ebef; border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; overflow: auto; line-height: 24px;">sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'select LSQuarantineDataURLString from LSQuarantineEvent'</pre>

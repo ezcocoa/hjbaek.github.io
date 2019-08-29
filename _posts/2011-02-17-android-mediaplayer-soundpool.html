@@ -1,0 +1,62 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] MediaPlayer &amp; SoundPool"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 611
+wordpress_url: http://ezcocoa.com/?p=611
+date: '2011-02-17 00:36:44 +0900'
+date_gmt: '2011-02-17 00:36:44 +0900'
+categories:
+- Android
+tags:
+- android
+- player
+- media
+- pool
+- sound
+comments: []
+---
+<p>(간단한 음악 파일 재생)<br />
+<strong>MediaPlayer</strong> 주로 동시 재생이 필요할 때 사용한다.<br />
+[sourcecode language="JAVA"]<br />
+static MediaPlayer create(Context context, int resid)<br />
+public void start()<br />
+public void stop()<br />
+public void sekkTo(int msec)<br />
+public void pause()<br />
+[/sourcecode]<br />
+<strong>SoundPool</strong> 반복적인 재생이 필요할 때 사용한다.<br />
+[sourcecode language="JAVA"]<br />
+SoundPool (int maxStreams, int streamType, int secQuality)<br />
+@param maxStreams 최대 스트림 개수<br />
+@param streamType : 스트리밍 타입<br />
+@param secQuality : 음질<br />
+int load (Context context, int resId, int priority)<br />
+int load (String path, int priority)<br />
+@return 고유 식별자<br />
+@param priority 재생 우선순위 (현재는 1)<br />
+[/sourcecode]<br />
+[sourcecode language="JAVA"]<br />
+int play(int soundID, float leftVolume, float rightVolume, int priority, int loop, float rate)<br />
+@param soundID load가 리턴한 고유 식별자<br />
+@param Volume 사운드 크기<br />
+@param loop 반복 모드, 지정값 +1회 반복(0이면 1회). -1이면 무한 반복<br />
+@param rate 1 정상속도, 0.5 중간 속도, 2 2배속도<br />
+// example<br />
+SoundPool pool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);<br />
+int pPool = pool.oad(this, R.raw.sound, 1);<br />
+pool.play(pPool, 1, 1, 0, 0, 1);<br />
+[/sourcecode]<br />
+// 사용 팁<br />
+MediaPlayer로 비프음을 연속적으로 재생하였을 때 겔럭시 S문제가 발생하였다.<br />
+아마도 겔럭시 S에서 사용되는 MediaPlayer클래스가 문제가 있지 않을가 싶다.<br />
+검색을 해보니 MediaPlayer쪽에서 prepare메서드 문제인거 같기도하고.. 정확한 원인을 아직 불분명하다.<br />
+또한 SoundPool도 잘안된다 ㅡㅡ^</p>

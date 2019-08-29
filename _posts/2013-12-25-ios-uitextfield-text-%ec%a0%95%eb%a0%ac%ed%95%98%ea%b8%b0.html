@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: iOS - UITextField Text 정렬하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 오래된 코드는 버리자. (텍스트 정렬하기)
+wordpress_id: 2169
+wordpress_url: http://ezcocoa.com/?p=2169
+date: '2013-12-25 14:43:04 +0900'
+date_gmt: '2013-12-25 14:43:04 +0900'
+categories:
+- iPhone
+tags:
+- center
+- align
+- text
+- top
+- bottom
+- uitextfield
+comments: []
+---
+<p>제대로 된 코더가 되자. - 오래된 코드는 사용하지 말아라.</p>
+<hr />
+<p>기말고사 시험도 끝나고 한달전부터 배포되고 있는 Account+를 iOS7에 맞추어 개선시키고 있습니다.</p>
+<p>물론 하위 버전과 호환은 안되구요. 이전버전은 물론 Account+를 사용하면 되기 때문입니다.</p>
+<p>하지만 이번에는 iPhone/iPad/OS X/Window/Chrome용을 개발할려고 합니다.</p>
+<p>(엄청나게 프로젝트가 밀려있는 상황)</p>
+<p>잡설은 이제 그만 타이틀과 같이 iOS7 UITextField에서 Text 수직 정렬이 속성은 Center로 들어가 있지만 약간은 내려가 있어 <strong>TextField</strong>의 좌표를 수정할려고 했지만 의존된 컴퍼넌트가 많아 속성을 찾아봤습니다.</p>
+<p>간단하게 아래와 같이 존재하더라구요.</p>
+<pre name="code" class="objc">textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+</pre>
+<p>위 방법 말고도 실제로 정렬 할 수 있는 방법은 여러가지가 있습니다.</p>
+<p>입맛에 맞게 할 수 있는게 개발에 매력이 아닐까요?</p>

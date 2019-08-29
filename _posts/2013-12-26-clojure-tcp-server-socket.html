@@ -1,0 +1,47 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure - TCP Server Socket
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 1분만에 만드는 테스트 소켓서버
+wordpress_id: 2172
+wordpress_url: http://ezcocoa.com/?p=2172
+date: '2013-12-26 08:33:52 +0900'
+date_gmt: '2013-12-26 08:33:52 +0900'
+categories:
+- Clojure
+tags:
+- tcp
+- server
+- socket
+comments: []
+---
+<p><a href="https://github.com/clojure-cookbook/clojure-cookbook/blob/master/network-io/tcp-server/tcp-server.asciidoc">ref</a></p>
+<pre class="clojure">(require &#039;[clojure.java.io :as io])
+(import &#039;[java.net ServerSocket])
+(defn receive
+  "Read a line of textual data from the given socket"
+  [socket]
+  (.readLine (io/reader socket)))
+(defn send
+  "Send the given string message out over the given socket"
+  [socket msg]
+  (let [writer (io/writer socket)]
+      (.write writer msg)
+      (.flush writer)))
+(defn serve [port handler]
+  (with-open [server-sock (ServerSocket. port)
+              sock (.accept server-sock)]
+    (let [msg-in (receive sock)
+          msg-out (handler msg-in)]
+      (send sock msg-out))))
+</pre>
+<pre class="clojure">(serve 8888 #(.toUpperCase %))
+</pre>

@@ -1,0 +1,38 @@
+---
+layout: post
+status: publish
+published: true
+title: MAC - 맥 부팅/종료 속도가 평상시보다 느려졌을 때 복구하는 방법
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1669
+wordpress_url: http://ezcocoa.com/?p=1669
+date: '2012-09-24 06:31:04 +0900'
+date_gmt: '2012-09-24 06:31:04 +0900'
+categories:
+- OSX
+tags:
+- mac
+- unix
+- osx
+comments: []
+---
+<p>출처 : http://macnews.tistory.com/340<br />
+들어가며<br />
+OS X을 새 버전으로 업그레이드 한 후 시스템 부팅 속도나 종료 속도가 이전에 비해 느려진 경험을 해본 적 있으십니까? 혹은 메모리나 하드를 증설 했는데 이런 증상이 나타나신다구요?<br />
+종종 시스템 에러로 인해 루트 폴더 (/)의 소유권이 사용자 계정으로 잘못 할당되는 경우가 있는데 이를 다시 시스템에 반납해 OS X의 하드웨어 드라이버 (kext) 캐시를 정상적으로 생성할 수 있도록 바로잡아주는 내용입니다. 시스템 부팅시나 종료시 나타나는 딜레이를 잡는데 효과가 있어 OS X 스노우 레퍼드 시절부터 널리 사용되어 오고 있습니다. 터미널 명령어를 다루어야 하기 때문에 초보자 분들이 지레 겁먹으실 수 있는데 터미널 실행 후 아래 순서대로만 입력해 주시고 맥을 재부팅 해주시면 됩니다.<br />
+적용 방법<br />
+1. 응용 프로그램 폴더 > 유틸리티 폴더에서 '터미널'을 실행한 후 아래 명령어를 입력해 줍니다. // 루트 폴더 '/' 의 소유권을 admin 그룹의 root 로 재지정하는 명령어입니다.<br />
+[code]sudo chown root:admin /[/code]<br />
+2. 다시 아래 명령어를 입력해 줍니다. // 이 명령어는 부팅 디스크의 시스템 커널 확장자들을 업데이트하고, 또 새로운 커널 확장자가 있는 경우 이를 캐싱 내역에 업데이트하는 작업을 해줍니다. 이번 명령어는 작업 완료까지 다소 시간이 소모되고, 위 이미지에서 보라색으로 표시한 부분처럼 몇몇 kext 들은 캐싱이 제대로 되지 않는 경우가 발생하는데 이는 캐싱 작업 중 흔히 나타나는 경고 문구입니다. 또한 OS X 버전에 따라, 그리고 시스템에 설치한 하드웨어나 소프트웨어에 따라 보라색 부분의 내용이 상이할 수 있습니다.<br />
+[code]sudo kextcache -system-prelinked-kernel[/code]<br />
+3. 다음 명령어를 입력해 커널 확장자 캐시를 재생성해줍니다.<br />
+[code]sudo kextcache -system-caches[/code]<br />
+4. 마지막으로 아래 명령어를 입력해 시스템 폴더의 서브 폴더 및 파일들의 권한을 복구합니다.<br />
+[code]diskutil repairPermissions /[/code]<br />
+모든 명령어 입력을 마친 후 시스템을 재부팅해 주십시오. 시스템 부팅/종료가 느려지는 원인이 루트 폴더의 소유권 문제인 경우 커널 확장자 캐싱이 제대로 안되던 문제가 해결되면서 부팅/종료 속도가 크게 향상됩니다.</p>

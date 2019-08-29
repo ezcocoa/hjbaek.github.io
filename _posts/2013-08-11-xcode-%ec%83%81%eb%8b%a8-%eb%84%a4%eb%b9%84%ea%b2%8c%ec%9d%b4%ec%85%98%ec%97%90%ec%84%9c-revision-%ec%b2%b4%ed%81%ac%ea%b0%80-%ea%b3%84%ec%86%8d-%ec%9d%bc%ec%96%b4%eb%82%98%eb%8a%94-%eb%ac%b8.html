@@ -1,0 +1,33 @@
+---
+layout: post
+status: publish
+published: true
+title: XCode > 상단 네비게이션에서 Revision 체크가 계속 일어나는 문제.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1831
+wordpress_url: http://ezcocoa.com/?p=1831
+date: '2013-08-11 04:13:24 +0900'
+date_gmt: '2013-08-11 04:13:24 +0900'
+categories:
+- Diary
+tags:
+- xcode
+- loading
+- Navigaiton
+- Revision
+comments: []
+---
+<p><img title="LoadingProblem.png" alt="This is not what i want to see you." src="http://13.124.100.73/wp-content/uploads/2013/08/LoadingProblem-1.png" width="379" height="76" border="0" /><br />
+상단 네비게이션에 현재는 Running이라고 보이지만 사실 Loading Revision??이라는 문구가 계속 나오게 되는 경우가 있습니다.<br />
+사실 재현은 못시켜봤지만 작업도 중 단축키를 잘못 누름으로 써 Repository Revision 체크가 이루어지는거 같았습니다.<br />
+어쨋든 이문제를 해결하기 위해 StackOverFlow에서 문제 해결방안을 참조하였습니다.<br />
+방법은 아래와 같습니다.<br />
+yourproject.xcodeproj/project.xcworkspace/<br />
+위 프로젝트 디렉토리안에 project.xcworkspace폴더를 삭제함으로 문제를 해결하였습니다.<br />
+이상입니다.</p>

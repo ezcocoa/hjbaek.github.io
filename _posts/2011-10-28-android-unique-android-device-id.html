@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Unique Android Device ID.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 디바이스에 유니큰한 아이디값 생성하기.
+wordpress_id: 1191
+wordpress_url: http://ezcocoa.com/?p=1191
+date: '2011-10-28 09:23:48 +0900'
+date_gmt: '2011-10-28 09:23:48 +0900'
+categories:
+- Android
+tags:
+- android
+- device
+- id
+- unique
+- creator
+comments: []
+---
+<p><a href="http://stackoverflow.com/questions/2785485/is-there-a-unique-android-device-id">원문</a><br />
+[sourcecode language="java"]<br />
+    final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);<br />
+    final String tmDevice, tmSerial, tmPhone, androidId;<br />
+    tmDevice = "" + tm.getDeviceId();<br />
+    tmSerial = "" + tm.getSimSerialNumber();<br />
+    androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);<br />
+    UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());<br />
+    String deviceId = deviceUuid.toString();<br />
+[/sourcecode]<br />
+[sourcecode lanugage="xml"]<br />
+<uses-permission android:name="android.permission.READ_PHONE_STATE" /><br />
+[/sourcecode]</p>

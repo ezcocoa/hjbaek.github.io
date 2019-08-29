@@ -1,0 +1,52 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] using file cache by ASI Library"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 855
+wordpress_url: http://ezcocoa.com/?p=855
+date: '2011-07-20 00:26:16 +0900'
+date_gmt: '2011-07-20 00:26:16 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- file
+- asi
+- cache
+- download
+comments: []
+---
+<p>ASI 라이브러리를 이용한 파일 다운로드 & 캐쉬 하는 법을 소개합니다.<br />
+ASI 라이브러리는 아주 강력합니다. 한번씩 사용해보시는 것을 추천 드립니다.<br />
+[sourcecode language="ObjC"]<br />
+- (IBAction)downloadWithCache:(id)sender {<br />
+	NSURL *url = [NSURL URLWithString:@"http://img1.ruliweb.daum.net/img2/cmu_tv/11278_3.jpg"];<br />
+	ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];<br />
+	[request setDownloadCache:[ASIDownloadCache sharedCache]];<br />
+	[request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];<br />
+	[request setCachePolicy:ASIOnlyLoadIfNotCachedCachePolicy];<br />
+	[request setSecondsToCache:60*60*24*30]; // Cache for 30 days<br />
+	[request setDelegate:self];<br />
+        // you can use synchronous how below code.<br />
+        // [request startSynchronous];<br />
+	[request startAsynchronous];<br />
+	BOOL success = [request didUseCachedResponse];<br />
+	NSLog(@"[///] Success is %@\n", (success ? @"YES" : @"NO"));<br />
+	NSData *responseData = [request responseData];<br />
+        // you can do that.<br />
+}<br />
+// if use asynchronous, you must use the below code that call-back methods.<br />
+- (void)requestFinished:(ASIHTTPRequest *)request {<br />
+	BOOL success = [request didUseCachedResponse];<br />
+	NSLog(@"[///] Success is %@\n", (success ? @"YES" : @"NO"));<br />
+	NSData *responseData = [request responseData];<br />
+}<br />
+[/sourcecode]</p>

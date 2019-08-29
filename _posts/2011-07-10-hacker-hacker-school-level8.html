@@ -1,0 +1,50 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Hacker] Hacker School - Level8"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 836
+wordpress_url: http://ezcocoa.com/?p=836
+date: '2011-07-10 09:55:06 +0900'
+date_gmt: '2011-07-10 09:55:06 +0900'
+categories:
+- Hacker
+tags:
+- hacker
+- john
+- level8
+- ripper
+- school
+comments: []
+---
+<p>level8으로 진입 후 hint를 보면 힌트가 아주 강력합니다.<br />
+[code]<br />
+level9의 shadow 파일이 서버 어딘가에 숨어있다.<br />
+그 파일에 대해 알려진 것은 용량이 "2700"이라는 것 뿐이다.<br />
+[/code]<br />
+level9에 대한 <strong>shadow파일 사이즈가 2700<strong>이라는 것을 알려주는데요.<br />
+여기서 2700사이즈에 대한 파일만 검색하면 될거같습니다.<br />
+근데 과연 단위는 어떻게 될까요?<br />
+find는 명령어는 여러 옵션을 지원합니다.<br />
+[code]<br />
+                -size n[bckw]<br />
+                        File uses n units of space.  The units are 512-byte<br />
+                        blocks by default or if `b' follows n, bytes if `c'<br />
+                        follows  n,  kilobytes  if `k' follows n, or 2-byte<br />
+                        words if `w' follows n.  The size  does  not  count<br />
+                        indirect blocks, but it does count blocks in sparse<br />
+                        files that are not actually allocated.<br />
+[/code]<br />
+위에 해당하는 옵션으로 검색할 경우 found.txt?? 파일이 보이네요.<br />
+무슨 파일인지 열어봅시다.<br />
+passwd 형식으로 저장되어있는 텍스트 파일이네요.<br />
+이 파일은 MD5으로 암호화 되어 들어가 있습니다.<br />
+존더 리퍼의 크래커 툴을 이용하여 쉽게 풀수 있습니다<br />
+<a href="http://www.openwall.com/john/pro/macosx/">http://www.openwall.com/john/pro/macosx/</a></p>

@@ -1,0 +1,65 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - 이미지 패턴 적용하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: '작은 이미지를 패턴으로(바둑판식으로)표현하는 방법을 소개합니다.
+
+'
+wordpress_id: 1446
+wordpress_url: http://ezcocoa.com/?p=1446
+date: '2012-02-26 05:14:08 +0900'
+date_gmt: '2012-02-26 05:14:08 +0900'
+categories:
+- Android
+tags:
+- 이미지
+- grid
+- pattern
+- 바둑판
+comments: []
+---
+<p><a href="http://d.hatena.ne.jp/hyoromo/20110207/1297101613">원문</a><br />
+<img src="http://cdn-ak.f.st-hatena.com/images/fotolife/h/hyoromo/20110208/20110208025608.png" alt="샘플 이미지" /><br />
+작은 이미지를 패턴으로(바둑판식으로)표현하는 방법을 소개합니다.</p>
+<h3>XML으로 지정하기</h3>
+<p>bitmap 엘리먼트의 속성 중 titleMode를 repeat를  아래와 같이 설정해줍니다.<br />
+res/drawable/icon_repeat.xml<br />
+[sourcecode language="xml"]<br />
+<? xml version = "1.0"encoding = "UTF-8"?><br />
+<bitmap<br />
+    xmlns : android = "http://schemas.android.com/apk/res/android"<br />
+    android : layout_width = "fill_parent"<br />
+    android : layout_height = "fill_parent"<br />
+    android : tileMode = "repeat"<br />
+    android : src = "@ drawable / icon"<br />
+> </ bitmap><br />
+[/sourcecode]<br />
+res/layout/main.xml<br />
+패턴으로 생성한 엘리먼트를 실제 레이아웃에 설정해보겠습니다.<br />
+[sourcecode language="xml"]<br />
+<? xml version = "1.0" encoding = "utf-8" ?><br />
+<LinearLayout xmlns : android = "http://schemas.android.com/apk/res/android"<br />
+    android : orientation = "vertical"<br />
+    android : layout_width = "fill_parent"<br />
+    android : layout_height = "fill_parent"<br />
+    android : background = "@ drawable / icon_repeat"<br />
+> </ LinearLayout><br />
+[/sourcecode]</p>
+<h3>Java로 사용하기</h3>
+<p>BitmapShader클래스를 이용하여 repeat를 지정할 수 있습니다. 생성한 인스턴스를 Canvas에 아래와 같이 그리도록 합니다.<br />
+[sourcecode language="java"]<br />
+hader shader = New BitmapShader (BitmapFactory.decodeResource (getResources () R.drawable.icon) Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);<br />
+Paint paint = New Paint ();<br />
+paint.setShader (shader);<br />
+Canvas canvas = getHolder (). lockCanvas ();<br />
+canvas.drawPaint (paint);<br />
+getHolder (). unlockCanvasAndPost (canvas);<br />
+[/sourcecode]</p>

@@ -1,0 +1,48 @@
+---
+layout: post
+status: publish
+published: true
+title: 'iPhone - NSInvalidUnarchiveOperationException: Could not instantiate class
+  named NSLayoutConstraint'
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1779
+wordpress_url: http://ezcocoa.com/?p=1779
+date: '2013-03-19 08:30:36 +0900'
+date_gmt: '2013-03-19 08:30:36 +0900'
+categories:
+- iPhone
+tags:
+- error
+- iphone
+- ios
+- xcode
+- layout
+- auto
+- '6.0'
+comments:
+- id: 50
+  author: Sophia Sturges
+  author_email: sophiasturges1@gmail.com
+  author_url: ''
+  date: '2013-05-02 17:35:15 +0900'
+  date_gmt: '2013-05-02 17:35:15 +0900'
+  content: 'This is great.  THANK YOU!
+
+'
+---
+<p>I got some following error:</p>
+<p>Terminating app due to uncaught<br />
+exception 'NSInvalidUnarchiveOperationException', reason: 'Could not instantiate<br />
+class named NSLayoutConstraint'</p>
+<p>but It's simple.</p>
+<p>you can fix it as following solution.</p>
+<p>By default, when you create a new iOS project in Xcode 4.5, your storyboard or XIB is set to use Autolayout, which is a new feature in iOS 6.0. The NSLayoutConstraint class is part of the Autolayout system, and it doesn't exist in older versions of iOS.</p>
+<p>If you want to deploy your app to an older version of iOS, you need to change your storyboard or XIB to not use Autolayout. It's a checkbox in the File Inspector:</p>
+<p>I refer to the stack overflow.<br />
+http://stackoverflow.com/questions/13201586/nsinvalidunarchiveoperationexception-could-not-instantiate-class-named-nslayout</p>

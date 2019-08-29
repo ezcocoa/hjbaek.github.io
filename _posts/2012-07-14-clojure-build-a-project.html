@@ -1,0 +1,64 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure - Build a Project
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: To build a project
+wordpress_id: 1569
+wordpress_url: http://ezcocoa.com/?p=1569
+date: '2012-07-14 05:47:41 +0900'
+date_gmt: '2012-07-14 05:47:41 +0900'
+categories:
+- Clojure
+tags:
+- project
+- Clojure
+- build
+comments: []
+---
+<p>ref : <a href="http://stackoverflow.com/questions/6874338/standalone-clojure-app">http://stackoverflow.com/questions/6874338/standalone-clojure-app</a><br />
+To build a project that, when run, prints "Hello World!", you'd do as follows (revision of your process above):</p>
+<h3>Setup</h3>
+<p><code><br />
+lein new my-project<br />
+cd my-project<br />
+lein deps</code><br />
+You should now have a basic structure in place and the Clojure jar in your lib folder.</p>
+<h3>Write a Function</h3>
+<p>Now edit src/my_project/core.clj with your editor of choice, adding the following below the (ns ...) form:<br />
+[sourcecode language="clojure"]<br />
+(defn -main []<br />
+  (println "Hello World!"))<br />
+[/sourcecode]<br />
+This function is inside your my-project.core namespace. To ensure this gets run as your main, let's add a gen-class parameter to your namespace definition at the top, so that it now looks like this at the top of core.clj:<br />
+[sourcecode language="clojure"]<br />
+(ns my-project.core<br />
+  (:gen-class :main true))<br />
+So all together, your core.clj file looks like this:<br />
+(ns my-project.core<br />
+  (:gen-class :main true))<br />
+(defn -main []<br />
+  (println "Hello World!"))<br />
+[/sourcecode]</p>
+<h3>Configure it as the Main Function</h3>
+<p>Once you've got src/my_project/core.clj edited as above, you need to tell Leiningen (the build tool) where the "main" function for your project lives. Here's an example defproject form that does this:<br />
+[sourcecode language="clojure"]<br />
+(defproject my-project "1.0.0-SNAPSHOT"<br />
+  :description "My Project"<br />
+  :dependencies [[org.clojure/clojure "1.2.1"]]<br />
+  :main my-project.core)<br />
+[/sourcecode]<br />
+Now the -main function inside my-project.core becomes the entry-point for your program.</p>
+<h3>Run It</h3>
+<p>You can now have two options for running this project:<br />
+Use lein run at the command-line while at the root of your my-project project<br />
+Create a standalone jar file by running lein uberjar. You can then run the resultant jar file by running<br />
+[code]<br />
+java -jar my-project-1.0.0-SNAPSHOT-standalone.jar[/code]</p>

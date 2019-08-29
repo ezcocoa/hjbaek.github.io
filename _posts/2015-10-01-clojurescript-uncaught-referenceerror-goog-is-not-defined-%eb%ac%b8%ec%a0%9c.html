@@ -1,0 +1,35 @@
+---
+layout: post
+status: publish
+published: true
+title: 'clojurescript - Uncaught ReferenceError: goog is not defined 문제'
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2527
+wordpress_url: http://ezcocoa.com/?p=2527
+date: '2015-10-01 10:01:59 +0900'
+date_gmt: '2015-10-01 10:01:59 +0900'
+categories:
+- clojurescript
+tags: []
+comments: []
+---
+<p>위 문제는 경로를 찾지 못하는 문제로 아래와 같이 해결 할 수 있다</p>
+<pre class="html">
+<html>
+    <body>
+        <script type="text/javascript" src="out/goog/base.js"></script>
+        <script type="text/javascript" src="out/main.js"></script>
+        <script type="text/javascript">
+            goog.require("hello_world.core");
+            // Note the underscore "_"!
+        </script>
+    </body>
+</html>
+</pre>
+<p>끝</p>

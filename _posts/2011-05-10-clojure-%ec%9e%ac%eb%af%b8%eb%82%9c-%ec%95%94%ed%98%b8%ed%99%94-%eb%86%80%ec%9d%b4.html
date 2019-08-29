@@ -1,0 +1,39 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Clojure] 재미난 암호화 놀이"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 736
+wordpress_url: http://ezcocoa.com/?p=736
+date: '2011-05-10 08:22:57 +0900'
+date_gmt: '2011-05-10 08:22:57 +0900'
+categories:
+- Clojure
+tags:
+- Clojure
+- interleave
+comments: []
+---
+<p>Programming Clojure Page 50.<br />
+에 나오는 내용이다.<br />
+Strings are sequences of characters.<br />
+character의 연속은 문자열이다.<br />
+When you call clojure sequence functions on a string, you get a sequence of characters back.<br />
+문자열에 대해 시퀀스 함수를 호출하게 되면, 문자들의 시퀀스가 반환된다.<br />
+Imagine that you wanted to conceal a secret message by interleaving it with a second, innocuous message. You could use interleave to combine the two messages:<br />
+예를 들어 일반 메시지를 비밀메시지와 숨기고 싶다고 하자. 두 메시지를 조합하려면 interleave함수를 사용하면 된다.<br />
+[sourcecode langugage="clojure"]<br />
+(interleave "Attack at midnight" "The purple elephant chortled")<br />
+[/sourcecode]<br />
+You can use (apply str ..) again to reveal the message:<br />
+(apply str ..)를 이용하여 메시지를 복구할 수 있다.<br />
+[sourcecode language="clojure"]<br />
+(apply str (take-nth 2 "ATthtea cpku raptl em iedlneipghhatn"))<br />
+[/sourcecode]</p>

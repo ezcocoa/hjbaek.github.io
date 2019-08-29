@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - XCode loses syntax coloring
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: XCode에서 문법 컬러링이 없어졌을 때 해결할 수 있는 방안을 소개합니다.
+wordpress_id: 1126
+wordpress_url: http://ezcocoa.com/?p=1126
+date: '2011-10-13 01:43:16 +0900'
+date_gmt: '2011-10-13 01:43:16 +0900'
+categories:
+- iPhone
+tags:
+- xcode
+- Color
+- syntax
+- 깨짐
+- 색상
+comments: []
+---
+<p>문제의 원인 중 하나는 Project.pch 파일 최상단이나 다른 무언가 추가 되었을 때 Syntax coloring이 깨질 수 있습니다.<br />
+예를 들어보겠습니다.<br />
+[code]<br />
+#import "projectConfig.h"<br />
+#import <Foundation/Foundation.h><br />
+[/code]<br />
+위와 같은 것을 아래와 같이 바꿀 수 있습니다.<br />
+[code]<br />
+#import <Foundation/Foundation.h><br />
+#import "projectConfig.h"<br />
+[/code]<br />
+이런 경우를 제외하고도 Syntax coloring이 깨질수 있습니다.<br />
+출처 : http://stackoverflow.com/questions/2138047/xcode-code-loses-syntax-coloring</p>

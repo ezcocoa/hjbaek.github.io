@@ -1,0 +1,346 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - Using omnifocus with siri.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: Siri와 OmniFocus의 조합! 우회해서 사용하기 방법을 소개합니다.
+wordpress_id: 1252
+wordpress_url: http://ezcocoa.com/?p=1252
+date: '2011-11-16 06:51:36 +0900'
+date_gmt: '2011-11-16 06:51:36 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- omnifocus
+- using
+- siri
+comments: []
+---
+<p><a href="http://technologynotes.squarespace.com/blog/2011/10/21/integrating-siri-and-omnifocus.html">Integrating Siri and OmniFocus</a><br />
+<a href="http://blog.crushapps.com/2011/10/more-fun-with-siri-dictation/">More Fun With Siri Dictation</a></p>
+<table class="crushtable" border="0">
+<tr>
+<th>
+<h3>Say this &#8230;</h3>
+</th>
+<th>
+<h3>&#8230; to do this</h3>
+</th>
+</tr>
+<tr>
+<td class="column1">new line</td>
+<td>move to the next line (like pressing &#8220;Return&#8221; on a keyboard)</td>
+</tr>
+<tr>
+<td class="column1">new paragraph</td>
+<td>to start a new paragraph</td>
+</tr>
+<tr>
+<td class="column1">cap</td>
+<td>to capitalize the next word</p>
+<p>For example, saying:<br />
+<em>I named my pet pig cap bacon</em></p>
+<p>produces the text:<br />
+<em>I named my pet pig Bacon</em></p>
+<p>(interestingly, if you say &#8220;Kevin Bacon&#8221;, Bacon is automatically capitalized for you)</td>
+</tr>
+<tr>
+<td class="column1">caps on &#8230; caps off</td>
+<td>to capitalize a section of text</p>
+<p>For example, saying:<br />
+<em>caps on twenty five ways to eat bacon caps off</em></p>
+<p>produces the text:<br />
+<em>25 Ways to Eat Bacon</em></td>
+</tr>
+<tr>
+<td class="column1">all caps</td>
+<td>to make the next word all uppercase</p>
+<p>For example, saying:<br />
+<em>I am hungry feed me all caps now please</em></p>
+<p>produces the text:<br />
+<em>I am hungry feed me NOW please</em></td>
+</tr>
+<tr>
+<td class="column1">all caps on &#8230; all caps off</td>
+<td>to make part of what you say uppercase</p>
+<p>For example, saying:<br />
+<em>I am hungry all caps on feed me now all caps off please</em></p>
+<p>produces the text:<br />
+<em>I am hungry FEED ME NOW please</em></td>
+</tr>
+<tr>
+<td class="column1">no caps</td>
+<td>to make the next word lowercase</p>
+<p>For example, saying:<br />
+<em>I like no caps Mike</em></p>
+<p>produces the text:<br />
+<em>I like mike</em></td>
+</tr>
+<tr>
+<td class="column1">no caps on &#8230; no caps off</td>
+<td>to make sure part of what you say is all lowercase</p>
+<p>For example, saying:<br />
+<em>Our friends no caps on Steve and Tina no caps off live in California</em></p>
+<p>produces the text:<br />
+<em>Our friends steve and tina live in California</em></td>
+</td>
+</tr>
+<tr>
+<td class="column1">space bar</td>
+<td>to prevent a hyphen from appearing in a normally hyphenated word</p>
+<p>For example, saying:<br />
+<em>This restaurant is first space bar class</em></p>
+<p>prevents <em>first-class</em> from being hyphenated, and produces the text:<br />
+<em>This restaurant is first class</em></td>
+</tr>
+<tr>
+<td class="column1">no space</td>
+<td>to prevent a space between words</p>
+<p>For example, saying:<br />
+<em>This is the best no space tasting bacon ever</em></p>
+<p>produces the text:<br />
+<em>This is the besttasting bacon ever</em></td>
+</tr>
+<tr>
+<td class="column1">no space on &#8230; no space off</td>
+<td>to prevent a section of text from having spaces between words</p>
+<p>For example, saying:<br />
+<em>This is no space on the best tasting bacon no space off ever</em></p>
+<p>produces the text:<br />
+<em>This is thebesttastingbacon ever</em></td>
+</tr>
+<tr>
+<td class="column1">&#8220;period&#8221; or &#8220;full stop&#8221;</td>
+<td>to place a &#8220;.&#8221; at the end of a sentence</td>
+</tr>
+<tr>
+<td class="column1">dot</td>
+<td>.</p>
+<p>For example, saying:<br />
+<em>The dot number pi is three dot one four</em></p>
+<p>produces the text:<br />
+<em>The.number pi is 3.14</em></p>
+<p>(note the subtle difference between saying <em>point</em> and <em>dot</em>&#8230; <em>dot</em> works between words)</td>
+</tr>
+<tr>
+<td class="column1">point</td>
+<td>.</p>
+<p>For example, saying:<br />
+<em>The point number pi is three point one four</em></p>
+<p>produces the text:<br />
+<em>The point number pi 3.14</em></p>
+<p>(note the subtle difference between saying <em>point</em> and <em>dot</em>&#8230; <em>dot</em> works between words)</td>
+</tr>
+<tr>
+<td class="column1">&#8220;ellipsis&#8221; or &#8220;dot dot dot&#8221;</td>
+<td>&hellip;</td>
+</tr>
+<tr>
+<td class="column1">comma</td>
+<td>,</td>
+</tr>
+<tr>
+<td class="column1">double comma</td>
+<td>,,</td>
+</tr>
+<tr>
+<td class="column1">&#8220;quote&#8221; or &#8220;quotation mark&#8221;</td>
+<td>&#8221;</p>
+<p>(although, if you need to place some text within quotation marks, using the &#8220;quote &#8230; end quote&#8221; commands may be more accurate)</td>
+</tr>
+<tr>
+<td class="column1">&#8220;quote &#8230; end quote&#8221; or &#8220;quote &#8230; close quote&#8221;</td>
+<td>to place quotes around a section of text</p>
+<p>For example, saying:<br />
+She said quote see you next week end quote</p>
+<p>produces the text:<br />
+She said &#8220;see you next week&#8221;</td>
+</tr>
+<tr>
+<td class="column1">apostrophe</td>
+<td>&#8216;</p>
+<p>(although in many cases, apostrophes are automatically inserted, like when saying <em>Sam&#8217;s new iPhone</em>)</td>
+</tr>
+<tr>
+<td class="column1">exclamation point</td>
+<td>!</td>
+</tr>
+<tr>
+<td class="column1">inverted exclamation point</td>
+<td>&iexcl;</td>
+</tr>
+<tr>
+<td class="column1">question mark</td>
+<td>?</td>
+</tr>
+<tr>
+<td class="column1">inverted question mark</td>
+<td>&iquest;</td>
+</tr>
+<tr>
+<td class="column1">ampersand</td>
+<td>&amp;</td>
+</tr>
+<tr>
+<td class="column1">asterisk</td>
+<td>*</td>
+</tr>
+<tr>
+<td class="column1">open parenthesis</td>
+<td>(</td>
+</tr>
+<tr>
+<td class="column1">close parenthesis</td>
+<td>)</td>
+</tr>
+<tr>
+<td class="column1">open bracket</td>
+<td>[</td>
+</tr>
+<tr>
+<td class="column1">close bracket</td>
+<td>]</td>
+</tr>
+<tr>
+<td class="column1">open brace</td>
+<td>{</td>
+</tr>
+<tr>
+<td class="column1">close brace</td>
+<td>}</td>
+</tr>
+<tr>
+<td class="column1">dash</td>
+<td>-</p>
+<p>For example, saying:<br />
+<em>This dash is dash my dash cheese</em></p>
+<p>produces the text:<br />
+<em>This &#8211; is &#8211; my &#8211; cheese</em></p>
+<p>(note the difference in spacing between this and when saying <em>hyphen</em>)</td>
+</tr>
+<tr>
+<td class="column1">hyphen</td>
+<td>-</p>
+<p>For example, saying:<br />
+<em>This hyphen is hyphen my hyphen cheese</em></p>
+<p>produces the text:<br />
+<em>This-is-my-cheese</em></p>
+<p>(note the difference in spacing between this and when saying <em>dash</em>)</td>
+</tr>
+<tr>
+<td class="column1">em dash</td>
+<td>&mdash;</td>
+</tr>
+<tr>
+<td class="column1">underscore</td>
+<td>_</td>
+</tr>
+<tr>
+<td class="column1">percent sign</td>
+<td>%</td>
+</tr>
+<tr>
+<td class="column1">copyright sign</td>
+<td>&copy;</td>
+</tr>
+<tr>
+<td class="column1">registered sign</td>
+<td>&reg;</td>
+</tr>
+<tr>
+<td class="column1">section sign</td>
+<td>&sect;</td>
+</tr>
+<tr>
+<td class="column1">dollar sign</td>
+<td>$</td>
+</tr>
+<tr>
+<td class="column1">cent sign</td>
+<td>&cent;</td>
+</tr>
+<tr>
+<td class="column1">euro sign</td>
+<td>&euro;</td>
+</tr>
+<tr>
+<td class="column1">yen sign</td>
+<td>&yen;</td>
+</tr>
+<tr>
+<td class="column1">degree sign</td>
+<td>&deg;</td>
+</tr>
+<tr>
+<td class="column1">caret</td>
+<td>^</td>
+</tr>
+<tr>
+<td class="column1">at sign</td>
+<td>@</td>
+</tr>
+<tr>
+<td class="column1">pound sterling sign</td>
+<td>&pound;</td>
+</tr>
+<tr>
+<td class="column1">pound sign</td>
+<td>#</td>
+</tr>
+<tr>
+<td class="column1">greater than sign</td>
+<td>></td>
+</tr>
+<tr>
+<td class="column1">less than sign</td>
+<td><</td>
+</tr>
+<tr>
+<td class="column1">forward slash</td>
+<td>/</td>
+</tr>
+<tr>
+<td class="column1">back slash</td>
+<td>\</td>
+</tr>
+<tr>
+<td class="column1">vertical bar</td>
+<td>|</td>
+</tr>
+<tr>
+<td class="column1">&#8220;smiley&#8221; or &#8220;smiley face&#8221; or &#8220;smile face&#8221;</td>
+<td>:-)</td>
+</tr>
+<tr>
+<td class="column1">&#8220;frowny&#8221; or &#8220;frowny face&#8221; or &#8220;frown face&#8221;</td>
+<td>:-(</td>
+</tr>
+<tr>
+<td class="column1">&#8220;winky&#8221; or &#8220;winky face&#8221; or &#8220;wink face&#8221;</td>
+<td>;-)</td>
+</tr>
+<tr>
+<td class="column1">e.g. (pronounced as &#8220;e g&#8221;)</td>
+<td>e.g.</p>
+<p>For example, saying:<br />
+<em>e g when you learn to ride a bike</em></p>
+<p>produces the text:<br />
+<em>E.g. when you learn to ride a bike</em></td>
+</tr>
+<tr>
+<td class="column1">i.e. (pronounced as &#8220;i e&#8221;)</td>
+<td>i.e.</p>
+<p>For example, saying:<br />
+<em>i e when you learn to ride a bike</em></p>
+<p>produces the text:<br />
+<em>I.e. when you learn to ride a bike</em></td>
+</tr>
+</table>

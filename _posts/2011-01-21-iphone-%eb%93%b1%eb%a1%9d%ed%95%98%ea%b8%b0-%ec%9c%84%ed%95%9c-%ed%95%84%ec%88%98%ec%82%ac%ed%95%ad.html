@@ -1,0 +1,132 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] 등록하기 위한 필수사항"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 520
+wordpress_url: http://ezcocoa.com/?p=520
+date: '2011-01-21 04:32:06 +0900'
+date_gmt: '2011-01-21 04:32:06 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- add
+- register
+- require
+comments: []
+---
+<div id="tbody">
+<div>
+<strong>출처 : </strong>http://cafe.naver.com/mcbugi/103122<br />
+<strong> </strong><br />
+<strong> </strong><br />
+<strong>- 등록하기 위해 준비할 것들 .</strong></p>
+<ul>
+<li>icon image 준비</li>
+<li>Icon.png 파일</li>
+<li>57 x 57 pixels, with 90 degree corners -> 둥글게 처리하시면 안된다고 합니다.</li>
+<li>shine, gloss 이펙트를 주지 말 것</li>
+<li><알파 투명도를 사용하지 말 것 -> 투명처리도 안된다고 합니다.</li>
+<li>홈스크린에 나타나는 이미지</li>
+<li>Default.png 파일</li>
+<li>320*480으로 제작하되, 가로모드 전용 어플이므로 방향에 유의</li>
+<li>어플 시작시 로딩중에 나타나는 이미지</li>
+<li>512 x 512 pixels, (jpg format)</li>
+<li>어플리케이션 아이콘 파일의 rich 버젼.</li>
+<li>단순이 Icon.png 파일을 스케일업한 것은 좋지 않고, 더 자세한 그림이 좋다.</li>
+<li>앱스토어에 어플관련 내용 표시에 이용됨</li>
+<li>앱 스토어 앱 소개 페이지 준비</li>
+<li>스크린 샷 3장 정도</li>
+<li>앱 스토어에 표시될 스크린 샷</li>
+<li>iPhone 상태바를 포함하지 않는게 좋다.</li>
+<li>스크린샷은 최소 320 x 460 portrait, 480 x 300 landscape, 320 x 480 portrait 의 크기를 가질 것</li>
+<li>어플리케이션 설명문</li>
+<li>미리 작성해 두는 것이 좋다.</li>
+<li>최대 4000 characters</li>
+<li>어플리케이션 명칭</li>
+<li>영문 11자 이내일 경우 아이폰에 표시될 때 11자 모두 출력됩니다. 예)iRemoteView -> iRemoteView 모두 표시됨</li>
+<li>영문 12자 이상일 경우 아이폰에 표시될 때 말 줄임된채로 출력됩니다. 예)iRemoteViewer -> iRemo&hellip;iewer로 줄여진 채로 표시됨</li>
+<li>글자 수 제약은 폰트에 따라 달라질 수 있으므로 되도록 줄이는 것이 좋을 듯 합니다.</li>
+</ul>
+<p><strong>A. 배포전에 진행사항</strong></p>
+<ul>
+<li>1. Distribution Provisioning Profiles 만들기</li>
+<li>개발사이트 우측 Program portal</li>
+<li>App ID 만들기</li>
+<li>New App ID</li>
+<li>Description -> 어플id</li>
+<li>Bundle Seed ID -> Generate New (그대로)</li>
+<li>Bundle Identifier -> 홈페이지URL을 거꾸로 + 어플ID (예: kr.co.hello.skyworld )</li>
+<li>Distribution Profile 만들기</li>
+<li>Provisioning -> Distribution</li>
+<li>New Profile</li>
+<li>App Store -> Profile Name : 보통 어플 ID와 동일하게 입력 -> 위에 입력한 App ID 선택</li>
+<li>Provisioning Profile을 다운로드 받는다.</li>
+<li>Macintosh HD > 사용자 > 홍길동(?) > 라이브러리 > MobileDevice > Provision Profiles에 복사한다.</li>
+<li>2. Xcode에서 배포파일 만들기</li>
+<li>- Xcode project(Groups &amp; Files) Info</li>
+<li>: Configurations 탭에서 &nbsp;&rdquo;Release&rdquo; 항목을 &nbsp;아래 Duplicate한후 &ldquo;Distribution&rdquo;으로 Rename한다.</li>
+<li>: Build 탭에서 좌측상단 Configuration을 Distribution으로 변경</li>
+<li>: Base SDK를 iPhone Device 2.2.1로 변경한다.(아이폰2세대 지원할 경우)</li>
+<li>: 항목중 Code Signing 에서 Any iPhone OS Device내용을 1.에서 만든 Provisioning Profile을 선택한다. (iPhone Distribution : 홍길동)</li>
+<li>- Resource 그룹 중에 Info.plist를 열면</li>
+<li>: Bundle display name을 입력하고, Bundle identifier를 입력한다.(예:kr.co.hello.skyworld)</li>
+<li>: Bundle version은 일반적으로 1.0으로 하고 향후 업뎃할때 1.1로 함</li>
+<li>- 배포용 파일 만들기</li>
+<li>: 상단 툴바 상태를 &nbsp;[ Device - 2.2.1 | Distribution ]으로 한다. (2.2.1 지원할 경우)</li>
+<li>: 메뉴바에서 Build를 선택한 후 [ Build ]를 한다.</li>
+<li>: 빌드가 성공하면 Groups &amp; Files의 Products 그룹에 Project name .app가 생성된다.</li>
+<li>: .app에 마우스 우클릭하여 &nbsp;Reveal in finder를 선택한다.</li>
+<li>: finder폴더 위치가 프로젝트 &ndash; build- Distribution iphoneos 로 연결된다.</li>
+<li>: 확장자 없는 파일이 배포될 파일이다.</li>
+<li>: 확장자 없는 파일을 압축한 후 (.zip) 개발 사이트를 통해 앱스토어에 등록한다.</li>
+</ul>
+<p><strong>B. AppStore에 등록하기</strong></p>
+<ul>
+<li>1. iPhone Developer Program</li>
+<li>a. Over view</li>
+<li>- iTunes Connect -> Manage Your Applications -> Add New Application</li>
+<li>- &nbsp;Does your prodect contain encryption ? 암호화 유무</li>
+<li>- Application name : 앱스토어에 나타나는 이름</li>
+<li>- Applicaiotn Description : 앱스토에에 나타나는 어플 설명</li>
+<li>- Device Requirements : 아이폰, 이이팟 선택</li>
+<li>- Primary Category, Secondary Category : 장르 선택</li>
+<li>- Copyright : 자작권자</li>
+<li>- Version Number : 어플리케이션 버전, Xcode Boundle version (예: 1.0)</li>
+<li>- SKU Number : 개발자가 관리하는 관리코드, 본인이 관리하는 어플의 유일코드</li>
+<li>- Keywords : 검색어 (주의사항 : 자작권위반, 유명인사이름, 애플관련 단어는 절대 안됨)</li>
+<li>- Application URL, Support URL : 개인 블로그나 기타 어플 피드백용 홈페이지</li>
+<li>- email&hellip;</li>
+<li>- Demo : 리뷰어가 어플 테스트시 도움이 되는 설명사항</li>
+<li>b. Ratings</li>
+<li>- 등급 넣기 : 일반적으로 NONE</li>
+<li>c. Upload</li>
+<li>- Application : Build한후 zip으로 만든 파일 , Upload 완료후에 iPhone3.0테스트 완료했다는 체크 하기</li>
+<li>- Large 512 icon : 512*512 jpg파일 -> 어플의 57*57아이콘과 동일한 이미지로 하기 , 앱스토어에 노출됨</li>
+<li>- Primary Screenshot: 어플 화면</li>
+<li>- Additional Screenshots : 등록할때 뒷부분 이미지부터 선택할 것 4->3->2->1순으로.</li>
+<li>d. pricing</li>
+<li>날짜 선택 : in Review 후 Ready For Sale되면 &nbsp;RFS 날짜 기준으로 판매 될 예정, 손 볼 것 없음</li>
+<li>가격 선택 : 표를 보고 확인하기.</li>
+<li>e. localization : 각 국가별 언어로 &nbsp;해당 언어를 따로 보여 주기</li>
+<li>예: korean을 선택후 어플 이름, 설명을 한글로 넣으면 한국앱스토어에선 한글로 나타남</li>
+<li>f. Review</li>
+<li>위 사항 최종 확인</li>
+</ul>
+<p><strong>C. 애플에서의 진행 상태</strong></p>
+<ul>
+<li>1) Waiting for Review : 테스트 대기상태</li>
+<li>2) In Review : 애플에서 어플 테스트 중</li>
+<li>3) Ready for sale : 앱스토어에 판매 대기 및 판매중</li>
+<li>4) Reject : 판매 보류, 이후는 어플리케이션 수정후 &nbsp;B.사항부터 할 것 version은 수정하지 않는다.</li>
+</ul>
+</div>
+</div>

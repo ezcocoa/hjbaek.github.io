@@ -1,0 +1,54 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - Keyboard Size for iOS
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: " iOS 5 업데이트 이후 처리해야 될 키보드 문제에 대한 설명과 해결책"
+wordpress_id: 1144
+wordpress_url: http://ezcocoa.com/?p=1144
+date: '2011-10-17 03:35:14 +0900'
+date_gmt: '2011-10-17 03:35:14 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- keyboard
+- size
+- notification
+comments: []
+---
+<p>iOS5 업데이트 된 이후에 일본어 키보드 위에 한자 표시 칸이 추가 되었습니다.<br />
+이로 인해 일본어 키보드가 불려졌을 때 사이즈 대응을 해야 합니다.<br />
+아래는 키보드 Notification 후킹하기 위한 Notification 등록입니다.<br />
+[sourcecode language="ObjC"]<br />
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];<br />
+[/sourcecode]<br />
+키보드의 사이즈를 구하는 메서드입니다.<br />
+[sourcecode language="ObjC"]<br />
+  NSDictionary *info = [notification userInfo];<br />
+  CGSize kbSize = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;<br />
+  NSLog(@"%@, %f, %f", info, kbSize.width, kbSize.height);<br />
+  _textView.text = [NSString stringWithFormat:@"%@",info];<br />
+[/sourcecode]<br />
+Console out put message<br />
+[code]<br />
+KeyboardTest[1276:b303] {<br />
+    UIKeyboardAnimationCurveUserInfoKey = 0;<br />
+    UIKeyboardAnimationDurationUserInfoKey = "0.300000011920929";<br />
+    UIKeyboardBoundsUserInfoKey = "NSRect: {{0, 0}, {320, 216}}";<br />
+    UIKeyboardCenterBeginUserInfoKey = "NSPoint: {160, 588}";<br />
+    UIKeyboardCenterEndUserInfoKey = "NSPoint: {160, 372}";<br />
+    UIKeyboardFrameBeginUserInfoKey = "NSRect: {{0, 480}, {320, 216}}";<br />
+    UIKeyboardFrameEndUserInfoKey = "NSRect: {{0, 264}, {320, 216}}";<br />
+}, 320.000000, 216.000000<br />
+[/code]</p>
+<h4>위 프로젝트 풀 소스</h4>
+<p>[code]git@github.com:hjbaek/KeyboardTest.git<br />
+[/code]</p>

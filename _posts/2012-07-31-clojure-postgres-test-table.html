@@ -1,0 +1,64 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure - PostgreSQL Test DB
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1606
+wordpress_url: http://ezcocoa.com/?p=1606
+date: '2012-07-31 12:00:38 +0900'
+date_gmt: '2012-07-31 12:00:38 +0900'
+categories:
+- Postgres
+tags:
+- db
+- pg
+comments: []
+---
+<p>ref : https://github.com/briancarper/oyako/wiki/Example<br />
+[code]<br />
+CREATE TABLE category (<br />
+id integer PRIMARY KEY,<br />
+name text<br />
+);<br />
+CREATE TABLE tag (<br />
+id integer PRIMARY KEY,<br />
+name text<br />
+);<br />
+CREATE TABLE post (<br />
+id integer PRIMARY KEY,<br />
+title text,<br />
+content text,<br />
+category_id integer REFERENCES category (id)<br />
+);<br />
+CREATE TABLE comment (<br />
+id integer PRIMARY KEY,<br />
+post_id integer REFERENCES post (id),<br />
+content text<br />
+);<br />
+CREATE TABLE post_tag (<br />
+id integer PRIMARY KEY,<br />
+post_id integer REFERENCES post (id),<br />
+tag_id integer REFERENCES tag (id)<br />
+);<br />
+[/code]<br />
+[code]<br />
+INSERT INTO category VALUES (1, 'Cows');<br />
+INSERT INTO category VALUES (2, 'Programming');<br />
+INSERT INTO tag VALUES (1, 'Current event');<br />
+INSERT INTO tag VALUES (2, 'Editorial');<br />
+INSERT INTO tag VALUES (3, 'Elucidation');<br />
+INSERT INTO post VALUES (1, 'Cows rule', 'Everyone likes cows, right?', 1);<br />
+INSERT INTO post VALUES (2, 'Clojure rocks', 'Everyone likes Clojure, right?', 2);<br />
+INSERT INTO comment VALUES (1, 2, 'Brian', 'Me too!');<br />
+INSERT INTO post_tag VALUES (1, 1, 1);<br />
+INSERT INTO post_tag VALUES (2, 1, 3);<br />
+INSERT INTO post_tag VALUES (3, 2, 2);<br />
+INSERT INTO post_tag VALUES (4, 2, 3);<br />
+[/code]</p>

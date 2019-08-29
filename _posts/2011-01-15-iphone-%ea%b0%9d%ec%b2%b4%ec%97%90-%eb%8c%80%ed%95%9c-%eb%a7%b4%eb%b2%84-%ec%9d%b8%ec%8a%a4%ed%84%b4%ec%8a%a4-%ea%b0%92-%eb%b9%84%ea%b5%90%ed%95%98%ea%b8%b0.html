@@ -1,0 +1,60 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Cocoa] NSPredicate"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 490
+wordpress_url: http://ezcocoa.com/?p=490
+date: '2011-01-15 08:04:47 +0900'
+date_gmt: '2011-01-15 08:04:47 +0900'
+categories:
+- iPhone
+tags:
+- instance
+- NSObject
+- NSPredicate
+comments: []
+---
+<p><b3>객체에 대한 맴버 인스턴스 값 비교하기.</b3><br />
+<strong>require class</strong><br />
+- NSObject<br />
+- NSPredicate<br />
+Book.h<br />
+[sourcecode language="objc"]<br />
+@interface Book : NSObject {<br />
+NSString *title;<br />
+}<br />
+[/sourcecode]<br />
+Book.m<br />
+[sourcecode language="objc"]<br />
+- (id)init {<br />
+if (self = [super init]) {<br />
+title = [[NSString alloc] initWithFormat:@"hello"];<br />
+}<br />
+return self;<br />
+}<br />
+[/sourcecode]<br />
+Main.m<br />
+[sourcecode language="objc"]<br />
+Book *book = [[Book alloc] init];<br />
+NSPredicate *pred = [NSPredicate predicateWithFormat:@"title == 'hello'"];<br />
+BOOL match = [pred evaluateWithObject:book];<br />
+[/sourcecode]<br />
+위와 같이 사용한다면 객체에 대한 맴버 인스턴스 값을 비교 할 수 있습니다.</p>
+<h3>* Single Qoute와 Double Qoute의 차이점. 그리고 인용구 그대로 사용하기</h3>
+<p><strong>firstName like "Adam"</strong>으로 평가되길 원하는 경우 아래와 같은 format 문자열을 사용해야합니다.<br />
+format 문자열에서 %@을 사용하여 문자열을 대치하였다면 그것들은 quotation mark로 감싸집니다. 만약 동적 속성 변수를 원한다면 format string에 %K 를 사용하셔야 합니다. 다음과 같이 작성 할 수 있겠네요.<br />
+[code]<br />
+NSString *attributeName = @"firstName";<br />
+NSString *attributeValue = @"Adam";<br />
+NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K like %@",<br />
+        attributeName, attributeValue];<br />
+[/code]<br />
+<a href="http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html#//apple_ref/doc/uid/TP40001795-SW1">Apple Reference</a></p>

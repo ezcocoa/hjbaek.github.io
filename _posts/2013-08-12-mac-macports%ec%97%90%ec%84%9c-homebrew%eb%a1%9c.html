@@ -1,0 +1,49 @@
+---
+layout: post
+status: publish
+published: true
+title: Mac > MacPorts에서 Homebrew로
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1836
+wordpress_url: http://ezcocoa.com/?p=1836
+date: '2013-08-12 07:28:19 +0900'
+date_gmt: '2013-08-12 07:28:19 +0900'
+categories:
+- Diary
+tags: []
+comments: []
+---
+<p>Ref :&nbsp;<a href="http://bitboxer.de/2010/06/03/moving-from-macports-to-homebrew/">http://bitboxer.de/2010/06/03/moving-from-macports-to-homebrew/</a></p>
+<h1>왜 MacPorts를 사용하는가?</h1>
+<p>* 정말로 한번쯤은 Homebrew로 옴기는걸 생각해야 한다.</p>
+<ul>
+<li>Homebrew는 자기가 원하는 곳에 설치가 가능하며, 심볼릭 링크로 사용할 수 있다.</li>
+<li>따로 perl, openssl, x11, 등등 맥에서 찾을 수 있는 것들을 사용하여 이미 존재하는 것들을 사용하기 때문에 설치할 필요 없다. 시간과 디스크 공간을 낭비할 필요 없다.</li>
+<li>Command Line으로 더 편하게 사용이 가능하다.</li>
+<li>Homebrew와 설치 스크립트는 <a href="https://github.com/mxcl/homebrew">Github</a>에서 참조한다.</li>
+<li>설치 스크립트와 Homebrew는 Ruby로 작성되었다.</li>
+</ul>
+<p>MacPorts에서 Homebrew로 옴기는 것은 약간은 이상하게 들릴 수 있지만 MacPort는 너무 많은 것들이 시스템에 설치 된다.</p>
+<p>자 그럼 이전에 설치된 MacPorts를 지워보자.</p>
+<blockquote>
+<p>sudo port -f uninstall installed</p>
+</blockquote>
+<p>위 명령으로 MacPorts 통해 설치된 파일은 지워지지만 정작 MacPorts와 의존되었던 파일들은 지워지지 않는다. 아래와 같이 지워주자! (확인!! /opt/local 폴더에 MySQL이나 그외 다른게 있는지 확인)</p>
+<p>살짝 겁이 난다면 아래의 디렉토리를 다른 디렉토리로 옴긴 후 이상이 없을 때 삭제하여도 무방하다.</p>
+<blockquote>
+<p>sudo rm -rf /opt/local<br />sudo rm -rf /Applications/DarwinPorts<br />sudo rm -rf /Applications/MacPorts<br />sudo rm -rf /Library/LaunchDaemons/org.macports.*<br />sudo rm -rf /Library/Receipts/DarwinPorts*.pkg<br />sudo rm -rf /Library/Receipts/MacPorts*.pkg<br />sudo rm -rf /Library/StartupItems/DarwinPortsStartup<br />sudo rm -rf /Library/Tcl/darwinports1.0<br />sudo rm -rf /Library/Tcl/macports1.0<br />sudo rm -rf ~/.macports&nbsp;</p>
+</blockquote>
+<h2>이제 Homebrew를 설치하자.</h2>
+<blockquote>
+<p>brew install wget</p>
+</blockquote>
+<p>아래와 같이 조금 주의해야 할 상황이 있다.</p>
+<p>만약 MacPorts 디렉토리에 ruby gems과 의존된 라이브러가 있다면, 다시 재 컴파일 해주어야한다.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

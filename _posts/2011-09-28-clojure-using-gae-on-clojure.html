@@ -1,0 +1,103 @@
+---
+layout: post
+status: publish
+published: true
+title: clojure - Using GAE  on clojure
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 요약. 클로저로 Google App Engine을 설치법과 사용법을 소개합니다.
+wordpress_id: 1016
+wordpress_url: http://ezcocoa.com/?p=1016
+date: '2011-09-28 03:33:03 +0900'
+date_gmt: '2011-09-28 03:33:03 +0900'
+categories:
+- Clojure
+tags:
+- app
+- google
+- engine
+comments:
+- id: 27
+  author: 채성우
+  author_email: keyboarder@daum.net
+  author_url: ''
+  date: '2011-11-20 08:02:03 +0900'
+  date_gmt: '2011-11-20 08:02:03 +0900'
+  content: 감사합니다 +_+
+- id: 28
+  author: hojun baek
+  author_email: mr.hjbaek@gmail.com
+  author_url: http://ezcocoa.com
+  date: '2011-11-21 15:25:23 +0900'
+  date_gmt: '2011-11-21 15:25:23 +0900'
+  content: 아~ 저야 감사드립니다. 첫 댓글을 남겨주시니 기분이 좋네요^^ 하하
+---
+<h4>추가 사항!</h4>
+<p>초기에 셋팅이 되어있지 않을 시 에러가 발생합니다.<br />
+이 에러는 <a href="http://ezcocoa.com/?p=747">[Clojure] emacs+lein+swank</a> 을 참조하세요.</p>
+<h4>* <a href="https://github.com/weavejester/compojure">Compojure</a></h4>
+<p>클로저를 위해 간결하게 만들어진 웹 프레임웤이다.<br />
+<strong>설치법</strong><br />
+- Compojure을 사용하기 위해서 Leiningen을 이용한다.<br />
+project.clj 파일에 아래의 내용을 추가해준다.<br />
+[code]<br />
+[compojure "0.6.4"]<br />
+[/code]<br />
+소스로 부터 Compojure을 빌드하기 위해 아래와 같은 명령어를 실행해준다.<br />
+[code]<br />
+lein deps<br />
+lein jar<br />
+[/code]</p>
+<h4>* <a href="https://github.com/gcv/appengine-magic#readme">appengin-maginc</a></h4>
+<p>Google App Engine을 사용하기 위한 클로저 라이브러리이다.</p>
+<h4>* <strong>hiccup</strong>(Fast library for rendering HTML in Clojure)</h4>
+<p>Optional로 꼭 필요한 라이브러리는 아닙니다.<br />
+<strong>Description</strong><br />
+Hiccup은 Html을 쉽게 표현하기 위한 라이브러리입니다.<br />
+tag들을 표현하기 위한 vector와 map을 속성을 사용합니다.<br />
+<strong>Install</strong><br />
+Project.clj 파일의 dependency 부분에 추가해주세요.<br />
+[code][hiccup "0.3.6"][/code]<br />
+자세한 <a href="https://github.com/weavejester/hiccup">링크</a><br />
+--------------------------------------------------------</p>
+<h4>오류 보고서</h4>
+<p>[code]<br />
+ :dev-dependencies [[appengine-magic "0.4.4"]]<br />
+[/code]<br />
+클로저 GAE 개발 시 발생 된 문제 리포트입니다.<br />
+sdk version 1.5.4<br />
+leiningen 1.6.1.1<br />
+java 1.6.0_26<br />
+2011년 10월 17일자 lein appeninge-prepare로 빌딩 시 문제가 발생됩니다.<br />
+문제의 원인은 m2 폴더에 있는 라이브러리가 잘못되어 발생되는 일입니다.<br />
+참조 : <a href="https://github.com/gcv/appengine-magic/issues/33">Can't resolve appengine-magic</a><br />
+[code]<br />
+Copying 19 files to /home/mvid/development/clojure/checkin/lib<br />
+Copying 21 files to /home/mvid/development/clojure/checkin/lib/dev<br />
+Exception in thread "main" java.lang.RuntimeException: java.util.zip.ZipException: error in opening zip file (NO_SOURCE_FILE:0)<br />
+at clojure.lang.Compiler.eval(Compiler.java:5440)<br />
+[/code]<br />
+구글 매직이 이때 당시 0.4.5버전을 지원하므로 버전함으로써 깔끔하게 마무리되었습니다.<br />
+정작 이 문제로 10시간 이상을 허비했네요. 아흑 이렇게 주말이 날라가니 원... 그럼 마물 슝.<br />
+-------------------------------------------------------------------------<br />
+컴퓨터를 포멧하고 구글 매직 0.4.5를 설치 했을 때 또 문제가 발생했다.<br />
+이상하게도 아래의 것으로 한다음 하니 잘 진행된다. 머리가 너무 아프다.<br />
+[code]<br />
+(defproject gae-cms "1.0.0-SNAPSHOT"<br />
+  :description "A basic CMS built on Google App Engine (GAE)"<br />
+  :dependencies [[org.clojure/clojure "1.2.0"]<br />
+		 [org.clojure/clojure-contrib "1.2.0"]<br />
+		 [compojure "0.4.1"]<br />
+		 [ring/ring-servlet "0.2.1"]<br />
+		 [appengine "0.4-SNAPSHOT"]<br />
+		 ]<br />
+  :dev-dependencies [[leiningen/lein-swank "1.2.0-SNAPSHOT"]]<br />
+  :compile-path "war/WEB-INF/classes"<br />
+  :library-path "war/WEB-INF/lib"<br />
+  )<br />
+[/code]</p>

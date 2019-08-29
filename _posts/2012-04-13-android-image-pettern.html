@@ -1,0 +1,54 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - image pettern
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 이미지 패턴 (반복)의 관해 포스팅합니다.
+wordpress_id: 1511
+wordpress_url: http://ezcocoa.com/?p=1511
+date: '2012-04-13 01:04:10 +0900'
+date_gmt: '2012-04-13 01:04:10 +0900'
+categories:
+- Android
+tags: []
+comments: []
+---
+<p>오랜만에 포스팅합니다. 일을 하면서 학업을 할려니 정말 힘들군요.. 엄청 마른편인데 무려 2키로나 더 빠졌습니다.<br />
+아무래도 시험의 압박때문이겠지요? 아 그럼 잡담은 이만...<br />
+이번 포스팅에서는 이미지 반복(패턴)에 관해 포스팅하겠습니다.<br />
+<a href="http://androidblogger.blogspot.com/2009/01/how-to-have-tiled-background-cont.html">원문</a><br />
+주로 타일이나 저같은 경우는 리스트 반복 (disabled된 리스트)을 표현하기 위해 사용했습니다.<br />
+<strong>우선 필요한 이미지의 대한 패턴을 정의해야합니다. </strong></p>
+<h3>패턴 이미지 생성하기</h3>
+<p><strong>bg_list.xml</strong><br />
+[sourcecode language="xml"]<br />
+<?xml version="1.0" encoding="utf-8"?><br />
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"<br />
+    android:src="@drawable/bg_list_default"<br />
+    android:tileMode="repeat" /><br />
+[/sourcecode]<br />
+<strong>bg_list_default.png</strong>이라는 이미지를 사용하였습니다.<br />
+이 이미지는 간단하게 리스트 행에 해당하는 bg를 가지고 있습니다.</p>
+<h3>ListView 백그라운드에 이미지 패턴 적용하기</h3>
+<p>[sourcecode language="xml"]<br />
+<?xml version="1.0" encoding="utf-8"?><br />
+<ListView<br />
+...<br />
+android:background="@drawable/bg_list"<br />
+...<br />
+><br />
+[/sourcecode]<br />
+ListView 백그라운드에 bg_list.xml이라는 패턴 이미지를 적용 시켰습니다.<br />
+이것으로 패턴 적용이 완료되는뎁쇼 정말 간단하죠?<br />
+여기서 몇가지 주의할 점이 있습니다.</p>
+<h3>중요한 몇가지!!</h3>
+<ul>xml사용시 주의할점인데요. 바로 'xmlns:android'를 잊어서는 아니아니아니되오!!</ul>
+<ul>타일모드는 repeat, mirror, clamp 될 수 있습니다?</ul>
+<p>오늘의 포스팅은 여기까지..</p>

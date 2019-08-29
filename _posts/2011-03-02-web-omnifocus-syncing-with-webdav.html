@@ -1,0 +1,87 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Web] OmniFocus syncing with WebDAV"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 633
+wordpress_url: http://ezcocoa.com/?p=633
+date: '2011-03-02 08:48:22 +0900'
+date_gmt: '2011-03-02 08:48:22 +0900'
+categories:
+- Web
+tags:
+- app
+- omni
+- omnifocus
+- syscing
+- webdav
+comments: []
+---
+<p>OmniFocus App 데이터 싱크 방법 중 하나 인 WebDAV 이용 방법을 소개합니다.<br />
+두 가지 사이트를 참조 할 수 있다.<br />
+1. link : English <a href="http://www.wrighters.net/blog/articles/2009/04/28/omnifocus-syncing-with-apache-22-webdav/">http://www.wrighters.net/blog/articles/2009/04/28/omnifocus-syncing-with-apache-22-webdav/</a><br />
+2. link : Korean <a href="http://spix.wordpress.com/2010/03/10/webdav-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/"> http://spix.wordpress.com/2010/03/10/webdav-%EC%84%9C%EB%B2%84-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0/</a><br />
+OS : Ubuntu Linux 10.4<br />
+Require : Apache2, WebDEV Module<br />
+1. Apache 웹 서버 설치<br />
+[code] # sudo apt-get install apache2<br />
+[/code]<br />
+2. WebDEV 모듈 활성화<br />
+[code] # sudo a2enmod dav_fs<br />
+# sudo a2enmod dav<br />
+# sudo a2enmod dav_lock<br />
+[/code]<br />
+3. 디렉토리 생성, 소유권 부여<br />
+[code]# mkdir /var/www/webdav/data<br />
+# chown www-data /var/www/webdav/data<br />
+[/code]<br />
+4. Virtual Host 생성<br />
+[code] # sudo vi /etc/apache2/sites-available/default<br />
+[/code]<br />
+아래와 같이 수정<br />
+[code] NameVirtualHost *<br />
+<VirtualHost *><br />
+       ServerAdmin ezcocoa@localhost<br />
+       DocumentRoot /var/www/web1/roll/<br />
+       Alias /webdav "/var/www/web1/roll/"<br />
+       <Directory /var/www/web1/roll/><br />
+               Options Indexes MultiViews<br />
+               AllowOverride None<br />
+               Order allow,deny<br />
+               allow from all<br />
+               DAV On<br />
+               Allow from all<br />
+               AuthType Basic<br />
+               AuthName "Webdav"<br />
+               AuthUserFile /var/www/web1/passwd.dav<br />
+               Require valid-user<br />
+       </Directory><br />
+</VirtualHost><br />
+[/code]<br />
+5. Virtual Host를 WebDAV용으로 지정하기 위해 WebDAV용 패스워드 파일 및 사용자(ezcocoa) 생성<br />
+[code]# htpasswd -c /var/www/webdav/passwd.dav ezcocoa<br />
+[/code]<br />
+6. 시스템이 참조 가능하도록 권한 부여<br />
+[code]# chown root:www-data /var/www.webdav/passwd.dav<br />
+# chmod 640 /var/www/webdav/passwd.dav<br />
+# chmod -R 777 /var/www/webdav/data<br />
+# chown www-data:www-data /var/www/webdav/data<br />
+[/code]<br />
+7. 아파치 재기동 및 점검<br />
+[code]# sudo /etc/init.d/apache2 restart<br />
+# cadaver http://<br />
+<address>/webdav<br />
+[/code]<br />
+사용자 아이디 및 비밀번호 입력<br />
+5. 변경 사항 반영하기.<br />
+[code]# sudo /etc/init.d/apache2 reload<br />
+[/code]<br />
+    * 오류 발생 apache2: Could not reliably determine the server&rsquo;s fully qualified domain name, using 127.0.0.1 for ServerName &ndash; /etc/apache2/apache2.conf 파일에 ServerName localhost 추가로 해결<br />
+    * 오류 발생 NameVirtualHost *:80 has no VirtualHosts &ndash; /etc/apache2/ports.conf 파일에서 NameVirtualHost *80 항목을 코멘트처리하여 해결</p>

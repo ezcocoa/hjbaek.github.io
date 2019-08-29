@@ -1,0 +1,38 @@
+---
+layout: post
+status: publish
+published: true
+title: clojure - 네임스페이스안에 정의되어 있는 함수 보기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2721
+wordpress_url: http://ezcocoa.com/?p=2721
+date: '2016-12-16 04:32:26 +0900'
+date_gmt: '2016-12-16 04:32:26 +0900'
+categories:
+- Clojure
+tags:
+- Clojure
+- method
+- function
+- namespace
+comments: []
+---
+<p>클로저 개발을 하다 보면, 네임스페이스 안에 정의되어 있는 함수들을 보고 싶을 때가 있다.</p>
+<p>LightTable이 아닌 autocomplete가 제공되지 않는 IDE에서 개발을 할때면, 아.. 뭐지? 공욕을 치룰때가 있다.</p>
+<p>그럼 어떻게 네임스페이스안의 함수들을 볼 수 있을지 알아 보자.</p>
+<h3>1.  <strong>keys</strong> 함수를 이용하여, 함수 시퀀스 반환하기.</h3>
+<pre class="clojure">user=> (keys (ns-publics &#039;foo))
+</pre>
+<p>그 외 ns- 많은 함수들을 제공하니 찾아서 실험해보도록 하자.</p>
+<h3>2.  <strong>dir</strong> 함수를 이용하기. dir함수는 clojure.repl에 선언되어 있는 함수이다.</h3>
+<pre class="clojure">user=> (require &#039;clojure.repl)
+user=> (clojure.repl/dir &#039;foo)
+</pre>
+<p>그 외 다른 방법도 있으나, 위 두가지 방법이 제일 괜찮은거 같다.</p>
+<p>이상.</p>

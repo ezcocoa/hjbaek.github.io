@@ -1,0 +1,131 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Lisp] restart..."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 164
+wordpress_url: http://ezcocoa.com/?p=164
+date: '2010-11-07 13:37:42 +0900'
+date_gmt: '2010-11-07 13:37:42 +0900'
+categories:
+- Clojure
+tags:
+- emacs
+- lisp
+comments: []
+---
+<p>2010. 11. 10<br />
+Emacs 브라우저 확장하기.<br />
+설치 순서는 아래와 같다.<br />
+<strong>cedet</strong> <a href="http://cedet.sourceforge.net/" target="_balnk">링크</a><br />
+<strong>ecb</strong> <a href="http://ecb.sourceforge.net/" target="_blank">링크</a><br />
+- ecb(Emacs Code Browser)를 설치할 때에는 Makefile에서 경로를 재설정 해주어야한다.<br />
+2010. 11. 09<br />
+emacs에서 확장하기 new 버전을 받고 emacs를 돌리게 되면 에러가 발생한다.<br />
+이유는 리눅스계열에서 제공하는 패키지가 따로 존재하지 않기때문이다.<br />
+따로 복사해서 넣어 패스를 잡아주도록 하자.<br />
+<a href="https://launchpad.net/ubuntu/lucid/+source/emacs-goodies-el/31.4ubuntu1" target="_blank"><strong>emacs-goodies-el download link.</strong></a><br />
+<a href="http://www.cs.huji.ac.il/~osigor/emacs/load.html"><strong>loading meacs library</strong></a><br />
+<strong>emacs 확장하기</strong><a href="http://kldp.org/node/96363" target="_blank">http://kldp.org/node/96363</a><br />
+<strong>라이브러리 :</strong><a href="http://www.emacswiki.org/emacs/" target="_blank">http://www.emacswiki.org/emacs/</a><br />
+기초 문법 &nbsp;: <a href="http://emacs.kldp.net/wiki/doku.php?id=emacslisp:xah_lee_tutorial_01" target="_blank">http://emacs.kldp.net/wiki/doku.php?id=emacslisp:xah_lee_tutorial_01</a><br />
+간단한 문자열을 찍어보자.<br />
+선택 된 영역 실행 X-x&nbsp;eval-region<br />
+수식의 맽끝에서 실행 X-x eval-last-sexp<br />
+입력되는 명령어의 결과를 바로 확인 할 수 있는 ielm 모드로 변경<br />
+M-x ielm<br />
+다시 작성해야겠다. 젠장..<br />
+//---------------------------------------------------------<br />
+다음 화면으로 이동 C-v<br />
+이전 화면으로 이동 M-v<br />
+현재 커서를 기준으로 화면 위치를 바꿈 (맨위, 가운데, 맨아래) C-l<br />
+//---------------------------------------------------------<br />
+위로 C-p<br />
+아래로 C-n<br />
+뒤로 C-b<br />
+앞으로 C-f<br />
+//---------------------------------------------------------<br />
+한단어 앞으로 M-f<br />
+한단어 뒤로 M-b<br />
+문장 앞으로 C-a<br />
+문장 뒤로 C-e<br />
+앞 문장 앞으로 M-a<br />
+뒤 문장 뒤로 M-e<br />
+소스 맨 앞으로 M-<<br />
+소스 맨 뒤로 M-><br />
+//---------------------------------------------------------<br />
+반복 C-u 8 C-f // C-f 명령어를 8번 반복한다.<br />
+//---------------------------------------------------------<br />
+실행 취소 C-g<br />
+//---------------------------------------------------------<br />
+명령어 비활성화 C-x C-l (which is a disabled command) // 비활성화 할 명령<br />
+화면 분활 C-x 1 // 뒤에는 화면을 분활 할 인자가 들어간다.<br />
+//---------------------------------------------------------<br />
+앞에 한문자 지우기 <Delback><br />
+뒤에 한문자 지우기 C-d<br />
+앞 한 단어 지우기 M-<Delback><br />
+뒤에 한단어 지우기 C-d<br />
+현재 위치에서의 한문장 지우기 C-k<br />
+현재 위치에서 다음문장까지 지우기 M-k<br />
+//---------------------------------------------------------<br />
+영역 설정하기 C-@, C-<SPC><br />
+영역 지우기 C-w<br />
+끌어당기기(yanking) C-y<br />
+되돌리기(undo) C-x u , C-_<br />
+//---------------------------------------------------------<br />
+파일열기(생성) C-x C-f<br />
+저장하기 C-x C-s<br />
+버퍼 리스트 불러오기 C-x C-b<br />
+버퍼 전환하기 C-x b *message* // 파일도 가능하면 버퍼도 가능하다.<br />
+//---------------------------------------------------------<br />
+명령어 확장하기 사용해보지는 않았음.<br />
+C-x<br />
+Character eXtend. Followed by one character.<br />
+M-x<br />
+Named command eXtend. Followed by a long name.<br />
+//---------------------------------------------------------<br />
+찾아바꾸기 M-x repl s<br />
+되살리기(recover) M-x recover-file<br />
+모드 바꾸기 M-x text-mode<br />
+오토 필 모드로 전환하기 M-x auto-fill-mode<br />
+//---------------------------------------------------------<br />
+유용한 명령어 마진 바꾸기 C-u 20 C-x f<br />
+마진 적용하기 M-q<br />
+//---------------------------------------------------------<br />
+앞으로 검색하기 C-s<br />
+뒤로 검색하기 C-r<br />
+//---------------------------------------------------------<br />
+메뉴얼 보기 C-h m<br />
+현재 화면 포커스 이동하기 C-x o<br />
+아래화면 아래로 스크롤하기 C-M-v<br />
+//---------------------------------------------------------<br />
+새로운 창 열기 M-x make-frame<br />
+현재 선택된 &nbsp;창 죽이기 M-x delete-frame<br />
+단축 설명 보기 C-h c C-p // &nbsp;C-p에 대한 설명을 기술한다.<br />
+단축 설명 보기 창으로 이동 C-h k C-p // 새로운 창으로 이동한다.<br />
+앞 Char로 설명 찾기 C-h f<br />
+단어로 설명 찾기 C-h a<br />
+파일 추가하기 C-x i<br />
+//---------------------------------------------------------<br />
+2시간에 걸쳐 쓴 내용이 다날라갔지만 다행이도 머리에 남아있어 다시 쳤다.<br />
+저장하는 습관을 기르자 아자.<br />
+2010-11-08 14:45<br />
+한 1년 전 쯤이였나,, 해피해킹 키보드를 구매하면서 처음 Emacs를 잠깐 접해보았다.<br />
+대략 8개월 동안 사용했으나, 손가락 배치가 너무 불편하여 vi로 옴겼으나 시간이 갈수록 Emacs가 그리워졌다.<br />
+그래서 결국 다시 Emacs를 배울려고 한다. 더불어 Lisp도 함께...<br />
+잘 사용하면 좋지 않을까 하는 기대를 해본다.<br />
+오랜만에 Emacs와 Lisp에 대한 검색을 했다. 찾아보니 모임도 있고 대략 배우기에 부족하지 않을 만큼에 자료들이<br />
+검색 되었다.<br />
+첫째로<br />
+Lisp을 좋아하는 사람들의 그룹 (<a href="http://groups.google.com/group/lisp-korea" target="_blank">http://groups.google.com/group/lisp-korea</a>) 이 있었고 또한<br />
+장선진님의 블러그 (<a href="http://blog.java2game.com/247" target="_blank">http://blog.java2game.com/247</a>) 또한 내용이 있었던것 같다.<br />
+이 내용을 바탕으로 다시 한번 배워볼려고 한다.<br />
+그리고 왠만하면 이제는 자료를 공유할 생각이다.<br />
+아자아자. 되게 기대되넹? 아자!!</p>

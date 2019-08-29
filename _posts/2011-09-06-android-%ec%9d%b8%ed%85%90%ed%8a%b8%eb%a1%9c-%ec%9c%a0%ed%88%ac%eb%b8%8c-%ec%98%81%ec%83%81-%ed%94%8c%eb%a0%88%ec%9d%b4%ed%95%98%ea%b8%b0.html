@@ -1,0 +1,38 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - 인텐트로 유투브 영상 플레이하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 972
+wordpress_url: http://ezcocoa.com/?p=972
+date: '2011-09-06 11:45:35 +0900'
+date_gmt: '2011-09-06 11:45:35 +0900'
+categories:
+- Android
+tags:
+- android
+- video
+- intent
+- movie
+- play
+- youtube
+- 영상
+- 유투브
+- 유튜브
+- 인텐트
+- 플레이
+comments: []
+---
+<p>[sourcecode language="java"]<br />
+Intent i = new Intent(Intent.ACTION_VIEW);<br />
+i.setData(Uri.parse("http://www.youtube.com/watch?v=6yKDpG0DYlo"));<br />
+i.setPackage("com.google.android.youtube"); // 어플리케이션 강제 설정.<br />
+startActivity(i);<br />
+[/sourcecode]</p>

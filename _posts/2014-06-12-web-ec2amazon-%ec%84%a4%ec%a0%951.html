@@ -1,0 +1,40 @@
+---
+layout: post
+status: publish
+published: true
+title: Web - EC2(Amazon) 설정(1)
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2291
+wordpress_url: http://ezcocoa.com/?p=2291
+date: '2014-06-12 02:03:05 +0900'
+date_gmt: '2014-06-12 02:03:05 +0900'
+categories:
+- Web
+tags:
+- set
+- amazon
+- ec2
+- redirect
+- up
+comments: []
+---
+<p>EC2(Amazon) 설정(1)</p>
+<p>회사 입사 한지 3개월이 지났다. 현재 서버, 클라이언트 모든 부분을 담당하고 있으며, EC2를 사용하면서 불편했던 점 또는 팁?을 공유하고자 한다.</p>
+<ol>
+<li>항상 아마존 사이트에 접속하면&ldquo;지역&rdquo;을 항상 변경 해주어야 한다. 매번 들어갈 때마다 미국으로 설정되어 있다.</li>
+<li>보안 강화를 위해 EC2 서비스는 따로 포트를 열어주어야 하는 탭이 존재한다. (Security Groups) 만약 기본 외에 다른 포트가 필요하다면 따로 추가하여 열어주어야 한다.</li>
+<li>Tomcat 사용 시 80포트가 안열린다?<br />
+EC2(Amazon)에서 Tomcat 80포트가 안되는 이유&hellip; 정확한 이유는 모르겠으나 stackoverflow 사이트를 통해 나와 같은 증상을 가진 사람들을 볼 수 있었다. 어떤 이는 이를 해결하기 위해 Redhat 버전을 사용하라고 하였고, (나는 Ubuntu를 사용 중 이였다.)<br />
+그 외 몇 사용자들은 &ldquo;redirect&rdquo;를 이용하여 우회하는 방법을 사용하였다.<br />
+내가 적용한 방법은 아래와 같다.<br />
+sudo /sbin/iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080</li>
+</ol>
+<p>1023 이하 포트를 사용하기 위해서는 &ldquo;/etc/defaults/tomcat7&rdquo;파일에 포함된 &ldquo;#authbind=no&rdquo;의 값을 yes로 변경해주어야 한다. 이는 1023 이하의 포트를 바인딩 하기 위해 사용하며, 설정 파일 설명에 따르면 1023 이상 포트는 사용하지 않아도 된다.<br />
+또한 이는 IP4에만 해당된다. IP6는 사용해서는 안된다.</p>
+<p>이상이다.</p>

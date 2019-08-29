@@ -1,0 +1,60 @@
+---
+layout: post
+status: publish
+published: true
+title: Emacs - 프로젝트 생성
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2696
+wordpress_url: http://ezcocoa.com/?p=2696
+date: '2016-08-12 07:58:10 +0900'
+date_gmt: '2016-08-12 07:58:10 +0900'
+categories:
+- Emacs
+tags:
+- unit
+- cider
+- midje
+- ttd
+comments: []
+---
+<p>기존 프로젝트 의존성이 맞지 않아 오류가 발생된다.</p>
+<p>새로 프로젝트를 생성한다면 아래의 설정대로 만들어주어야 한다.</p>
+<p>기존 버전으로 사용할 경우 아래의 문제가 발생된다. midje 사용하고, lein repl을 사용했을 경우 cider쪽에서 some-> 함수를 찾지 못하는 문제가 발생한다.</p>
+<p>오류를 줄이기 위한 가장 좋은 방법은 최신버전을 사용하는 것이다. (물론 최신버전에 또다른 오류가 발생될 수 있으나, 의존성 처리를 미리미리 해두는게 좋다.)</p>
+<p>Global로 설정된 버전들 - cider-nrepl "0.9.1" - clojure "1.4.0"</p>
+<p>최신 버전 - cider-nrepl "0.13.0" - clojure "1.8.0"</p>
+<pre>:dependencies [[cider/cider-nrepl "0.13.0"]]
+:repl-options {:nrepl-middleware
+                 [cider.nrepl.middleware.apropos/wrap-apropos
+                  cider.nrepl.middleware.classpath/wrap-classpath
+                  cider.nrepl.middleware.complete/wrap-complete
+                  cider.nrepl.middleware.debug/wrap-debug
+                  cider.nrepl.middleware.format/wrap-format
+                  cider.nrepl.middleware.info/wrap-info
+                  cider.nrepl.middleware.inspect/wrap-inspect
+                  cider.nrepl.middleware.macroexpand/wrap-macroexpand
+                  cider.nrepl.middleware.ns/wrap-ns
+                  cider.nrepl.middleware.pprint/wrap-pprint
+                  cider.nrepl.middleware.pprint/wrap-pprint-fn
+                  cider.nrepl.middleware.refresh/wrap-refresh
+                  cider.nrepl.middleware.resource/wrap-resource
+                  cider.nrepl.middleware.stacktrace/wrap-stacktrace
+                  cider.nrepl.middleware.test/wrap-test
+                  cider.nrepl.middleware.trace/wrap-trace
+                  cider.nrepl.middleware.out/wrap-out
+                  cider.nrepl.middleware.undef/wrap-undef
+                  cider.nrepl.middleware.version/wrap-version]}
+</pre>
+<p>위 내용을 정리하는 이유는 Midje와 cider 버전 차이가 맞지 않아 발생되는 문제로, lein과 사용되는 lein midje :autotest를 사용할 경우 아무 문제 없다. 하지만 문서상 lein midje ****보다는 lein repl에서 autotest명령을 수행함으로 써 하는 방식을 더 권장하고 있다.</p>
+<p>사용해보니 왜 그렇게 권장하는지 알 수 있다.</p>
+<pre>
+$ lein repl
+$ (use &#039;midje.repl)
+$ (autotest)
+</pre>

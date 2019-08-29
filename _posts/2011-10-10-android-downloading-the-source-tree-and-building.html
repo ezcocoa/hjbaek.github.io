@@ -1,0 +1,52 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Downloading the Source Tree And Building
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 안드로이드 풀 소스 다운로드 및 빌드하기
+wordpress_id: 1089
+wordpress_url: http://ezcocoa.com/?p=1089
+date: '2011-10-10 08:16:47 +0900'
+date_gmt: '2011-10-10 08:16:47 +0900'
+categories:
+- Android
+tags:
+- android
+- source
+- init
+- build
+- download
+- tree
+comments: []
+---
+<h4>
+<ul>
+<li><a href="http://source.android.com/source/downloading.html">Initializing a Build Environment</a></li>
+<li><a href="http://source.android.com/source/initializing.html">Setting up a Mac OS X build environment</a></li>
+<li><a href="http://source.android.com/source/downloading.html">Downloading the Source Tree</a></li>
+</ul>
+</h4>
+<h5>Downloading the Source Tree</h5>
+<p>repo를 초기화하는 과정에서 <strong> Could not resolve host </strong> 문제가 발생됩니다.<br />
+이 문제는 Kernel.org 해킹되어 발생되는 문제로 kernel.org를 사용하지 않고 한 유저의 블러그를 통해 해결할 수 있습니다.<br />
+<strong>1. Prepare the environment</strong><br />
+[code]<br />
+curl "http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo" > ~/bin/repo<br />
+chmod a+x ~/bin/repo<br />
+PATH=~/bin:$PATH<br />
+[/code]<br />
+* 원문 <a href="http://php.webtutor.pl/en/2011/09/05/kernel-org-hacked-how-to-get-android-repo/">링크</a><br />
+<strong>2. Download the Android repository</strong><br />
+[code]<br />
+mkdir WORKING_DIRECTORY<br />
+cd WORKING_DIRECTORY<br />
+repo init -u git://codeaurora.org/platform/manifest.git -b gingerbread<br />
+repo sync<br />
+[/code]</p>

@@ -1,0 +1,89 @@
+---
+layout: post
+status: publish
+published: true
+title: "[WM7] Tutorial"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 202
+wordpress_url: http://ezcocoa.com/?p=202
+date: '2010-11-22 05:49:46 +0900'
+date_gmt: '2010-11-22 05:49:46 +0900'
+categories:
+- Window Mobile 7
+tags: []
+comments: []
+---
+<p>2010. 11. 22.<br />
+<strong>- Download the free tools </strong><a href="http://create.msdn.com/en-US/">링크</a><br />
+<strong>- MS-MSDN .NET Framework</strong> <a href="http://msdn.microsoft.com/ko-kr">링크</a><br />
+Window Mobile에는 따로 콘솔창이 존재하지 않아 디버깅 문자열을 출력할 수 없다.<br />
+그래서 따로 Window->Output창을 열어 확인해야 하며 아래와 같은 코드를 사용할 수 있다.<br />
+<code>using System.Diagnostics;<br />
+Debug.WriteLine("hello");<br />
+</code><br />
+1. SMS 보내기<br />
+- Class : SMScomposeTask<br />
+- 주의 사항 : 국내 SMS 서비스에서 90바이트 이상 사용시 서버에서 짤릴 수 있음.<br />
+사용법<br />
+<code>SMScomposeTask smst = new SMScomposeTask();<br />
+smst.to = <email address>;<br />
+body.to = <message>;<br />
+Show();<br />
+</code><br />
+2. Email 주소록 가져오기 및 주소록 저장하기. + 보내기.<br />
+- Class : EmailAddressChooserTask<br />
+사용법<br />
+<code>EmailAddressChooserTask eact = new EmailAddressChooserTask();<br />
+eact.Completed += new EventHandler<EmailResult>(eact_completed);<br />
+eact.Show();<br />
+void eact_completed(object sender, EmailResult e) {<br />
+e.Email;<br />
+}</code><br />
+- Class : SaveEmailAddressTask<br />
+<code>SaveEmailAddressTask seat = new SaveEmailAddressTask();<br />
+seat.Email="";<br />
+seat.Show();</code><br />
+<code>- Class : EmailComposeTask<br />
+String to = getKeyValue(keyValueArray, 1);<br />
+String body = getKeyValue(keyValueArray, 2);<br />
+EmailComposeTask ect = new EmailComposeTask();<br />
+ect.To = to;<br />
+ect.Body = body;<br />
+ect.Show();</code>3. 전화걸기 및 연락처 가져오기<br />
+- Class : PhoneNumberChooserTask<br />
+사용법<br />
+<code>PhoneNumberChooserTask pnct = new PhoneNumberChooserTask();<br />
+pnct.Completed += new EventHandler<PhoneNumberResult>(pnct_completed);<br />
+pnct.Show();</code><br />
+<code>- Class : PhoneCallTask<br />
+PhoneCallTask pct = new PhoneCallTask();<br />
+pct.PhoneNumber = tbDisplay.Text;<br />
+pct.Show();</code><br />
+4. 카메라 촬영 및 앨범에서 가져오기<br />
+<code>- Class : CameraCaptureTask</code><br />
+<code>-<br />
+System.Windows.Media.Imaging<br />
+BitmapImage a = new BitmapImage();<br />
+a.SetSource(e.ChosenPhoto);<br />
+image.Source = a;</code><br />
+5. 리스소 불러오기 &amp; 이미지 넣기<br />
+Class : BitmapImage<br />
+<code>image.Source = new BitmapImage(new Uri("/images/test.png",UriKind.Relative);</code><br />
+<code>6. 앱과 웹 소통하기<br />
+관련 메서드<br />
+</code><code>// 웹에서 앱 호출하기<br />
+</code><code>[Java Script Code]<br />
+// 아래처럼 콜하게 되면 윈도우 모바일 7 코드 1-1이 호출된다.<br />
+</code><code>window.external.Notify(REQUEST_ADDRESS_EMAIL);</code><br />
+<code>[.Net Code] (1-1)</code><code><br />
+<code>private void wb_ScriptNotify(object sender, NotifyEventArgs e)</code><br />
+// 앱에서 웹 호출하기<br />
+[.Net Code]<br />
+// 첫번째 메서드 이름, 두번째 인자 파라미터가 된다.<br />
+<code>wb.InvokeScript("response", e.Email);</code></p>

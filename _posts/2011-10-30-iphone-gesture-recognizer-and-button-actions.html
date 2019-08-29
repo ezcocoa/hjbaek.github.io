@@ -1,0 +1,43 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - Gesture recognizer and button actions
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: Gesture와 Action 이벤트 분기하기.
+wordpress_id: 1193
+wordpress_url: http://ezcocoa.com/?p=1193
+date: '2011-10-30 04:17:21 +0900'
+date_gmt: '2011-10-30 04:17:21 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- touch
+- button
+- gesture
+- ction
+comments: []
+---
+<p><a href="http://ezcocoa.com/?p=880">Gesture 사용하기</a><br />
+Gesture는 특정한 행동을 등록하여 그 행동에 맞는 액션을 취하기 위해 사용됩니다.<br />
+제스쳐는 UIView에 등록할 수 있습니다. 만약 UIView를 상속하고 있는 UIButton 또는 UIView 하위 계층에 UIButton이 있다면<br />
+어떻게 될까요? 네 기본으로 등록할 경우 그 Button에 대한 이벤트는 발생하지 않습니다.<br />
+이와 같은 문제로 많은 분들이 질문을 하십니다. <a href="http://stackoverflow.com/questions/4825199/gesture-recognizer-and-button-actions">문제 해결 방법</a>은 간단합니다.<br />
+GestureRecognize클래스는 콜백 델리게이트 메서드로<br />
+[code language="ObjC"]<br />
+// Ask the delegate if a gesture recognizer should receive an object representing a touch.<br />
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch;<br />
+[/code]<br />
+간단하게 델리게이트를 등록하고 제스쳐가 발동되었을 때 해당 액션을 Gesture Recognizer가 받게 됩니다.<br />
+여기서 그 액션에 대한 처리를 여부를 판단할 수 있습니다.<br />
+만약 Touch ex) 버튼에 대한 액션을 알리고 싶다면 NO를, 그 해당 액션을 새로 정의한다면 YES로 질의에 대한 답변을 날릴 수 있습니다.<br />
+--------------------------------------------------------------------------------------------<br />
+이 문제 포스팅 이유는 제 프로젝트에 들어가는 Auto-Lock 기능 때문입니다.<br />
+Auto-Lock 기능은 사용자가 아무 행동을 하지 않았을 때, 정해진 시간 이후가 되면 자동으로 코드 락 창이 활성화 되어야 하는데. 그 아무 행동을 하지 않았을 때 그 시점을 찾지 못하여 Gesture를 통해 구현할려고 합니다.</p>

@@ -1,0 +1,47 @@
+---
+layout: post
+status: publish
+published: true
+title: "[synology] renew a let&#039;s encrypt certificate."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2756
+wordpress_url: http://ezcocoa.com/?p=2756
+date: '2017-08-14 02:49:17 +0900'
+date_gmt: '2017-08-14 02:49:17 +0900'
+categories:
+- Tool
+tags:
+- encrypt
+- encription
+- lets
+- renew
+comments: []
+---
+<p>Connecting synology-ssh-server as root.</p>
+<p>if you want to connect to synology ssh server, you mush login ssh-server as admin first.</p>
+<p><a href="http://ezcocoa.com/?attachment_id=2757" rel="attachment wp-att-2757"><img src="http://13.124.100.73/wp-content/uploads/2017/08/Screen_Shot_2017-08-14_at_11_36_55_AM-1.png" alt="Screen_Shot_2017-08-14_at_11_36_55_AM" width="287" height="37" class="aligncenter size-full wp-image-2757" /></a></p>
+<p>and then, change as root. type this.</p>
+<p>$ sudo -i</p>
+<p><a href="http://ezcocoa.com/?attachment_id=2758" rel="attachment wp-att-2758"><img src="http://13.124.100.73/wp-content/uploads/2017/08/Screen-Shot-2017-08-14-at-11.40.24-AM-1.png" alt="Screen Shot 2017-08-14 at 11.40.24 AM" width="202" height="32" class="aligncenter size-full wp-image-2758" /></a></p>
+<ul>
+<li>root password is same with admin password.</li>
+</ul>
+<p><a href="http://ezcocoa.com/?attachment_id=2759" rel="attachment wp-att-2759"><img src="http://13.124.100.73/wp-content/uploads/2017/08/Screen-Shot-2017-08-14-at-11.42.34-AM-1.png" alt="Screen Shot 2017-08-14 at 11.42.34 AM" width="140" height="17" class="aligncenter size-full wp-image-2759" /></a></p>
+<p>you can sse that you did login as root. type following this.</p>
+<p>$ /usr/syno/sbin/syno-letsencrypt renew-all -v</p>
+<p>option <code>-v</code> is debug mode. so you can see a log list what does it happen.</p>
+<p><a href="http://ezcocoa.com/?attachment_id=2760" rel="attachment wp-att-2760"><img src="http://13.124.100.73/wp-content/uploads/2017/08/Screen-Shot-2017-08-14-at-11.45.09-AM-1.png" alt="Screen Shot 2017-08-14 at 11.45.09 AM" width="567" height="138" class="aligncenter size-full wp-image-2760" /></a></p>
+<ul>
+<li>you have to open 80 port to renew certification. </li>
+</ul>
+<p>in my case, cert is not expired. so i will do next time. :) it's done. thank you.</p>
+<p><code>// this let you know to renew certification automatically.<br />
+cat /usr/syno/etc/letsencrypt/letsencrypt.default<br />
+// you can check when it started, and when it expired.<br />
+echo | openssl s_client -connect <ip address>:443 2>/dev/null | openssl x509 -noout -dates</code></p>

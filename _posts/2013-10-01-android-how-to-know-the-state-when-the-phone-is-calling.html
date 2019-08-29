@@ -1,0 +1,51 @@
+---
+layout: post
+status: publish
+published: true
+title: Android > How to know the state when the phone is calling.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1907
+wordpress_url: http://ezcocoa.com/?p=1907
+date: '2013-10-01 02:27:13 +0900'
+date_gmt: '2013-10-01 02:27:13 +0900'
+categories:
+- Android
+tags:
+- listener
+- phone
+- phonestatelistener
+comments: []
+---
+<p>Some people want to know that time when the phone is calling.<br />
+You've to add the following line on <strong>AndroidManifast.xml</strong>.<br />
+[sourcecode language="xml"]<br />
+<uses-permission android:name="android.permission.READ_PHONE_STATE"/><br />
+[/sourcecode]<br />
+This is java source code.<br />
+[sourcecode language="java"]<br />
+import android.telephony.PhoneStateListener;<br />
+import android.telephony.TelephonyManager;<br />
+ private PhoneStateListener phoneStateListener = new PhoneStateListener() {<br />
+        @Override<br />
+        public void onCallStateChanged(int state, String incomingNumber) {<br />
+            super.onCallStateChanged(state, incomingNumber);<br />
+            if (state == TelephonyManager.CALL_STATE_RINGING) {<br />
+				// To do what you want to do<br />
+            }<br />
+        }<br />
+    };<br />
+    private TelephonyManager telephonyManager = null;<br />
+    @Override<br />
+    public void onCreate(Bundle savedInstanceState) {<br />
+        super.onCreate(savedInstanceState);<br />
+        setContentView(R.layout.activity_call_android);<br />
+        telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);<br />
+        telephonyManager.listen(phoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);<br />
+    }<br />
+[/sourcecode]</p>

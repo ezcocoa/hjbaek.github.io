@@ -1,0 +1,44 @@
+---
+layout: post
+status: publish
+published: true
+title: XCode - 활용편:TODO 또는 FIXME 이용하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: XCode 활용편입니다. TODO 또는 FIXME를 이용하여 작업해야하는 부분 또는 필요한 부분을 체크하는 방법을 소개합니다.
+wordpress_id: 1260
+wordpress_url: http://ezcocoa.com/?p=1260
+date: '2011-11-21 15:41:44 +0900'
+date_gmt: '2011-11-21 15:41:44 +0900'
+categories:
+- XCode
+tags:
+- xcode
+- fixme
+- todo
+comments: []
+---
+<p>XCode는 많은 기능을 제공합니다. 맥 개발한지 언 3년이 지났는데요.<br />
+환경이 자주 바뀌다 보니 좋은 기능을 사용하지 못했던거 같습니다.<br />
+여기서는 XCode에서의 TODO 및 FIXME Warning을 표시 및 보는 방법을 소개할까 합니다.<br />
+말이 너무 어려웠나요? 그림으로 보시겠습니다. 아래에서 Warning메세지를 보시면 FIXME를 보실수 있을 겁니다.<br />
+<a href="http://ezcocoa.com/wp-content/uploads/2011/11/스크린샷-2011-11-22-오전-12.34.44.png"><img class="alignleft size-full wp-image-1261" title="스크린샷 2011-11-22 오전 12.34.44" src="http://ezcocoa.com/wp-content/uploads/2011/11/스크린샷-2011-11-22-오전-12.34.44.png" alt="" width="263" height="69" /></a><br />
+네 주석으로 이렇게 고쳐야 할 부분과 할 부분을 체크할 수 있습니다.<br />
+&nbsp;<br />
+아래의 절차대로 따라해주세요.<br />
+- 프로젝트 > Target > &nbsp;Build Phases 선택<br />
+- 오른쪽 하단 Add Build Phases 선택<br />
+- Add Run Script 선택 후 아래의 코드 삽입<br />
+[code]<br />
+KEYWORDS="TODO:|FIXME:|\?\?\?:|\!\!\!:"<br />
+find "${SRCROOT}" \( -name "*.h" -or -name "*.m" \) -print0 | xargs -0 egrep --with-filename --line-number --only-matching "($KEYWORDS).*\$" | perl -p -e "s/($KEYWORDS)/ warning: \$1/"<br />
+[/code]<br />
+- 이제 필요한 부분에 <strong>//TODO:</strong> 또는 <strong>//FIXME:</strong> 삽입<br />
+- 컴파일<br />
+위와 같은 과정을 거치게 되면 이미지와 같은 화면을 확인 하실 수 있습니다.<br />
+끝 - </p>

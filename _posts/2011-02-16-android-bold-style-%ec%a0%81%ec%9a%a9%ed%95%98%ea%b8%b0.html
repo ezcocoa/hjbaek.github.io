@@ -1,0 +1,58 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] Bold &amp; Style 적용하기."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 607
+wordpress_url: http://ezcocoa.com/?p=607
+date: '2011-02-16 05:04:22 +0900'
+date_gmt: '2011-02-16 05:04:22 +0900'
+categories:
+- Android
+tags:
+- android
+- bold
+- style
+- 볼드
+- 스타일
+- 적용
+comments:
+- id: 4
+  author: '1233'
+  author_email: kejf@kef.de
+  author_url: http://mm;
+  date: '2011-12-01 05:54:16 +0900'
+  date_gmt: '2011-12-01 05:54:16 +0900'
+  content: u 가 무슨 볼드여...
+- id: 5
+  author: hojun baek
+  author_email: mr.hjbaek@gmail.com
+  author_url: http://ezcocoa.com
+  date: '2011-12-01 07:24:04 +0900'
+  date_gmt: '2011-12-01 07:24:04 +0900'
+  content: |-
+    아 의미가 잘못 전달되었네요..^^ 죄송합니다.
+    u는 언더라인이고 저런식으로 볼드를 적용할 수 있다라는 것을 전달하고 싶었을 뿐입니다.
+    감사합니다.
+---
+<p>TextView Bold 처리하기 (2가지방법)<br />
+1. html.fromHtml을 이용한 방법<br />
+- Html 태그를 이용한 방법이다. (bold<b>, Underline<u>, ltalic<i>)<br />
+[sourcecode language="JAVA"]<br />
+textView.setText(Html.fromHtml("<u>"+text+"</u>"));<br />
+[/sourcecode]<br />
+2. 그래픽을 이용한 방법<br />
+XML file<br />
+[sourcecode language="xml"]<br />
+android:textStyle="bold"<br />
+[/sourcecode]<br />
+[sourcecode language="java"]<br />
+textEdit.setPaintFlags(textEdit.getPaintFlags() | Paint.FAKE_BOLD_TEXT_FLAG);<br />
+[/sourcecode]</p>

@@ -1,0 +1,31 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - prevent clang&#039;s memory leak warning on the selector.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1225
+wordpress_url: http://ezcocoa.com/?p=1225
+date: '2011-11-03 00:34:40 +0900'
+date_gmt: '2011-11-03 00:34:40 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- leak
+- memory
+- selector
+- warning
+comments: []
+---
+<p><a href="http://stackoverflow.com/questions/7043999/im-writing-a-button-class-in-objective-c-with-arc-how-do-i-prevent-clangs-m">원문</a><br />
+First, import the runtime message header.<br />
+[code]#import <objc/message.h>[/code]<br />
+Next, replace performSelector: with objc_msgSend()<br />
+[code]objc_msgSend(object, action);[/code]</p>

@@ -1,0 +1,50 @@
+---
+layout: post
+status: publish
+published: true
+title: Android - Convert Bitmap to Byte[] and Byte[] to bitmap
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: I explain that how to convert bitmap instance to byte array and byte array
+  to bitmap instance.
+wordpress_id: 1346
+wordpress_url: http://ezcocoa.com/?p=1346
+date: '2011-12-26 01:28:58 +0900'
+date_gmt: '2011-12-26 01:28:58 +0900'
+categories:
+- Android
+tags:
+- android
+- bitmap
+- byte
+- compress
+comments: []
+---
+<p>and now..<br />
+I explain that how to convert bitmap instance to byte array and byte array to bitmap instance.<br />
+you can do&nbsp;easier that the following code.<br />
+1. bitmap to byte<br />
+example)<br />
+[sourcecode language="java"]<br />
+public&nbsp;byte[]&nbsp;bitmapToByteArray(Bitmap&nbsp;b)&nbsp;{<br />
+  ByteArrayOutputStream&nbsp;stream&nbsp;=&nbsp;new&nbsp;ByteArrayOutputStream()&nbsp;;<br />
+  b.compress(CompressFormat.PNG,&nbsp;100,&nbsp;stream)&nbsp;;<br />
+  byte[]&nbsp;byteArray&nbsp;=&nbsp;stream.toByteArray()&nbsp;;<br />
+  return&nbsp;byteArray&nbsp;;<br />
+}<br />
+[/sourcecode]<br />
+After we create a instance of ByteArrayOutputStream, through compress method of Bitmap we get the compressed bimap out.<br />
+2. byte to bitmap<br />
+[sourcecode language="java"]<br />
+public&nbsp;Bitmap&nbsp;byteArrayToBitmap(byte[]&nbsp;byteArray)&nbsp;{&nbsp;&nbsp;<br />
+  Bitmap&nbsp;bitmap&nbsp;=&nbsp;BitmapFactory.decodeByteArray(byteArray,&nbsp;0,byteArray.length<br />
+&nbsp;)&nbsp;;&nbsp;<br />
+  return&nbsp;bitmap&nbsp;;&nbsp;&nbsp;<br />
+}&nbsp;<br />
+[/sourcecode]<br />
+&nbsp;</p>

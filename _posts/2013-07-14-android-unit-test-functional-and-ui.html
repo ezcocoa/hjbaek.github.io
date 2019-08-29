@@ -1,0 +1,36 @@
+---
+layout: post
+status: publish
+published: true
+title: Android > Unit Test Functional and UI
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1817
+wordpress_url: http://ezcocoa.com/?p=1817
+date: '2013-07-14 05:06:11 +0900'
+date_gmt: '2013-07-14 05:06:11 +0900'
+categories:
+- Android
+tags:
+- android
+- studio
+- test
+- unit
+comments: []
+---
+<p>These are what i referenced.<br />
+- http://stackoverflow.com/questions/16586409/how-can-i-create-tests-in-android-studio<br />
+- http://www.vogella.com/articles/AndroidTesting/article.html#activity_testing1<br />
+- http://tools.android.com/recent/androidstudio018released<br />
+Edit: As of 0.1.8 this is now supported in the IDE.<br />
+Following the Android Gradle Plugin User Guide I was able to get tests working on the command line by performing the following steps on a newly created project (I used the default 'com.example.myapplication' package):<br />
+1. Add a src/instrumentTest/java directory for the tests<br />
+2. Add a test class (extending ActivityTestCase) in the package com.example.myapplication.test<br />
+3. Start a virtual device<br />
+4. On the command line (in the MyApplicationProject/MyApplication directory) use the command '../gradlew connectedInstrumentTest'<br />
+This ran my tests and placed the test results in MyApplicationProject/MyApplication/build/reports/instrumentTests/connected. I'm new to testing Android apps, but it seem to work fine.</p>

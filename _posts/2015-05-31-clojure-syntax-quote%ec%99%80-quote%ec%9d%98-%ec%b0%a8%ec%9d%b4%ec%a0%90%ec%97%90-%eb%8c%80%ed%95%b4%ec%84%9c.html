@@ -1,0 +1,41 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure - ` syntax-quote와 &#039; quote의 차이점에 대해서
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: 'Clojure - ` syntax-quote와 '' quote의 차이점에 대해서
+
+'
+wordpress_id: 2474
+wordpress_url: http://ezcocoa.com/?p=2474
+date: '2015-05-31 08:09:35 +0900'
+date_gmt: '2015-05-31 08:09:35 +0900'
+categories:
+- Clojure
+tags:
+- quote
+- syntax-quote
+- different
+- 차이
+comments: []
+---
+<p><code>&#96;</code>syntax-quote와 <code>'</code>quote의 차이점에 대해서 알아보자.</p>
+<p>첫번 째 syntax-quote는 namespace를 반환한다.<br />
+<code>user>'x<br />
+x</p>
+<p>user>&#96;x<br />
+user/x</code></p>
+<p>두번 째 syntax-quote는 <code>~</code>unquote 또는 <code>~@</code>unquote splicing 매크로를 사용할 수 있다.</p>
+<p><code>user> &#96;(this ~(symbol (str "i" "s" &#45; "cool")))<br />
+(user/this is-cool)</p>
+<p>user> '(this ~(symbol (str "i" "s" &#45; "cool")))<br />
+(this (clojure.core/unquote (symbol (str "i" "s" &#45; "cool"))))</code></p>
+<p>위와 같이 두가지 차이점을 알수 있었다. 더 자세한 내용은 아래의 링크를 통해서 확인 할 수 있다.</p>
+<p><a href="http://blog.8thlight.com/colin-jones/2012/05/22/quoting-without-confusion.html">reference</a></p>

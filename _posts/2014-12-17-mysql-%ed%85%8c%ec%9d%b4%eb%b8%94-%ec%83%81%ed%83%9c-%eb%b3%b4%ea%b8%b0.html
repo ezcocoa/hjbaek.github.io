@@ -1,0 +1,37 @@
+---
+layout: post
+status: publish
+published: true
+title: MYSQL - 테이블 상태 보기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2386
+wordpress_url: http://ezcocoa.com/?p=2386
+date: '2014-12-17 00:42:32 +0900'
+date_gmt: '2014-12-17 00:42:32 +0900'
+categories:
+- MySQL
+tags:
+- table
+- mysql
+- sql
+- 인코딩
+- encoding
+comments: []
+---
+<h3>테이블에 대한 정보 보기</h3>
+<pre class="sql">
+SHOW TABLE STATUS
+</pre>
+<p><strong>테이블 디자인</strong></p>
+<pre class="sql">DESCRIBE table</pre>
+<h3>테이블 인코딩 타입 바꾸기</h3>
+<pre class="sql">
+ALTER DATABASE databasename CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+ALTER TABLE tablename CONVERT TO CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+</pre>

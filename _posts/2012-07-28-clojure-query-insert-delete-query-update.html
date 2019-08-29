@@ -1,0 +1,58 @@
+---
+layout: post
+status: publish
+published: true
+title: Clojure - Query (Insert &amp; Delete &amp; Query &amp; update)
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: Clojure+Mysql 에서 사용하는 기본적인 Query를 설명합니다.
+wordpress_id: 1597
+wordpress_url: http://ezcocoa.com/?p=1597
+date: '2012-07-28 14:18:05 +0900'
+date_gmt: '2012-07-28 14:18:05 +0900'
+categories:
+- Clojure
+tags:
+- update
+- Clojure
+- db
+- query
+- delete
+- insert
+- search
+comments: []
+---
+<p>테이블명은 'users' 이며 두가지의 컬럼(fname, age)을 가지고 있습니다.</p>
+<h4>1. 데이터 추가하기</h4>
+<p>[sourcecode language="clojure"]<br />
+(insert-values<br />
+ :users<br />
+ ["fname", "age"]<br />
+ ["hojun", "27"])<br />
+[/sourcecode]</p>
+<h4>2. 데이터 수정하기</h4>
+<p>[sourcecode language="clojure"]<br />
+(update-values<br />
+ :users<br />
+ ["fname=?"<br />
+  "hojun"]<br />
+ {:age "28"})<br />
+[/sourcecode]</p>
+<h4>3. 데이터 검색하기</h4>
+<p>[sourcecode language="clojure"]<br />
+(with-query-results<br />
+  results<br />
+  ["select fname from users"]<br />
+  (doall results))<br />
+[/sourcecode]</p>
+<h4>4. 데이터 삭제하기</h4>
+<p>[sourcecode language="clojure"]<br />
+(delete-rows<br />
+ :users<br />
+ ["fname=?ezcocoa"])<br />
+[/sourcecode]</p>

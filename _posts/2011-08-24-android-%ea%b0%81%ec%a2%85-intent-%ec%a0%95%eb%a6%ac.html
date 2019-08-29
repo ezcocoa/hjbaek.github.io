@@ -1,0 +1,135 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Android] 각종 Intent 정리"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 921
+wordpress_url: http://ezcocoa.com/?p=921
+date: '2011-08-24 10:50:45 +0900'
+date_gmt: '2011-08-24 10:50:45 +0900'
+categories:
+- Android
+tags:
+- intent
+- used
+- using
+- 각종
+- 사용법
+- 인텐드
+comments: []
+---
+<p>출처 : http://snipt.net/Martin/tag/android<br />
+[sourcecode language="JAVA"]<br />
+//show webapp:<br />
+Uri uri = Uri.parse("http://www.google.com");<br />
+Intent it  = new Intent(Intent.ACTION_VIEW,uri);<br />
+startActivity(it);<br />
+//show maps:<br />
+Uri uri = Uri.parse("geo:38.899533,-77.036476");<br />
+Intent it = new Intent(Intent.Action_VIEW,uri);<br />
+startActivity(it);<br />
+//show ways<br />
+Uri uri = Uri.parse("http://maps.google.com/maps?f=d&amp;saddr=startLat%20startLng&amp;daddr=endLat%20endLng&amp;hl=en");<br />
+Intent it = new Intent(Intent.ACTION_VIEW,URI);<br />
+startActivity(it);<br />
+//call dial program<br />
+Uri uri = Uri.parse("tel:xxxxxx");<br />
+Intent it = new Intent(Intent.ACTION_DIAL, uri);<br />
+startActivity(it);<br />
+Uri uri = Uri.parse("tel.xxxxxx");<br />
+Intent it =new Intent(Intent.ACTION_CALL,uri);<br />
+//don't forget add this config:<uses-permission id="android.permission.CALL_PHONE" /><br />
+//send sms/mms<br />
+//call sender program<br />
+Intent it = new Intent(Intent.ACTION_VIEW);<br />
+it.putExtra("sms_body", "The SMS text");<br />
+it.setType("vnd.android-dir/mms-sms");<br />
+startActivity(it);<br />
+//send sms<br />
+Uri uri = Uri.parse("smsto:0800000123");<br />
+Intent it = new Intent(Intent.ACTION_SENDTO, uri);<br />
+it.putExtra("sms_body", "The SMS text");<br />
+startActivity(it);<br />
+//send mms<br />
+Uri uri = Uri.parse("content://media/external/images/media/23");<br />
+Intent it = new Intent(Intent.ACTION_SEND);<br />
+it.putExtra("sms_body", "some text");<br />
+it.putExtra(Intent.EXTRA_STREAM, uri);<br />
+it.setType("image/png");<br />
+startActivity(it);<br />
+//send email<br />
+Uri uri = Uri.parse("mailto:xxx@abc.com");<br />
+Intent it = new Intent(Intent.ACTION_SENDTO, uri);<br />
+startActivity(it);<br />
+Intent it = new Intent(Intent.ACTION_SEND);<br />
+it.putExtra(Intent.EXTRA_EMAIL, "me@abc.com");<br />
+it.putExtra(Intent.EXTRA_TEXT, "The email body text");<br />
+it.setType("text/plain");<br />
+startActivity(Intent.createChooser(it, "Choose Email Client"));<br />
+Intent it=new Intent(Intent.ACTION_SEND);<br />
+String[] tos={"me@abc.com"};<br />
+String[] ccs={"you@abc.com"};<br />
+it.putExtra(Intent.EXTRA_EMAIL, tos);<br />
+it.putExtra(Intent.EXTRA_CC, ccs);<br />
+it.putExtra(Intent.EXTRA_TEXT, "The email body text");<br />
+it.putExtra(Intent.EXTRA_SUBJECT, "The email subject text");<br />
+it.setType("message/rfc822");<br />
+startActivity(Intent.createChooser(it, "Choose Email Client"));<br />
+//add extra<br />
+Intent it = new Intent(Intent.ACTION_SEND);<br />
+it.putExtra(Intent.EXTRA_SUBJECT, "The email subject text");<br />
+it.putExtra(Intent.EXTRA_STREAM, "file:///sdcard/mysong.mp3");<br />
+sendIntent.setType("audio/mp3");<br />
+startActivity(Intent.createChooser(it, "Choose Email Client"));<br />
+//play media<br />
+Intent it = new Intent(Intent.ACTION_VIEW);<br />
+Uri uri = Uri.parse("file:///sdcard/song.mp3");<br />
+it.setDataAndType(uri, "audio/mp3");<br />
+startActivity(it);<br />
+Uri uri = Uri.withAppendedPath(MediaStore.Audio.Media.INTERNAL_CONTENT_URI, "1");<br />
+Intent it = new Intent(Intent.ACTION_VIEW, uri);<br />
+startActivity(it);<br />
+//Uninstall<br />
+Uri uri = Uri.fromParts("package", strPackageName, null);<br />
+Intent it = new Intent(Intent.ACTION_DELETE, uri);<br />
+startActivity(it);<br />
+//uninstall apk<br />
+Uri uninstallUri = Uri.fromParts("package", "xxx", null);<br />
+returnIt = new Intent(Intent.ACTION_DELETE, uninstallUri);<br />
+//install apk<br />
+Uri installUri = Uri.fromParts("package", "xxx", null);<br />
+returnIt = new Intent(Intent.ACTION_PACKAGE_ADDED, installUri);<br />
+//play audio<br />
+Uri playUri = Uri.parse("file:///sdcard/download/everything.mp3");<br />
+returnIt = new Intent(Intent.ACTION_VIEW, playUri);<br />
+//send extra<br />
+Intent it = new Intent(Intent.ACTION_SEND);<br />
+it.putExtra(Intent.EXTRA_SUBJECT, "The email subject text");<br />
+it.putExtra(Intent.EXTRA_STREAM, "file:///sdcard/eoe.mp3");<br />
+sendIntent.setType("audio/mp3");<br />
+startActivity(Intent.createChooser(it, "Choose Email Client"));<br />
+//search<br />
+Uri uri = Uri.parse("market://search?q=pname:pkg_name");<br />
+Intent it = new Intent(Intent.ACTION_VIEW, uri);<br />
+startActivity(it);<br />
+//where pkg_name is the full package path for an application<br />
+//show program detail page<br />
+Uri uri = Uri.parse("market://details?id=app_id");<br />
+Intent it = new Intent(Intent.ACTION_VIEW, uri);<br />
+startActivity(it);<br />
+//where app_id is the application ID, find the ID<br />
+//by clicking on your application on Market home<br />
+//page, and notice the ID from the address bar<br />
+//search google<br />
+Intent intent = new Intent();<br />
+intent.setAction(Intent.ACTION_WEB_SEARCH);<br />
+intent.putExtra(SearchManager.QUERY,"searchString")<br />
+startActivity(intent);<br />
+[/sourcecode]</p>

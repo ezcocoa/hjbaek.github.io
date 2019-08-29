@@ -1,0 +1,62 @@
+---
+layout: post
+status: publish
+published: true
+title: iPhone - Registering Custom URL Schemes
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: "<strong>Custom URL 등록 방법을 소개합니다.</strong>"
+wordpress_id: 1005
+wordpress_url: http://ezcocoa.com/?p=1005
+date: '2011-09-22 00:42:14 +0900'
+date_gmt: '2011-09-22 00:42:14 +0900'
+categories:
+- iPhone
+tags:
+- iphone
+- custom
+- cheme
+- urls
+comments: []
+---
+<p>1. Info.plist 파일을 엽니다.<br />
+2. 속성을 하나 추가하여 'URL types'로 변경합니다. (기존에 존재한다면 만들지 않아도 됩니다.)<br />
+3. 하위로 단계로 Item 1이 제공되는데 이것은 URL identifier를 위해 존재합니다.<br />
+URL identifier항목에 뒤바뀐 도메인 이름을 입력합니다.<br />
+ex) com.ezcocoa.example<br />
+4. 그리고 Item1 하위로 하나의 속성을 추가합니다. 이 속성을 'URL Schemes'로 변경합니다.<br />
+속성을 변경하고 값을 입력합니다. ex) ezcocoa<br />
+모두 다 입력하신 후 text editor 모드로 보았을 경우 아래와 같이 확인이 가능합니다.<br />
+[code]<br />
+CFBundleURLTypes<br />
+  CFBundleURLSchemes<br />
+    ezcocoa<br />
+  CFBundleURLName<br />
+    com.ezcocoa.ezcocoa<br />
+[/code]<br />
+2. Custom URL 핸들링 하기.<br />
+이제 새로운 Custom URL이 등록되었습니다.<br />
+아래와 같은 형식으로 다른앱에서 핸들링이 가능합니다.<br />
+[code]<br />
+ezcocoa://<br />
+ezcocoa://some/path/here<br />
+ezcocoa://?foo=1&amp;amp;bar=2<br />
+ezcocoa://some/path/here?foo=1&amp;amp;bar=2<br />
+[/code]<br />
+위 메세지를 받기 위해 하나의 작업이 필요합니다.<br />
+아이폰 SDK는 URL에 대한 응답으로 앱이 런칭되었을 때 UIApplicationDelegate에게 메세지를 보냅니다.<br />
+메시지를 받기 위한 델리게이트 구현는 아래와 같습니다.<br />
+[sourcecode language="ObjC"]<br />
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {<br />
+  // Do something with the url here<br />
+}<br />
+[/sourcecode]<br />
+위 ApplicationDelegate에서 필요한 추가 행동을 적어주어 사용을 하시면 됩니다.<br />
+다음부터는 이미지를 첨부하여 좀 더 쉽게 설명을 하도록 하겠습니다.<br />
+이상~~~<br />
+출처 ; <a href="http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html">링크</a></p>

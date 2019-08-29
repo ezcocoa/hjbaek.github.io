@@ -1,0 +1,215 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Lisp] Tutorial"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 779
+wordpress_url: http://ezcocoa.com/?p=779
+date: '2011-06-21 12:05:42 +0900'
+date_gmt: '2011-06-21 12:05:42 +0900'
+categories:
+- Clojure
+tags:
+- tutorial
+- emacs
+- lisp
+comments: []
+---
+<p>출처 : http://www.cc.gatech.edu/classes/AY2005/cs3600_fall/resources/lispTutorial.html<br />
+<strong>Simple Lisp Tutorial</strong><br />
+Data Structure<br />
+List<br />
+Example:<br />
+'(a b c d e)<br />
+'(1 2 4 5)<br />
+'((a b) (c d) (1 3))<br />
+Array<br />
+Array is a list of demensions.<br />
+Examples:<br />
+>(setq x<br />
+	(make-array '(4 3)<br />
+            :initial-contents<br />
+            '((a b c)<br />
+             (1 2 3)<br />
+             (d e f)<br />
+             (3 1 2))))<br />
+#2A ((a b c) (1 2 3) (d e f) (3 1 2))<br />
+>(aref x 0 0)<br />
+a<br />
+>(setq y (make-array 3 :initial-contents '(a b c)))<br />
+#(a b c)<br />
+>(setf (aref y 0) 'd)<br />
+d<br />
+>y<br />
+#(d b c)<br />
+t and nil<br />
+t means true in Lisp.<br />
+nil means false in Lisp.<br />
+Functions<br />
+(functionName arg1 � arg 2)<br />
+Functions to control list<br />
+[function]: car, cdr<br />
+car: return the first element of a list<br />
+cdr: return the tail of a list<br />
+Example:<br />
+>(setq x �(a b c))<br />
+(a b c)<br />
+>(car x)<br />
+a<br />
+>(cdr x)<br />
+(b c)<br />
+[function]: cons<br />
+cons is the primitive function to create a new cons whose car is x and whose cdr is y. For example:<br />
+Examples:<br />
+(cons 'a 'b) => (a . b)<br />
+(cons 'a (cons 'b (cons 'c '()))) => (a b c)<br />
+(cons 'a '(b c d)) => (a b c d)<br />
+[function]: nth<br />
+cons returns the nth element of list<br />
+Examples:<br />
+(nth 0 '(foo bar gack)) => foo<br />
+(nth 1 '(foo bar gack)) => bar<br />
+(nth 3 '(foo bar gack)) => ()<br />
+[function]: list<br />
+list constructs and returns a list of its arguments. For example:<br />
+Examples:<br />
+(list 3 4 'a (car '(b . c)) (+ 6 -2)) => (3 4 a b 4)<br />
+(list) => ()<br />
+(list (list 'a 'b) (list 'c 'd 'e)) => ((a b) (c d e))<br />
+[function]: mapcar<br />
+mapcar operates on successive elements of the lists.<br />
+Examples:<br />
+>(mapcar #'+ '(1 2 3) '(4 5 6))<br />
+(5 7 9)<br />
+Control Functions� Do, While, Repeat, if, cond<br />
+[function]: Do<br />
+Example:<br />
+>(setq i 3)<br />
+>(do ((i 1 (+ 1 i)))<br />
+     ((> i 5))<br />
+    (print i))<br />
+1<br />
+2<br />
+3<br />
+4<br />
+5<br />
+[function]: if<br />
+if test then [else]<br />
+Example:<br />
+>(setq x 3)<br />
+>(if (= x 3) (print "x is equal to 3") (print "x is unequal to 3"))<br />
+x is equal to 3<br />
+[function]: cond<br />
+A cond form has a number (possibly zero) of clauses, which are lists of forms. Each clause consists of a test followed by zero or more consequents.<br />
+(cond (test-1 consequent-1-1 consequent-1-2 ...)<br />
+      (test-2)<br />
+      (test-3 consequent-3-1 ...)<br />
+      ... )<br />
+Example:<br />
+>(setq a 5)<br />
+>(cond<br />
+   ((evenp a) a)        ;if a is even return a<br />
+   ((> a 7) (/ a 2))   ;else if a is bigger than 7 return a/2<br />
+   ((< a 5) (- a 1))   ;else if a is smaller than 5 return a-1<br />
+   (t 17))<br />
+17<br />
+Predicate and Equality<br />
+(predicate arg)<br />
+[function]: null<br />
+[function]: listp<br />
+[function]: intp<br />
+[function]: floatp<br />
+Example:<br />
+>(setq x 'a)<br />
+>(cond<br />
+((null x) (print "x is null"))<br />
+((listp x) (print "x is a list"))<br />
+((atom x) (print "x is an atom"))<br />
+((floatp x) (print "x is float")))<br />
+x is an atom<br />
+[function]: =<br />
+= denote numerical euqality.<br />
+[function]: eq<br />
+eq denote two symbols' equality.<br />
+[function]: equal<br />
+Two copies of the same list are not eq, but they are equal.<br />
+Examples:<br />
+> (eq 'a 'a)<br />
+T<br />
+> (eq 'a 'b)<br />
+NIL<br />
+> (= 3 3)<br />
+T<br />
+> (= 3 4)<br />
+NIL<br />
+> (eq '(a b c) '(a b c))<br />
+NIL<br />
+> (equal '(a b c) '(a b c))<br />
+T<br />
+Output functions<br />
+[function]: print<br />
+[function]: format<br />
+Examples:<br />
+>(print "hello world")<br />
+hello world<br />
+>(setq x 2)<br />
+(format t "x = ~s ~%" x)<br />
+2<br />
+functions and misc<br />
+[function]: let<br />
+A let form can be used to execute a series of forms with specified variables bound to specified values. It can be used to specify the local variables<br />
+(let ((var1 value1)<br />
+      (var2 value2)<br />
+      ...<br />
+      (varm valuem))<br />
+  body1<br />
+  body2<br />
+  ...<br />
+  bodyn)<br />
+Examples:<br />
+>(defun lisp-let (a)<br />
+  (print a)<br />
+  (let<br />
+      ((a 4))<br />
+    (print a)))<br />
+>(lisp-let 5)<br />
+5<br />
+4<br />
+[function]: progn & prog1<br />
+progn{form}* :<br />
+progn 구조는 왼쪽에서 오른쪽으로 순서대로 순차적으로 실행하고 숫자의 형태를 가집니다. 마지막 값은 버려지게 됩니다.<br />
+prog1 first {form}*:<br />
+그에 반해 prog1 progn과 비슷하지만 첫번째 폼에서의 값을 반환합니다.<br />
+<strong>Examples:</strong><br />
+[code]<br />
+>(setq x 3)<br />
+3<br />
+>(progn<br />
+	(setq x 5)<br />
+	(+ x 3))<br />
+8<br />
+>(prog1<br />
+	(setq x 5)<br />
+	(+ x 3))<br />
+5<br />
+[/code]<br />
+Self-defined Functions<br />
+Example:<br />
+>(defun printString (a)<br />
+	(print t a))<br />
+ps<br />
+>(printString '(a b c))<br />
+(a b c)<br />
+Debug Functions<br />
+[function] :zoom<br />
+[function] :zoom :verbose t<br />
+Useful Link<br />
+	&bull;	A one-page summary of the most basic Lisp constructs<br />
+	&bull;	Lisp index reference</p>

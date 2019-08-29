@@ -1,0 +1,45 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Emacs] Create a directory within emacs."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+excerpt: http://stackoverflow.com/questions/155507/how-do-i-create-a-directory-from-within-emacs
+wordpress_id: 909
+wordpress_url: http://ezcocoa.com/?p=909
+date: '2011-08-18 06:06:48 +0900'
+date_gmt: '2011-08-18 06:06:48 +0900'
+categories:
+- Emacs
+tags:
+- emacs
+- create
+- 생성
+- directory
+- 디렉토리
+comments: []
+---
+<p>* to create the directory dir/to/create, type:<br />
+[code]<br />
+M-x make-directory RET dir/to/create RET[/code]<br />
+* to create directories dir/parent1/node and dir/parent2/node, type:<br />
+[code]<br />
+M-! mkdir -p dir/parent{1,2}/node RET[/code]<br />
+It assumes that Emacs's inferior shell is bash.<br />
+* or in a Dired mode<br />
++<br />
+It doesn't create nonexistent parent directories.<br />
+Example:<br />
+[code]<br />
+C-x d *.py RET ; shows python source files in the CWD in `Dired` mode<br />
++ test RET     ; create `test` directory in the CWD[/code]<br />
+CWD stands for Current Working Directory.<br />
+* or just create a new file with non-existing parent directories using C-x C-f and type:<br />
+[code]<br />
+M-x make-directory RET RET[/code]</p>

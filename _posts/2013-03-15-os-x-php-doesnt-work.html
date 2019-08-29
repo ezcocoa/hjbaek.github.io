@@ -1,0 +1,45 @@
+---
+layout: post
+status: publish
+published: true
+title: OS X - PHP doesn&#039;t work.
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 1777
+wordpress_url: http://ezcocoa.com/?p=1777
+date: '2013-03-15 23:55:01 +0900'
+date_gmt: '2013-03-15 23:55:01 +0900'
+categories:
+- OSX
+tags:
+- web
+- php
+- server
+- os x
+comments: []
+---
+<p>When I executed Web-Sever, It didn't work.</p>
+<p>So I confirm to use following words.</p>
+<pre><code> # sudo apachectl configtest
+</code></pre>
+<p>I saw following error message.</p>
+<p>httpd: Syntax error on line 117 of /private/etc/apache2/httpd.conf: Cannot load /usr/libexec/apache2/libphp5.so into server: dlopen(/usr/libexec/apache2/libphp5.so, 10): Library not loaded: @loader_path/../lib/libcrypto.dylib\n  Referenced from: /usr/lib/libpq.5.dylib\n  Reason: Incompatible library version: libpq.5.dylib requires version 1.0.0 or later, but libcrypto.0.9.8.dylib provides version 0.9.8</p>
+<p>It was easy to solve.</p>
+<p>Just check what you are using library for web server.</p>
+<pre><code> # ls -la /usr/lib/libssl.dylib
+</code></pre>
+<p>lrwxr-xr-x  1 root  wheel  33 Aug 17 12:25 /usr/lib/libssl.dylib -> /opt/local/lib/libssl.1.0.0.dylib</p>
+<pre><code> # ls -la /usr/lib/libcrypto.dylib
+</code></pre>
+<p>lrwxr-xr-x  1 root  wheel  36 Aug 17 12:28 /usr/lib/libcrypto.dylib -> /opt/local/lib/libcrypto.1.0.0.dylib</p>
+<p>and then Just do it.</p>
+<p>sudo ln -s /path/to/postgres/install/lib/libcrypto.dylib /usr/lib/libcrypto.dylib<br />
+sudo ln -s /path/to/postgres/install/lib/libssl.dylib /usr/lib/libssl.dylib</p>
+<p>Actually my original directory is '/opt/local/lib'.</p>
+<p>I copied and pasted following site.</p>
+<p>http://stackoverflow.com/questions/11127486/rails-postgres-error-reason-incompatible-library-version-libpq-5-dylib-requ</p>

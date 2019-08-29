@@ -1,0 +1,47 @@
+---
+layout: post
+status: publish
+published: true
+title: "[Tool] VisiualStudio2010에서 Windows Phone 개발환경 설정하기."
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 230
+wordpress_url: http://ezcocoa.com/?p=230
+date: '2010-11-24 06:51:54 +0900'
+date_gmt: '2010-11-24 06:51:54 +0900'
+categories:
+- Window Mobile 7
+tags:
+- '2010'
+- developer
+- mobile
+- phone
+- VisualStudio
+- vs
+- window
+comments: []
+---
+<p>1) VS를 종료한 상태에서 자신의 PC가 32비트용인지 64비트용인지 구분하여서 아래의 경로로 들어갑니다.<br />
+&nbsp; [x86(32비트) 사용자]<br />
+&nbsp; C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\ProjectTemplates\CSharp\Silverlight for Windows Phone<br />
+&nbsp; 와<br />
+&nbsp; C:\Program Files\Microsoft Visual Studio 10.0\Common7\IDE\ItemTemplates\CSharp\Silverlight for Windows Phone<br />
+&nbsp; [x64(64비트) 사용자]<br />
+&nbsp; C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ProjectTemplates\CSharp\Silverlight for Windows Phone<br />
+&nbsp; 와<br />
+&nbsp; C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\ItemTemplates\CSharp\Silverlight for Windows Phone<br />
+2) 두 폴더 모두 1033이라는 폴더가 있을것입니다. 이 1033이라는 폴더를 1042로 이름을 변경합니다.<br />
+3) 그리고 Visual Studio 2010의 명령 프롬프트를 실행시킵니다.<br />
+&nbsp; 시작 > 모든 프로그램 > Microsoft Visual Studio 2010 > Visual Studio Tools > Visual Studio 명령 프롬프트<br />
+&nbsp;<br />
+4) 명령프롬프트에서 아래의 두 명령어 수행합니다.<br />
+&nbsp; devenv /installvstempleates<br />
+&nbsp; devnev /setup<br />
+5) VS를 구동시키고 프로젝트가 확인된것을 확인합니다.<br />
+&nbsp; 새 프로젝트 창 좌측에서 다음 선택 --> Visual C# > Silverlight for Windows Phone<br />
+&nbsp; 중앙 프로젝트 탬플릿 창에서 Windows Phone Application 확인</p>

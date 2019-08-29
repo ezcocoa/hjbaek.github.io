@@ -1,0 +1,45 @@
+---
+layout: post
+status: publish
+published: true
+title: "[iPhone] 앱 스토어에서 구매 및 리뷰 페이지 열기"
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 825
+wordpress_url: http://ezcocoa.com/?p=825
+date: '2011-07-06 08:40:10 +0900'
+date_gmt: '2011-07-06 08:40:10 +0900'
+categories:
+- iPhone
+tags:
+- app
+- open
+- page
+- review
+- Store
+- 구매
+- 리뷰
+- 스토어
+- 앱
+- 열기
+comments: []
+---
+<p>- 앱 구매 페이지 바로 열기 URL<br />
+[code]<br />
+itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=<application id>&amp;onlyLatestVersion=true&amp;pageNumber=0&amp;sortOrdering=1&amp;type=Purple+Software<br />
+[/code]<br />
+- 앱 리뷰 페이지 바로 열기 URL<br />
+[code]<br />
+http://itunes.apple.com/app/id<application id>?mt=8<br />
+[/code]<br />
+application id정보는 개발자 계정 iTunes Connect페이지에서 확인 할 수 있다.<br />
+<strong>Example</strong><br />
+[sourcecode language="Objc"]<br />
+NSURL *url = [NSURL URLWithString:@"http://itunes.apple.com/app/id12343455?mt=8"];<br />
+[[UIApplication sharedApplication] openURL:url];<br />
+[/sourcecode]</p>

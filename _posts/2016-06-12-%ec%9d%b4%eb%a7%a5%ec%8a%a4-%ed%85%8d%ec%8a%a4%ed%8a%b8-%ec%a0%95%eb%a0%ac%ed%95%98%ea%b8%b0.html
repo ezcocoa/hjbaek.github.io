@@ -1,0 +1,78 @@
+---
+layout: post
+status: publish
+published: true
+title: 이맥스 - 텍스트 정렬하기
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2679
+wordpress_url: http://ezcocoa.com/?p=2679
+date: '2016-06-12 06:06:09 +0900'
+date_gmt: '2016-06-12 06:06:09 +0900'
+categories:
+- Emacs
+tags:
+- emacs
+- align
+- text
+- regexp
+comments: []
+---
+<p>날씨 탓일까요? 뭔가 막혀있는 느낌이 자꾸 드네요. 이럴 땐 역시나 무엇인가에 몰두하는게 가장 좋더라고요.</p>
+<h3>이맥스 - 텍스트 정렬하기</h3>
+<p>이건 왜 몰랐을까? 아래와 같이 정렬되지 않은 텍스트를 일정한 규칙에 의해서 정렬할때 <strong>align-regexp</strong>기능을 사용할 수 있습니다.</p>
+<pre>
+rooney = 21
+haha = 20
+ray = 17
+</pre>
+<p>만약 문자 "=" 을 기준으로 정렬을 하고 싶다면, <strong>align-regexp</strong>을 치고 문자로 "="을 입력해주세요.</p>
+<p>결과는 아래와 같이 정렬된 것을 볼 수 있습니다.</p>
+<pre>
+rooney = 21
+haha   = 20
+ray    = 17
+</pre>
+<hr />
+<p>약간 고급스럽게 아래와 같이 사용 할 수 있습니다.</p>
+<pre>
+California 423,970 km&sup2;
+Taiwan 36,008 km&sup2;
+Japan 377,944 km&sup2;
+Germany 357,021 km&sup2;
+Iraq 438,317 km&sup2;
+Iran 1,648,195 km&sup2;
+Korea (North+South) 219,140 km&sup2;
+Mexico 1,964,375 km&sup2;
+</pre>
+<p>위에 것을 아래와 같이</p>
+<pre>
+Taiwan                 36,008 km&sup2;
+Korea (North+South)   219,140 km&sup2;
+Japan                 377,944 km&sup2;
+Germany               357,021 km&sup2;
+California            423,970 km&sup2;
+Iraq                  438,317 km&sup2;
+Iran                1,648,195 km&sup2;
+Mexico              1,964,375 km&sup2;
+</pre>
+<p>먼저 전체 텍스트를 영역 지정하고, CTRL+u 그리고 나서 <strong>align-regex</strong>명령을 입력합니다. 정규식 입력 란에</p>
+<pre>.* \([0-9,]+\).*</pre>
+<p>을 입력하고, 그룹에 대해서는</p>
+<pre>-1</pre>
+<p>, 공백은</p>
+<pre>1</pre>
+<p>을 입력합니다. 반복 실행은</p>
+<pre>n</pre>
+<p>을 입력해줍니다.</p>
+<p>위와 동일한 효과를 가질 수 있는 두가지 명렁어가 더 있습니다.</p>
+<ul>
+<li>sort-regexp-fields</li>
+<li>sort-columns</li>
+</ul>
+<p>급하게 잡힌 약속에 나가봐야해서 이만 쓰겠습니다.</p>
