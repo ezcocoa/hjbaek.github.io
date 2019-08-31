@@ -1,0 +1,35 @@
+<p>
+&#x2014;
+title: algorism - two sum
+subtitle: 클로저를 이용한 two sum 알고리즘에 대해서 설명합니다.
+&#x2014;
+two sum 문제는 합의 수에 사용되었던 두 개의 수를 구하는 문제이다.
+</p>
+
+<p>
+예) 합의 수는 22이고, 숫자열이 [3 8 14 7 2  5 10 1] 이라고 가정했을때,
+</p>
+
+<p>
+결과값은 [1,2]가 된다. 여기서 1,2의 값은 앞의 숫자 배열의 인덱스이다.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure" id="org9206830"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">two-sum</span> <span style="color: #BFEBBF;">[</span>t coll<span style="color: #BFEBBF;">]</span>
+ <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">let</span> <span style="color: #D0BF8F;">[</span>ns <span style="color: #93E0E3;">(</span>apply merge <span style="color: #9FC59F;">(</span>map-indexed <span style="color: #94BFF3;">(</span><span style="color: #F0DFAF; font-weight: bold;">fn</span> <span style="color: #E0CF9F;">[</span>idx v<span style="color: #E0CF9F;">]</span>
+                                     <span style="color: #E0CF9F;">{</span>v idx<span style="color: #E0CF9F;">}</span><span style="color: #94BFF3;">)</span> coll<span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">]</span>
+  <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">loop</span> <span style="color: #93E0E3;">[</span>l ns
+         f <span style="color: #9FC59F;">(</span>first l<span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">]</span>
+   <span style="color: #93E0E3;">(</span><span style="color: #F0DFAF; font-weight: bold;">when</span> <span style="color: #9FC59F;">(</span>not <span style="color: #94BFF3;">(</span>seq? f<span style="color: #94BFF3;">)</span><span style="color: #9FC59F;">)</span>
+    <span style="color: #9FC59F;">(</span><span style="color: #F0DFAF; font-weight: bold;">let</span> <span style="color: #94BFF3;">[</span>r <span style="color: #E0CF9F;">(</span>- t <span style="color: #8FB28F;">(</span>first f<span style="color: #8FB28F;">)</span><span style="color: #E0CF9F;">)</span><span style="color: #94BFF3;">]</span>
+     <span style="color: #94BFF3;">(</span><span style="color: #F0DFAF; font-weight: bold;">if</span> <span style="color: #E0CF9F;">(</span>nil? <span style="color: #8FB28F;">(</span>l r<span style="color: #8FB28F;">)</span><span style="color: #E0CF9F;">)</span>
+      <span style="color: #E0CF9F;">(</span><span style="color: #F0DFAF; font-weight: bold;">recur</span> <span style="color: #8FB28F;">(</span>into <span style="color: #6CA0A3;">{}</span> <span style="color: #6CA0A3;">(</span>rest l<span style="color: #6CA0A3;">)</span><span style="color: #8FB28F;">)</span> <span style="color: #8FB28F;">(</span>first <span style="color: #6CA0A3;">(</span>rest l<span style="color: #6CA0A3;">)</span><span style="color: #8FB28F;">)</span><span style="color: #E0CF9F;">)</span>
+      <span style="color: #E0CF9F;">[</span><span style="color: #8FB28F;">(</span>second f<span style="color: #8FB28F;">)</span> <span style="color: #8FB28F;">(</span>l r<span style="color: #8FB28F;">)</span><span style="color: #E0CF9F;">]</span><span style="color: #94BFF3;">)</span><span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span>two-sum 22 <span style="color: #BFEBBF;">[</span>3 8 14 7 2  5 10 1<span style="color: #BFEBBF;">]</span><span style="color: #DCDCCC;">)</span> =&gt; <span style="color: #DCDCCC;">[</span>1 2<span style="color: #DCDCCC;">]</span>
+</pre>
+</div>
+
+<p>
+:algorizm:clojure:twosum:
+</p>
