@@ -1,7 +1,7 @@
 # --- General options --- #
 
 # Name of website
-title: Easy Cocoa of Rooney
+title: Easy Cocoa
 
 # Short description of your site
 description: I love programming
@@ -67,7 +67,7 @@ footer-link-col: "#404040"
 # Change all these values or delete the ones you don't want.
 # Important: you must keep the "name" parameter, everything else you can remove
 author:
-  name: Some Person
+  name: Hojun Rooney Baek
 
 # Select your active Social Network Links.
 # Uncomment the links you want to show in the footer and add your information to each link.
@@ -187,7 +187,7 @@ defaults:
       path: "" # all files
     values:
       layout: "page"
-      show-avatar: true
+      show-avatar: false
 
 # Use tags index page and make tags on each post clickable
 link-tags: true
