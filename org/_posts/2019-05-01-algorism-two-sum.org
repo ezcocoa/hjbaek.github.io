@@ -1,7 +1,6 @@
----
-title: algorism - two sum
-subtitle: 클로저를 이용한 two sum 알고리즘에 대해서 설명합니다.
----
+#+TITLE: algorism - two sum
+#+LAYOUT: posts
+#+TAGS: algorizm clojure twosum
 
 #+BEGIN_VERSE
 TWO SUM 문제는 합의 수에 사용되었던 두 개의 수를 구하는 문제이다.
@@ -26,5 +25,3 @@ TWO SUM 문제는 합의 수에 사용되었던 두 개의 수를 구하는 문�
 
 (two-sum 22 [3 8 14 7 2  5 10 1]) => [1 2]
 #+END_SRC
-
-:algorizm:clojure:twosum:
