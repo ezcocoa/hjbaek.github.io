@@ -1,0 +1,27 @@
+#+TITLE: algorism - two sum
+#+LAYOUT: posts
+#+TAGS: algorizm clojure twosum
+
+#+BEGIN_VERSE
+TWO SUM 문제는 합의 수에 사용되었던 두 개의 수를 구하는 문제이다.
+
+예) 합의 수는 22이고, 숫자열이 [3 8 14 7 2  5 10 1] 이라고 가정했을때,
+
+결과값은 [1,2]가 된다. 여기서 1,2의 값은 앞의 숫자 배열의 인덱스이다.
+#+END_VERSE
+
+#+NAME: two-sum
+#+BEGIN_SRC clojure
+(defn two-sum [t coll]
+ (let [ns (apply merge (map-indexed (fn [idx v]
+                                     {v idx}) coll))]
+  (loop [l ns
+         f (first l)]
+   (when (not (seq? f))
+    (let [r (- t (first f))]
+     (if (nil? (l r))
+      (recur (into {} (rest l)) (first (rest l)))
+      [(second f) (l r)]))))))
+
+(two-sum 22 [3 8 14 7 2  5 10 1]) => [1 2]
+#+END_SRC
