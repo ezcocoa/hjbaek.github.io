@@ -1,11 +1,7 @@
-#+STARTUP: shxowall indent
-#+STARTUP: hidestars
-#+BEGIN_HTML
 ---
 title: algorism - two sum
 subtitle: 클로저를 이용한 two sum 알고리즘에 대해서 설명합니다.
 ---
-#+END_HTML
 
 #+BEGIN_VERSE
 TWO SUM 문제는 합의 수에 사용되었던 두 개의 수를 구하는 문제이다.
