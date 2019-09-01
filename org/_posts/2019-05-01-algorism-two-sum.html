@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-09-01 Sun 14:19 -->
+<!-- 2019-09-01 Sun 14:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
@@ -252,20 +252,16 @@ subtitle: 클로저를 이용한 two sum 알고리즘에 대해서 설명합니�
 
 </div>
 
-<p>
-two sum 문제는 합의 수에 사용되었던 두 개의 수를 구하는 문제이다.
-</p>
-
-<p>
-예) 합의 수는 22이고, 숫자열이 [3 8 14 7 2  5 10 1] 이라고 가정했을때,
-</p>
-
-<p>
-결과값은 [1,2]가 된다. 여기서 1,2의 값은 앞의 숫자 배열의 인덱스이다.
+<p class="verse">
+two sum 문제는 합의 수에 사용되었던 두 개의 수를 구하는 문제이다.<br />
+<br />
+예) 합의 수는 22이고, 숫자열이 [3 8 14 7 2  5 10 1] 이라고 가정했을때,<br />
+<br />
+결과값은 [1,2]가 된다. 여기서 1,2의 값은 앞의 숫자 배열의 인덱스이다.<br />
 </p>
 
 <div class="org-src-container">
-<pre class="src src-clojure" id="orgc88b1af"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">two-sum</span> <span style="color: #BFEBBF;">[</span>t coll<span style="color: #BFEBBF;">]</span>
+<pre class="src src-clojure" id="orgf121e76"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">two-sum</span> <span style="color: #BFEBBF;">[</span>t coll<span style="color: #BFEBBF;">]</span>
  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">let</span> <span style="color: #D0BF8F;">[</span>ns <span style="color: #93E0E3;">(</span>apply merge <span style="color: #9FC59F;">(</span>map-indexed <span style="color: #94BFF3;">(</span><span style="color: #F0DFAF; font-weight: bold;">fn</span> <span style="color: #E0CF9F;">[</span>idx v<span style="color: #E0CF9F;">]</span>
                                      <span style="color: #E0CF9F;">{</span>v idx<span style="color: #E0CF9F;">}</span><span style="color: #94BFF3;">)</span> coll<span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">]</span>
   <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">loop</span> <span style="color: #93E0E3;">[</span>l ns
@@ -286,7 +282,7 @@ two sum 문제는 합의 수에 사용되었던 두 개의 수를 구하는 문�
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: hojun Baek</p>
-<p class="date">Created: 2019-09-01 Sun 14:19</p>
+<p class="date">Created: 2019-09-01 Sun 14:24</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
