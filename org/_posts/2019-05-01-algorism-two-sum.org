@@ -1,6 +1,9 @@
-#+TITLE: algorism - two sum
-#+LAYOUT: posts
-#+TAGS: algorizm clojure twosum
+---
+title:  algorism - two sum
+subtitle: TWO SUM 알고리즘 설명합니다.
+layout: posts
+tagss: [algorizm, clojure, twosum]
+---
 
 #+BEGIN_VERSE
 TWO SUM 문제는 합의 수에 사용되었던 두 개의 수를 구하는 문제이다.
