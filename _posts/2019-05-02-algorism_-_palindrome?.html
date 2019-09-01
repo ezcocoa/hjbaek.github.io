@@ -1,0 +1,43 @@
+---
+layout: post
+status: publish
+published: true
+title: algorism - palindrome?
+author:
+  display_name: hojunbaek
+  login: hojunbaek
+  email: mr.hjbaek@gmail.com
+  url: ''
+author_login: hojunbaek
+author_email: mr.hjbaek@gmail.com
+wordpress_id: 2892
+wordpress_url: http://ezcocoa.com/?p=2892
+date: '2019-05-02 00:33:46 +0900'
+date_gmt: '2019-05-01 15:33:46 +0900'
+categories:
+- Algorism
+tags: []
+comments: []
+---
+
+<p class="verse">
+palindrome 알고리즘 문제이다.<br />
+일렬의 숫자를 뒤집어도 같은 수가 나오는지 판단<br />
+예) o: 121 &gt; 121, 12344321 &gt; 12344321<br />
+&#xa0;&#xa0;&#xa0;x: 1231 &gt; 1321<br />
+<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">reverse-num</span> <span style="color: #BFEBBF;">[</span>nn<span style="color: #BFEBBF;">]</span>
+  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">loop</span> <span style="color: #D0BF8F;">[</span>n nn
+         result 0<span style="color: #D0BF8F;">]</span>
+    <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">if</span> <span style="color: #93E0E3;">(</span>not= n 0<span style="color: #93E0E3;">)</span>
+      <span style="color: #93E0E3;">(</span><span style="color: #F0DFAF; font-weight: bold;">recur</span> <span style="color: #9FC59F;">(</span>int <span style="color: #94BFF3;">(</span>/ n 10<span style="color: #94BFF3;">)</span><span style="color: #9FC59F;">)</span> <span style="color: #9FC59F;">(</span>+ <span style="color: #94BFF3;">(</span>* result 10<span style="color: #94BFF3;">)</span> <span style="color: #94BFF3;">(</span>mod n 10<span style="color: #94BFF3;">)</span><span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span>
+      result<span style="color: #D0BF8F;">)</span><span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+<span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">is-palindrome</span> <span style="color: #BFEBBF;">[</span>n<span style="color: #BFEBBF;">]</span>
+  <span style="color: #BFEBBF;">(</span>= <span style="color: #D0BF8F;">(</span>- n <span style="color: #93E0E3;">(</span>reverse-num n<span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">)</span> 0<span style="color: #BFEBBF;">)</span><span style="color: #DCDCCC;">)</span>
+
+<span style="color: #DCDCCC;">(</span>is-palindrome 12344321<span style="color: #DCDCCC;">)</span>
+</pre>
+</div>
