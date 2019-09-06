@@ -1,7 +1,7 @@
 ---
-title:  algorism - two sum
+title: algorism - two sum
 subtitle: TWO SUM 알고리즘 설명합니다.
-layout: posts
+agit-xlayout: posts
 tags: [algorizm, clojure, twosum]
 comments: true
 ---
@@ -15,7 +15,7 @@ TWO SUM 문제는 합의 수에 사용되었던 두 개의 수를 구하는 문�
 </p>
 
 <div class="org-src-container">
-<pre class="src src-clojure" id="org9206830"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">two-sum</span> <span style="color: #BFEBBF;">[</span>t coll<span style="color: #BFEBBF;">]</span>
+<pre class="src src-clojure" id="orgaf1657c"><span style="color: #DCDCCC;">(</span><span style="color: #F0DFAF; font-weight: bold;">defn</span> <span style="color: #93E0E3;">two-sum</span> <span style="color: #BFEBBF;">[</span>t coll<span style="color: #BFEBBF;">]</span>
  <span style="color: #BFEBBF;">(</span><span style="color: #F0DFAF; font-weight: bold;">let</span> <span style="color: #D0BF8F;">[</span>ns <span style="color: #93E0E3;">(</span>apply merge <span style="color: #9FC59F;">(</span>map-indexed <span style="color: #94BFF3;">(</span><span style="color: #F0DFAF; font-weight: bold;">fn</span> <span style="color: #E0CF9F;">[</span>idx v<span style="color: #E0CF9F;">]</span>
                                      <span style="color: #E0CF9F;">{</span>v idx<span style="color: #E0CF9F;">}</span><span style="color: #94BFF3;">)</span> coll<span style="color: #9FC59F;">)</span><span style="color: #93E0E3;">)</span><span style="color: #D0BF8F;">]</span>
   <span style="color: #D0BF8F;">(</span><span style="color: #F0DFAF; font-weight: bold;">loop</span> <span style="color: #93E0E3;">[</span>l ns
