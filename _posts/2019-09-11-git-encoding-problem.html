@@ -1,0 +1,40 @@
+---
+title: Git 인코딩 한글 깨짐 문제 해결하기
+subtitle: OS 맥 터미널에서 git 한글 깨짐 문제를 해결한다.
+layout: posts
+tagss: [emacs git mac encoding 인코딩 한글깨짐 ]
+---
+
+<p>
+이맥스 magit에서 한글이 깨진다.
+</p>
+
+<p>
+이유는 작성 인코딩 타입이 euc-kr (CP848?)로 되어있어 문제가 발생한다.
+</p>
+
+<p>
+이를 변경하기 위해 아래의 과정을 거친다.
+</p>
+
+
+<p>
+project/.git/config 파일 상단에 아래와 같이 위치해주자.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">[i18n]
+commitEncoding = utf-8
+logOutputEncoding = utf-8
+</pre>
+</div>
+
+<p>
+한글 깨짐 없이 정상적으로 출력되나,
+이로 발생되는 문제, emacs &gt; dired 가 아래와 같이 한글 분리가 발생된다.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">&#4367;&#4449;&#4368;&#4457;&#4520;
+</pre>
+</div>
