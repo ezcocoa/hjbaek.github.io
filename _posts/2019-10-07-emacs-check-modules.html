@@ -1,0 +1,56 @@
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd9a95b4">1. 개인 init.el 파일 최상단에 적어주자</a></li>
+</ul>
+</div>
+</div>
+---
+title: Emacs - 모듈 자동 설치하기
+layout: post
+status: publish
+published: true
+tags: [emacs, el, config, module, package]
+comments: true
+---
+
+<p class="verse">
+본 게시물은 이맥스 환경을 최소한의 노력으로 동일 환경을 구축하기 위해 작성되었다.<br />
+현재 회사, 집 두대의 컴퓨터를 사용하며, 환경 파일은 Github에서 관리되고 있다.<br />
+<br />
+아래의 스크립트는 이맥스 로딩 시 최초 한번 실행되며, package1, package2가 설치 되어있는 지 확인 후 설치 되어 있지 않다면,<br />
+설치 할 것인지 물어본다.<br />
+</p>
+
+<div id="outline-container-orgd9a95b4" class="outline-2">
+<h2 id="orgd9a95b4"><span class="section-number-2">1</span> 개인 init.el 파일 최상단에 적어주자</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+<pre class="src src-lisp"><span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">list the packages you want</span>
+(setq package-list '(package1 package2))
+
+<span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">list the repositories containing them</span>
+(setq package-archives '((<span style="color: #CC9393;">"elpa"</span> . <span style="color: #CC9393;">"http://tromey.com/elpa/"</span>)
+                         (<span style="color: #CC9393;">"gnu"</span> . <span style="color: #CC9393;">"http://elpa.gnu.org/packages/"</span>)
+                         (<span style="color: #CC9393;">"marmalade"</span> . <span style="color: #CC9393;">"http://marmalade-repo.org/packages/"</span>)))
+
+<span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">activate all the packages (in particular autoloads)</span>
+(package-initialize)
+
+<span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">fetch the list of packages available</span>
+(<span style="color: #F0DFAF; font-weight: bold;">unless</span> package-archive-contents
+  (package-refresh-contents))
+
+<span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">install the missing packages</span>
+(<span style="color: #F0DFAF; font-weight: bold;">dolist</span> (package package-list)
+  (<span style="color: #F0DFAF; font-weight: bold;">unless</span> (package-installed-p package)
+    (package-install package)))
+</pre>
+</div>
+
+<p>
+위 스크립트는 <a href="https://stackoverflow.com/a/10093312">stackoverflow</a> 내용중 일부를 발췌하여 작성한것이다.
+</p>
+</div>
+</div>
