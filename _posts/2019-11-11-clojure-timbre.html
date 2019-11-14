@@ -7,7 +7,7 @@ tags: []
 comments: true
 categories:
 - clojure
-tags: []
+tags: [clojure,log,timbre]
 ---
 
 <p>
@@ -15,7 +15,10 @@ tags: []
 </p>
 
 <p class="verse">
-Timbre란? Timbre는 로그 라이브러리이다.<br />
+Timbre란? Timbre는 로그 라이브러리이다. 꽤 많은 기능들을 제공하고 있다.<br />
+예로, 로그 파일 사이즈 제한, 복사본 만들기, 로그 파일 롤링, JSON 형식으로 로그 남기기<br />
+<br />
+기타 등등이 있을 수 있다.<br />
 </p>
 
 <p>
@@ -55,7 +58,13 @@ Timbre란? Timbre는 로그 라이브러리이다.<br />
 <li>라이브러리 추가하기</li>
 </ol>
 <div class="org-src-container">
-<pre class="src src-nillangnilswitchesnilflags">nilbody
+<pre class="src src-clj">(defproject your-app-name
+    ; ...
+    :dependencies [[org.clojure/clojure "1.8.0"]
+                 [com.taoensso/timbre "4.10.0"]
+                 [org.clojure/data.json "0.2.6"]]
+    ; ...
+)
 </pre>
 </div>
 
