@@ -1,3 +1,15 @@
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgda6911a">1. 시작하기</a></li>
+<li><a href="#orga4c32f2">2. 프로젝트 생성하기</a></li>
+<li><a href="#org6ed71d6">3. 라이브러리 추가하기</a></li>
+<li><a href="#orgc6c20d1">4. 의존성 라이브러리 가져오기</a></li>
+<li><a href="#orgd3257d8">5. 커스텀 JSON 로그로 설정하기</a></li>
+</ul>
+</div>
+</div>
 ---
 title: Clojure - timbre를 사용하여, custom 로그 남기기
 layout: post
@@ -21,66 +33,87 @@ Timbre란? Timbre는 로그 라이브러리이다. 꽤 많은 기능들을 제�
 기타 등등이 있을 수 있다.<br />
 </p>
 
-<p>
-장점
-</p>
-<p class="verse">
-1. Objects 출력이 가능하다.<br />
-2. JSON 파일 생성이 가능하다.<br />
-&#xa0;- <b><b>JSON</b></b> 로그를 AWS S3에 저장해두어, 추후 분석툴을 활용하여, 쉽게 문제를 해결 할 수 있다.<br />
-3. 그 외 확장성이 좋다.<br />
-</p>
+<hr />
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
-<p>
-단점
-</p>
-<p class="verse">
-없다.<br />
-</p>
 
-<p>
-시작하기
-</p>
+<colgroup>
+<col  class="org-left" />
 
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">장점</td>
+<td class="org-left">단점</td>
+</tr>
+
+<tr>
+<td class="org-left">1. Objects 출력이 가능하다.</td>
+<td class="org-left">없다.</td>
+</tr>
+
+<tr>
+<td class="org-left">2. JSON 파일 생성이 가능하다. - JSON 로그를 AWS S3에 저장해두어, 추후 분석툴을 활용하여, 쉽게 문제를 해결 할 수 있다.</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">3. 그 외 확장성이 좋다.</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<div id="outline-container-orgda6911a" class="outline-2">
+<h2 id="orgda6911a"><span class="section-number-2">1</span> 시작하기</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 <b><b>Leiningen</b></b> 프로젝트를 사용한다는 가정하에 시작한다.
 </p>
+</div>
+</div>
 
-<ol class="org-ol">
-<li>프로젝트 생성하기</li>
-</ol>
+<div id="outline-container-orga4c32f2" class="outline-2">
+<h2 id="orga4c32f2"><span class="section-number-2">2</span> 프로젝트 생성하기</h2>
+<div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-shell">$ lein new app your-app-name
 </pre>
 </div>
+</div>
+</div>
 
-<ol class="org-ol">
-<li>라이브러리 추가하기</li>
-</ol>
-<div class="org-src-container">
-<pre class="src src-clj">(defproject your-app-name
-    ; ...
+<div id="outline-container-org6ed71d6" class="outline-2">
+<h2 id="org6ed71d6"><span class="section-number-2">3</span> 라이브러리 추가하기</h2>
+<div class="outline-text-2" id="text-3">
+<pre class="example">
+(defproject your-app-name
     :dependencies [[org.clojure/clojure "1.8.0"]
                  [com.taoensso/timbre "4.10.0"]
                  [org.clojure/data.json "0.2.6"]]
-    ; ...
 )
 </pre>
 </div>
+</div>
 
-
+<div id="outline-container-orgc6c20d1" class="outline-2">
+<h2 id="orgc6c20d1"><span class="section-number-2">4</span> 의존성 라이브러리 가져오기</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 의존성 라이브러리 다운로드 하기 위해 아래와 같이 입력해주자.
 </p>
-
 <div class="org-src-container">
 <pre class="src src-shell">$ lein deps
 </pre>
 </div>
+</div>
+</div>
 
-<ol class="org-ol">
-<li><p>
-커스텀 JSON 로그로 설정하기
+<div id="outline-container-orgd3257d8" class="outline-2">
+<h2 id="orgd3257d8"><span class="section-number-2">5</span> 커스텀 JSON 로그로 설정하기</h2>
+<div class="outline-text-2" id="text-5">
+<p>
 Timbre설명에서도 나와 있듯이,  timbre는 기본설정을 가지고있다.
 예를 들어, 로그를 파일에 저장하기 위해 **spit appender**가 있다.
 </p>
@@ -92,8 +125,7 @@ Timbre설명에서도 나와 있듯이,  timbre는 기본설정을 가지고있�
 <p>
  각 Timbre의 appender는 type이 아닌 id기반으로 설정되어야 한다. 그래서 두가지의 spit appender를 가질수도 있다.
 예로, 두개의 파일에 저장할 수 있다.
-</p></li>
-</ol>
+</p>
 
 <p>
 Timbre 설정을 위해,두가지의 설정 방법을 제공한다.
@@ -111,13 +143,33 @@ Timbre 설정을 위해,두가지의 설정 방법을 제공한다.
 첫번째로, 우리는 **JSON**으로 화면에 출력할 수 있도록 간단하게 설정했다.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-nillangnilswitchesnilflags">nilbody
+<pre class="example">
+(ns timbre-test1.core
+  (:require [taoensso.timbre :as timbre :refer (log info warn debug error)]
+            [clojure.data.json :as json]))
+
+(defn json-output-fn
+  [{:keys [vargs_ hostname_ timestamp_ level] :as args}]
+  (let [
+        messages (map (fn [msg] { :timestamp @timestamp_
+                                  :level     level
+                                  :hostname  @hostname_
+                                  :message   msg })
+                   @vargs_)
+        json-messages (map #(json/write-str %) messages)]
+    (clojure.string/join "\n" json-messages)))
+
+(defn -main [&amp; args]
+  (timbre/merge-config!
+    {:appenders {
+                 :println {
+                    :output-fn json-output-fn
+                 }}})
+  (info {:moo -3.14} {:foo :bar})
+)
 </pre>
-</div>
 
 <p>
-09
 위 코드는 println appender에 output-fn 을 오버라이드 했다. output-fn함수는 각 다른 키값을 가지는 map 파라미터를 가진다.
 </p>
 
@@ -146,22 +198,56 @@ hostname<sub>과</sub> timestamp<sub>는</sub> 헬퍼 arguments이다. 아마도
 우리는 기본 설정에 file appender(json-output-fn)를 덮어씌었다.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-nillangnilswitchesnilflags">nilbody
+<pre class="example">
+(ns timbre-test1.core
+  (:require [taoensso.timbre :as timbre :refer (log info warn debug error)]
+            [taoensso.timbre.appenders.core :as appenders]
+            [clojure.data.json :as json]))
+
+
+(defn json-output-fn
+  [{:keys [vargs_ hostname_ timestamp_ level] :as args}]
+  (let [
+        messages (map (fn [msg] {:timestamp @timestamp_
+                                  :level     level
+                                  :hostname  @hostname_
+                                  :message   msg})
+                   @vargs_)
+        json-messages (map #(json/write-str %) messages)]
+    (clojure.string/join "\n" json-messages)))
+
+
+(defn -main [&amp; args]
+  (timbre/merge-config!
+    {:appenders {
+                 :spit (merge (appenders/spit-appender {:fname "timbre.log"}) {:output-fn json-output-fn})
+                 }})
+  (info {:moo -3.14} {:foo :bar})
+)
 </pre>
-</div>
 
 <p>
 여기에서는 크게 추가 할 것은 없고, 화면과 파일 두곳에 출력되도록 해보겠다.
 stdout에 로그 출력을 막기 위해, 우리는 println appender를 disabled 햇다.
 </p>
 
-
 <p>
 여기서 우리는 json파일로 출력되는 우리만의 로그 설정을 완료하였다.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-nillangnilswitchesnilflags" id="orgc81f760">nilbody
+<pre class="example" id="orgc81f760">
+(defn -main [&amp; args]
+  (timbre/merge-config!
+    {:appenders {
+                 :println {:enabled? true}
+                 :spit (merge (appenders/spit-appender {:fname "timbre.log"}) {:output-fn json-output-fn})
+                 }})
+  (info {:moo -3.14} {:foo :bar})
+)
 </pre>
+
+<p>
+끝
+</p>
+</div>
 </div>
