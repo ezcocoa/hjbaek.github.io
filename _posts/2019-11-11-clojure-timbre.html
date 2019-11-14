@@ -1,0 +1,158 @@
+---
+title: Clojure - timbre를 사용하여, custom 로그 남기기
+layout: post
+status: publish
+published: true
+tags: []
+comments: true
+categories:
+- clojure
+tags: []
+---
+
+<p>
+참조 : <a href="https://shybovycha.github.io/2015/10/05/custom-logging-with-timbre.html">https://shybovycha.github.io/2015/10/05/custom-logging-with-timbre.html</a>
+</p>
+
+<p class="verse">
+Timbre란? Timbre는 로그 라이브러리이다.<br />
+</p>
+
+<p>
+장점
+</p>
+<p class="verse">
+1. Objects 출력이 가능하다.<br />
+2. JSON 파일 생성이 가능하다.<br />
+&#xa0;- <b><b>JSON</b></b> 로그를 AWS S3에 저장해두어, 추후 분석툴을 활용하여, 쉽게 문제를 해결 할 수 있다.<br />
+3. 그 외 확장성이 좋다.<br />
+</p>
+
+<p>
+단점
+</p>
+<p class="verse">
+없다.<br />
+</p>
+
+<p>
+시작하기
+</p>
+
+<p>
+<b><b>Leiningen</b></b> 프로젝트를 사용한다는 가정하에 시작한다.
+</p>
+
+<ol class="org-ol">
+<li>프로젝트 생성하기</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-shell">$ lein new app your-app-name
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>라이브러리 추가하기</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-nillangnilswitchesnilflags">nilbody
+</pre>
+</div>
+
+
+<p>
+의존성 라이브러리 다운로드 하기 위해 아래와 같이 입력해주자.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ lein deps
+</pre>
+</div>
+
+<ol class="org-ol">
+<li><p>
+커스텀 JSON 로그로 설정하기
+Timbre설명에서도 나와 있듯이,  timbre는 기본설정을 가지고있다.
+예를 들어, 로그를 파일에 저장하기 위해 **spit appender**가 있다.
+</p>
+
+<p>
+또한 기본적 **timbre appender**는 로그를 **stdout**으로 출력 할 수 있다.
+</p>
+
+<p>
+ 각 Timbre의 appender는 type이 아닌 id기반으로 설정되어야 한다. 그래서 두가지의 spit appender를 가질수도 있다.
+예로, 두개의 파일에 저장할 수 있다.
+</p></li>
+</ol>
+
+<p>
+Timbre 설정을 위해,두가지의 설정 방법을 제공한다.
+</p>
+<ul class="org-ul">
+<li><b><b>merge</b></b> : 기본설정에서의 몇가지 옵션만 덮어 씌어 설정 할 수 있다.</li>
+<li><b><b>setting</b></b> : 한번에 모든 설정을 덮어 씌어 설정 할 수 있다.</li>
+</ul>
+
+<p>
+우리는 첫번째 방식을 사용할 것이다. 만약 우리가 완벽하게 설정하지 않을 경우, 우리는 제대로 된 로그를 출력 할 수 없을 것이다. 그리고 우리는 최소한으로 설정할 것이다.
+</p>
+
+<p>
+첫번째로, 우리는 **JSON**으로 화면에 출력할 수 있도록 간단하게 설정했다.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nillangnilswitchesnilflags">nilbody
+</pre>
+</div>
+
+<p>
+09
+위 코드는 println appender에 output-fn 을 오버라이드 했다. output-fn함수는 각 다른 키값을 가지는 map 파라미터를 가진다.
+</p>
+
+<p>
+가장 중요한 한가지는 vargs_, hostname_, timestamp_, 그리고 level이다.
+</p>
+
+<p>
+아마 이정보들은 여러분이 원하는 포멧, 그리고 메시지 로 충분할 것이다.
+</p>
+
+<p>
+vargs_ 변수는 모든 arguments를 포함한다. timbre에서 제공되는 (info, warn, error 기타 함수)에 파라미터로 전달한다.
+그리고 clojure.data.json/write-str함수는 문자열 json 스트링으로 변환하여 반환한다.
+</p>
+
+<p>
+level 은 매크로에 의해 설정된다. 예를들어 timbre/info “info”로 level로, timbre/error는 “error”로 설정될 것이다.
+</p>
+
+<p>
+hostname<sub>과</sub> timestamp<sub>는</sub> 헬퍼 arguments이다. 아마도 앞의 두 파라미터는 필요 없을 수 도 있다. 하지만 timestamp_ 는 언제나 정말 많은 도움이 된다.
+</p>
+
+<p>
+우리는 기본 설정에 file appender(json-output-fn)를 덮어씌었다.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nillangnilswitchesnilflags">nilbody
+</pre>
+</div>
+
+<p>
+여기에서는 크게 추가 할 것은 없고, 화면과 파일 두곳에 출력되도록 해보겠다.
+stdout에 로그 출력을 막기 위해, 우리는 println appender를 disabled 햇다.
+</p>
+
+
+<p>
+여기서 우리는 json파일로 출력되는 우리만의 로그 설정을 완료하였다.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-nillangnilswitchesnilflags" id="orgc81f760">nilbody
+</pre>
+</div>
