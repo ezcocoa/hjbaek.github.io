@@ -1,9 +1,22 @@
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8b1cbd3">1. 파일 일괄 변경하기 명령어</a></li>
+<li><a href="#orgf1a2210">2. 파일명에 whitespace가 포함되어 있다면?</a></li>
+</ul>
+</div>
+</div>
 ---
 title: CL - 파일 이름 일괄 변경하기
 layout: post
 categories: it,unix,linux
 tags: rename 
 ---
+
+<div id="outline-container-org8b1cbd3" class="outline-2">
+<h2 id="org8b1cbd3"><span class="section-number-2">1</span> 파일 일괄 변경하기 명령어</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 파일 이름을 일괄적으로 변경하기 위한 커맨드 명령어를 설명한다. 
 </p>
@@ -21,10 +34,28 @@ done : 종료
 <p class="verse">
 <br />
 </p>
-<p>
-for FILENAME in *; do mv $FILENAME thumb_$FILENAME; done
-</p>
+
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #4f97d7; font-weight: bold;">for</span> FILENAME<span style="color: #4f97d7; font-weight: bold;"> in</span> *; <span style="color: #4f97d7; font-weight: bold;">do</span> mv $<span style="color: #7590db;">FILENAME</span> thumb_$<span style="color: #7590db;">FILENAME</span>; <span style="color: #4f97d7; font-weight: bold;">done</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf1a2210" class="outline-2">
+<h2 id="orgf1a2210"><span class="section-number-2">2</span> 파일명에 whitespace가 포함되어 있다면?</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-src-container">
+<pre class="src src-bash">$ find . -type f -name <span style="color: #2d9574;">'*'</span> -printf <span style="color: #2d9574;">"echo mv '%h/%f' '%h/Unix_%f\n'"</span> | sh
+</pre>
+</div>
 
 <p>
 끝.
 </p>
+
+<p>
+<a href="https://stackoverflow.com/questions/6329505/rename-all-files-in-a-folder-with-a-prefix-in-a-single-command">원문</a>
+</p>
+</div>
+</div>
