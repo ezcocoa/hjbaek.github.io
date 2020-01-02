@@ -18,22 +18,14 @@ tags: rename
 <div id="outline-container-org8b1cbd3" class="outline-2">
 <h2 id="org8b1cbd3"><span class="section-number-2">1</span> 파일 일괄 변경하기 명령어</h2>
 <div class="outline-text-2" id="text-1">
-<p>
-파일 이름을 일괄적으로 변경하기 위한 커맨드 명령어를 설명한다. 
-</p>
-
-<p>
-shell for 문을 아래와 같이 이용할 수 있다. 
-</p>
-
-<p>
-for in : 반복 
-do mv : 이동 명령 수행 
-done : 종료 
-</p>
-
 <p class="verse">
+파일 이름을 일괄적으로 변경하기 위한 커맨드 명령어를 설명한다.<br />
 <br />
+shell for 문을 아래와 같이 이용할 수 있다.<br />
+<br />
+for in : 반복<br />
+do mv : 이동 명령 수행<br />
+done : 종료<br />
 </p>
 
 <div class="org-src-container">
@@ -47,7 +39,7 @@ done : 종료
 <h2 id="orgf1a2210"><span class="section-number-2">2</span> 파일명에 whitespace가 포함되어 있다면?</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
-<pre class="src src-bash">$ find . -type f -name <span style="color: #2d9574;">'*'</span> -printf <span style="color: #2d9574;">"echo mv '%h/%f' '%h/Unix_%f\n'"</span> | sh
+<pre class="src src-bash">find . -type f -name <span style="color: #2d9574;">'*'</span> -printf <span style="color: #2d9574;">"echo mv '%h/%f' '%h/thumb_%f\n'"</span> | sh
 </pre>
 </div>
 
