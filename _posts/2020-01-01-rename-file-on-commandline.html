@@ -1,0 +1,30 @@
+---
+title: CL - 파일 이름 일괄 변경하기
+layout: post
+categories: it,unix,linux
+tags: rename 
+---
+<p>
+파일 이름을 일괄적으로 변경하기 위한 커맨드 명령어를 설명한다. 
+</p>
+
+<p>
+shell for 문을 아래와 같이 이용할 수 있다. 
+</p>
+
+<p>
+for in : 반복 
+do mv : 이동 명령 수행 
+done : 종료 
+</p>
+
+<p class="verse">
+<br />
+</p>
+<p>
+for FILENAME in *; do mv $FILENAME thumb_$FILENAME; done
+</p>
+
+<p>
+끝.
+</p>
