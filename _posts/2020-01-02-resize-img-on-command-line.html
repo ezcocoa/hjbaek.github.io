@@ -1,0 +1,227 @@
+---
+title: CL - 커맨드 라인에서 이미지 압축하기 & 배치파일 만들기 
+layout: post
+status: publish
+published: true
+tags: []
+comments: true
+---
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf4fa46a">1. 이미지를 압축하는 두가지 방법</a>
+<ul>
+<li><a href="#org6231f79">1.1. 1. Imagemagick 툴을 활용하는 방법</a>
+<ul>
+<li><a href="#org551551e">1.1.1. 환경 셋팅</a>
+<ul>
+<li><a href="#org4adaaf7">1.1.1.1. imagemagick 다운로드 링크</a></li>
+<li><a href="#org5cb5e50">1.1.1.2. 설치하기</a></li>
+<li><a href="#org8b2cd27">1.1.1.3. 배치 파일 생성</a></li>
+<li><a href="#org7e4815b">1.1.1.4. 실행하기</a></li>
+</ul>
+</li>
+<li><a href="#org2d1ea5b">1.1.2. 현 폴더 사이즈 확인하기</a></li>
+<li><a href="#org70ee0d0">1.1.3. 배치 실행하기</a></li>
+<li><a href="#org0dc7828">1.1.4. 줄어든 용량 확인하기</a></li>
+</ul>
+</li>
+<li><a href="#orgcad0ec2">1.2. 2. convert 툴을 활용하는 방법</a>
+<ul>
+<li><a href="#org9d9cbf7">1.2.1. 하나의 파일을 압축 할때</a></li>
+<li><a href="#orga1c9afd">1.2.2. 여러개의 파일을 한번에 압축 할때</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<p class="verse">
+이미지 업로드 서비스를 만든다고 가정하였을 경우,<br />
+초기에 처리하지 못했던 섬네일 작업을 일괄적으로 처리할려고 한다.<br />
+<br />
+<a href="https://g.co/kgs/83otbi">섬네일</a>이란 사진의 축소판이며, 사진을 탐색할때 빠르게 알아 볼 수 있다는 장점이 있다.<br />
+<br />
+그럼 아래의 방법으로 일괄 섬네일 처리 방법을 소개하겠다.<br />
+</p>
+
+<div id="outline-container-orgf4fa46a" class="outline-2">
+<h2 id="orgf4fa46a"><span class="section-number-2">1</span> 이미지를 압축하는 두가지 방법</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org6231f79" class="outline-3">
+<h3 id="org6231f79"><span class="section-number-3">1.1</span> 1. Imagemagick 툴을 활용하는 방법</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+<a href="https://guides.wp-bullet.com/batch-resize-images-using-linux-command-line-and-imagemagick/">원문 : Batch Resize Images using Command Line and Imagemagick</a>
+</p>
+<p class="verse">
+imagemagick 툴의 장점은?<br />
+- 특정 조건을 주어 해당 이미지로 처리 가능<br />
+예로, 모든 이미지를 500x300 이미지 기준으로 압축을 해줘.가 될수 있겠다.<br />
+</p>
+</div>
+
+<div id="outline-container-org551551e" class="outline-4">
+<h4 id="org551551e"><span class="section-number-4">1.1.1</span> 환경 셋팅</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p class="verse">
+위 원문은 리눅스 기반으로 되어 있지만,<br />
+Mac OS X(Unix) 기반을 사용하기 때문에 따로 환경설정을 해주지 않아도 된다.<br />
+<br />
+필요한 툴만 설치하도록 하겠다.<br />
+</p>
+</div>
+
+<div id="outline-container-org4adaaf7" class="outline-5">
+<h5 id="org4adaaf7"><span class="section-number-5">1.1.1.1</span> <a href="https://imagemagick.org/script/download.php">imagemagick 다운로드 링크</a></h5>
+</div>
+<div id="outline-container-org5cb5e50" class="outline-5">
+<h5 id="org5cb5e50"><span class="section-number-5">1.1.1.2</span> 설치하기</h5>
+<div class="outline-text-5" id="text-1-1-1-2">
+<div class="org-src-container">
+<pre class="src src-bash">$ brew install imagemagick
+</pre>
+</div>
+
+<p>
+이로써 모든 환경 설정이 완료되었다.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8b2cd27" class="outline-5">
+<h5 id="org8b2cd27"><span class="section-number-5">1.1.1.3</span> 배치 파일 생성</h5>
+<div class="outline-text-5" id="text-1-1-1-3">
+<p>
+// Global 환경 패스가 지정되어 있는 곳에 쉘파일 생성 
+cd ~/bin
+</p>
+
+<p>
+// 스크립트 파일 만들기 
+$ touch resizer.sh 
+</p>
+
+<p>
+// 권한주기 
+$ chmod +x resizer.sh
+</p>
+
+<p>
+// 아래의 스크립트를 resizer.sh 에 넣어주자.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">!/usr/bin/</span><span style="color: #4f97d7; font-weight: bold;">env</span><span style="color: #2aa1ae; background-color: #292e34;"> bash</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Purpose: batch image resizer</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Source: https://guides.wp-bullet.com</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">Author: Mike</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">absolute path to image folder</span>
+<span style="color: #7590db;">FOLDER</span>=<span style="color: #2d9574;">"/var/www/wp-bullet.com/wp-content/uploads"</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">max height</span>
+<span style="color: #7590db;">WIDTH</span>=<span style="color: #a45bad;">540</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">max width</span>
+<span style="color: #7590db;">HEIGHT</span>=<span style="color: #a45bad;">300</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">resize png or jpg to either height or width, keeps proportions using imagemagick</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">find ${FOLDER} -iname '*.jpg' -o -iname '*.png' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\&gt; \{} \;</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">resize png to either height or width, keeps proportions using imagemagick</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">find ${FOLDER} -iname '*.png' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\&gt; \{} \;</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">resize jpg only to either height or width, keeps proportions using imagemagick</span>
+find $<span style="color: #4f97d7;">{</span><span style="color: #7590db;">FOLDER</span><span style="color: #4f97d7;">}</span> -iname <span style="color: #2d9574;">'*.jpg'</span> -exec convert <span style="color: #2d9574;">\{</span><span style="color: #e0211d; text-decoration: overline;">}</span> -verbose -resize $<span style="color: #7590db;">WIDTHx</span>$<span style="color: #7590db;">HEIGHT</span><span style="color: #2d9574;">\&gt;</span> <span style="color: #2d9574;">\{</span><span style="color: #e0211d; text-decoration: overline;">}</span> <span style="color: #2d9574;">\;</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">alternative</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">mogrify -path ${FOLDER} -resize ${WIDTH}x${HEIGHT}% *.png&#160;-verbose</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7e4815b" class="outline-5">
+<h5 id="org7e4815b"><span class="section-number-5">1.1.1.4</span> 실행하기</h5>
+</div>
+</div>
+<div id="outline-container-org2d1ea5b" class="outline-4">
+<h4 id="org2d1ea5b"><span class="section-number-4">1.1.2</span> 현 폴더 사이즈 확인하기</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<div class="org-src-container">
+<pre class="src src-shell">$ du -sh foldername
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org70ee0d0" class="outline-4">
+<h4 id="org70ee0d0"><span class="section-number-4">1.1.3</span> 배치 실행하기</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<div class="org-src-container">
+<pre class="src src-shell">$ ~/bin/resizer.sh
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0dc7828" class="outline-4">
+<h4 id="org0dc7828"><span class="section-number-4">1.1.4</span> 줄어든 용량 확인하기</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<div class="org-src-container">
+<pre class="src src-shell">$ du -sh foldername
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgcad0ec2" class="outline-3">
+<h3 id="orgcad0ec2"><span class="section-number-3">1.2</span> 2. convert 툴을 활용하는 방법</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+<a href="https://askubuntu.com/questions/271776/how-to-resize-an-image-through-the-terminal/271797">stackoverflow</a>
+</p>
+<p class="verse">
+convert의 장점은?<br />
+- 간단하게 커맨드라인으로 사용이 가능하다.<br />
+</p>
+</div>
+
+<div id="outline-container-org9d9cbf7" class="outline-4">
+<h4 id="org9d9cbf7"><span class="section-number-4">1.2.1</span> 하나의 파일을 압축 할때</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+방법 1.
+#+BEGIN<sub>SRC</sub> bash
+convert myfigure.png -resize 200x100 myfigure.jpg
+#+END<sub>SRC</sub> bash
+</p>
+
+<p>
+방법 2. 
+#+BEGIN<sub>SRC</sub> bash
+convert -resize 50% myfigure.png myfigure.jpg
+#+END<sub>SRC</sub> bash
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga1c9afd" class="outline-4">
+<h4 id="orga1c9afd"><span class="section-number-4">1.2.2</span> 여러개의 파일을 한번에 압축 할때</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+#+BEGIN<sub>SRC</sub> bash
+find . -maxdepth 1 -iname "*.jpg" | xargs -L1 -I{} convert -resize 30% "{}" _resized/"{}"
+#+END<sub>SRC</sub> bash
+</p>
+</div>
+</div>
+</div>
+</div>
