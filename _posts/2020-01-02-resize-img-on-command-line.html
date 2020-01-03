@@ -3,10 +3,9 @@ title: CL - 커맨드 라인에서 이미지 압축하기 & 배치파일 만들�
 layout: post
 status: publish
 published: true
-tags: []
+tags: [resize image archive batch 이미지 커맨드라인 압축]
 comments: true
 ---
-
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -23,9 +22,6 @@ comments: true
 <li><a href="#org7e4815b">1.1.1.4. 실행하기</a></li>
 </ul>
 </li>
-<li><a href="#org2d1ea5b">1.1.2. 현 폴더 사이즈 확인하기</a></li>
-<li><a href="#org70ee0d0">1.1.3. 배치 실행하기</a></li>
-<li><a href="#org0dc7828">1.1.4. 줄어든 용량 확인하기</a></li>
 </ul>
 </li>
 <li><a href="#org0492017">1.2. convert 툴을 활용하는 방법</a>
@@ -39,6 +35,7 @@ comments: true
 </ul>
 </div>
 </div>
+
 
 <p class="verse">
 이미지 업로드 서비스를 만든다고 가정하였을 경우,<br />
@@ -165,34 +162,35 @@ find ${FOLDER} -iname '*.jpg' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\
 
 <div id="outline-container-org7e4815b" class="outline-5">
 <h5 id="org7e4815b"><span class="section-number-5">1.1.1.4</span> 실행하기</h5>
+<div class="outline-text-5" id="text-1-1-1-4">
 </div>
-</div>
-<div id="outline-container-org2d1ea5b" class="outline-4">
-<h4 id="org2d1ea5b"><span class="section-number-4">1.1.2</span> 현 폴더 사이즈 확인하기</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<ol class="org-ol">
+<li><a id="org2d1ea5b"></a>현 폴더 사이즈 확인하기<br />
+<div class="outline-text-6" id="text-1-1-1-4-1">
 <div class="org-src-container">
 <pre class="src src-shell">$ du -sh foldername
 </pre>
 </div>
 </div>
-</div>
-<div id="outline-container-org70ee0d0" class="outline-4">
-<h4 id="org70ee0d0"><span class="section-number-4">1.1.3</span> 배치 실행하기</h4>
-<div class="outline-text-4" id="text-1-1-3">
+</li>
+<li><a id="org70ee0d0"></a>배치 실행하기<br />
+<div class="outline-text-6" id="text-1-1-1-4-2">
 <div class="org-src-container">
 <pre class="src src-shell">$ ~/bin/resizer.sh
 </pre>
 </div>
 </div>
-</div>
+</li>
 
-<div id="outline-container-org0dc7828" class="outline-4">
-<h4 id="org0dc7828"><span class="section-number-4">1.1.4</span> 줄어든 용량 확인하기</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<li><a id="org0dc7828"></a>줄어든 용량 확인하기<br />
+<div class="outline-text-6" id="text-1-1-1-4-3">
 <div class="org-src-container">
 <pre class="src src-shell">$ du -sh foldername
 </pre>
 </div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
