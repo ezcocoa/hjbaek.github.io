@@ -94,28 +94,33 @@ Mac OS X(Unix) 기반을 사용하기 때문에 따로 환경설정을 해주지
 <div id="outline-container-org8b2cd27" class="outline-5">
 <h5 id="org8b2cd27"><span class="section-number-5">1.1.1.3</span> 배치 파일 생성</h5>
 <div class="outline-text-5" id="text-1-1-1-3">
+<p>
+Global 환경 패스가 지정되어 있는 곳에 쉘파일 생성 
+</p>
 <div class="org-src-container">
-<pre class="src src-bash">// Global &#54872;&#44221; &#54056;&#49828;&#44032; &#51648;&#51221;&#46104;&#50612; &#51080;&#45716; &#44275;&#50640; &#49752;&#54028;&#51068; &#49373;&#49457; 
-<span style="color: #4f97d7;">cd</span> ~/bin
+<pre class="src src-bash"><span style="color: #4f97d7;">cd</span> ~/bin
 </pre>
 </div>
 
+<p>
+스크립트 파일 만들기 
+</p>
 <div class="org-src-container">
-<pre class="src src-bash">// &#49828;&#53356;&#47549;&#53944; &#54028;&#51068; &#47564;&#46308;&#44592; 
-touch resizer.sh 
+<pre class="src src-bash">touch resizer.sh 
 </pre>
 </div>
 
+<p>
+권한주기 
+</p>
 <div class="org-src-container">
-<pre class="src src-bash">// &#44428;&#54620;&#51452;&#44592; 
-chmod +x resizer.sh
+<pre class="src src-bash">chmod +x resizer.sh
 </pre>
 </div>
 
-<div class="org-src-container">
-<pre class="src src-bash">// &#50500;&#47000;&#51032; &#49828;&#53356;&#47549;&#53944;&#47484; resizer.sh &#50640; &#45347;&#50612;&#51452;&#51088;.
-</pre>
-</div>
+<p>
+아래의 스크립트를 resizer.sh 에 넣어주자.
+</p>
 
 <p>
 #+BEGIN<sub>SRC</sub> bash
