@@ -20,6 +20,7 @@ description: I love programming
 
 # List of links in the navigation bar
 navbar-links:
+  Home: "/"
   About Me: "pages/about"
   Books: "pages/books"
   Portfolio: "pages/portfolio"
