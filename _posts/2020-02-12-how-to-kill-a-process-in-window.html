@@ -1,0 +1,120 @@
+---
+title: 윈도우에서 프로세스 죽이기
+layout: post
+categories: IT, 
+tags: 윈도우,window,kill,process,킬,프로세스,프로그램,죽이기
+---
+
+<p class="verse">
+윈도우에서 특정 프로세스를 죽이기는 방법에 대해서 설명한다.<br />
+ex) 어떠한 프로그램이 8080포트를 사용중이다.<br />
+나는 이 포트를 사용하는 프로세스를 죽이고,<br />
+새로운 8080포트를 사용하는 프로그램을 돌려야한다.<br />
+<br />
+자! 이제 8080포트를 사용하는 프로그램을 찾아서 종료해보자.<br />
+</p>
+
+<div id="outline-container-org74d8c33" class="outline-2">
+<h2 id="org74d8c33">프로세스?</h2>
+<div class="outline-text-2" id="text-org74d8c33">
+<p>
+프로세스란, 프로그램의 복사본이라고 생각하면 좋다. 
+프로그램을 실행시키면, OS는 자신만의 프로세스를 실행시킨다. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org274a9b1" class="outline-2">
+<h2 id="org274a9b1">프로세스 ID (PID)란?</h2>
+<div class="outline-text-2" id="text-org274a9b1">
+<p>
+OS가 프로세스를 생성하게 되는데 이때 주어지는 유니크한 값이다. 
+(주민등록번호)라고 생각하면 된다.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfbac2c0" class="outline-2">
+<h2 id="orgfbac2c0">포트 번호?</h2>
+<div class="outline-text-2" id="text-orgfbac2c0">
+<p>
+포트란, 서버 프로그램에서는 사용되는 항구이다.
+두 서버(두 나라)간에 데이터를 주고 받기 위한 입구이다.
+</p>
+
+<p>
+간단한 설명이 끝났으니, 이제 8080포트를 사용하는 프로세스를 찾아 종료해보자.
+</p>
+
+
+<p>
+일단 Window Shell을 실행시키자.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org14802c9" class="outline-2">
+<h2 id="org14802c9">프로그램 (프로세스) 강제 죽이기</h2>
+<div class="outline-text-2" id="text-org14802c9">
+</div>
+<div id="outline-container-org8642974" class="outline-3">
+<h3 id="org8642974">window shell에서 해당 프로세스 찾기</h3>
+<div class="outline-text-3" id="text-org8642974">
+<div class="org-src-container">
+<pre class="src src-shell">$ netstat -ano | findstr &lt;&#54252;&#53944;&#48264;&#54840;&gt;
+</pre>
+</div>
+
+<p>
+우리는 위 명령어를 사용하여 아래와 같은 결과를 얻을 것이다.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ netstat -ano | findstr <span style="color: #a45bad;">8080</span>
+</pre>
+</div>
+
+<p>
+아래와 같은 결과를 확인 할 수 있다.
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">PS C:\Users\test&gt; netstat -ano | findstr <span style="color: #a45bad;">8080</span>
+  TCP    <span style="color: #a45bad;">0.0.0.0:8080</span>           <span style="color: #a45bad;">0.0.0.0:0</span>              LISTENING       <span style="color: #a45bad;">3980</span>
+  TCP    <span style="color: #4f97d7;">[</span>::<span style="color: #4f97d7;">]</span>:8080              <span style="color: #4f97d7;">[</span>::<span style="color: #4f97d7;">]</span>:0                 LISTENING       <span style="color: #a45bad;">3980</span>
+</pre>
+</div>
+
+<p>
+내용을 보면 '3980'이 프로세스 ID 즉 PID가 된다.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga33cb2d" class="outline-3">
+<h3 id="orga33cb2d">해당 프로그램(프로세스) 죽이기</h3>
+<div class="outline-text-3" id="text-orga33cb2d">
+<div class="org-src-container">
+<pre class="src src-shell">taskkill /F /PID &lt;&#54532;&#47196;&#49464;&#49828; ID&gt;
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">+END_SRC shell</span>
+
+&#50948; &#47749;&#47161;&#50612;&#47484; &#49324;&#50857;&#54616;&#50668; &#54532;&#47196;&#44536;&#47016;&#51012; &#44053;&#51228; &#51333;&#47308;&#49884;&#53412;&#51088; 
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">+BEGIN_SRC shell</span>
+taskkill /F /PID <span style="color: #a45bad;">3980</span>
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">+END_SRC shell</span>
+
+<span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">+BEGIN_SRC shell</span>
+PS C:\Users\test&gt; taskkill /F /PID <span style="color: #a45bad;">3980</span>
+&#49457;&#44277;: &#54532;&#47196;&#49464;&#49828;<span style="color: #4f97d7;">(</span>PID <span style="color: #a45bad;">3980</span><span style="color: #4f97d7;">)</span>&#44032; &#51333;&#47308;&#46104;&#50632;&#49845;&#45768;&#45796;.
+</pre>
+</div>
+
+<p>
+위와 같이 확인 되었다면, 정상적으로 종료된것이다.
+</p>
+
+<p>
+<a href="https://www.revisitclass.com/networking/how-to-kill-a-process-which-is-using-port-8080-in-windows/">원문</a>
+</p>
+</div>
+</div>
+</div>
