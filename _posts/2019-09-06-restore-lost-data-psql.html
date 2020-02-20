@@ -27,7 +27,7 @@ comments: true
 <h4 id="org592405e">SQL dump</h4>
 <div class="outline-text-4" id="text-org592405e">
 <p>
-<b><b>필요 항목</b></b>
+[ 필요 항목 ]
 </p>
 <ul class="org-ul">
 <li>백업 파일</li>
@@ -36,13 +36,13 @@ comments: true
 
 <p>
 #+BEGIN<sub>SRC</sub> shell
-pg<sub>dump</sub> -U [your user here] -d [your database here] -a -t [table1] -t [table2] -h [your restored instance] -p5432 &gt; data<sub>to</sub><sub>restore.sql</sub>
+$ pg<sub>dump</sub> -U [your user here] -d [your database here] -a -t [table1] -t [table2] -h [your restored instance] -p5432 &gt; data<sub>to</sub><sub>restore.sql</sub>
 #+END<sub>SRC</sub> shell
 </p>
 
 <p>
 #+BEGIN<sub>SRC</sub> shell
-psql -U [your user here] -d [your database here] -h [your prod instance] -p5432 &lt; data<sub>to</sub><sub>restore.sql</sub>
+$ psql -U [your user here] -d [your database here] -h [your prod instance] -p5432 &lt; data<sub>to</sub><sub>restore.sql</sub>
 #+END<sub>SRC</sub> shell
 </p>
 </div>
