@@ -34,17 +34,15 @@ comments: true
 <li>psql tool</li>
 </ul>
 
-<p>
-#+BEGIN<sub>SRC</sub> shell
-$ pg<sub>dump</sub> -U [your user here] -d [your database here] -a -t [table1] -t [table2] -h [your restored instance] -p5432 &gt; data<sub>to</sub><sub>restore.sql</sub>
-#+END<sub>SRC</sub> shell
-</p>
+<div class="org-src-container">
+<pre class="src src-shell">$ pg_dump -U <span style="color: #4f97d7;">[</span>your user here<span style="color: #4f97d7;">]</span> -d <span style="color: #4f97d7;">[</span>your database here<span style="color: #4f97d7;">]</span> -a -t <span style="color: #4f97d7;">[</span>table1<span style="color: #4f97d7;">]</span> -t <span style="color: #4f97d7;">[</span>table2<span style="color: #4f97d7;">]</span> -h <span style="color: #4f97d7;">[</span>your restored instance<span style="color: #4f97d7;">]</span> -p5432 &gt; data_to_restore.sql
+</pre>
+</div>
 
-<p>
-#+BEGIN<sub>SRC</sub> shell
-$ psql -U [your user here] -d [your database here] -h [your prod instance] -p5432 &lt; data<sub>to</sub><sub>restore.sql</sub>
-#+END<sub>SRC</sub> shell
-</p>
+<div class="org-src-container">
+<pre class="src src-shell">$ psql -U <span style="color: #4f97d7;">[</span>your user here<span style="color: #4f97d7;">]</span> -d <span style="color: #4f97d7;">[</span>your database here<span style="color: #4f97d7;">]</span> -h <span style="color: #4f97d7;">[</span>your prod instance<span style="color: #4f97d7;">]</span> -p5432 &lt; data_to_restore.sql
+</pre>
+</div>
 </div>
 </div>
 
