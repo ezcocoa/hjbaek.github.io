@@ -1,3 +1,17 @@
+---
+title:  PostgreSQL - 데이터 복구하기
+subtitle: 백업 된 데이터로부터 복구하는 법을 설명합니다.
+author:
+display<sub>name</sub>: hojunbaek
+login: hojunbaek
+email: mr.hjbaek@gmail.com
+url: ''
+published: true
+categories: Postgres
+layout: posts
+tags: [postgresql, psql, rds, aws, db, sql, backup, dump, resotre]
+comments: []
+---
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -6,7 +20,7 @@
 <ul>
 <li><a href="#org166e3c9">1.1. 백업 방법</a>
 <ul>
-<li><a href="#org3d9b401">1.1.1. SQL dump (이번에 할 것)</a></li>
+<li><a href="#org592405e">1.1.1. SQL dump</a></li>
 <li><a href="#org1f56391">1.1.2. File system level backup</a></li>
 <li><a href="#org7ea0b17">1.1.3. On-line backup</a></li>
 </ul>
@@ -16,23 +30,6 @@
 </ul>
 </div>
 </div>
-<p>
-&#x2014;
-title:  PostgreSQL - 데이터 복구하기
-subtitle: 백업 된 데이터로부터 복구하는 법을 설명합니다.
-author:
-  display<sub>name</sub>: hojunbaek
-  login: hojunbaek
-  email: mr.hjbaek@gmail.com
-  url: ''
-published: true
-categories: Postgres
-layout: posts
-tags: [postgresql, psql, rds, aws, db, sql, backup, dump, resotre]
-comments: []
-&#x2014;
-</p>
-
 
 <div id="outline-container-org244a78d" class="outline-2">
 <h2 id="org244a78d"><span class="section-number-2">1</span> 백업과 복구에 대해서</h2>
@@ -45,16 +42,6 @@ comments: []
 <p>
 아래의 설명은 아마존 RDS 또는 내부 서비스에서, 중요 데이터를 날렸을 경우, 
 백업 DB로부터 복구하는 법을 설명합니다.
-</p>
-
-<p>
-필요 사항
-</p>
-<ul class="org-ul">
-<li>백업 파일</li>
-<li>psql tool</li>
-</ul>
-<p>
 #+VERSE<sub>END</sub>
 </p>
 </div>
@@ -63,15 +50,17 @@ comments: []
 <h3 id="org166e3c9"><span class="section-number-3">1.1</span> 백업 방법</h3>
 <div class="outline-text-3" id="text-1-1">
 </div>
-<div id="outline-container-org3d9b401" class="outline-4">
-<h4 id="org3d9b401"><span class="section-number-4">1.1.1</span> SQL dump (이번에 할 것)</h4>
-</div>
-<div id="outline-container-org1f56391" class="outline-4">
-<h4 id="org1f56391"><span class="section-number-4">1.1.2</span> File system level backup</h4>
-</div>
-<div id="outline-container-org7ea0b17" class="outline-4">
-<h4 id="org7ea0b17"><span class="section-number-4">1.1.3</span> On-line backup</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-org592405e" class="outline-4">
+<h4 id="org592405e"><span class="section-number-4">1.1.1</span> SQL dump</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+<b><b>필요 항목</b></b>
+</p>
+<ul class="org-ul">
+<li>백업 파일</li>
+<li>psql tool</li>
+</ul>
+
 <p>
 #+BEGIN<sub>SRC</sub> shell
 pg<sub>dump</sub> -U [your user here] -d [your database here] -a -t [table1] -t [table2] -h [your restored instance] -p5432 &gt; data<sub>to</sub><sub>restore.sql</sub>
@@ -83,7 +72,15 @@ pg<sub>dump</sub> -U [your user here] -d [your database here] -a -t [table1] -t 
 psql -U [your user here] -d [your database here] -h [your prod instance] -p5432 &lt; data<sub>to</sub><sub>restore.sql</sub>
 #+END<sub>SRC</sub> shell
 </p>
+</div>
+</div>
 
+<div id="outline-container-org1f56391" class="outline-4">
+<h4 id="org1f56391"><span class="section-number-4">1.1.2</span> File system level backup</h4>
+</div>
+<div id="outline-container-org7ea0b17" class="outline-4">
+<h4 id="org7ea0b17"><span class="section-number-4">1.1.3</span> On-line backup</h4>
+<div class="outline-text-4" id="text-1-1-3">
 <p>
 merged with 'psql - 23. 백업과 복구'
 </p>
