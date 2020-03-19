@@ -1,0 +1,73 @@
+---
+title: aws - ec2의 ebs 디스크 용량 확장하기
+layout: post
+categories: aws
+tags: aws, ec2, ebs, extend
+---
+
+<p class="verse">
+EC2에서 사용되는 EBS 디스크는 확장 가능한 볼륨입니다.<br />
+이 포스팅에서는 EBS 디스크 확장 방법에 대해서 알아보겠습니다.<br />
+<br />
+ex) 현재 상황은 기본으로 설정되어 있는 8GB EBS로 인해 용량이 부족한 상황으로,<br />
+재부팅 없이 확장을 하려고한다.<br />
+</p>
+
+<p>
+!항상 수정이 가해지는 프로세스에 대해서는 '백업'을 하여 미래에 대한 불안정성을 방지합시다.
+</p>
+
+<div id="outline-container-org71ce110" class="outline-2">
+<h2 id="org71ce110">환경</h2>
+<div class="outline-text-2" id="text-org71ce110">
+<p>
+OS : ubuntu 16
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7b38dfc" class="outline-2">
+<h2 id="org7b38dfc">AWS Management Console에서 볼륨을 확장 준비하자.</h2>
+<div class="outline-text-2" id="text-org7b38dfc">
+</div>
+<div id="outline-container-org45c493d" class="outline-3">
+<h3 id="org45c493d">메뉴 EC2 &gt; Elastic Block Store &gt; Volumn 메뉴에 들어가 원하는 볼륨 선택하고 '볼륨 수정'을 선택해주세요.</h3>
+</div>
+<div id="outline-container-org4cf69bf" class="outline-3">
+<h3 id="org4cf69bf">원하는 크기를 입력하고 '수정'버튼을 눌러주세요.</h3>
+</div>
+<div id="outline-container-orgcd36343" class="outline-3">
+<h3 id="orgcd36343">변경한 인스턴스의 상태를 보면, 상태가 'in-use-optimizing'로 변경된 것을 확인할 수 있으며, 'in-use-completed' 상태가 될때까지 기다려주세요.</h3>
+</div>
+</div>
+
+<div id="outline-container-org05ec0a8" class="outline-2">
+<h2 id="org05ec0a8">SSH을 이용하여 ubuntu접속하고 그리고 새 볼륨으로 확장하자.</h2>
+<div class="outline-text-2" id="text-org05ec0a8">
+<div class="org-src-container">
+<pre class="src src-shell">$ df -h
+&#46608;&#45716; 
+$ lsblk
+</pre>
+</div>
+
+<p>
+위 명렁어로 디스크 용량을 확인해보면, 변경되지 않은 것을 확인 할 수 있다. 
+이제 <b><b>growpart</b></b>, <b><b>resize2fs</b></b> 명령어를 활용하여 새로 생성된 스토로지로 변경해보자.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ sudo growpart /dev/xvda <span style="color: #a45bad;">1</span> <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#49828;&#53664;&#47196;&#51648; &#54869;&#51109; &#51089;&#50629; </span>
+$ sudo resize2fs /dev/xvda1 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">&#54028;&#51068;&#49884;&#49828;&#53596; &#51116;&#54624;&#45817; &#51089;&#50629; </span>
+</pre>
+</div>
+
+<p>
+다시 확인해보자 
+</p>
+
+<p>
+끝
+</p>
+</div>
+</div>
