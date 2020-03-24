@@ -1,20 +1,26 @@
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc921859">1. 개인 init.el 파일 최상단에 적어주자</a></li>
+<li><a href="#org6d17cc3">2. Unable to resolve var: refactor-nrepl.middleware/wrap-refactor when starting 0.17</a></li>
+<li><a href="#orge6d6798">3. 버전 업그레이드로 인한 기존 코드 충돌 시 재 설치 방법</a>
+<ul>
+<li><a href="#org262481a">3.1. re-compile</a></li>
+<li><a href="#org5fbd001">3.2. elisp으로 재설치하기</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 ---
-title: Emacs - 모듈 자동 설치하기
+title: Emacs - 모듈 자동 설치하기 & 그 외 이슈 
 layout: post
 status: publish
 published: true
 tags: [emacs, el, config, module, package]
 comments: true
 ---
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgd9a95b4">1. 개인 init.el 파일 최상단에 적어주자</a></li>
-</ul>
-</div>
-</div>
 
 <p class="verse">
 본 게시물은 이맥스 환경을 최소한의 노력으로 동일 환경을 구축하기 위해 작성되었다.<br />
@@ -24,34 +30,96 @@ comments: true
 설치 할 것인지 물어본다.<br />
 </p>
 
-<div id="outline-container-orgd9a95b4" class="outline-2">
-<h2 id="orgd9a95b4"><span class="section-number-2">1</span> 개인 init.el 파일 최상단에 적어주자</h2>
+<div id="outline-container-orgc921859" class="outline-2">
+<h2 id="orgc921859"><span class="section-number-2">1</span> 개인 init.el 파일 최상단에 적어주자</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
-<pre class="src src-lisp"><span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">list the packages you want</span>
-(setq package-list '(package1 package2))
+<pre class="src src-lisp"><span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">list the packages you want</span>
+<span style="color: #4f97d7;">(</span>setq package-list '<span style="color: #bc6ec5;">(</span>package1 package2<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 
-<span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">list the repositories containing them</span>
-(setq package-archives '((<span style="color: #CC9393;">"elpa"</span> . <span style="color: #CC9393;">"http://tromey.com/elpa/"</span>)
-                         (<span style="color: #CC9393;">"gnu"</span> . <span style="color: #CC9393;">"http://elpa.gnu.org/packages/"</span>)
-                         (<span style="color: #CC9393;">"marmalade"</span> . <span style="color: #CC9393;">"http://marmalade-repo.org/packages/"</span>)))
+<span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">list the repositories containing them</span>
+<span style="color: #4f97d7;">(</span>setq package-archives '<span style="color: #bc6ec5;">(</span><span style="color: #2d9574;">(</span><span style="color: #2d9574;">"elpa"</span> . <span style="color: #2d9574;">"http://tromey.com/elpa/"</span><span style="color: #2d9574;">)</span>
+                         <span style="color: #2d9574;">(</span><span style="color: #2d9574;">"gnu"</span> . <span style="color: #2d9574;">"http://elpa.gnu.org/packages/"</span><span style="color: #2d9574;">)</span>
+                         <span style="color: #2d9574;">(</span><span style="color: #2d9574;">"marmalade"</span> . <span style="color: #2d9574;">"http://marmalade-repo.org/packages/"</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 
-<span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">activate all the packages (in particular autoloads)</span>
-(package-initialize)
+<span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">activate all the packages (in particular autoloads)</span>
+<span style="color: #4f97d7;">(</span>package-initialize<span style="color: #4f97d7;">)</span>
 
-<span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">fetch the list of packages available</span>
-(<span style="color: #F0DFAF; font-weight: bold;">unless</span> package-archive-contents
-  (package-refresh-contents))
+<span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">fetch the list of packages available</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">unless</span> package-archive-contents
+  <span style="color: #bc6ec5;">(</span>package-refresh-contents<span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 
-<span style="color: #5F7F5F;">; </span><span style="color: #7F9F7F;">install the missing packages</span>
-(<span style="color: #F0DFAF; font-weight: bold;">dolist</span> (package package-list)
-  (<span style="color: #F0DFAF; font-weight: bold;">unless</span> (package-installed-p package)
-    (package-install package)))
+<span style="color: #2aa1ae; background-color: #292e34;">; </span><span style="color: #2aa1ae; background-color: #292e34;">install the missing packages</span>
+<span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">dolist</span> <span style="color: #bc6ec5;">(</span>package package-list<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">unless</span> <span style="color: #2d9574;">(</span>package-installed-p package<span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span>package-install package<span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
 </pre>
 </div>
 
 <p>
 위 스크립트는 <a href="https://stackoverflow.com/a/10093312">stackoverflow</a> 내용중 일부를 발췌하여 작성한것이다.
 </p>
+</div>
+</div>
+
+
+<div id="outline-container-org6d17cc3" class="outline-2">
+<h2 id="org6d17cc3"><span class="section-number-2">2</span> Unable to resolve var: refactor-nrepl.middleware/wrap-refactor when starting 0.17</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<a href="https://github.com/clojure-emacs/cider/issues/2284">stackoverflow 참조</a>
+</p>
+
+<p class="verse">
+Remove refactor-nrepl -<br />
+seems you're using a version of it that's not compatible with the current stable CIDER.<br />
+I guess something like this would be enough:<br />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure"><span style="color: #4f97d7;">(</span>setq cljr-inject-dependencies-at-jack-in <span style="color: #a45bad;">nil</span><span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge6d6798" class="outline-2">
+<h2 id="orge6d6798"><span class="section-number-2">3</span> 버전 업그레이드로 인한 기존 코드 충돌 시 재 설치 방법</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<a href="https://stackoverflow.com/questions/24725778/how-to-rebuild-elpa-packages-after-upgrade-of-emacs/24735377#24735377">stackoverflow</a>
+</p>
+</div>
+
+<div id="outline-container-org262481a" class="outline-3">
+<h3 id="org262481a"><span class="section-number-3">3.1</span> re-compile</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+컴파일을 다시 하기 위해서는 아래의 명령어를 이맥스에서 입력해주고, 이맥스를 다시 시작해주자.
+</p>
+<div class="org-src-container">
+<pre class="src src-lisp">M-: <span style="color: #4f97d7;">(</span>byte-recompile-directory package-user-dir nil 'force<span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org5fbd001" class="outline-3">
+<h3 id="org5fbd001"><span class="section-number-3">3.2</span> elisp으로 재설치하기</h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="org-src-container">
+<pre class="src src-lisp"><span style="color: #4f97d7;">(</span><span style="color: #4f97d7; font-weight: bold;">defun</span> <span style="color: #bc6ec5; font-weight: bold;">package-reinstall-all-activated-packages</span> <span style="color: #bc6ec5;">()</span>
+  <span style="color: #2aa1ae;">"Refresh and reinstall all activated packages."</span>
+  <span style="color: #bc6ec5;">(</span>interactive<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span>package-refresh-contents<span style="color: #bc6ec5;">)</span>
+  <span style="color: #bc6ec5;">(</span><span style="color: #4f97d7; font-weight: bold;">dolist</span> <span style="color: #2d9574;">(</span>package-name package-activated-list<span style="color: #2d9574;">)</span>
+    <span style="color: #2d9574;">(</span><span style="color: #4f97d7; font-weight: bold;">when</span> <span style="color: #67b11d;">(</span>package-installed-p package-name<span style="color: #67b11d;">)</span>
+      <span style="color: #67b11d;">(</span><span style="color: #4f97d7; font-weight: bold;">unless</span> <span style="color: #b1951d;">(</span><span style="color: #4f97d7; font-weight: bold;">ignore-errors</span>                   <span style="color: #2aa1ae; background-color: #292e34;">;some packages may fail to install</span>
+                <span style="color: #4f97d7;">(</span>package-reinstall package-name<span style="color: #4f97d7;">)</span><span style="color: #b1951d;">)</span>
+        <span style="color: #b1951d;">(</span><span style="color: #dc752f; background-color: #292b2e;">warn</span> <span style="color: #2d9574;">"Package %s failed to reinstall"</span> package-name<span style="color: #b1951d;">)</span><span style="color: #67b11d;">)</span><span style="color: #2d9574;">)</span><span style="color: #bc6ec5;">)</span><span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+</div>
 </div>
 </div>
