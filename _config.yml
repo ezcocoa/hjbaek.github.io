@@ -1,4 +1,4 @@
-# --- General options --- #
+# --- Basic options --- #
 
 # Name of website
 title: Easy Cocoa
@@ -6,19 +6,8 @@ title: Easy Cocoa
 # Short description of your site
 description: I love programming
 
-# --- Local development options ---
-# If your website is hosted locally rather than on GitHub, then you need to uncomment the next two parameters to set the url and baseurl
-# *** If you're not sure what this mean, then leave this section as it is. Only modify the url and baseurl if you know what you're doing!***
+# --- List of links in the navigation bar --- #
 
-# url is the the website domain URL without a trailing slash
-#url: "https://example.com"
-
-# baseurl should be an empty string
-#baseurl: ""
-
-# --- Navigation bar options --- #
-
-# List of links in the navigation bar
 navbar-links:
   Home: "/"
   About Me: "pages/about"
@@ -34,34 +23,14 @@ navbar-links:
 #    - Learn markdown: "http://www.markdowntutorial.com/"
 #  Author's home: "http://deanattali.com"
 
-# Image to show in the navigation bar - image must be a square (width = height)
+# Image to show in the navigation bar - works best with a square image
 # Remove this parameter if you don't want an image in the navbar
 avatar: "/img/avatar-icon.jpg"
 
 # If you want to have an image logo in the top-left corner instead of the title text,
 # then specify the following parameter
-# title-img: /path/to/image
+#title-img: /path/to/image
 
-# --- Background colour/image options --- #
-
-# Personalize the colors in your website. Colour values can be any valid CSS colour
-
-navbar-col: "#F5F5F5"
-navbar-text-col: "#404040"
-navbar-children-col: "#F5F5F5"
-page-col: "#FFFFFF"
-link-col: "#008AFF"
-hover-col: "#0085A1"
-footer-col: "#F5F5F5"
-footer-text-col: "#777777"
-footer-link-col: "#404040"
-
-# Alternatively, the navbar, footer, and page background can be set to use background images
-# instead of colour
-
-# navbar-img: "/img/bgimage.png"
-# footer-img: "/img/bgimage.png"
-# page-img: "/img/bgimage.png"
 
 # --- Footer options --- #
 
@@ -92,16 +61,33 @@ social-network-links:
 #  steam: deanat78
 #  twitch: yourname
 #  yelp: yourname
+#  telegram: yourname
+#  calendly: yourname
 
-# Select which share links to show in posts
+# --- General options --- #
+
+# Select which social network share links to show in posts
 share-links-active:
   twitter: true
   facebook: true
   linkedin: true
 
-# How to display the link to the website in the footer
+# How to display the link to your website in the footer
 # Remove this if you don't want a link in the footer
 url-pretty: "ezcocoa.com"  # eg. "deanattali.com/beautiful-jekyll"
+link-tags: true
+
+# Excerpt Word Length - Truncates the excerpt to the specified number of words on the index page
+excerpt_length: 50
+navbar-col: "#F5F5F5"
+navbar-text-col: "#404040"
+navbar-border-col: "#EAEAEA"
+page-col: "#FFFFFF"
+link-col: "#008AFF"
+hover-col: "#0085A1"
+footer-col: "#F5F5F5"
+footer-text-col: "#777777"
+footer-link-col: "#404040"
 
 # --- Web Statistics Section --- #
 
@@ -117,7 +103,6 @@ url-pretty: "ezcocoa.com"  # eg. "deanattali.com/beautiful-jekyll"
 # Matomo (aka Piwik) Web statistics
 # Uncomment the following section to enable Matomo. The opt-out parameter controls
 # whether or not you want to allow users to opt out of tracking.
-
 #matomo:
 #  site_id: "9"
 #  uri: "demo.wiki.pro"
@@ -147,21 +132,18 @@ staticman:
 
 # --- Misc --- #
 
-# Facebook App ID
-# fb_app_id: ""
-
-# Excerpt Word Length
-# Truncates the excerpt to the specified number of words on the index page
-excerpt_length: 50
-
 # Character used to separate site title and description in HTML document title
 # and RSS feed title
 title-separator: "-"
 
-# Ruby Date Format
+# Ruby Date Format to show dates of posts
 date_format: "%B %-d, %Y"
 
-# --- Don't need to touch anything below here (but you can if you want) --- #
+# Facebook App ID
+#fb_app_id: ""
+
+
+# --- You don't need to touch anything below here (but you can if you want) --- #
 
 # Output options (more information on Jekyll's site)
 timezone: "Asia/Seoul"
@@ -183,6 +165,7 @@ defaults:
       layout: "post"
       comments: true  # add comments to all blog posts
       social-share: true # add social media sharing buttons to all blog posts
+      readtime: false # add estimated reading time on all blog posts
   -
     scope:
       path: "" # all files
@@ -190,71 +173,16 @@ defaults:
       layout: "page"
       show-avatar: false
 
-# Use tags index page and make tags on each post clickable
-link-tags: true
-
 # Exclude these files from production site
 exclude:
   - CHANGELOG.md
   - CNAME
-  - Dockerfile
   - Gemfile
   - Gemfile.lock
   - LICENSE
   - README.md
-  - Vagrantfile
-
-# prose.io config
-prose:
-  rooturl: '_posts'
-  media: 'img'
-  ignore:
-    - 404.html
-    - LICENSE
-    - feed.xml
-    - _config.yml
-    - /_layouts
-    - /_includes
-    - /css
-    - /img
-    - /js
-  metadata:
-    _posts:
-      - name: "layout"
-        field:
-          element: "hidden"
-          value: "post"
-      - name: "title"
-        field:
-          element: "text"
-          label: "Post title"
-          placeholder: "Title"
-          alterable: true
-      - name: "subtitle"
-        field:
-          element: "textarea"
-          label: "Subtitle"
-          placeholder: "A description of your post."
-          alterable: true
-      - name: "date"
-        field:
-          element: "text"
-          label: "Date"
-          help: "Enter date of post."
-          placeholder: "yyyy-mm-dd"
-          alterable: true
-      - name: "image"
-        field:
-          element: "text"
-          label: "Image"
-          help: "Add a thumbnail image to your post."
-          placeholder: "Thumbnail"
-          alterable: true
-      - name: "published"
-        field:
-          element: "checkbox"
-          label: "Publish"
-          help: "Check to publish post, uncheck to hide."
+  - screenshot.png
+  - docs/
 
 plugins:
   - jekyll-paginate

@@ -8,3 +8,5 @@ _site
 Thumbs.db
 ehthumbs.db
 org/*
+Gemfile.lock
+beautiful-jekyll-theme-*.gem
