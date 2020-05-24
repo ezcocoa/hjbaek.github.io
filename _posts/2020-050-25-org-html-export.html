@@ -1,0 +1,56 @@
+---
+title: 이맥스 - ORG모드 > HTML 추출 데이터 템플릿 수정하기 
+layout: post
+categories: tool
+tags: emacs,html,org
+---
+
+<p class="verse">
+저의 블러그 포스팅 에디터는 이맥스이고, org mode를 활용하여 포스팅합니다.<br />
+org mode에서 html 추출 시 템플릿을 변경하는 방법에 대해서 설명하도록 하겠습니다.<br />
+</p>
+
+<p>
+#+BEGIN<sub>SRC</sub> emacs-lisp
+(defun org-html-src-block (src-block _contents info)
+  "Transcode a SRC-BLOCK element from Org to HTML.
+CONTENTS holds the contents of the item.  INFO is a plist holding
+contextual information."
+  (if (org-export-read-attribute :attr<sub>html</sub> src-block :textarea)
+      (org-html&#x2013;textarea-block src-block)
+    (let* ((lang (org-element-property :language src-block))
+	  (code (org-html-format-code src-block info))
+	  (label (let ((lbl (and (org-element-property :name src-block)
+				 (org-export-get-reference src-block info))))
+		   (if lbl (format " id=\"%s\"" lbl) "")))
+	  (klipsify  (and  (plist-get info :html-klipsify-src)
+                           (member lang '("javascript" "js"
+					  "ruby" "scheme" "clojure" "php" "html")))))
+      (if (not lang) (format "&lt;pre class=\"example\"%s&gt;\n%s&lt;/pre&gt;" label code)
+	(format "%s%s"
+		;; Build caption.
+		(let ((caption (org-export-get-caption src-block)))
+		  (if (not caption) ""
+		    (let ((listing-number
+			   (format
+			    "&lt;span class=\"listing-number\"&gt;%s &lt;/span&gt;"
+			    (format
+			     (org-html&#x2013;translate "Listing %d:" info)
+			     (org-export-get-ordinal
+			      src-block info nil #'org-html&#x2013;has-caption-p)))))
+		      (format "&lt;label class=\"org-src-name\"&gt;%s%s&lt;/label&gt;"
+			      listing-number
+			      (org-trim (org-export-data caption info))))))
+		;; Contents.
+		(if klipsify
+		    (format "&lt;div class=\"language-%s highlighter-rouge\"%s%s&gt;&lt;div class=\"highlight\"&gt;&lt;pre class=\"highlight\"&gt;&lt;code&gt;%s&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;"
+			    lang
+			    label
+			    (if (string= lang "html")
+				" data-editor-type=\"html\""
+			      "")
+			    code)
+		  (format "&lt;div class=\"language-%s highlighter-rouge\"%s&gt;&lt;div class=\"highlight\"&gt;&lt;pre class=\"highlight\"&gt;&lt;code&gt;%s&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;"
+                          lang label code)))))))
+#END<sub>SRC</sub>
+</p>
