@@ -6,8 +6,37 @@ tags: emacs,html,org
 ---
 
 <p class="verse">
-저의 블러그 포스팅 에디터는 이맥스이고, org mode를 활용하여 포스팅합니다.<br />
-org mode에서 html 추출 시 템플릿을 변경하는 방법에 대해서 설명하도록 하겠습니다.<br />
+Why i wrote?<br />
+이맥스 org-mode에서 Jekyll을 위한 포스팅 html 추출 시 code highlight가 적용되지 않아 인식 되는 c<br />
+code 를 추출해야함<br />
+<br />
+현재 블러그는 Jekyll로 되어있습니다. 기존 2.0에서 3.0으로 마이그레이션, 확인 결과 rouge 사용.<br />
+CSS class인식 문제로 아래와 같이 템플릿을 수정하여 사용해보도록 하겠습니다.<br />
+</p>
+
+<div id="outline-container-org24de89e" class="outline-2">
+<h2 id="org24de89e">org html 추출 템플릿 수정하기</h2>
+<div class="outline-text-2" id="text-org24de89e">
+</div>
+<div id="outline-container-org191863b" class="outline-3">
+<h3 id="org191863b">M-x</h3>
+</div>
+<div id="outline-container-org7d22be8" class="outline-3">
+<h3 id="org7d22be8">C-h f</h3>
+</div>
+<div id="outline-container-org6228536" class="outline-3">
+<h3 id="org6228536">org-html-src-block 을 누르면 아래와 같은 함수 설명이 나온다.</h3>
+<div class="outline-text-3" id="text-org6228536">
+<div class="language-common_lisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>org-html-export-block is a Lisp closure in ‘ox-html.el’.
+(org-html-export-block EXPORT-BLOCK CONTENTS INFO)
+Transcode a EXPORT-BLOCK element from Org to HTML.
+CONTENTS is nil.  INFO is a plist holding contextual information.
+
+[back]
+</code></pre></div></div>
+
+<p>
+설명에서 <a href="https://github.com/emacsmirror/org/blob/master/lisp/ox-html.el">org-html.el</a>을 눌러 org-html-src-block을 찾아 아래와 같이 수정해주자. 
 </p>
 
 <div class="language-emacs_lisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(defun org-html-src-block (src-block _contents info)
@@ -52,3 +81,10 @@ contextual information."
                           lang label code)))))))
 
 </code></pre></div></div>
+
+<p>
+끝
+</p>
+</div>
+</div>
+</div>
