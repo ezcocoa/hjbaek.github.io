@@ -4,7 +4,39 @@ layout: post
 categories: 
 tags: cron,service,start,stop,restart,docker
 ---
+<div id="outline-container-org7d0de12" class="outline-2">
+<h2 id="org7d0de12">cron tool 명령어</h2>
+<div class="outline-text-2" id="text-org7d0de12">
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">crontab &lt;option&gt;</span>
+</code></pre></div></div>
 
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">옵션</td>
+<td class="org-left">내용</td>
+</tr>
+
+<tr>
+<td class="org-left">-e</td>
+<td class="org-left">편집</td>
+</tr>
+
+<tr>
+<td class="org-left">-l</td>
+<td class="org-left">목록</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="outline-container-org61b86d4" class="outline-2">
 <h2 id="org61b86d4">cron 설명</h2>
 <div class="outline-text-2" id="text-org61b86d4">
@@ -55,9 +87,9 @@ tags: cron,service,start,stop,restart,docker
 <h2 id="org6abb2d3">Redhat/Fedora/CentOS에서</h2>
 <div class="outline-text-2" id="text-org6abb2d3">
 </div>
-<div id="outline-container-org842448a" class="outline-3">
-<h3 id="org842448a">시작하기</h3>
-<div class="outline-text-3" id="text-org842448a">
+<div id="outline-container-org7e70db6" class="outline-3">
+<h3 id="org7e70db6">시작하기</h3>
+<div class="outline-text-3" id="text-org7e70db6">
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/etc/init.d/crond start</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">service crond start</span>
@@ -66,9 +98,9 @@ tags: cron,service,start,stop,restart,docker
 </div>
 
 
-<div id="outline-container-orgb763199" class="outline-3">
-<h3 id="orgb763199">종료하기</h3>
-<div class="outline-text-3" id="text-orgb763199">
+<div id="outline-container-org61fbbd6" class="outline-3">
+<h3 id="org61fbbd6">종료하기</h3>
+<div class="outline-text-3" id="text-org61fbbd6">
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/etc/init.d/crond stop</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or </span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/etc/init.d/crond stop</span>
@@ -76,9 +108,9 @@ tags: cron,service,start,stop,restart,docker
 </div>
 </div>
 
-<div id="outline-container-org975eae5" class="outline-3">
-<h3 id="org975eae5">재시작하기</h3>
-<div class="outline-text-3" id="text-org975eae5">
+<div id="outline-container-org47d1ff7" class="outline-3">
+<h3 id="org47d1ff7">재시작하기</h3>
+<div class="outline-text-3" id="text-org47d1ff7">
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/etc/init.d/crond restart</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/etc/init.d/crond restatr</span>
@@ -92,9 +124,9 @@ tags: cron,service,start,stop,restart,docker
 <h2 id="orgd6cbede">Debian/Ubuntu</h2>
 <div class="outline-text-2" id="text-orgd6cbede">
 </div>
-<div id="outline-container-org7e70db6" class="outline-3">
-<h3 id="org7e70db6">시작하기</h3>
-<div class="outline-text-3" id="text-org7e70db6">
+<div id="outline-container-org360bdab" class="outline-3">
+<h3 id="org360bdab">시작하기</h3>
+<div class="outline-text-3" id="text-org360bdab">
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sudo /etc/init.d/cron start</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or </span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sudo service cron start</span>
@@ -102,9 +134,9 @@ tags: cron,service,start,stop,restart,docker
 </div>
 </div>
 
-<div id="outline-container-org61fbbd6" class="outline-3">
-<h3 id="org61fbbd6">종료하기</h3>
-<div class="outline-text-3" id="text-org61fbbd6">
+<div id="outline-container-orge412fff" class="outline-3">
+<h3 id="orge412fff">종료하기</h3>
+<div class="outline-text-3" id="text-orge412fff">
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sudo /etc/init.d/cron stop</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or </span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sudo service cron stop</span>
@@ -112,9 +144,9 @@ tags: cron,service,start,stop,restart,docker
 </div>
 </div>
 
-<div id="outline-container-org47d1ff7" class="outline-3">
-<h3 id="org47d1ff7">재시작하기</h3>
-<div class="outline-text-3" id="text-org47d1ff7">
+<div id="outline-container-org208ba96" class="outline-3">
+<h3 id="org208ba96">재시작하기</h3>
+<div class="outline-text-3" id="text-org208ba96">
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sudo /etc/init.d/cron restart</span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or </span>
 <span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sudo service cron restart</span>
