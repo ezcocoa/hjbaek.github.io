@@ -1,0 +1,151 @@
+---
+title: docker - cron 서비스 사용법 
+layout: post
+categories: 
+tags: cron,service,start,stop,restart,docker
+---
+
+<div id="outline-container-org61b86d4" class="outline-2">
+<h2 id="org61b86d4">cron 설명</h2>
+<div class="outline-text-2" id="text-org61b86d4">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">*</td>
+<td class="org-left">*</td>
+<td class="org-left">*</td>
+<td class="org-left">*</td>
+<td class="org-left">*</td>
+<td class="org-left">command to execute</td>
+</tr>
+
+<tr>
+<td class="org-left">minute</td>
+<td class="org-left">hour</td>
+<td class="org-left">day</td>
+<td class="org-left">month</td>
+<td class="org-left">weekday</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<a href="https://crontab.guru/every-10-minutes">규칙계산기</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6abb2d3" class="outline-2">
+<h2 id="org6abb2d3">Redhat/Fedora/CentOS에서</h2>
+<div class="outline-text-2" id="text-org6abb2d3">
+</div>
+<div id="outline-container-org842448a" class="outline-3">
+<h3 id="org842448a">시작하기</h3>
+<div class="outline-text-3" id="text-org842448a">
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/etc/init.d/crond start</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">service crond start</span>
+</code></pre></div></div>
+</div>
+</div>
+
+
+<div id="outline-container-orgb763199" class="outline-3">
+<h3 id="orgb763199">종료하기</h3>
+<div class="outline-text-3" id="text-orgb763199">
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/etc/init.d/crond stop</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or </span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/etc/init.d/crond stop</span>
+</code></pre></div></div>
+</div>
+</div>
+
+<div id="outline-container-org975eae5" class="outline-3">
+<h3 id="org975eae5">재시작하기</h3>
+<div class="outline-text-3" id="text-org975eae5">
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/etc/init.d/crond restart</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">/etc/init.d/crond restatr</span>
+</code></pre></div></div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgd6cbede" class="outline-2">
+<h2 id="orgd6cbede">Debian/Ubuntu</h2>
+<div class="outline-text-2" id="text-orgd6cbede">
+</div>
+<div id="outline-container-org7e70db6" class="outline-3">
+<h3 id="org7e70db6">시작하기</h3>
+<div class="outline-text-3" id="text-org7e70db6">
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sudo /etc/init.d/cron start</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or </span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sudo service cron start</span>
+</code></pre></div></div>
+</div>
+</div>
+
+<div id="outline-container-org61fbbd6" class="outline-3">
+<h3 id="org61fbbd6">종료하기</h3>
+<div class="outline-text-3" id="text-org61fbbd6">
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sudo /etc/init.d/cron stop</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or </span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sudo service cron stop</span>
+</code></pre></div></div>
+</div>
+</div>
+
+<div id="outline-container-org47d1ff7" class="outline-3">
+<h3 id="org47d1ff7">재시작하기</h3>
+<div class="outline-text-3" id="text-org47d1ff7">
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sudo /etc/init.d/cron restart</span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">or </span>
+<span style="color: #2aa1ae; background-color: #292e34;"># </span><span style="color: #2aa1ae; background-color: #292e34;">sudo service cron restart</span>
+</code></pre></div></div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org0cd2beb" class="outline-2">
+<h2 id="org0cd2beb">docker</h2>
+<div class="outline-text-2" id="text-org0cd2beb">
+<p>
+cron 서비스를 이용하여, 데몬 프로세스를 동작시킨다.
+</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #2aa1ae; background-color: #292e34;">#</span><span style="color: #2aa1ae; background-color: #292e34;">!/bin/</span><span style="color: #4f97d7; font-weight: bold;">bash</span>
+/usr/bin/javaj -jar sample.jar
+</code></pre></div></div>
+
+<p>
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/u
+sr/local/games"
+</p>
+</div>
+
+<div id="outline-container-org0d60eb0" class="outline-3">
+<h3 id="org0d60eb0">주의사항</h3>
+<div class="outline-text-3" id="text-org0d60eb0">
+<ul class="org-ul">
+<li>docker에서 cron서비스를 사용하게 되면, 다른 환경변수 영역을 가지게 된다.</li>
+</ul>
+</div>
+</div>
+</div>
