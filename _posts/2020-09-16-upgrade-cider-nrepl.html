@@ -1,0 +1,72 @@
+---
+title: lein + cider-nrepl 버전 업데이트 하기 
+layout: post
+categories: tools
+tags: emacs,cider,nrepl,leiningen
+---
+
+<pre class="example">
+lein과 cider-nrepl 최신 버전 업데이트 내역에 대해서 기록으로 남긴다.
+기존 환경 
+- lein 2.7.3
+- cider-nrepl 0.18.0
+
+위 환경 이용 시 warning문제로 오늘 휴가를 사용하여, 전체적으로 버전업을 진행하였다.
+</pre>
+
+
+<div id="outline-container-org94e6517" class="outline-2">
+<h2 id="org94e6517">변경 항목</h2>
+<div class="outline-text-2" id="text-org94e6517">
+<p>
+profiles.clj에 아래와 같이 추가 할 경우 글로벌 영역으로 어느 프로젝트에나 0.25.3 버전을 사용된다.
+</p>
+
+<div class="language-clojure highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span style="color: #4f97d7;">{</span><span style="color: #a45bad;">:user</span> <span style="color: #bc6ec5;">{</span><span style="color: #a45bad;">:plugins</span> <span style="color: #2d9574;">[</span><span style="color: #67b11d;">[</span><span style="color: #ce537a; font-weight: bold;">cider</span>/cider-nrepl <span style="color: #2d9574;">"0.25.3"</span><span style="color: #67b11d;">]</span><span style="color: #e0211d; text-decoration: overline;">}</span><span style="color: #bc6ec5;">}</span>
+</code></pre></div></div>
+</div>
+</div>
+
+<div id="outline-container-org571b93f" class="outline-2">
+<h2 id="org571b93f">clojars 저장소</h2>
+<div class="outline-text-2" id="text-org571b93f">
+<p>
+<a href="https://clojars.org/cider/cider-nrepl">cider/cider-nrepl</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org9332e06" class="outline-2">
+<h2 id="org9332e06">업그레이드 전 문제</h2>
+<div class="outline-text-2" id="text-org9332e06">
+</div>
+<div id="outline-container-org4fea80e" class="outline-3">
+<h3 id="org4fea80e">Unable to resolve var: cider.nrepl/wrap-pprint in this context warning</h3>
+<div class="outline-text-3" id="text-org4fea80e">
+<p>
+&gt; Unable to resolve var: cider.nrepl/wrap-clojuredocs in this context 동일 
+</p>
+
+<p>
+이 문제의 경우 *leiningen*을 최신버전을 이용해주자 
+Leiningen 2.9.4 on Java 1.8.0<sub>40</sub> Java HotSpot(TM) 64-Bit Server VM 
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org93b0a78" class="outline-2">
+<h2 id="org93b0a78">업그레이드 후 문제</h2>
+<div class="outline-text-2" id="text-org93b0a78">
+</div>
+<div id="outline-container-org3b848de" class="outline-3">
+<h3 id="org3b848de">lein 사용 시 아래의 warning 발생</h3>
+<div class="outline-text-3" id="text-org3b848de">
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WARNING: You have $<span style="color: #7590db;">CLASSPATH</span> set, probably by accident.
+It is strongly recommended to unset this before proceeding.
+</code></pre></div></div>
+</div>
+</div>
+</div>
