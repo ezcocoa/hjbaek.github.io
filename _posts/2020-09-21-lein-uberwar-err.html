@@ -1,0 +1,45 @@
+---
+title: lein uberwar..unify.clj 오류 해결법
+layout: post
+categories: it
+tags: clojure,lein,uberwar
+---
+
+
+<p class="verse">
+Leiningen 2.9.1 버전 사용,<br />
+$ lein uberwar 컴파일 시 발생 되는 오류에 대해서 설명한다.<br />
+</p>
+
+<div id="outline-container-org80ef377" class="outline-2">
+<h2 id="org80ef377">발생 문법 오류</h2>
+<div class="outline-text-2" id="text-org80ef377">
+<div class="org-src-container">
+<pre class="src src-shell">lang.Compiler$<span style="color: #7590db;">CompilerException</span>: Syntax error macroexpanding clojure.core/fn at <span style="color: #4f97d7;">(</span>clojure/core/unify.clj:83:18<span style="color: #4f97d7;">)</span><span style="color: #4f97d7;">.</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbcab4e2" class="outline-2">
+<h2 id="orgbcab4e2">해결책</h2>
+<div class="outline-text-2" id="text-orgbcab4e2">
+<p>
+lein dependency 라이브러리들을 버전업해준다. 
+</p>
+
+<p>
+ex)
+</p>
+<div class="org-src-container">
+<pre class="src src-clojure">...
+  <span style="color: #4f97d7;">[</span>lein-uberwar <span style="color: #2d9574;">"0.2.0"</span><span style="color: #4f97d7;">]</span> =&gt; <span style="color: #4f97d7;">[</span>lein-uberwar <span style="color: #2d9574;">"0.2.1"</span><span style="color: #4f97d7;">]</span>
+...
+</pre>
+</div>
+
+<p>
+<a href="https://github.com/weavejester/lein-ring/issues/203">참고</a>
+</p>
+</div>
+</div>
