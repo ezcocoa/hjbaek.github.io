@@ -1,0 +1,27 @@
+---
+title: spacemacs - org arhive 기능 오류
+layout: post
+categories: tool
+tags: emacs,org,arhive
+---
+
+<div id="outline-container-orgcd0d255" class="outline-2">
+<h2 id="orgcd0d255">Invalid function: org-preserve-local-variables 오류가 발생한다면?</h2>
+<div class="outline-text-2" id="text-orgcd0d255">
+<ol class="org-ol">
+<li>아래의 명령어를 입력 해준다.</li>
+</ol>
+<div class="org-src-container">
+<pre class="src src-shell"><span style="color: #4f97d7;">cd</span> ~/.emacs.d/elpa/develop
+find org*/*.elc -print0 | xargs -0 rm
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>이맥스를 재시작한다.</li>
+</ol>
+<p>
+<a href="https://github.com/syl20bnr/spacemacs/issues/11801#issuecomment-451755821">참고 spaceemacs issue</a>
+</p>
+</div>
+</div>
