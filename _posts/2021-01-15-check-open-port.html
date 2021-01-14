@@ -1,0 +1,16 @@
+---
+title: 포트가 열려있는지 확인 방법
+layout: post
+categories: tool
+tags: port,check
+---
+
+<p>
+nc 명령어를 활용하여 포트가 열려있는지 체크해본다.
+</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc -z www.google.com <span style="color: #a45bad;">80</span>
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Connection to www.gooogle.com port <span style="color: #a45bad;">80</span> <span style="color: #4f97d7;">[</span>tcp/http<span style="color: #4f97d7;">]</span> succeeded!
+</code></pre></div></div>
