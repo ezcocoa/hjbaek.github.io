@@ -1,0 +1,70 @@
+---
+title: 사용자 생성하기
+layout: post
+categories: dev
+tags: postgresql, psql, db, sql
+---
+
+<p class="verse">
+postgreSQL에서 자주 사용하는 명령어를 기록한다.<br />
+</p>
+
+<div id="outline-container-orgac1af44" class="outline-2">
+<h2 id="orgac1af44">사용자 관련</h2>
+<div class="outline-text-2" id="text-orgac1af44">
+</div>
+<div id="outline-container-orgf16e85f" class="outline-3">
+<h3 id="orgf16e85f">사용자 룰과 함께 생성하기</h3>
+<div class="outline-text-3" id="text-orgf16e85f">
+<p>
+testuser라는 사용자 생성, 이 사용자는 <b>LOGIN</b>, <b>CREATEDB</b>, <b>REPLICATION</b>, <b>BYPASSRLS</b> 권한과 '
+<b>1234</b> 비밀번호를 사용함
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">CREATE</span> <span style="color: #4f97d7; font-weight: bold;">ROLE</span> testuser LOGIN CREATEDB REPLICATION BYPASSRLS PASSWORD <span style="color: #2d9574;">'1234'</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org590dfe0" class="outline-3">
+<h3 id="org590dfe0">사용자 삭제하기</h3>
+<div class="outline-text-3" id="text-org590dfe0">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">DROP</span> <span style="color: #4f97d7; font-weight: bold;">ROLE</span> testuser;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgcb57390" class="outline-3">
+<h3 id="orgcb57390">사용자 조회하기</h3>
+<div class="outline-text-3" id="text-orgcb57390">
+<div class="org-src-container">
+<pre class="src src-sql">\du
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9afe4d4" class="outline-3">
+<h3 id="org9afe4d4">사용자 상세 조회하기</h3>
+<div class="outline-text-3" id="text-org9afe4d4">
+<div class="org-src-container">
+<pre class="src src-sql">\du+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga30735a" class="outline-3">
+<h3 id="orga30735a">사용자 쿼리로 조회하기</h3>
+<div class="outline-text-3" id="text-orga30735a">
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">select</span> * <span style="color: #4f97d7; font-weight: bold;">from</span> pg_user;
+</pre>
+</div>
+</div>
+</div>
+</div>
