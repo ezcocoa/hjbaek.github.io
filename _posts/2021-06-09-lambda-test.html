@@ -1,0 +1,204 @@
+---
+title: AWS Lambda - Clojure JIT vs AOT 테스트
+layout: post
+categories: lambda
+tags: aws,lambda,jit,aot,test,clojure,docker
+---
+
+<p class="verse">
+AWS 람다, 도커를 활용하여 JIT와 AOT 속도 테스트를 하고 결과를 확인해본다.<br />
+</p>
+
+<div id="outline-container-org5cc1fb8" class="outline-2">
+<h2 id="org5cc1fb8">바로 결과</h2>
+<div class="outline-text-2" id="text-org5cc1fb8">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">JIT (OpenJDK)</th>
+<th scope="col" class="org-left">AOT (Substrate VM)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Local, cold start</td>
+<td class="org-left">1500-1600 m</td>
+<td class="org-left">8-11 ms</td>
+</tr>
+
+<tr>
+<td class="org-left">Local, warm start</td>
+<td class="org-left">3-7 ms</td>
+<td class="org-left">2-3 ms</td>
+</tr>
+
+<tr>
+<td class="org-left">AWS Lambda, cold start</td>
+<td class="org-left">3500-4500 ms</td>
+<td class="org-left">350-1850 ms</td>
+</tr>
+
+<tr>
+<td class="org-left">AWS Lambda, warm start</td>
+<td class="org-left">5-80 ms</td>
+<td class="org-left">1-2 ms</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org98e23d4" class="outline-2">
+<h2 id="org98e23d4">환경</h2>
+<div class="outline-text-2" id="text-org98e23d4">
+<p>
+&gt; MacBook Pro (15-inch, 2018) macOS Catalina v 10.15.7
+&gt; 2.2 GHz 6-Core Intel Core i7
+&gt; 16 GB 2400 MHz DDR4
+</p>
+</div>
+
+<div id="outline-container-org3d57abf" class="outline-3">
+<h3 id="org3d57abf">빌드 툴</h3>
+<div class="outline-text-3" id="text-org3d57abf">
+<p>
+&gt; Leiningen 2.9.5 on Java 1.8.0<sub>40</sub> Java HotSpot(TM) 64-Bit Server VM
+&gt; Docker version 20.10.6
+</p>
+</div>
+</div>
+
+<div id="outline-container-org773adce" class="outline-3">
+<h3 id="org773adce">개발 툴</h3>
+<div class="outline-text-3" id="text-org773adce">
+<p>
+&gt; tfenv
+&gt; AWS CLI
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9b2b086" class="outline-2">
+<h2 id="org9b2b086">project example 아래의 프로젝트를 다운</h2>
+<div class="outline-text-2" id="text-org9b2b086">
+<p>
+<a href="https://github.com/luontola/native-clojure-lambda">https://github.com/luontola/native-clojure-lambda</a>
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org104e9f6" class="outline-2">
+<h2 id="org104e9f6">빌드하기</h2>
+<div class="outline-text-2" id="text-org104e9f6">
+<p>
+lambda jar 파일 생성한다.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">./scripts/build.sh  
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd1bdf31" class="outline-2">
+<h2 id="orgd1bdf31">OpenJDK를 활용한 도커 이미지</h2>
+<div class="outline-text-2" id="text-orgd1bdf31">
+<div class="org-src-container">
+<pre class="src src-shell">docker-compose up -d --build jvm
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org31884bc" class="outline-2">
+<h2 id="org31884bc">GraalVM를 활용한 도커 이미지</h2>
+<div class="outline-text-2" id="text-org31884bc">
+<div class="org-src-container">
+<pre class="src src-shell">docker-compose up -d --build graalvm
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgef83329" class="outline-2">
+<h2 id="orgef83329">GraalVM Native Image/Substrate VM을 활용한 도커 이미지</h2>
+<div class="outline-text-2" id="text-orgef83329">
+<div class="org-src-container">
+<pre class="src src-shell">docker-compose up -d --build native
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org849134c" class="outline-2">
+<h2 id="org849134c">테스트 실행하기</h2>
+<div class="outline-text-2" id="text-org849134c">
+<div class="org-src-container">
+<pre class="src src-shell">./smoke-test.sh
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5795625" class="outline-2">
+<h2 id="org5795625">로그 보기</h2>
+<div class="outline-text-2" id="text-org5795625">
+<div class="org-src-container">
+<pre class="src src-shell">docker-compose logs --follow
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfa6198e" class="outline-2">
+<h2 id="orgfa6198e">도커 앱 종료하기</h2>
+<div class="outline-text-2" id="text-orgfa6198e">
+<div class="org-src-container">
+<pre class="src src-shell">docker-compose down  
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org056fd54" class="outline-2">
+<h2 id="org056fd54">빌드 오류</h2>
+<div class="outline-text-2" id="text-org056fd54">
+</div>
+<div id="outline-container-org00604dc" class="outline-3">
+<h3 id="org00604dc">=&gt; ERROR [internal] load metadata for docker.io/oracle/graalvm-ce:20.3.0-java11</h3>
+<div class="outline-text-3" id="text-org00604dc">
+<p>
+발생 시 도커 설정 파일에서 아래의 경로로 변경해주자
+</p>
+
+<p>
+#+BEGIN<sub>SRC</sub> docker
+ghcr.io/graalvm/graalvm-ce:21.0.0
+</p>
+
+<p>
+ghcr.io/graalvm/graalvm-ce:ol7-java11-20.3.0
+#+BEGIN<sub>SRC</sub> 
+<a href="https://forum.gitlab.com/t/previously-working-ci-pipeline-fails-to-pull-docker-image-oracle-graalvm-ce/48202/3">
+참고</a>
+</p>
+
+<p>
+<a href="https://github.com/luontola/native-clojure-lambda">원문</a>
+</p>
+</div>
+</div>
+</div>
