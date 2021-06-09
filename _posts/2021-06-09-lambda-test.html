@@ -58,33 +58,34 @@ AWS 람다, 도커를 활용하여 JIT와 AOT 속도 테스트를 하고 결과�
 </div>
 </div>
 
+
 <div id="outline-container-org98e23d4" class="outline-2">
 <h2 id="org98e23d4">환경</h2>
 <div class="outline-text-2" id="text-org98e23d4">
-<p>
-&gt; MacBook Pro (15-inch, 2018) macOS Catalina v 10.15.7
-&gt; 2.2 GHz 6-Core Intel Core i7
-&gt; 16 GB 2400 MHz DDR4
-</p>
+<ul class="org-ul">
+<li>MacBook Pro (15-inch, 2018) macOS Catalina v 10.15.7</li>
+<li>2.2 GHz 6-Core Intel Core i7</li>
+<li>16 GB 2400 MHz DDR4</li>
+</ul>
 </div>
 
 <div id="outline-container-org3d57abf" class="outline-3">
 <h3 id="org3d57abf">빌드 툴</h3>
 <div class="outline-text-3" id="text-org3d57abf">
-<p>
-&gt; Leiningen 2.9.5 on Java 1.8.0<sub>40</sub> Java HotSpot(TM) 64-Bit Server VM
-&gt; Docker version 20.10.6
-</p>
+<ul class="org-ul">
+<li>Leiningen 2.9.5 on Java 1.8.0<sub>40</sub> Java HotSpot(TM) 64-Bit Server VM</li>
+<li>Docker version 20.10.6</li>
+</ul>
 </div>
 </div>
 
 <div id="outline-container-org773adce" class="outline-3">
 <h3 id="org773adce">개발 툴</h3>
 <div class="outline-text-3" id="text-org773adce">
-<p>
-&gt; tfenv
-&gt; AWS CLI
-</p>
+<ul class="org-ul">
+<li>tfenv</li>
+<li>AWS CLI</li>
+</ul>
 </div>
 </div>
 </div>
@@ -93,7 +94,7 @@ AWS 람다, 도커를 활용하여 JIT와 AOT 속도 테스트를 하고 결과�
 <h2 id="org9b2b086">project example 아래의 프로젝트를 다운</h2>
 <div class="outline-text-2" id="text-org9b2b086">
 <p>
-<a href="https://github.com/luontola/native-clojure-lambda">https://github.com/luontola/native-clojure-lambda</a>
+<a href="https://github.com/luontola/native-clojure-lambda">native-clojure-lambda</a>
 </p>
 </div>
 </div>
@@ -184,14 +185,16 @@ lambda jar 파일 생성한다.
 발생 시 도커 설정 파일에서 아래의 경로로 변경해주자
 </p>
 
-<p>
-#+BEGIN<sub>SRC</sub> docker
-ghcr.io/graalvm/graalvm-ce:21.0.0
-</p>
+<div class="org-src-container">
+<pre class="src src-text">ghcr.io/graalvm/graalvm-ce:21.0.0
+
+  # or
+
+ghcr.io/graalvm/graalvm-ce:ol7-java11-20.3.0
+</pre>
+</div>
 
 <p>
-ghcr.io/graalvm/graalvm-ce:ol7-java11-20.3.0
-#+BEGIN<sub>SRC</sub> 
 <a href="https://forum.gitlab.com/t/previously-working-ci-pipeline-fails-to-pull-docker-image-oracle-graalvm-ce/48202/3">
 참고</a>
 </p>
